@@ -25,71 +25,21 @@ VaR
 TVaR = mean(loss[loss > VaR])
 TVaR
 
-# ==============================================================================================
-# 课堂练习
-# 假设损失服从指数分布，均值为10。当 r = 50时，计算PH风险度量值。
-# ==============================================================================================
-##方法一
-s1 = function(x)  (1 - pexp(x, rate = 1/10))^(1/50)
-integrate(s1,  0,  Inf)$value
-
-##方法二
-s2 = function(x)   exp(-x/10/50)
-integrate(s2,  0,  Inf)$value
-
-
-# ==============================================================================================
-# 课堂练习
-# 假设损失服从伽马分布，形状参数为 shape = 2，尺度参数为 scale = 1000，绘制 PH 变换的风险度量值
-# 和 Wang 变换的风险度量值随着风险厌恶系数变化的曲线
-# ==============================================================================================
-# 定义gamma分布的生存函数
-S <- function(x) 1 - pgamma(x, shape = 2, scale = 1000)
-# PH 变换
-r <- seq(1, 10, by = 0.1)
-PH <- NULL
-for(i in 1: length(r)){
-  S_PH <- function(x) S(x)^(1/r[i])
-  PH[i] <- integrate(S_PH, 0, Inf)$value
+# 假设损失服从gamma(shape = 3,scale = 400)，计算95%水平下的VaR和TVaR
+Var.ga <- function(q) qgamma(q, shape = 3, scale = 400) # 定义 VaR 函数
+TVar.ga <- function(q) {
+  integrate(Var.ga, lower = q, upper = 1)$value/(1 - q)  # 定义 TvaR 函数
 }
-# Wang 变换
-Wang <- NULL
-alpha <- seq(0.5, 0.99, by = 0.01)
-k <- qnorm(alpha)
-for(i in 1: length(alpha)){
-  S_Wang <- function(x) pnorm(qnorm(S(x)) + k[i])
-  Wang[i] <- integrate(S_Wang, 0, Inf)$value
-}
-# 绘图
-par(mfrow = c(1, 2))
-plot(r, PH, type = 'l')
-plot(alpha, Wang, type = 'l')
+Var.ga(0.95); TVar.ga(0.95)
 
-# ==============================================================================================
-# 课堂练习
-# 用形状参数为 shape = 2，尺度参数为 scale = 1000 生成 500 个随机数，并基于随机数绘制两个风险度量值的趋势
-# ==============================================================================================
-# 生成随机数
-set.seed(123)
-x <- rgamma(n = 500, shape = 2, scale = 1000)
-PH <- Wang <- NULL
-# 伽马分布的生存函数(经验生存函数)
-S  <- seq(1, 1/length(x), -1/length(x))
-# PH 变换
-r <- seq(1, 10, by = 0.1)
-for(i in 1: length(r)){
-  PH[i] <- sum(diff(sort(c(0, x)))*S^(1/r[i]))
+# 假设损失服从lnorm(meanlog = 3,sdlog = 2)，计算95%水平下的VaR和TVaR
+Var.lnorm <- function(q) qlnorm(q, meanlog = 3, sdlog = 2) # 定义 VaR 函数
+TVar.lnorm <- function(q) {
+  integrate(Var.lnorm, lower = q, upper = 1)$value/(1 - q)  # 定义 TvaR 函数
 }
-# Wang 变换
-alpha <- seq(0.5, 0.99, by = 0.01)
-k <- qnorm(alpha)
-for(i in 1: length(alpha)){
-  Wang[i] <- sum(diff(sort(c(0, x)))*pnorm(qnorm(S) + k[i]))
-}
-# 绘图
-par(mfrow = c(1, 2))
-plot(r, PH, type = 'l')
-plot(alpha, Wang, type = 'l')
+Var.lnorm(0.95); TVar.lnorm(0.95)
+
+
 
 # ==============================================================================================
 # 指数保费原理
