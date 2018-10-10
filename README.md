@@ -38,7 +38,12 @@
 	- 对数变换、指数变换
 	- 混合分布
 	- 案例分析
-
+- [Week 4 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%204%20-%20%E6%8D%9F%E5%A4%B1%E6%AC%A1%E6%95%B0%E6%A8%A1%E5%9E%8B.pptx)
+	- (a,b,0) 分布
+	- (a,b,1) 分布
+    - 混合分布：混合泊松分布
+    - 复合分布：复合泊松分布
+    - 免赔额对索赔次数模型的影响
 
 
 ## R 代码和数据
@@ -80,7 +85,7 @@
 
 
 
----
+------------------------
 ## 教材和参考资料
 - 孟生旺, 刘乐平. 非寿险精算学(第三版), 中国人民大学出版社, 2015
 - [Klugman S. A., Panjer H. H., Willmot G. E. Loss models: from data to decisions (4th edition).  London: John Wiley & Sons, 2012.](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Reference%20books/Loss%20models%20from%20data%20to%20decisions%20(fourth%20editon)%20-%20Stuart%20A.%20Klugman%20(%E6%95%99%E5%AD%A6%E8%B5%84%E6%96%99).pdf)

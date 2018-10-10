@@ -190,6 +190,8 @@ plot(0:10, dpois(0:10, 2), type = "h", col = 2, xlab = "", ylab = "", main = "po
 plot(0:50, dnbinom(0:50, size = 4, prob = 0.3), type = "h", col = 2, xlab = "",  ylab = "", main = "negative binomial")
 plot(diff(Fs1), type = "h", col = 2, xlab = "", ylab = "", xlim = c(0, 50), main = "poisson-negative binomial")
 
-
+# ================================================================
+# 复合泊松分布的递推公式（2） - (a, b, 0)
+# ================================================================
 
 
