@@ -38,12 +38,16 @@
 	- 对数变换、指数变换
 	- 混合分布
 	- 案例分析
-- [Week 4 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%204%20-%20%E6%8D%9F%E5%A4%B1%E6%AC%A1%E6%95%B0%E6%A8%A1%E5%9E%8B.pptx)
+- [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%204%20-%20%E6%8D%9F%E5%A4%B1%E6%AC%A1%E6%95%B0%E6%A8%A1%E5%9E%8B.pptx)
 	- (a,b,0) 分布
 	- (a,b,1) 分布
     - 混合分布：混合泊松分布
     - 复合分布：复合泊松分布
     - 免赔额对索赔次数模型的影响
+- [Week 6.7 - 累积损失模型]()
+	- 集体风险模型（近似法、解析法、递推法、随机模拟）
+	- 个体风险模型（参数近似）
+
 
 
 ## R 代码和数据
