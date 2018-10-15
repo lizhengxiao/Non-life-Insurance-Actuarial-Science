@@ -44,7 +44,7 @@
     - 混合分布：混合泊松分布
     - 复合分布：复合泊松分布
     - 免赔额对索赔次数模型的影响
-- [Week 6.7 - 累积损失模型]()
+- [Week 6.7 - 累积损失模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%206%20-%20%E7%B4%AF%E7%A7%AF%E6%8D%9F%E5%A4%B1%E6%A8%A1%E5%9E%8B.pptx)
 	- 集体风险模型（近似法、解析法、递推法、随机模拟）
 	- 个体风险模型（参数近似）
 
@@ -55,7 +55,7 @@
 -  [Week 2 - 风险度量](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/1.%20Risk%20Measures.r)
 -  [Week 3 - 损失金额模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/2.%20Models%20of%20Claim%20Amount.r)
 -  [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/3.%20Models%20of%20Claim%20Count.r)
-
+-  [Week 6.7 - 累积损失模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/4.%20Models%20of%20Aggregate%20Loss.r)
 
 
 ## 课后作业
