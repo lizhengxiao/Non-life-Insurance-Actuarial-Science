@@ -82,10 +82,12 @@
 
 6、	假设个体风险服从参数为$\left( \lambda \Theta  \right)$泊松分布，
 结构函数$\Theta $为均值为1，方差为$1/\alpha $ 伽马分布，相关参数表示为$\left( \alpha ,\alpha  \right)$，且密度函数为  
-\[{{f}_{\Theta }}(\theta )=\frac{1}{\Gamma (\theta )}{{\alpha }^{\alpha }}{{\theta }^{\alpha -1}}\exp (-\alpha \theta ),\text{    }\theta >0\]
-	- 推导出混合泊松-伽马分布等价的负二项分布，写出概率函数$P\left( N=k \right)$。当$\alpha =1,\ \ \lambda =1.2$时，运用R软件dnbinom函数求出$k=1,2,...,10$对应的概率
-	- 直接运用R中的积分算法（integrate）函数求出混合泊松-伽马分布在$k=1,2,...,10$的概率。（参考课件中混合泊松-逆高斯分布和混合泊松-负二项分布的相关代码，$\alpha =1,\ \ \lambda =1.2$）
-	- 比较两种计算方法是否一致？
+
+${{f}_{\Theta }}(\theta )=\frac{1}{\Gamma (\theta )}{{\alpha }^{\alpha }}{{\theta }^{\alpha -1}}\exp (-\alpha \theta ),\theta >0$
+
+- 推导出混合泊松-伽马分布等价的负二项分布，写出概率函数$P\left( N=k \right)$。当$\alpha =1,\ \ \lambda =1.2$时，运用R软件dnbinom函数求出$k=1,2,...,10$对应的概率
+- 直接运用R中的积分算法（integrate）函数求出混合泊松-伽马分布在$k=1,2,...,10$的概率。（参考课件中混合泊松-逆高斯分布和混合泊松-负二项分布的相关代码，$\alpha =1,\ \ \lambda =1.2$）
+- 比较两种计算方法是否一致？
 
 
 
