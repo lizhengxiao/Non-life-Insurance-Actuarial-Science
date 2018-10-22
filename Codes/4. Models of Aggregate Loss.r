@@ -13,6 +13,8 @@ plot(Fc)
 
 #累积损失的概率
 diff(Fc) # 譬如，累积损失等于0的概率为0.408，累积损失等于800的概率为0.02。
+S <- seq(from = 0, to = 800, by = 100)
+cbind(S, diff(Fc))
 
 # =============================================================================
 # 递推法
@@ -20,17 +22,16 @@ diff(Fc) # 譬如，累积损失等于0的概率为0.408，累积损失等于800的概率为0.02。
 # 连续型分布离散化
 # 1. rouding and mathcing method (公式计算)
 x = 1:30;
-y1 = exp(-0.1*(2*x-1))-exp(-0.1*(2*x+1))
+y1 = exp(-0.1*(2*x - 1)) - exp(-0.1*(2*x + 1))
 y2 = -10*exp(-0.2*x) + 5*exp(-0.2*(x-1))+5*exp(-0.2*(x+1))
-y_rounding = c(0.09516, y1)
-y_matching = c(0.09365, y2)
+y_rounding = c(0.09516, y1)  # rounding (h = 2), 0.09516 为零点的概率
+y_matching = c(0.09365, y2)  # mathcing (h = 2)
 par(mfrow = c(1,2))
-matplot(c(0,x), cbind(y_rounding, y_matching), type = 'h', xlab = 'i', ylab = 'fi', col = c(2,4), lwd = 2)
+matplot(c(0, x), cbind(y_rounding, y_matching), type = 'h', xlab = 'i', ylab = 'fi', col = c(2,4), lwd = 2)
 plot(y_rounding, y_matching)
 abline(0,1)
 
 # 2. rouding and mathcing method (运用 discretize 函数)
-x = 0:30;
 y_rounding2 <- discretize(cdf = pexp(x, rate = 0.1), from = 0, to = 60, step = 2, method = "rounding")
 y_rounding2
 par(mfrow = c(1,1))
@@ -54,6 +55,40 @@ legend(30, 0.4,
        legend = c("连续分布", "Rounding", "Unbiased"),
        col = c('black', "red", "blue"), 
        pch = 19, lty = 1)
+
+# 4. 各种离散化结果的比较
+library(actuar)
+fu <- discretize(cdf = pexp(x, rate = 0.1), 
+                 method = 'upper', 
+                 from = 0, to = 50, step = 2) # 向上离散化
+fl <- discretize(cdf = pexp(x, rate = 0.1), 
+                 method = 'lower', 
+                 from = 0, to = 50, step = 2) # 向下离散化
+fr <- discretize(cdf = pexp(x, rate = 0.1), 
+                 method = 'rounding', 
+                 from = 0, to = 50, step = 2) # 折中离散化
+
+par(col = "blue")
+x <- seq(0, 50, 2)
+curve(pexp(x, rate = 0.1), xlim = c(0, 50),
+      ylab = '指数分布分布函数')
+plot(stepfun(head(x, -1), diffinv(fu)), pch = 19, 
+     col = "red",
+     add = TRUE)
+plot(stepfun(x, diffinv(fl)), pch = 18,
+     add = TRUE,
+     col = 'blue'
+)
+plot(stepfun(head(x,-1), diffinv(fr)), pch = 17,
+     add = TRUE,
+     col = 'yellow'
+)
+legend(30, 0.4, 
+       legend = c("Upper", "Lower", "Rounding"),
+       col = c("red", "blue", "yellow"), 
+       pch = 19, lty = 1)
+
+
 
 # 4. 递推法 (aggregateDist函数)
 # 首先对指数分布进行离散化得到强度分布，频数分布选用 poisson 分布, 特别
@@ -133,6 +168,34 @@ par(mfrow = c(1, 2))
 hist(s, freq = F, breaks = 1000, col = 2, main = '')
 s = sort(s)
 plot(s, cumsum(s)/sum(s), type = 's', col = 2)
+
+# =========================================================================
+# 例~2.7 随机模拟求累积损失的分布
+# =========================================================================
+set.seed(321) # 设定随机种子
+iter <- 10000 # 模拟次数
+d <- 250; u <- 1000 # 免赔额和限额
+r <- 3; beta <- 2 # 负二项分布的参数
+alpha <- 100; theta <- 0.2 # 伽马分布的参数
+P <- NULL # 保险人的年度累积赔款
+
+# 开始模拟
+for (i in 1:iter){
+  n <- rnbinom(1, size = r, mu = r*beta)  # 模拟损失次数
+  x <- rgamma(n, shape = alpha, rate = theta) # 模拟每次事故的损失额，x 是一个向量
+  w <- pmin(x, d)  # 保单持有人对每次损失的自负金额
+  v <- min(sum(w), u) # 保单持有人自负的总金额\
+  S <- sum(x)   # 保单持有人的总损失
+  P[i] <- S - v # 保单持有人的年度累积赔款
+}
+
+hist(P, breaks = 50, col = 'grey', prob = T, main = '',
+     ylab = '频率', xlab = '累积赔款'
+)
+mean(P);quantile(P, 0.95)
+
+
+
 
 
 # =============================================================================
