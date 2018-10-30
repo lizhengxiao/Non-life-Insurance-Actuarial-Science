@@ -257,3 +257,40 @@ round(dt, 4)
 
 
 
+# -----------------------------------------------------------------------------------
+# tweedie 分布
+# ------------------------------------------------------------------------------------------------
+# 泊松-伽马复合分布
+lambda = 1                         # 泊松的参数
+alpha = 10  ;   beta = 2      # 伽马分布的参数，beta为rate参数
+n = 10000                            # 模拟次数
+Y = NULL                              # tweedie模拟值
+set.seed(11)
+for ( i in 1:n) {
+  N = rpois(1,  lambda)
+  Y[i] = sum(rgamma(N, shape =  alpha,  rate = beta))
+}
+hist(Y,  breaks = 50,  col = 'grey',  main = 'Tweedie模拟')
+
+
+# -----------------------------------------------------------------------------------
+# tweedie 分布
+# ------------------------------------------------------------------------------------------------
+library(tweedie)
+# 泊松分布参数
+lambda <- 1
+# 伽马分布参数
+shape <- 10
+scale <- 1/2
+# 计算 tweedie 分布的参数
+mu <- lambda*shape*scale
+power <- (shape + 2)/(shape + 1)
+phi <- lambda^(1 - power)*(shape * scale)^(2 - power)/(2 - power)
+# 输出 tweedie 分布的参数
+cbind(mu, power, phi)
+# 计算 tweedie 分布在零点的概率
+dtweedie(0, power = power, mu = mu, phi = phi)
+# 绘制 tweedie 分布的密度函数图
+y <- seq(0, 1000, 0.1)
+fy <- dtweedie(y = y, power = power, mu = mu, phi = phi)
+plot(y, fy, type = 'l', xlim = c(0, 30), lwd = 2, col = 2)
