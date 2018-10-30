@@ -47,8 +47,7 @@
 - [Week 6.7 - 累积损失模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%206%20-%20%E7%B4%AF%E7%A7%AF%E6%8D%9F%E5%A4%B1%E6%A8%A1%E5%9E%8B.pptx)
 	- 集体风险模型（近似法、解析法、递推法、随机模拟）
 	- 个体风险模型（参数近似）
-
-
+- [Week 8.9 - 費率厘定基本原理]()
 
 ## R 代码和数据
 - [案例分析数据 - freMTPLsev](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/freMTPLsev.csv)
@@ -57,6 +56,7 @@
 -  [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/3.%20Models%20of%20Claim%20Count.r)
 -  [Week 6.7 - 累积损失模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/4.%20Models%20of%20Aggregate%20Loss.r)
 - [Homework 1 Solutions](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/Homework%201.Rmd)
+- [Week 8.9 - 費率厘定基本原理](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%208%20-%20%E8%B4%B9%E7%8E%87%E5%8E%98%E5%AE%9A%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86.ppt)
 
 ## 课后作业
 1. 假设被保险人的损失 X 服从伽马分布，参数为：shape = 2，scale = 1000。两份保单如下：
