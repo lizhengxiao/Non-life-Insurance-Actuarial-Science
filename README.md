@@ -56,7 +56,7 @@
 -  [Week 3 - 损失金额模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/2.%20Models%20of%20Claim%20Amount.r)
 -  [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/3.%20Models%20of%20Claim%20Count.r)
 -  [Week 6.7 - 累积损失模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/4.%20Models%20of%20Aggregate%20Loss.r)
-
+- [Homework 1 Solutions](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/Homework%201.Rmd)
 
 ## 课后作业
 1. 假设被保险人的损失 X 服从伽马分布，参数为：shape = 2，scale = 1000。两份保单如下：
@@ -89,7 +89,6 @@
 	- 直接运用R中的积分算法（integrate）函数求出混合泊松-伽马分布在$k=1,2,...,10$的概率。（参考课件中混合泊松-逆高斯分布和混合泊松-负二项分布的相关代码，$\alpha =1,\ \ \lambda =1.2$）
 	- 比较两种计算方法是否一致？
 
-- [Homework 1 Solutions]()
 
 
 **要求:用 R 编写程序代码。**
