@@ -1,0 +1,337 @@
+---
+title: "第一、二次作业"
+author: "Lee"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+1、假设被保险人的损失 X 服从伽马分布，参数为：shape = 2，scale = 1000。两份保单如下：
+
+- 保单 A 的免赔额为100。
+- 保单 B 的免赔额为100，赔偿限额为3000。（d=100，u=3100）
+    - 分别计算保险公司对保单A和保单B的期望赔款（含零赔款在内）。
+    - 如果发生10% 的通货膨胀，上述结果将如何变化？
+    - 如果通胀函数为 $1.1x^{0.5}$，上述结果将如何变化？
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+# 有关参数
+shape <- 2
+scale <- 1000
+d = 100
+u = 3100
+
+# 定义生存函数
+Sx <- function(x) {
+  1 - pgamma(x, shape = shape, scale = scale)
+}
+# 保险公司对保单A的期望赔款
+EA1 <- integrate(Sx, d, Inf)$value
+EA1
+
+# 保险公司对保单B的期望赔款
+EB1 <- integrate(Sx, d, u)$value
+EB1
+
+# 发生 10% 的通货膨胀后，保险公司对保单 A 的期望赔款
+r <- 0.01
+EA2 <- (1 + r)*(integrate(Sx, 0, Inf)$value - integrate(Sx, 0, d/(1 + r))$value)
+EA2
+
+# 发生 10% 的通货膨胀后，保险公司对保单 B 的期望赔款
+r <- 0.01
+EB2 <- (1 + r)*(integrate(Sx, 0, u/(1+r))$value - integrate(Sx, 0, d/(1 + r))$value)
+EB2
+
+```
+
+
+
+
+
+------------------------------------------------------------
+2、对于gamma分布（shape=2,scale=100)绘图：
+
+- 止损保费和平均超额损失随着免赔额增加而变化的曲线图
+-	有限期望值随着限额变化而变化的曲线图
+- 把上述分布改为pareto(shape=2,scale=200)和指数分布(rate=1/200)。
+
+
+
+
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+# ==================================================
+# gamma 分布的平均超额函数
+# ==================================================
+# gamma 分布的生存函数
+S <- function(x) 1 - pgamma(x, shape = 2,scale = 100)
+# gamma 分布的平均超额函数 ex1
+ex1 <- NULL
+d1 <- seq(0, 500, 1) # 免赔额
+u1 <- seq(50, 500, 1)
+for(i in 1:length(d1)){
+  ex1[i] <- integrate(S, d1[i], Inf)$value/S(d1[i])
+}
+# 止损保费 
+pi1 <- NULL
+for(i in 1:length(d1)){
+  pi1[i] <- integrate(S, d1[i], Inf)$value
+}
+# 有限期望
+El1 <- NULL
+for(i in 1:length(u1)){
+  El1[i] <- integrate(S, 0, u1[i])$value
+}
+# 绘图
+par(mfrow = c(1, 3))
+plot(d1, pi1, type = 'l', ylab = '伽马分布的止损保费', xlab = '免赔额')
+plot(d1, ex1, type = 'l', ylab = '伽马分布的平均超额损失', xlab = '免赔额')
+plot(u1, El1, type = 'l', ylab = '伽马分布的有限期望', xlab = '限额')
+
+# ==================================================
+# pareto 分布的平均超额函数 shape=2,scale=200
+# ==================================================
+# pareto 分布的生存函数
+library(actuar)
+S <- function(x) 1 - ppareto2(x, shape = 2,scale = 200)
+# pareto 分布的平均超额函数 ex1
+ex2 <- NULL
+d1 <- seq(0, 500, 1) # 免赔额
+for(i in 1:length(d1)){
+  ex2[i] <- integrate(S, d1[i], Inf)$value/S(d1[i])
+}
+# 止损保费 
+pi2 <- NULL
+for(i in 1:length(d1)){
+  pi2[i] <- integrate(S, d1[i], Inf)$value
+}
+# 有限期望
+El2 <- NULL
+for(i in 1:length(u1)){
+  El2[i] <- integrate(S, 0, u1[i])$value
+}
+# 绘图
+par(mfrow = c(1, 3))
+plot(d1, pi2, type = 'l', ylab = 'Pareto分布的止损保费', xlab = '免赔额')
+plot(d1, ex2, type = 'l', ylab = 'Pareto分布的平均超额损失', xlab = '免赔额')
+plot(u1, El2, type = 'l', ylab = 'Pareto分布的有限期望', xlab = '限额')
+
+
+# ==================================================
+# 指数分布的平均超额函数 rate=1/200
+# ==================================================
+# 指数分布的生存函数
+library(actuar)
+S <- function(x) 1 - pexp(x, rate=1/200)
+# 指数分布的平均超额函数 ex1
+ex3 <- NULL
+d1 <- seq(0, 500, 1) # 免赔额
+for(i in 1:length(d1)){
+  ex3[i] <- integrate(S, d1[i], Inf)$value/S(d1[i])
+}
+# 止损保费 
+pi3 <- NULL
+for(i in 1:length(d1)){
+  pi3[i] <- integrate(S, d1[i], Inf)$value
+}
+# 绘图
+# 有限期望
+El3 <- NULL
+for(i in 1:length(u1)){
+  El3[i] <- integrate(S, 0, u1[i])$value
+}
+# 绘图
+par(mfrow = c(1, 3))
+plot(d1, pi3, type = 'l', ylab = '指数分布的止损保费', xlab = '免赔额')
+plot(d1, round(ex3), type = 'l', ylab = '指数分布的平均超额损失', xlab = '免赔额')
+plot(u1, round(El3), type = 'l', ylab = '指数分布的有限期望', xlab = '限额')
+
+```
+
+
+
+3、假设个体风险服从参数为 $\left( \lambda \Theta  \right)$ 泊松分布，
+结构函数 $\Theta$ 为均值为1，方差为 $1/\alpha$ 伽马分布，相关参数表示为 $\left( \alpha ,\alpha  \right)$，且密度函数为  
+
+${{f}_{\Theta }}(\theta )=\frac{1}{\Gamma (\alpha )}{{\alpha }^{\alpha }}{{\theta }^{\alpha -1}}\exp (-\alpha \theta ),\theta >0$
+  
+- 推导出混合泊松-伽马分布等价的负二项分布，写出概率函数 $P\left( N=k \right)$。当 $\alpha =1,\ \ \lambda =1.2$ 时，运用R软件dnbinom函数求出 $k=1,2,...,10$ 对应的概率
+    - 混合泊松-伽马分布的密度函数可以表示为:
+    
+\begin{align}
+  & {{p}_{k}}=\Pr (N=k)=\int_{0}^{\infty }{\Pr (N=k|\Theta =\theta )u(\theta )d\theta } \\ 
+ & \ \ \ \ \ =\int_{0}^{\infty }{\frac{{{e}^{-\lambda \theta }}{{(\lambda \theta )}^{k}}}{k!}}u(\theta )d\theta  \\ 
+ & \ \ \ \ \ =\int_{0}^{\infty }{\frac{{{e}^{-\lambda \theta }}{{(\lambda \theta )}^{k}}}{k!}}\frac{1}{\Gamma (\alpha )}{{\alpha }^{\alpha }}{{\theta }^{\alpha -1}}\exp (-\alpha \theta )d\theta  \\ 
+ & \ \ \ \ \ =\frac{{{\lambda }^{k}}}{\Gamma (k+1)}\frac{1}{\Gamma (\alpha )}\int_{0}^{\infty }{{{e}^{-\lambda \theta }}{{(\theta )}^{k}}}{{\alpha }^{\alpha }}{{\theta }^{\alpha -1}}\exp (-\alpha \theta )d\theta  \\ 
+ & \ \ \ \ \ =\frac{{{\lambda }^{k}}}{\Gamma (k+1)}\frac{{{\alpha }^{\alpha }}}{\Gamma (\alpha )}\int_{0}^{\infty }{{{\theta }^{\alpha +k-1}}\exp \left[ -(\alpha +\lambda )\theta  \right]d\theta } \\ 
+ & \ \ \ \ \ =\frac{{{\lambda }^{k}}}{\Gamma (k+1)}\frac{{{\alpha }^{\alpha }}}{\Gamma (\alpha )}\frac{\Gamma (\alpha +k)}{{{\left( \alpha +\lambda  \right)}^{\alpha +k}}}\int_{0}^{\infty }{\frac{{{\left( \alpha +\lambda  \right)}^{\alpha +k}}}{\Gamma (\alpha +k)}{{\theta }^{\alpha +k-1}}\exp \left[ -(\alpha +\lambda )\theta  \right]d\theta } \\ 
+ & \ \ \ \ \ =\frac{{{\lambda }^{k}}}{\Gamma (k+1)}\frac{{{\alpha }^{\alpha }}}{\Gamma (\alpha )}\frac{\Gamma (\alpha +k)}{{{\left( \alpha +\lambda  \right)}^{\alpha +k}}} \\ 
+ & \ \ \ \ \ =\frac{\Gamma (\alpha +k)}{\Gamma (k+1)\Gamma (\alpha )}{{\left( \frac{\alpha }{\alpha +\lambda } \right)}^{\alpha }}{{\left( \frac{\lambda }{\alpha +\lambda } \right)}^{k}} \\ 
+ & \ \ \ \ \ =\frac{\Gamma (\alpha +k)}{\Gamma (k+1)\Gamma (\alpha )}{{\left( \frac{1}{1+\lambda /\alpha } \right)}^{\alpha }}{{\left( \frac{\lambda /\alpha }{1+\lambda /\alpha } \right)}^{k}} \\ 
+\end{align}
+
+
+- 混合泊松-伽马分布服从 $(r = \alpha, \beta =\lambda/\alpha)$ 的负二项分布，期望和方差分别表示为：
+
+\begin{align}
+& E(N) = \lambda\\
+& Var(N) = \lambda + \frac{1}{\alpha}\lambda^2
+\end{align}
+
+- 直接运用R中的积分算法（integrate）函数求出混合泊松-伽马分布在$k=1,2,...,10$的概率。（参考课件中混合泊松-逆高斯分布和混合泊松-负二项分布的相关代码，$\alpha =1,\ \ \lambda =1.2$）
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+# 负二项分布的概率为：
+x <- seq(from = 0, to = 10)
+alpha <- 1
+lam <- 1.2
+p1 <- dnbinom(x = x, size = alpha, prob = 1/(1 +lam/alpha))
+p1
+
+# 混合泊松-伽马分布的概率
+alpha <- 1;
+lam <- 1.2
+f = function(theta) {
+  m <- exp(-lam * theta) * (lam*theta)^k/gamma(k + 1) * 1/gamma(alpha)*(alpha^(alpha))*theta^(alpha - 1)*exp(- alpha*theta)
+  return(m)
+}
+p2 = NULL
+i = 0
+for (k in 0:10) {
+  i = i + 1
+  p2[i] = integrate(f, 0, Inf)$value
+}
+p2
+
+```
+- 比较两种计算方法是否一致？
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+# 比较两种方法的结果
+round(cbind(p1, p2),3)
+```
+
+
+
+
+
+
+4. 假设N服从参数为(r=3, p=0.2)的负二项分布，X等于1, 2, 3的概率分别为0.5，0.3和0.2。求S的分布。（要求：先写出适用于（a， b， 0）分布类的一般迭代公式，再将其应用于本例）。
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+# ================================================================
+# 第一种方法：复合泊松分布的递推公式 - (a, b, 0)
+# ================================================================
+COMPO = function (r, p, f0, f) {
+  beta = 1/p - 1 # 负二项分布的参数
+  a = beta/(1 + beta) # (a, b, 0)中的 a
+  b = (r - 1)*beta/(1 + beta) # (a, b, 0)中的 b
+  
+  cum = g = (1 - beta*(f0 - 1))^(-r) # 复合分布在零点的概率
+  k = 0 # 循环标识
+  repeat {
+    k = k + 1
+    last = 1/(1 - a*f0) * sum((a + b*(1:k)/k) * head(f, k) * rev(g))
+    g = c(g, last)
+    cum = cum + last
+    if (cum > 0.9999999) break  
+  }
+  return(g) 
+}
+# 次分布的概率函数
+f0 = 0           # 零点的概率
+f = c(0.5, 0.3, 0.2, rep(0, 500))  # 次分布在非零点的概率
+# S 分布的概率
+g = COMPO(r = 3, p = 0.2, f0 = f0, f = f) 
+plot(0:(length(g)-1), g, type = 'h', col = 2, xlim = c(0, 100), ylim = c(0, 0.04), xlab = 'S', ylab = 'S 分布的概率')
+
+# ================================================================
+# 第二种方法：aggregateDist function
+# ================================================================
+library(actuar)
+sev = c(0, 0.5, 0.3, 0.2, rep(0, 500))  
+Fs <- aggregateDist(method = 'recursive', model.freq = 'negative binomial', model.sev = sev, size = 3, prob = 0.2)
+plot(diff(Fs), type = 'h', xlim = c(0, 100), ylim = c(0, 0.04), xlab = 'S', ylab = 'S 分布的概率', col = 'blue')
+
+```
+
+
+
+5. 假设N服从参数为(r=2,p=0.5)的零截断负二项分布，X服从参数为(r=4,p=0.7)的负二项分布。求S的分布。 （要求：先写出适用于（a， b， 1）分布类的一般迭代公式，再将其应用于本例）。
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+# ================================================================
+# 第一种方法：复合泊松分布的递推公式 - (a, b, 1)
+# ================================================================
+# 首分布（零截断负二项分布）的参数
+r1 <- 2; p1 <- 0.5
+# 次分布（负二项分布）的参数
+r2 <- 4; p2 <- 0.7
+
+COMPO = function (r, p, f0, f) {
+  # r, p 为首分布 负二项分布的参数
+  beta = 1/p - 1  # 负二项分布的参数， beta 与 p 可以相互转换
+  a = beta/(1 + beta)         # (a, b, 1)中的 a
+  b = (r - 1)*beta/(1 + beta) # (a, b, 1)中的 b
+  
+  p1 <- dnbinom(x = 1, size = r, prob = p)/(1 - dnbinom(x = 0, size = r, prob = p))
+  p0 <- 0
+  
+  # 求的复合分布在零点的概率
+  l <- 1:1000
+  cum = g = sum(f0^l*(dnbinom(x = 1:1000, size = r, prob = p)/(1 - dnbinom(x = 0, size = r, prob = p)))) 
+  k = 0 # 循环标识
+  repeat {
+    k = k + 1
+    last = 1/(1 - a*f0) * ((p1 - (a + b)*p0)*f[k] + sum((a + b*(1:k)/k) * head(f, k) * rev(g)))
+    g = c(g, last)
+    cum = cum + last
+    if (cum > 0.9999999) break  
+  }
+  return(g) 
+}
+# 次分布的概率函数
+f0 = dnbinom(0, size = r2, prob = p2)           # 零点的概率
+f = dnbinom(1:100, size = r2, prob = p2)  # 次分布在非零点的概率
+# S 分布的概率
+par(mfrow = c(1, 2))
+g = COMPO(r = r1, p = p1, f0 = f0, f = f) 
+plot(0:(length(g)-1), g, type = 'h', col = 2, xlim = c(0, 30), xlab = 'S', ylab = 'S 分布的概率', main = 'Recursive')
+
+# 第二种方法 Simulation
+library(actuar)
+S <- NULL   
+set.seed(111)
+for(i in 1:50000){
+  n <- rztnbinom(1, size = 2,  prob = 0.5)  # 生成首分布：零截断负二项分布的随机数
+  x <- rnbinom(n, size = 4, prob = 0.7)     # 生成次分布：负二项分布的随机数
+  S[i] <- sum(x)                            # 求得 S 的随机数
+}
+pS <- data.frame(table(S)/length(S)) # 计算 S 在 0，1，2，3...中的概率
+plot(x = as.numeric(pS$S), y = pS$Freq, type = 'h', col = 3, xlim = c(0, 30), xlab = 'S', ylab = 'S 分布的概率', main = 'Simulation')
+
+
+
+```
+
+
+
+-------------------
+
+6. 某团体意外伤害险保单在保险期间的事故次数服从负二项分布（size=1, p=0.1），假设每次事故导致的索赔次数服从泊松分布(lambda=2)，请计算该保单下的索赔次数的分布。
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+library(actuar)
+fx <- dpois(x = 0:10, lambda = 2)
+Fs <- aggregateDist(method = 'recursive', model.freq = 'negative binomial', model.sev = fx, size = 1, prob = 0.1)
+plot(Fs)
+```
+
+
+
+7. 首分布为｛p0=0.1,  p1=0.3,  p2=0.3,  p3=0.2,  p4=0.1｝，次分布为｛q1=0.2,  q2=0.3,  q3=0.3,  q4=0.2｝，求复合分布的概率。
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+fn <- c(0.1, 0.3, 0.3, 0.2, 0.1)
+fx <- c(0, 0.2, 0.3, 0.3, 0.2)
+Fs <- aggregateDist(method = 'convolution', model.freq = fn, model.sev = fx, x.scale = 1)
+plot(Fs)
+```
+
