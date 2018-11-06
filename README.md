@@ -25,32 +25,32 @@
 ## 课程讲义
 - [Markdown 新手指南](https://www.jianshu.com/p/q81RER)
 - [Markdown 语法大全](https://www.appinn.com/markdown/)
-- [Week 1 - 非寿险精算简介](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%201%20-%20%E9%9D%9E%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E7%AE%80%E4%BB%8B.ppt)
+- [Week 1 - 非寿险精算简介](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/1%20-%20Introduction.ppt)
 	- 课程安排
 	- R 软件介绍
 	- 非寿险概念
-- [Week 2 - 风险度量基础](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%202%20-%20%E9%A3%8E%E9%99%A9%E5%BA%A6%E9%87%8F%E5%9F%BA%E7%A1%80.pptx)
+- [Week 2 - 风险度量基础](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/2%20-%20Risk%20Measurement.pptx)
 	- VaR（在险价值）
 	- TVaR（条件在险价值）/ CVaR（尾部在险价值）
 	- 保费原理
-- [Week 3 - 损失金额模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%203%20-%20%E6%8D%9F%E5%A4%B1%E9%87%91%E9%A2%9D%E6%A8%A1%E5%9E%8B.pptx)
+- [Week 3 - 损失金额模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/3%20-%20Models%20of%20Claims%20Amount.pptx)
 	- 指数分布、伽马分布、逆高斯分布、对数正态分布、帕累托分布、威布儿分布
 	- 对数变换、指数变换
 	- 混合分布
 	- 案例分析
-- [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%204%20-%20%E6%8D%9F%E5%A4%B1%E6%AC%A1%E6%95%B0%E6%A8%A1%E5%9E%8B.pptx)
+- [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/4%20-%20Models%20of%20Claim%20Count.pptx)
 	- (a,b,0) 分布
 	- (a,b,1) 分布
     - 混合分布：混合泊松分布
     - 复合分布：复合泊松分布
     - 免赔额对索赔次数模型的影响
-- [Week 6.7 - 累积损失模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%206%20-%20%E7%B4%AF%E7%A7%AF%E6%8D%9F%E5%A4%B1%E6%A8%A1%E5%9E%8B.pptx)
+- [Week 6.7 - 累积损失模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/5%20-%20Aggregate%20Loss%20Models.pptx)
 	- 集体风险模型（近似法、解析法、递推法、随机模拟）
 	- 个体风险模型（参数近似）
-- [Week 8.9 - 費率厘定基本原理](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%208%20-%20%E8%B4%B9%E7%8E%87%E5%8E%98%E5%AE%9A%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86.ppt)
+- [Week 8.9 - 費率厘定基本原理](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/6%20-%20Ratemaking%20Principle.ppt)
 	- 专业属于和基本概念
 	- 纯保费法、赔付率法
-- [Week 10.11 - 分类费率与广义线性模型]()
+- [Week 10.11 - 分类费率与广义线性模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/7%20-%20Classification%20Rating%20and%20Generalized%20Linear%20Models.pptx)
 	- 风险分类
 	- 广义线性模型
 	- 应用案例
