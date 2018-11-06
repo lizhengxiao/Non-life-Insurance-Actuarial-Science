@@ -50,6 +50,11 @@
 - [Week 8.9 - 費率厘定基本原理](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/Week%208%20-%20%E8%B4%B9%E7%8E%87%E5%8E%98%E5%AE%9A%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86.ppt)
 	- 专业属于和基本概念
 	- 纯保费法、赔付率法
+- [Week 10.11 - 分类费率与广义线性模型]()
+	- 风险分类
+	- 广义线性模型
+	- 应用案例
+
 
 ## R 代码和数据
 - [案例分析数据 - freMTPLsev](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/freMTPLsev.csv)
@@ -91,6 +96,11 @@
 	- 直接运用R中的积分算法（integrate）函数求出混合泊松-伽马分布在$k=1,2,...,10$的概率。（参考课件中混合泊松-逆高斯分布和混合泊松-负二项分布的相关代码，$\alpha =1,\ \ \lambda =1.2$）
 	- 比较两种计算方法是否一致？
 
+7. 假设损失次数服从负二项分布, 参数为（r = 2,  β = 3）,  每次损失的金额服从对数正态分布, 参数为（μ=5, σ=2）, 计算累积损失在90%、95%和99% 水平下的 VaR 和 TVaR。
+注：累积损失的分布用随机模拟。
+
+
+8. 损失次数服从泊松 (lam = 3)，损失金额服从帕累托(a = 4,  q =10)，对每次损失的一般免赔额为6，对每次损失的赔偿限额为18，共保比例为 75%。应用随机模拟求保险公司累积赔款 S 的分布。
 
 
 **要求:用 R 编写程序代码。**
