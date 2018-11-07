@@ -52,6 +52,7 @@
 	- 纯保费法、赔付率法
 - [Week 10.11 - 分类费率与广义线性模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/7%20-%20Classification%20Rating%20and%20Generalized%20Linear%20Models.pptx)
 	- 风险分类
+	- 线性回归模型
 	- 广义线性模型
 	- 应用案例
 
@@ -62,6 +63,7 @@
 -  [Week 3 - 损失金额模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/2.%20Models%20of%20Claim%20Amount.r)
 -  [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/3.%20Models%20of%20Claim%20Count.r)
 -  [Week 6.7 - 累积损失模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/4.%20Models%20of%20Aggregate%20Loss.r)
+-  [Week 9.10 - 分类费率厘定](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/5.%20Linear%20Models%20and%20Generalized%20Linear%20Models.r)
 - [Homework 1 Solutions](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/Homework%201.Rmd)
 
 
