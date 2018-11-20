@@ -87,6 +87,73 @@ m0 <- optim(par = starts,
             method = "CG", hessian = T)
 m0
 
+# =================================================================
+# 3. 广义线性模型（伽马回归模型）
+# =================================================================
+# 模拟解释变量
+n <- 500  # 样本数
+set.seed(123)
+x1 <- rgamma(n, shape = 2, rate = 1)  # 解释变量 x1
+x2 <- rgamma(n, shape = 2, rate = 3)  # 解释变量 x２
+x3 <- rbinom(n, 1, 0.4)　# 分类变量 x３
+x4 <- rbinom(n, 1, 0.7)　　# 分类变量 x４
+# 模拟数据使用的回归系数的真实值
+b0 <- 7
+b1 <- 0.8
+b2 <- - 0.8
+b3 <- 0.5
+b4 <- -0.2
+b5 <- -0.25
+alpha <- 4
+# 线性预测项
+eta <- b0 + b1*x1 + b2*x2 + b3*x3 + b4*x4 + b5*x2*x3
+# 因变量的均值（期望）
+mu <- exp(eta)
+# 因变量的模拟（期望）
+y <- rgamma(n, shape = alpha, rate = alpha/mu)
+# 模拟数据集
+dt <- data.frame(x1, x2, x3, x4, y)
+dt
+
+# ===============================
+# (1) 广义线性模型下的伽马回归
+mga <- glm(y ~ x1 + x2 + x3 + x4 + x2*x3, family = Gamma(link = log), data = dt)
+summary(mga)
+
+# ===============================
+# (2) 定义优化函数 - 极大似然估计（写出模型的对数似然函数）
+loglike.ga <- function(par, X, y) {
+  coef <- par[1:6] # 回归系数
+  alpha <- par[7]  # 伽马分布的参数
+  eta <- X%*%coef  # 线性预测项
+  mu <- exp(eta)   # log 连接函数
+  loglike <- 0     # 定义对数似然函数
+  for(i in 1:n){
+    loglike[i] <- dgamma(y[i], shape = alpha, rate = alpha/mu[i], log = T) 
+  }
+  return(-sum(loglike))  # 返回对数似然函数的和
+}
+mga2 <- optim(par = c(6, 0.8, -0.8, 0.5, -0.2, -0.2, 4),
+              fn = loglike.ga,
+              X = model.matrix(~ x1 + x2 + x3 + x4 + x2*x3, data = dt),
+              y = dt$y,
+              method = "Nelder-Mead",  # 优化方法
+              hessian = T  # 输出 hessian 矩阵
+)
+
+mga2 # 输出结果
+GA.par　<- mga2$par          # 输出回归系数结果
+GA.hessian <- mga2$hessian   ## Hessian 矩阵
+GA.se <- sqrt(diag(solve(GA.hessian))) ## 参数估计的标准误
+GA.Z <- GA.par/GA.se           ##  Z统计量
+GA.p <- ifelse(GA.Z >= 0, pnorm(GA.Z, lower = F)*2, pnorm(GA.Z)*2)    ## p值
+NLGA <- - mga2$value  # loglikelihood value
+AICGA <- -2*length(mga2$par) - 2*NLGA  # BIC 统计量
+BICGA <- -log(length(dt$y))*length(mga2$par) - 2*NLGA # AIC 统计量
+(summarytable = round(data.frame(coef = GA.par, se = GA.se, Z = GA.Z, pvalue = GA.p), 3))
+list(summary = summarytable, ll = NLGA)
+
+
 
 # =================================================================
 # 3. 广义线性模型（迭代加权最小二乘法）
