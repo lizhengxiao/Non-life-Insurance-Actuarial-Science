@@ -133,7 +133,9 @@ barplot(f(x), names.arg = x)
 
 lam = 1.2
 tao = 0.5
-f = function(theta) exp(-lam * theta) * (lam * theta)^k/gamma(k + 1) * exp(-(theta - 1)^2/2/tao/theta)/sqrt(2 * pi * theta^3 * tao)
+f = function(theta) {
+  exp(-lam * theta) * (lam * theta)^k/gamma(k + 1) * exp(-(theta - 1)^2/2/tao/theta)/sqrt(2 * pi * theta^3 * tao)
+}
 p = NULL
 i = 0
 for (k in 0:20) {

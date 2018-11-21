@@ -48,7 +48,7 @@ shape = 2; scale = 500
 GAM = function(a) -shape*log(1-scale*a)/a
 curve(GAM(x),xlim = c(0,1/501), xlab='指数原理的风险厌恶系数',ylab='指数保费原理下的风险保费',col=2,lwd=2)
 text(0.0007,4000,'X服从伽马分布(shape=2,scale=500)')
-text(0.0007,5000,expression(H(alpha)==frac(1,alpha)*log(E(exp(alpha*X)))))
+text(0.0007,5000,expression(H(a)==frac(1,a)*log(E(exp(a*X)))))
 
 
 # ==============================================================================================
