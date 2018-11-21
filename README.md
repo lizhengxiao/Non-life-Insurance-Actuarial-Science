@@ -59,11 +59,12 @@
 
 ## R 代码和数据
 - [案例分析数据 - freMTPLsev](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/freMTPLsev.csv)
+- [案例分析数据 - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20-%20Vehicleclaim.csv)
 -  [Week 2 - 风险度量](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/1.%20Risk%20Measures.r)
 -  [Week 3 - 损失金额模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/2.%20Models%20of%20Claim%20Amount.r)
 -  [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/3.%20Models%20of%20Claim%20Count.r)
 -  [Week 6.7 - 累积损失模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/4.%20Models%20of%20Aggregate%20Loss.r)
--  [Week 9.10 - 分类费率厘定](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/5.%20Linear%20Models%20and%20Generalized%20Linear%20Models.r)
+-  [Week 9.10.11 - 分类费率厘定与广义线性模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/5.%20Linear%20Models%20and%20Generalized%20Linear%20Models.r)
 - [Homework 1 Solutions](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/Homework%201.Rmd)
 
 
