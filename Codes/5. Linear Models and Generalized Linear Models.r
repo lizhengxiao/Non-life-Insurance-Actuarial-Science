@@ -160,32 +160,6 @@ BICGA <- -log(length(dt$y))*length(mga2$par) - 2*NLGA # AIC 统计量
 list(summary = summarytable, ll = NLGA)
 
 
-
-
-
-# # =================================================================
-# # 3. 广义线性模型（迭代加权最小二乘法）
-# # =================================================================
-# # 迭代加权最小二乘法
-# d2 = data.frame(y = c(1,3,3,5,6,7,9,10), x = c(-1,-1,0,0,0,0,1,1))
-# b = c(2, 1)
-# x = model.matrix( ~ x, data = d2)
-# m = 0
-# repeat{
-#   m = m + 1
-#   b1 = b
-#   v = diag(c(1/(x%*%b)))
-#   z = d2$y
-#   b = solve((t(x)%*%v%*%x))%*%t(x)%*%v%*%z
-#   if(max(abs(b1 - b)) < 1e-8) break
-# }
-# b  #迭代加权最小二乘法的参数估计值
-# m  #迭代次数
-# 
-# # glm
-# glm(y ~ x,data = d2, family = poisson(link = 'identity'))$coef
-
-
 # =================================================================================
 # 4. 广义线性模型（应用一）
 # =================================================================================
@@ -214,20 +188,54 @@ dat$pred.ga <- fitted(mod)
 dat
 
 
-
-
-
 # =================================================================================
 # 5. 广义线性模型（应用二 - 车险数据分析）
 # =================================================================================
 library(tweedie) # tweedie 回归需要使用的包
 library(mgcv)    # tweedie 回归需要使用的包
 library(cplm)   # tweedie 回归需要使用的包
+library(data.table) # 整理数据、清理数据的 packages
 
 # 读取数据集
-load('/中国车险数据.RData')
+dat <- fread('D:/对外经济贸易大学 - 教学/CT6 - 非寿险精算/非寿险精算（2018 秋）/2018 - 2019 学期 - R 代码/Case - Vehicleclaim.csv', header = T)
+
+# ----------------------------------------------------------
+# 0. 数据初步整理
+# ----------------------------------------------------------
+# type、gender、branch 因子化
+dat[, type := factor(type)]
+dat[, gender := factor(gender)]
+dat[, branch := factor(branch)]
+dat[, pure := cost/ee]
+
+# 是否发生索赔
+dat[, R := ifelse(num == 0, 0, 1)]
+dat[, logee := log(ee)]
+
+# 把年龄离散化
+dtage <- dat[, list(pure = mean(pure)), by = age]; dtage
+plot(pure ~ age, data = dtage, type = 'l')
+dat$age.f = cut(dat$age, breaks = c(18, 25, 30, 50, 60, 70), labels = c('18_25','25_30',"30_50",'50_60','60+'), include.lowest = TRUE)              #离散化
+table(dat$age.f)
+
+# 把车龄离散化
+dtvage = dat[, list(pure = mean(pure)),by = vage]; dtvage
+plot(pure ~ vage, data = dtvage, type = 'l')
+dat$vage.f= factor(with(dat, ifelse(vage <=1, '0_1', ifelse(vage >= 8, '8+' , '2-7'))))              #离散化
+table(dat$vage.f)
+
+# ---------------------------------------
+# 设定基准水平
+# ---------------------------------------
+dat$type <- relevel(dat$type, ref = '转入')
+dat$gender <- relevel(dat$gender, ref = 'M')
+dat$branch <- relevel(dat$branch, ref = '北京')
+dat$age.f <-  relevel(dat$age.f, ref = '30_50')
+dat$vage.f <-  relevel(dat$vage.f, ref = '2-7')
+
+# 最终数据
 dat                    # 全数据集
-dat0 <- dat[num > 0 ]  # 剔除 0 索赔的数据集 
+dat0 <- dat[cost > 0]  # 剔除 0 索赔的数据集 
 
 
 # ----------------------------------------------------------
@@ -243,7 +251,7 @@ dtbranch <- dat[, list(pure = mean(pure)),by = branch]; dtbranch
 # 1. Possison - Gamma regression models （广义线性模型）
 # ----------------------------------------------------------
 po <- glm(num ~ age.f + vage.f + branch + type, family = poisson, data = dat)
-ga <- glm(sev ~ age.f + vage.f + branch + type, family = Gamma(link = 'log'), data = dat0)
+ga <- glm(sev ~ age.f + vage.f + branch + type, family = Gamma(link = 'log'), weight = num, data = dat0)
 
 summary(po)
 summary(ga)
@@ -255,12 +263,17 @@ rate1 <- coef(po) + coef(ga)  # 纯保费的费率因子
 # ----------------------------------------------------------
 # 2. Tweedie regression models
 # ----------------------------------------------------------　
-# 建立 tweedie 回归模型
+# 建立 tweedie 回归模型（两种方法）
+# 第一种： p 未知
 tw <- gam(cost ~　age.f + vage.f + branch + type, family = tw(), 
           method = 'REML',
-          data = dat)
+          data = dat)  # Tweedie 中的参数 p 与参数 beta 一起估计
+# 第二种： p 已知
+tw <- glm(cost ~ age.f + vage.f + branch + type, family = Tweedie(p = 1.6), data = dat) # Tweedie 中的参数 p 事先设定
+
 summary(tw)
 rate2 <- coef(tw)             # 纯保费费率银子
+rate2
 
 # 两种方法下的费率因子估计值比较
 exp(cbind(rate1, rate2))
@@ -279,5 +292,5 @@ P1 <- predict(tw, type = "response", newdata = newdata) #　直接纯保费预测
 
 newdata$P0 <- P0   # 泊松分布＋伽马分布预测值
 newdata$P1 <- P1   # Tweedie预测值
-# 每个风险类别的预测值
+# 每个风险类别的预测值（最终结果， 纯保费的预测值）
 newdata
