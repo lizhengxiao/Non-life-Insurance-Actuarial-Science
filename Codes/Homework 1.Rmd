@@ -1,10 +1,10 @@
 ---
-title: "第一、二次作业"
+title: "Homework 1>"
 author: "Lee"
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 1、假设被保险人的损失 X 服从伽马分布，参数为：shape = 2，scale = 1000。两份保单如下：
@@ -35,14 +35,32 @@ EB1 <- integrate(Sx, d, u)$value
 EB1
 
 # 发生 10% 的通货膨胀后，保险公司对保单 A 的期望赔款
-r <- 0.01
+r <- 0.1
 EA2 <- (1 + r)*(integrate(Sx, 0, Inf)$value - integrate(Sx, 0, d/(1 + r))$value)
 EA2
 
 # 发生 10% 的通货膨胀后，保险公司对保单 B 的期望赔款
-r <- 0.01
+r <- 0.1
 EB2 <- (1 + r)*(integrate(Sx, 0, u/(1+r))$value - integrate(Sx, 0, d/(1 + r))$value)
 EB2
+
+# ========================================================
+# $Y = ax^{b}$ 函数通胀率, 保险公司对保单 A 和 B 的影响
+a <- 1.1
+b <- 0.5
+# 定义函数变换后的生存函数（Y）
+Sy <- function(y) {
+  1 - pgamma((y/a)^(1/b), shape = 2, scale = 1000)
+}
+
+# 保险公司对保单 A 的期望赔款
+EA3 <- integrate(Sy, 0, Inf)$value - integrate(Sy, 0, d)$value
+EA3
+
+# 保险公司对保单 B 的期望赔款
+EB3 <- integrate(Sy, 0, u)$value - integrate(Sy, 0, d)$value
+EB3
+
 
 ```
 

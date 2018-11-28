@@ -48,7 +48,7 @@
 	- 集体风险模型（近似法、解析法、递推法、随机模拟）
 	- 个体风险模型（参数近似）
 - [Week 8.9 - 費率厘定基本原理](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/6%20-%20Ratemaking%20Principle.ppt)
-	- 专业属于和基本概念
+	- 专业术语和基本概念
 	- 纯保费法、赔付率法
 - [Week 10.11 - 分类费率与广义线性模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/7%20-%20Classification%20Rating%20and%20Generalized%20Linear%20Models.pptx)
 	- 风险分类
@@ -57,10 +57,11 @@
 	- 应用案例
 
 
-## R 代码和数据
+## R 数据
 - [案例分析数据 - freMTPLsev](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/freMTPLsev.csv)
 - [案例分析数据 - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20-%20Vehicleclaim.csv)
-- - [案例分析数据 II - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20-%20Vehicleclaim.csv)
+- [案例分析数据 II - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20II-%20Vehicleclaim.csv)
+## R 代码 
 -  [Week 2 - 风险度量](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/1.%20Risk%20Measures.r)
 -  [Week 3 - 损失金额模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/2.%20Models%20of%20Claim%20Amount.r)
 -  [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/3.%20Models%20of%20Claim%20Count.r)
