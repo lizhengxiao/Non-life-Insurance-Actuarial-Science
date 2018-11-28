@@ -60,6 +60,7 @@
 ## R 代码和数据
 - [案例分析数据 - freMTPLsev](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/freMTPLsev.csv)
 - [案例分析数据 - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20-%20Vehicleclaim.csv)
+- - [案例分析数据 II - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20-%20Vehicleclaim.csv)
 -  [Week 2 - 风险度量](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/1.%20Risk%20Measures.r)
 -  [Week 3 - 损失金额模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/2.%20Models%20of%20Claim%20Amount.r)
 -  [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/3.%20Models%20of%20Claim%20Count.r)
