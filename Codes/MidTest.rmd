@@ -1,0 +1,157 @@
+---
+title: "INS423-期中测试"
+author: "Lee"
+date: "2018年11月27日"
+output: html_document
+---
+
+1．	**根据下述模拟数据进行分析和建模（12分）**
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+set.seed(132)
+n <- 1000
+y <- rgamma(n,  shape = 2, scale = 20)
+summary(y)
+head(y)
+```
+
+- 分别运用 gamma 分布、lognormal 分布、weibull 分布、pareto 分布进行拟合上述数据，运用极大似然法（MLE）得到每个对应分布的参数估计值。
+
+
+```{r, echo = TRUE, message = FALSE, warning = FALSE}
+library(fitdistrplus)
+m1 <- fitdist(y, 'gamma', method = 'mle')  # gamma 分布
+m2 <- fitdist(y, 'lnorm', method = 'mle')  # 对数正态分布 
+m3 <- fitdist(y, 'weibull', method = 'mle') # weibull 分布
+# Solution - 自己定义 pareto 函数，然后运用 fitdist 函数估计 MLE 估计
+dpareto.new <- function(x, alpha, theta) alpha*theta^alpha/(x + theta)^(alpha + 1)
+ppareto.new <- function(x, alpha, theta) 1 - (theta/(x + theta))^alpha
+qpareto.new <- function(q, alpha, theta) theta*((1 - q)^(-1/alpha) - 1)
+m4 <- fitdist(y, 'pareto.new', method = 'mle', start = list(alpha = 10, theta = 1))
+# 提取 MLE 的参数估计值
+par.gamma <- m1$estimate
+par.lnorm <- m2$estimate
+par.weibull <- m3$estimate
+par.pareto <- m4$estimate
+
+par.gamma
+par.lnorm
+par.weibull
+par.pareto
+```
+
+
+
+- 根据上述的参数估计值，求得 gamma 分布、lognormal 分布、weibull 分布、pareto 分布在 90%，95% 和 99% 分位数水平下的 VaR 和 CVaR 的具体数值。
+
+```{r, echo = TRUE, message = FALSE, warning = FALSE}
+# 计算不同分位数水平下的 VaR
+p <- c(0.9, 0.95, 0.99)
+VaR.gamma <- function(p) qgamma(p, shape = par.gamma[1], rate = par.gamma[2])
+VaR.lnorm  <- function(p) qlnorm(p, meanlog =  par.lnorm[1], sdlog = par.lnorm[2])
+VaR.weibull <- function(p) qweibull(p, shape = par.weibull[1], scale = par.weibull[2])
+VaR.pareto <- function(p) qpareto.new(p, alpha = par.pareto[1], theta = par.pareto[2])
+
+result <- data.frame(p, VaR.gamma(p), VaR.lnorm(p), VaR.weibull(p), VaR.pareto(p))
+result   # VaR 的输出结果
+
+# 定义 CVaR 估计值
+CVaR.gamma <- function(p) integrate(VaR.gamma, lower = p, upper = 1)$value/(1 - p)
+CVaR.lnorm  <- function(p) integrate(VaR.lnorm, lower = p, upper = 1)$value/(1 - p)
+CVaR.weibull <- function(p) integrate(VaR.weibull, lower = p, upper = 1)$value/(1 - p)
+CVaR.pareto <- function(p) integrate(VaR.pareto, lower = p, upper = 1)$value/(1 - p)
+
+CVaR.gamma.vector <- c(CVaR.gamma(0.90), CVaR.gamma(0.95), CVaR.gamma(0.99))
+CVaR.lnorm.vector <- c(CVaR.lnorm(0.90), CVaR.lnorm(0.95), CVaR.lnorm(0.99))
+CVaR.weibull.vector <- c(CVaR.weibull(0.90), CVaR.weibull(0.95), CVaR.weibull(0.99))
+CVaR.pareto.vector <- c(CVaR.pareto(0.90), CVaR.pareto(0.95), CVaR.pareto(0.99))
+
+result2 <- data.frame(p, CVaR.gamma.vector, CVaR.lnorm.vector, CVaR.weibull.vector, CVaR.pareto.vector)
+result2    # CVaR 的输出结果
+```
+
+- 若保单的免赔额为 5，计算 gamma 分布、lognormal 分布、weibull 分布、pareto 分布下的平均超额损失。其中平均超额损失定义为  ${{e}_{X}}(d)=E\left( X-d|X>d \right)=\frac{\int_{d}^{\infty }{\bar{F}(x)dx}}{\bar{F}(d)}$
+
+```{r, echo = TRUE, message = FALSE, warning = FALSE}
+# 定义生存函数
+S1 <- function(y) 1 - pgamma(y, shape = par.gamma[1], rate = par.gamma[2])
+S2 <- function(y) 1 - plnorm(y, meanlog =  par.lnorm[1], sdlog = par.lnorm[2])
+S3 <- function(y) 1 - pweibull(y, shape = par.weibull[1], scale = par.weibull[2])
+S4 <- function(y) 1 - ppareto.new(y, alpha = par.pareto[1], theta = par.pareto[2])
+
+
+# 平均超额损失
+d <- 5
+E.gamma <- integrate(S1, lower = d, upper = Inf)$value/(S1(d))
+E.plnorm <- integrate(S2, lower = d, upper = Inf)$value/(S2(d))
+E.weibull <- integrate(S3, lower = d, upper = Inf)$value/(S3(d))
+E.pareto.new <- integrate(S4, lower = d, upper = Inf)$value/(S4(d))
+result3 <- c(E.gamma, E.plnorm, E.weibull, E.pareto.new)
+names(result3) <- c('gamma','lognormal','weibull','pareto')
+result3
+```
+
+
+2．	假设损失次数服从泊松-负二项复合分布，泊松分布的参数为 1，负二项分布的参数为 $\left(r=10,p=0.7 \right)$。每次的损失金额服从参数为 (shape = 3, rate = 1/4) 的伽马分布。求累积损失的分布，并画图累积损失的分布图。
+
+```{r, echo = TRUE, message = FALSE, warning = FALSE}
+# ===================================
+# 1. 求得索赔次数的分布
+library(actuar)
+fn <- dbinom(0:30, size = 10, prob = 0.7)
+FS1 <- aggregateDist('recursive', model.freq = 'poisson', model.sev = fn, lambda = 1)
+fS1 <- diff(FS1)  # 索赔次数的分布
+
+# 2. 求得索赔金额的分布
+# 对损失金额分布进行折中离散化处理
+xmax <- round(qgamma(1 - 1e-09, shape = 3, rate = 0.25)) - 1 # x 最大值
+fx <- discretise(pgamma(x, shape = 3, rate = 0.25), from = 0, to  = xmax, method = 'rounding')  # 索赔金额的分布
+
+# 3. 求得累积损失的分布
+FS2 <- aggregateDist('convolution', model.freq = fS1, model.sev = fx)
+plot(FS2, pch = '.', xlim = c(0, 150))
+
+
+# ===================================
+# 2、运用 随机模拟 的方法求解
+# 模拟次数
+n <- 10000
+# 模拟累积损失
+S <- NULL
+set.seed(1122)
+for(i in 1:n){
+  N1 <- rpois(1, lambda = 1)  # 模拟次数分布（泊松分布）
+  N2 <- sum(rbinom(N1, size = 10, prob = 0.7)) # 模拟次数的复合分布（泊松-负二项）
+  S[i] <- sum(rgamma(N2, shape = 3, rate = 0.25)) # 模拟累积损失的分布
+}
+# 绘制累积损失的分布图
+par(mfrow = c(1, 2))
+plot(ecdf(S), xlim = c(0, 150))  # 经验分布图
+hist(S, breaks = 100, prob = T, xlim = c(0, 150)) # 直方图
+
+```
+
+
+
+
+
+
+3．	假设 ${{Y}_{i}}$ 为第 $i$ 张保单的累积赔款，${{X}_{i}}$ 为第 $i$ 张保单的分类变量，表示保单的性别，${{X}_{i}}$ 服从伯努利分布，表示男性的概率为 0.4，女性的概率为 0.6。累积赔款与解释变量的关系可以表示为：
+
+${{Y}_{i}}=10+3{{X}_{i}}+{{\varepsilon }_{i}}$
+
+其中，${{\varepsilon }_{i}}\tilde{\ }N\left( 0,2 \right)$ 服从均值为 0，标准差为 2 的正态分布。
+
+- 请模拟 1000 张保单的 $\left( {{Y}_{i}},{{X}_{i}} \right),i=1,2,...,1000$ 的观测值，并建立 ${{Y}_{i}}$ 和 ${{X}_{i}}$ 的线性回归模型，得到模型回归系数的估计值，并解释回归系数的含义。 
+
+
+```{r, echo = TRUE, message = FALSE, warning = FALSE}
+set.seed(111)
+n <- 1000
+X <- rbinom(n, size = 1, prob = 0.6)  # 模拟生成0-1的分类变量
+e <- rnorm(n, mean = 0, sd = 2)    # 模拟生成残差
+Y <- 10 + 3*X + e
+dt <- data.frame(Y, X, e)
+head(dt)
+m0 <- lm(Y ~ X, data = dt)
+summary(m0)
+```
