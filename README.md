@@ -62,12 +62,13 @@
 	- 贝叶斯保费与信度保费
 	- Buhlmann 信度模型
 	- Bühlmann-Straub模型
-- [Week 16 - 奖惩系统]()
+- [Week 16 - 奖惩系统](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/10%20-%20Bonus-Malus%20System.ppt)
 	- 各个等级的保费水平
 	- 初始等级
 	- 转移规则：在已知被保险人的索赔次数时，决定被保险人从原等级转移到新等级的规则。 
-- [Week 17 - 信度模型的参数估计]()
+- [Week 17 - 信度模型的参数估计](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/11%20-%20Parameter%20Estimation%20for%20B%C3%BChlmann%20Models.ppt)
  	- 参数模型和半参数模型
+- Week 18 - 期末复习
 
 ## R 数据
 - [案例分析数据 - freMTPLsev](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/freMTPLsev.csv)
