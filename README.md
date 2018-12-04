@@ -55,12 +55,19 @@
 	- 线性回归模型
 	- 广义线性模型
 	- 应用案例
-- [Week 14 - 分类费率与广义线性模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/7%20-%20Classification%20Rating%20and%20Generalized%20Linear%20Models.pptx)
-	- 风险分类
-	- 线性回归模型
-	- 广义线性模型
-	- 应用案例
-
+- [Week 14 - 经验费率厘定和古典信度模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/8%20-%20Classical%20Credibility.ppt)
+	- 经验费率
+	- 有限波动信度模型
+- [Week 15 - 最精确信度模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/9%20-%20Greatest%20Accuracy%20Credibility%20Theory.ppt)
+	- 贝叶斯保费与信度保费
+	- Buhlmann 信度模型
+	- Bühlmann-Straub模型
+- [Week 16 - 奖惩系统]()
+	- 各个等级的保费水平
+	- 初始等级
+	- 转移规则：在已知被保险人的索赔次数时，决定被保险人从原等级转移到新等级的规则。 
+- [Week 17 - 信度模型的参数估计]()
+ 	- 参数模型和半参数模型
 
 ## R 数据
 - [案例分析数据 - freMTPLsev](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/freMTPLsev.csv)
