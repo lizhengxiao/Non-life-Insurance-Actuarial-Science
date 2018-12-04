@@ -50,7 +50,12 @@
 - [Week 8.9 - 費率厘定基本原理](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/6%20-%20Ratemaking%20Principle.ppt)
 	- 专业术语和基本概念
 	- 纯保费法、赔付率法
-- [Week 10.11 - 分类费率与广义线性模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/7%20-%20Classification%20Rating%20and%20Generalized%20Linear%20Models.pptx)
+- [Week 10~13 - 分类费率与广义线性模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/7%20-%20Classification%20Rating%20and%20Generalized%20Linear%20Models.pptx)
+	- 风险分类
+	- 线性回归模型
+	- 广义线性模型
+	- 应用案例
+- [Week 14 - 分类费率与广义线性模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/7%20-%20Classification%20Rating%20and%20Generalized%20Linear%20Models.pptx)
 	- 风险分类
 	- 线性回归模型
 	- 广义线性模型
