@@ -75,11 +75,12 @@
 - [案例分析数据 - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20-%20Vehicleclaim.csv)
 - [案例分析数据 II - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20II-%20Vehicleclaim.csv)
 ## R 代码 
--  [Week 2 - 风险度量](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/1.%20Risk%20Measures.r)
--  [Week 3 - 损失金额模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/2.%20Models%20of%20Claim%20Amount.r)
--  [Week 4.5 - 损失次数模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/3.%20Models%20of%20Claim%20Count.r)
--  [Week 6.7 - 累积损失模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/4.%20Models%20of%20Aggregate%20Loss.r)
--  [Week 9.10.11 - 分类费率厘定与广义线性模型](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/5.%20Linear%20Models%20and%20Generalized%20Linear%20Models.r)
+-  [1. Risk Measures](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/1.%20Risk%20Measures.r)
+-  [2. Models of Claim Amount](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/2.%20Models%20of%20Claim%20Amount.r)
+-  [3. Models of Claim Count](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/3.%20Models%20of%20Claim%20Count.r)
+-  [4. Models of Aggregate Loss](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/4.%20Models%20of%20Aggregate%20Loss.r)
+-  [5. Linear Models and Generalized Linear Models](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/5.%20Linear%20Models%20and%20Generalized%20Linear%20Models.r)
+-  [6. Credibility model and BMS](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/6.%20Credibility%20model%20and%20BMS.r)
 - [Homework 1 Solutions](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/Homework%201.Rmd)
 - [MidTest Solutions](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/MidTest.rmd)
 
