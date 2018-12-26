@@ -67,13 +67,14 @@
 	- 初始等级
 	- 转移规则：在已知被保险人的索赔次数时，决定被保险人从原等级转移到新等级的规则。 
 - [Week 17 - 信度模型的参数估计](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Lectures/11%20-%20Parameter%20Estimation%20for%20B%C3%BChlmann%20Models.ppt)
- 	- 参数模型和半参数模型
+ 	- 参数模型
+ 	- 半参数模型
 - Week 18 - 期末复习
 
 ## R 数据
-- [案例分析数据 - freMTPLsev](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/freMTPLsev.csv)
-- [案例分析数据 - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20-%20Vehicleclaim.csv)
-- [案例分析数据 II - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20II-%20Vehicleclaim.csv)
+- [Case I - freMTPLsev](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/freMTPLsev.csv)
+- [Case II - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20-%20Vehicleclaim.csv)
+- [Case III - Vehicleclaim](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Datasets/Case%20II-%20Vehicleclaim.csv)
 ## R 代码 
 -  [1. Risk Measures](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/1.%20Risk%20Measures.r)
 -  [2. Models of Claim Amount](https://github.com/lizhengxiao/Non-life-Insurance-Actuarial-Science/blob/master/Codes/2.%20Models%20of%20Claim%20Amount.r)
