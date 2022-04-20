@@ -1,0 +1,16 @@
+课程介绍
+先修内容
+课程内容
+教材和参考资料
+r与rmarkdown
+intro
+先修内容-1
+课程内容-1
+教材和参考资料-1
+literature
+methods
+math-example
+applications
+example-one
+example-two
+final-words
