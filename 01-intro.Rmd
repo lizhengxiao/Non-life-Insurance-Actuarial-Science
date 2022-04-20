@@ -1,21 +1,43 @@
-# Introduction {#intro}
+# 课程介绍 {#intro}
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+本课程是一门三学分课程（精算与风险管理专业必修、其他专业选修），适合风险管理、保险与精算等相关专业的**本科高年级学生**参考。 
 
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
-```
+非寿险精算主要内容是**费率厘定**、**准备金评估**和**再保险**三部分
 
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+- **损失模型**：风险度量、索赔次数、索赔金额、累积损失模型
+- **费率厘定**：分类费率厘定、经验费率厘定
+- **准备金评估**：未到期责任准备金、未决赔款准备金、理赔费用准备金评估
+- **再保险定价**
 
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
+在实证研究中，以 **R 语言** 为计算工具，提供了详细的程序代码，方便读者再现完整的编程和计算过程。
 
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+## 先修内容
+需要概率论与数理统计、高等数学、线性代数、保险学的基础知识
+
+- **概率论与数理统计**：随机变量、概率分布、中心极限定理
+- **高等数学**：微积分、泰勒公式
+- **线性代数**：矩阵运算
+- **保险学**：基本概念和专业术语
+
+## 课程内容
+
+- 非寿险精算学是精算学的重要组成部分
+
+- 风险度量（风险度量，保费原理）
+
+- 损失分布模型（索赔次数，索赔金额，累积损失）
+
+- 费率厘定（分类费率，经验费率）
+
+- 准备金评估（未决赔款准备金，未到期准备金、理赔费用准备金）
+
+- 再保险（定价和评估）
+
+
+## 教材和参考资料
+
+- Klugman S. A., Panjer H. H., Willmot G. E. Loss models: from data to decisions (4th edition).  London: John Wiley & Sons, 2012.
+
+
+
