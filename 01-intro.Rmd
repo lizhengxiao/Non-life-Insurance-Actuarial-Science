@@ -1,5 +1,7 @@
 # 课程介绍 {#intro}
 
+# 课程介绍
+
 本课程是一门三学分课程（精算与风险管理专业必修、其他专业选修），适合风险管理、保险与精算等相关专业的**本科高年级学生**参考。 
 
 
@@ -33,6 +35,21 @@
 - 准备金评估（未决赔款准备金，未到期准备金、理赔费用准备金）
 
 - 再保险（定价和评估）
+
+
+## 教材和参考资料
+
+- Klugman S. A., Panjer H. H., Willmot G. E. Loss models: from data to decisions (4th edition).  London: John Wiley & Sons, 2012.
+
+
+## R与Rmarkdown
+
+增加R软件的介绍
+
+增加markdown的介绍
+
+增加rmarkdown的介绍、安装和使用说明，包括如何导出html和pdf格式，介绍一些简答的公式输入
+
 
 
 ## 教材和参考资料
