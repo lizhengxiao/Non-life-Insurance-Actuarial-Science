@@ -1,11 +1,13 @@
 # 经验费率厘定方法 {#experiencerate}
 We have finished a nice book.
 
+## 线性混合模型
+
 ## 最精确信度模型
 
 ## 经验贝叶斯
 
-## 线性混合模型
+
 
 
 

@@ -2,7 +2,8 @@
 We have finished a nice book.
 
 ## 极大似然估计
-1
+
+
 ## 贝叶斯估计
 
 1
