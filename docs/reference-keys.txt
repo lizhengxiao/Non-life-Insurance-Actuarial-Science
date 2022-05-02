@@ -19,8 +19,11 @@ riskmea
 风险度量方法var和varescte等
 lossmodif
 有限期望等公式
+免赔额和限额对损失金额的调整
+免赔额和限额对损失次数的调整
 parest
 极大似然估计
+贝叶斯估计
 classrating
 多元线性回归模型
 广义线性回归模型
@@ -31,9 +34,9 @@ classrating
 纯保费预测模型
 两步定价法
 experiencerate
+线性混合模型
 最精确信度模型
 经验贝叶斯
-线性混合模型
 reserv
 相关概念
 确定性方法

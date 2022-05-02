@@ -104,10 +104,13 @@
 <li class="chapter" data-level="5" data-path="lossmodif.html"><a href="lossmodif.html"><i class="fa fa-check"></i><b>5</b> 损失调整</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="lossmodif.html"><a href="lossmodif.html#有限期望等公式"><i class="fa fa-check"></i><b>5.1</b> 有限期望等公式</a></li>
+<li class="chapter" data-level="5.2" data-path="lossmodif.html"><a href="lossmodif.html#免赔额和限额对损失金额的调整"><i class="fa fa-check"></i><b>5.2</b> 免赔额和限额对损失金额的调整</a></li>
+<li class="chapter" data-level="5.3" data-path="lossmodif.html"><a href="lossmodif.html#免赔额和限额对损失次数的调整"><i class="fa fa-check"></i><b>5.3</b> 免赔额和限额对损失次数的调整</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="parest.html"><a href="parest.html"><i class="fa fa-check"></i><b>6</b> 参数估计和统计推断</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="parest.html"><a href="parest.html#极大似然估计"><i class="fa fa-check"></i><b>6.1</b> 极大似然估计</a></li>
+<li class="chapter" data-level="6.2" data-path="parest.html"><a href="parest.html#贝叶斯估计"><i class="fa fa-check"></i><b>6.2</b> 贝叶斯估计</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="classrating.html"><a href="classrating.html"><i class="fa fa-check"></i><b>7</b> 分类费率定价方法</a>
 <ul>
@@ -122,9 +125,9 @@
 </ul></li>
 <li class="chapter" data-level="8" data-path="experiencerate.html"><a href="experiencerate.html"><i class="fa fa-check"></i><b>8</b> 经验费率厘定方法</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="experiencerate.html"><a href="experiencerate.html#最精确信度模型"><i class="fa fa-check"></i><b>8.1</b> 最精确信度模型</a></li>
-<li class="chapter" data-level="8.2" data-path="experiencerate.html"><a href="experiencerate.html#经验贝叶斯"><i class="fa fa-check"></i><b>8.2</b> 经验贝叶斯</a></li>
-<li class="chapter" data-level="8.3" data-path="experiencerate.html"><a href="experiencerate.html#线性混合模型"><i class="fa fa-check"></i><b>8.3</b> 线性混合模型</a></li>
+<li class="chapter" data-level="8.1" data-path="experiencerate.html"><a href="experiencerate.html#线性混合模型"><i class="fa fa-check"></i><b>8.1</b> 线性混合模型</a></li>
+<li class="chapter" data-level="8.2" data-path="experiencerate.html"><a href="experiencerate.html#最精确信度模型"><i class="fa fa-check"></i><b>8.2</b> 最精确信度模型</a></li>
+<li class="chapter" data-level="8.3" data-path="experiencerate.html"><a href="experiencerate.html#经验贝叶斯"><i class="fa fa-check"></i><b>8.3</b> 经验贝叶斯</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="reserv.html"><a href="reserv.html"><i class="fa fa-check"></i><b>9</b> 准备金评估方法</a>
 <ul>
@@ -134,7 +137,7 @@
 </ul></li>
 <li class="chapter" data-level="10" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>10</b> Methods</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>10.1</b> math example</a></li>
+<li class="chapter" data-level="10.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>10.1</b> Math example</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -162,13 +165,16 @@
 <p>We describe our methods in this chapter.</p>
 <p>Math can be added in body using usual syntax like this</p>
 <div id="math-example" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> math example<a href="methods.html#math-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">10.1</span> Math example<a href="methods.html#math-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><span class="math inline">\(p\)</span> is unknown but expected to be around 1/3. Standard error will be approximated</p>
 <p><span class="math display">\[
 SE = \sqrt(\frac{p(1-p)}{n}) \approx \sqrt{\frac{1/3 (1 - 1/3)} {300}} = 0.027
 \]</span></p>
 <p>You can also use math in footnotes like this<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 <p>We will approximate standard error to 0.027<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p><span class="math display">\[
+SE = \sqrt(\frac{p(1-p)}{n}) \approx \sqrt{\frac{1/3 (1 - 1/3)} {300}} = 0.027
+\]</span></p>
 
 </div>
 </div>
@@ -176,10 +182,7 @@ SE = \sqrt(\frac{p(1-p)}{n}) \approx \sqrt{\frac{1/3 (1 - 1/3)} {300}} = 0.027
 <hr />
 <ol start="1">
 <li id="fn1"><p>where we mention <span class="math inline">\(p = \frac{a}{b}\)</span><a href="methods.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p><span class="math inline">\(p\)</span> is unknown but expected to be around 1/3. Standard error will be approximated</p>
-<p><span class="math display">\[
-SE = \sqrt(\frac{p(1-p)}{n}) \approx \sqrt{\frac{1/3 (1 - 1/3)} {300}} = 0.027
-\]</span><a href="methods.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><span class="math inline">\(p\)</span> is unknown but expected to be around 1/3. Standard error will be approximated<a href="methods.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
