@@ -17,6 +17,11 @@ riskmea
 随机变量的基础知识
 常用的损失分布
 风险度量方法var和varescte等
+example1
+solution1
+example2
+example3
+例4
 lossmodif
 有限期望等公式
 免赔额和限额对损失金额的调整
@@ -26,6 +31,7 @@ parest
 贝叶斯估计
 classrating
 相关概念
+风险基础和风险单位
 多元线性回归模型
 广义线性回归模型
 分类定价基本框架

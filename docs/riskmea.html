@@ -23,7 +23,7 @@
 <meta name="author" content="李政宵、杨亮" />
 
 
-<meta name="date" content="2022-05-05" />
+<meta name="date" content="2022-05-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -114,7 +178,10 @@
 </ul></li>
 <li class="chapter" data-level="7" data-path="classrating.html"><a href="classrating.html"><i class="fa fa-check"></i><b>7</b> 分类费率定价方法</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="classrating.html"><a href="classrating.html#相关概念"><i class="fa fa-check"></i><b>7.1</b> 相关概念</a></li>
+<li class="chapter" data-level="7.1" data-path="classrating.html"><a href="classrating.html#相关概念"><i class="fa fa-check"></i><b>7.1</b> 相关概念</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="classrating.html"><a href="classrating.html#风险基础和风险单位"><i class="fa fa-check"></i><b>7.1.1</b> 风险基础和风险单位</a></li>
+</ul></li>
 <li class="chapter" data-level="7.2" data-path="classrating.html"><a href="classrating.html#多元线性回归模型"><i class="fa fa-check"></i><b>7.2</b> 多元线性回归模型</a></li>
 <li class="chapter" data-level="7.3" data-path="classrating.html"><a href="classrating.html#广义线性回归模型"><i class="fa fa-check"></i><b>7.3</b> 广义线性回归模型</a></li>
 <li class="chapter" data-level="7.4" data-path="classrating.html"><a href="classrating.html#分类定价基本框架"><i class="fa fa-check"></i><b>7.4</b> 分类定价基本框架</a></li>
@@ -124,6 +191,7 @@
 <li class="chapter" data-level="7.8" data-path="classrating.html"><a href="classrating.html#纯保费预测模型"><i class="fa fa-check"></i><b>7.8</b> 纯保费预测模型</a></li>
 <li class="chapter" data-level="7.9" data-path="classrating.html"><a href="classrating.html#两步定价法"><i class="fa fa-check"></i><b>7.9</b> 两步定价法</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="8" data-path="experiencerate.html"><a href="experiencerate.html"><i class="fa fa-check"></i><b>8</b> 经验费率厘定方法</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="experiencerate.html"><a href="experiencerate.html#线性混合模型"><i class="fa fa-check"></i><b>8.1</b> 线性混合模型</a></li>
@@ -140,7 +208,7 @@
 <ul>
 <li class="chapter" data-level="10.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>10.1</b> Math example</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -172,7 +240,116 @@
 </div>
 <div id="风险度量方法var和varescte等" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> 风险度量方法（VaR和VaR、ES、CTE等）<a href="riskmea.html#风险度量方法var和varescte等" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>精算和风险管理的基础是对风险进行合理的度量。从数学上看，风险是用概率方法描述的，风险度量把一个代表风险的随机变量转化为一个实值的过程。假设 <span class="math inline">\(X\)</span> 表示随机风险，<span class="math inline">\(\rho\)</span> 为风险度量方法，<span class="math inline">\(r\)</span> 为风险度量值，则风险度量过程可以表示为：
+<span class="math display">\[r = \rho(X)\]</span></p>
+<p><span class="math inline">\(\rho\)</span> 就是将随机风险转化为非负实数的一个风险度量函数。常用的风险度量方法有：基于方差、半方差等的离差方法，基于在险价值、条件在险价值等的分位数方法，以及极值理论。这一节我们主要介绍常用的分位数风险度量方法。</p>
+<p>###第一节 风险度量的一致性要求</p>
+<p><strong>一致性风险度量</strong>是指风险度量<span class="math inline">\(\rho\)</span>对任意两个随机变量<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>应满足以下4个特性：</p>
+<ul>
+<li><p>次可加性(Subadditivity): <span class="math inline">\(\rho(X) + \rho(Y) \le \rho(X+Y)\)</span></p></li>
+<li><p>单调性 (Monotonicity): 若 <span class="math inline">\(X\le Y\)</span> 则<span class="math inline">\(\rho(X)\le \rho(Y)\)</span></p></li>
+<li><p>正齐次性 (Positive homogeneity): 对于任意常数<span class="math inline">\(c&gt;0\)</span>, <span class="math inline">\(\rho(cX)=c\rho(X)\)</span></p></li>
+<li><p>平移不变性 (Translation invariance):
+对于任意正常数 <span class="math inline">\(c\)</span>, <span class="math inline">\(\rho(X+c)=\rho(X)+c\)</span></p></li>
+</ul>
+<p>###第二节 VaR（Value-at-Risk，在险价值）</p>
+<p>定义：如果 <span class="math inline">\(X\)</span> 表示随机风险造成的损失，那么 <span class="math inline">\(X\)</span> 在100p水平上的 <strong>VaR</strong> ，记为 <span class="math inline">\(VaR_p(X)\)</span> 或 <span class="math inline">\(\pi_p\)</span> 是X的分布的<span class="math inline">\(100p\)</span> 分位数。</p>
+<p>对于连续性分布，我们有</p>
+<p><span class="math display">\[
+\Pr(X&gt;\pi_p)=1-p.
+\]</span></p>
+<ul>
+<li><p>在险价值是指在一定的置信水平下，在未来特定的一段时间内的最大可能损失</p></li>
+<li><p>至少有 <span class="math inline">\(p=0.95,0.99,0.999...\)</span> 的把握保证最大损失不超过 <span class="math inline">\(x\)</span></p></li>
+</ul>
+<div id="example1" class="section level4 hasAnchor" number="4.3.0.1">
+<h4><span class="header-section-number">4.3.0.1</span> Example1<a href="riskmea.html#example1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>如果<span class="math inline">\(X\)</span>有以下分布:</p>
+<p><span class="math display">\[
+X=\begin{cases}
+&amp; 100, \quad \quad  0.5\% \\
+&amp; 50, \quad \quad  \ \  4.5\% \\
+&amp; 10, \quad \quad  \ \ 10\% \\
+&amp; 0, \quad \quad \ \ \ \ 85\%
+\end{cases}
+\]</span></p>
+<p>请计算<span class="math inline">\(VaR_{99\%}(X)\)</span>和<span class="math inline">\(VaR_{95\%}(X)\)</span>.</p>
+</div>
+<div id="solution1" class="section level4 hasAnchor" number="4.3.0.2">
+<h4><span class="header-section-number">4.3.0.2</span> Solution1<a href="riskmea.html#solution1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math inline">\(\text{Va}{{\text{R}}_{0.95}}=10,\quad \text{Va}{{\text{R}}_{0.99}}=50, \quad \text{Va}{{\text{R}}_{0.999}}=100\)</span></p>
+</div>
+<div id="example2" class="section level4 hasAnchor" number="4.3.0.3">
+<h4><span class="header-section-number">4.3.0.3</span> Example2<a href="riskmea.html#example2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>例：损失服从正态分布，均值为33，标准差为109，计算 <span class="math inline">\(VaR_{95\%}\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+  &amp; F(\text{Va}{{\text{R}}_{0.95}})=0.95 \\
+&amp; \Phi \left( \frac{\text{Va}{{\text{R}}_{0.95}}-33}{109} \right)=0.95 \\
+&amp; \Rightarrow \frac{\text{Va}{{\text{R}}_{0.95}}-33}{109}=1.6449 \\
+&amp; \Rightarrow \text{Va}{{\text{R}}_{0.95}}=212.289
+\end{align*}\]</span></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="riskmea.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span> ( <span class="fl">0.95</span>, <span class="at">mean =</span> <span class="dv">33</span>, <span class="at">sd =</span> <span class="dv">109</span>)</span></code></pre></div>
+<pre><code>## [1] 212.289</code></pre>
+<p>###第三节 TVaR （Tail-Value-at-Risk，尾部在险价值）</p>
+<p>TVaR弥补了VaR方法作为风险度量函数不满足次可加性的缺陷，因而是一个具有优良性质的一致性风险度量函数。</p>
+<p>定义：TVaR是超过的损失<span class="math inline">\(VaR_p(X)\)</span>的期望值，即 TVaRp 是最坏的<span class="math inline">\(100(1-p)%\)</span> 损失的期望值。TVaRp定义为：</p>
+<p><span class="math display">\[\begin{align*}
+  &amp;  \\
+&amp; \text{TVa}{{\text{R}}_{p}}(X)=\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}  
+\end{align*}\]</span></p>
+<p>其中，TVaR 可以理解为是在区间（p, 1）上的VaR 的算数平均数，因此在相同的概率水平下，TVaR大于VaR的度量结果。</p>
+<p>性质: 对于连续分布而言，TVaRp还可以写成更为直观的表达式：</p>
+<p><span class="math display">\[\begin{align*}
+\text{TVa}{{\text{R}}_{p}}(X)
+=\mathbb{E}(X|X&gt;\text{Va}{{\text{R}}_{p}})
+&amp;= \frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-F(\text{Va}{{\text{R}}_{p}})}\\
+&amp;=\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-p}
+\end{align*}\]</span></p>
+<p>-证明</p>
+<p><span class="math display">\[\begin{align*}
+  \text{TVa}{{\text{R}}_{p}}(X)&amp; =\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-p}\text{   } \\
+&amp; =\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{x\text{d}F(x)}}{1-p}
+\quad\quad
+\text{            if   }F(x)=u\Rightarrow x=\text{Va}{{\text{R}}_{u}}(X) \\
+&amp; =\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}  
+\end{align*}\]</span></p>
+</div>
+<div id="example3" class="section level4 hasAnchor" number="4.3.0.4">
+<h4><span class="header-section-number">4.3.0.4</span> Example3<a href="riskmea.html#example3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>假设随机变量服从参数为<span class="math inline">\((\mu,\sigma)\)</span>的正态分布，求该正态分布VaR和TVaR的表达式。</p>
+<p><span class="math display">\[
+\text{Va}{{\text{R}}_{p}}(X)=\mu +\sigma \text{ }{{\Phi }^{-1}}(p),
+\]</span></p>
+<p><span class="math display">\[
+\text{TVa}{{\text{R}}_{p}}(X)=\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}(p) \right].
+\]</span></p>
+<p><span class="math display">\[\begin{align*}
+  \text{TVa}{{\text{R}}_{p}}(X)&amp; =\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}=\frac{\int_{p}^{1}{\left[ \mu +\sigma {{\Phi }^{-1}}(u) \right]du}}{1-p} \\
+&amp; =\mu +\frac{\sigma }{1-p}\int_{p}^{1}{{{\Phi }^{-1}}(u)du}
+\quad \text{      let }u=\Phi (x) \\
+&amp; =\mu +\frac{\sigma }{1-p}\int_{{{\Phi }^{-1}}(p)}^{\infty }{x\phi (x)dx} \\
+&amp; =\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}p \right]
+\end{align*}\]</span></p>
+<p>如果损失分布是离散的，计算 TVaR 会复杂一些。</p>
+</div>
+<div id="例4" class="section level4 hasAnchor" number="4.3.0.5">
+<h4><span class="header-section-number">4.3.0.5</span> 例4<a href="riskmea.html#例4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math display">\[X=\begin{cases}
+  &amp; 0\text{           with probabilty  0}\text{.9} \\
+&amp; 100\text{      with probabilty   0}\text{.06} \\
+&amp; 1000\text{    with probabilty   0}\text{.04} \\
+\end{cases} \]</span></p>
+<p>计算 TVaR 90% 和 TVaR 95%。</p>
+<p>-对于90% 的水平,</p>
+<p>由于<span class="math inline">\(\text{VaR}_{90\%}=0\)</span>,</p>
+<p><span class="math display">\[\text{TVa}{{\text{R}}_{0.90}}=\frac{(0.06)(100)+(0.04)(1000)}{0.10}=460\]</span></p>
+<p>-对于95% 的水平,</p>
+<p>右尾的 5% 由两部分组成：4% 的损失为1000，1%的损失等于100 ，故</p>
+<p><span class="math display">\[
+\text{TVa}{{\text{R}}_{0.95}}=\frac{(0.01)(100)+(0.04)(1000)}{0.05}=820
+\]</span></p>
 
+</div>
 </div>
 </div>
             </section>
