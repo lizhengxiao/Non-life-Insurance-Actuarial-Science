@@ -1,0 +1,166 @@
+# 风险度量 {#riskmea}
+
+Some _significant_ applications are demonstrated in this chapter.
+
+## 随机变量的基础知识
+
+## 常用的损失分布
+
+## 风险度量方法（VaR和VaR、ES、CTE等）
+
+精算和风险管理的基础是对风险进行合理的度量。从数学上看，风险是用概率方法描述的，风险度量把一个代表风险的随机变量转化为一个实值的过程。假设 $X$ 表示随机风险，$\rho$  为风险度量方法，$r$ 为风险度量值，则风险度量过程可以表示为：
+$$r = \rho(X)$$
+
+$\rho$ 就是将随机风险转化为非负实数的一个风险度量函数。常用的风险度量方法有：基于方差、半方差等的离差方法，基于在险价值、条件在险价值等的分位数方法，以及极值理论。这一节我们主要介绍常用的分位数风险度量方法。
+
+###第一节 风险度量的一致性要求
+
+ **一致性风险度量**是指风险度量$\rho$对任意两个随机变量$X$和$Y$应满足以下4个特性：
+
+
+- 次可加性(Subadditivity): $\rho(X) + \rho(Y) \le \rho(X+Y)$
+
+- 单调性 (Monotonicity): 若 $X\le Y$ 则$\rho(X)\le \rho(Y)$
+
+- 正齐次性 (Positive homogeneity): 对于任意常数$c>0$,  $\rho(cX)=c\rho(X)$
+
+- 平移不变性 (Translation invariance):
+对于任意正常数 $c$, $\rho(X+c)=\rho(X)+c$
+
+###第二节 VaR（Value-at-Risk，在险价值）
+
+
+定义：如果 $X$ 表示随机风险造成的损失，那么 $X$ 在100p水平上的 **VaR** ，记为 $VaR_p(X)$ 或 $\pi_p$ 是X的分布的$100p$ 分位数。
+
+对于连续性分布，我们有
+
+$$
+\Pr(X>\pi_p)=1-p.
+$$
+
+- 在险价值是指在一定的置信水平下，在未来特定的一段时间内的最大可能损失
+
+- 至少有 $p=0.95,0.99,0.999...$ 的把握保证最大损失不超过 $x$
+
+#### Example1
+
+如果$X$有以下分布: 
+
+
+$$
+X=\begin{cases}
+& 100, \quad \quad  0.5\% \\
+& 50, \quad \quad  \ \  4.5\% \\
+& 10, \quad \quad  \ \ 10\% \\
+& 0, \quad \quad \ \ \ \ 85\%
+\end{cases}
+$$
+
+请计算$VaR_{99\%}(X)$和$VaR_{95\%}(X)$.
+
+
+#### Solution1
+
+$\text{Va}{{\text{R}}_{0.95}}=10,\quad \text{Va}{{\text{R}}_{0.99}}=50, \quad \text{Va}{{\text{R}}_{0.999}}=100$
+
+
+#### Example2
+
+例：损失服从正态分布，均值为33，标准差为109，计算 $VaR_{95\%}$.
+
+
+\begin{align*}
+  & F(\text{Va}{{\text{R}}_{0.95}})=0.95 \\ 
+ & \Phi \left( \frac{\text{Va}{{\text{R}}_{0.95}}-33}{109} \right)=0.95 \\ 
+ & \Rightarrow \frac{\text{Va}{{\text{R}}_{0.95}}-33}{109}=1.6449 \\ 
+ & \Rightarrow \text{Va}{{\text{R}}_{0.95}}=212.289
+\end{align*}
+
+
+
+```{r echo=TRUE}
+qnorm ( 0.95, mean = 33, sd = 109)
+```
+
+
+###第三节 TVaR （Tail-Value-at-Risk，尾部在险价值）
+
+TVaR弥补了VaR方法作为风险度量函数不满足次可加性的缺陷，因而是一个具有优良性质的一致性风险度量函数。
+
+定义：TVaR是超过的损失$VaR_p(X)$的期望值，即 TVaRp 是最坏的$100(1-p)%$ 损失的期望值。TVaRp定义为：
+
+\begin{align*}
+  &  \\ 
+ & \text{TVa}{{\text{R}}_{p}}(X)=\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}  
+\end{align*}
+
+其中，TVaR 可以理解为是在区间（p, 1）上的VaR 的算数平均数，因此在相同的概率水平下，TVaR大于VaR的度量结果。
+
+性质: 对于连续分布而言，TVaRp还可以写成更为直观的表达式：
+
+\begin{align*}
+\text{TVa}{{\text{R}}_{p}}(X)
+=\mathbb{E}(X|X>\text{Va}{{\text{R}}_{p}})
+&= \frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-F(\text{Va}{{\text{R}}_{p}})}\\
+&=\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-p}
+\end{align*}
+
+-证明
+
+\begin{align*}
+  \text{TVa}{{\text{R}}_{p}}(X)& =\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-p}\text{   } \\ 
+ & =\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{x\text{d}F(x)}}{1-p}
+ \quad\quad
+ \text{            if   }F(x)=u\Rightarrow x=\text{Va}{{\text{R}}_{u}}(X) \\ 
+ & =\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}  
+\end{align*}
+
+#### Example3
+
+假设随机变量服从参数为$(\mu,\sigma)$的正态分布，求该正态分布VaR和TVaR的表达式。
+
+$$
+\text{Va}{{\text{R}}_{p}}(X)=\mu +\sigma \text{ }{{\Phi }^{-1}}(p),
+$$
+
+$$
+\text{TVa}{{\text{R}}_{p}}(X)=\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}(p) \right].
+$$
+
+\begin{align*}
+  \text{TVa}{{\text{R}}_{p}}(X)& =\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}=\frac{\int_{p}^{1}{\left[ \mu +\sigma {{\Phi }^{-1}}(u) \right]du}}{1-p} \\ 
+ & =\mu +\frac{\sigma }{1-p}\int_{p}^{1}{{{\Phi }^{-1}}(u)du}
+ \quad \text{      let }u=\Phi (x) \\ 
+ & =\mu +\frac{\sigma }{1-p}\int_{{{\Phi }^{-1}}(p)}^{\infty }{x\phi (x)dx} \\ 
+ & =\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}p \right]
+\end{align*}
+
+
+如果损失分布是离散的，计算 TVaR 会复杂一些。
+
+#### 例4
+
+$$X=\begin{cases}
+  & 0\text{           with probabilty  0}\text{.9} \\ 
+ & 100\text{      with probabilty   0}\text{.06} \\ 
+ & 1000\text{    with probabilty   0}\text{.04} \\ 
+\end{cases} $$
+
+计算 TVaR 90\% 和 TVaR 95\%。
+
+
+-对于90\% 的水平,
+
+由于$\text{VaR}_{90\%}=0$,
+
+$$\text{TVa}{{\text{R}}_{0.90}}=\frac{(0.06)(100)+(0.04)(1000)}{0.10}=460$$
+
+
+-对于95\% 的水平, 
+
+右尾的 5\% 由两部分组成：4\% 的损失为1000，1%的损失等于100 ，故
+
+$$
+\text{TVa}{{\text{R}}_{0.95}}=\frac{(0.01)(100)+(0.04)(1000)}{0.05}=820
+$$
+
