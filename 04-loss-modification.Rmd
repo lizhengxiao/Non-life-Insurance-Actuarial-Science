@@ -1,0 +1,10 @@
+# 损失调整 {#lossmodif}
+We have finished a nice book.
+
+## 有限期望等公式
+
+## 免赔额和限额对损失金额的调整
+
+## 免赔额和限额对损失次数的调整
+
+

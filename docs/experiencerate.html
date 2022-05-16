@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 课程介绍 | 非寿险精算学</title>
+  <title>Chapter 8 经验费率厘定方法 | 非寿险精算学</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 课程介绍 | 非寿险精算学" />
+  <meta property="og:title" content="Chapter 8 经验费率厘定方法 | 非寿险精算学" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 课程介绍 | 非寿险精算学" />
+  <meta name="twitter:title" content="Chapter 8 经验费率厘定方法 | 非寿险精算学" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="chp1.html"/>
+<link rel="prev" href="classrating.html"/>
+<link rel="next" href="reserv.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -161,38 +161,17 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> 课程介绍<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>本课程是一门三学分课程（精算与风险管理专业必修、其他专业选修），适合风险管理、保险与精算等相关专业的<strong>本科高年级学生</strong>参考。</p>
-<p>非寿险精算主要内容是<strong>费率厘定</strong>、<strong>准备金评估</strong>和<strong>再保险</strong>三部分</p>
-<ul>
-<li><strong>损失模型</strong>：风险度量、索赔次数、索赔金额、累积损失模型</li>
-<li><strong>费率厘定</strong>：分类费率厘定、经验费率厘定</li>
-<li><strong>准备金评估</strong>：未到期责任准备金、未决赔款准备金、理赔费用准备金评估</li>
-<li><strong>再保险定价</strong></li>
-</ul>
-<p>在实证研究中，以 <strong>R 语言</strong> 为计算工具，提供了详细的程序代码，方便读者再现完整的编程和计算过程。</p>
-<div id="先修内容" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> 先修内容<a href="intro.html#先修内容" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>需要概率论与数理统计、高等数学、线性代数、保险学的基础知识</p>
-<ul>
-<li><strong>概率论与数理统计</strong>：随机变量、概率分布、中心极限定理</li>
-<li><strong>高等数学</strong>：微积分、泰勒公式</li>
-<li><strong>线性代数</strong>：矩阵运算</li>
-<li><strong>保险学</strong>：基本概念和专业术语</li>
-</ul>
+<div id="experiencerate" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 经验费率厘定方法<a href="experiencerate.html#experiencerate" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We have finished a nice book.</p>
+<div id="线性混合模型" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> 线性混合模型<a href="experiencerate.html#线性混合模型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="教材和参考资料" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> 教材和参考资料<a href="intro.html#教材和参考资料" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Klugman S. A., Panjer H. H., Willmot G. E. Loss models: from data to decisions (4th edition). London: John Wiley &amp; Sons, 2012.</li>
-</ul>
+<div id="最精确信度模型" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> 最精确信度模型<a href="experiencerate.html#最精确信度模型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="r与rmarkdown" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> R与Rmarkdown<a href="intro.html#r与rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>增加R软件的介绍</p>
-<p>增加markdown的介绍</p>
-<p>增加rmarkdown的介绍、安装和使用说明，包括如何导出html和pdf格式，介绍一些简答的公式输入</p>
+<div id="经验贝叶斯" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> 经验贝叶斯<a href="experiencerate.html#经验贝叶斯" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
@@ -201,8 +180,8 @@
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chp1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="classrating.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reserv.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -233,7 +212,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-experience-rating.Rmd",
 "text": "Edit"
 },
 "history": {
