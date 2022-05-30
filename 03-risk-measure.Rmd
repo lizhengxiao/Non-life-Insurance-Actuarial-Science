@@ -1,35 +1,235 @@
-# 风险度量 {#riskmea}
+# 第五章 风险度量 {#riskmea}
 
-Some _significant_ applications are demonstrated in this chapter.
+Some *significant* applications are demonstrated in this chapter.
 
-## 随机变量的基础知识
+## 5.1随机变量的基础知识
 
-## 常用的损失分布
+在非寿险精算中，风险可以理解为保险损失的不确定性，通常用随机变量来表示。例如，风险可以是保险事故发生与否的不确定性、事故发生的时间的不确定性、事故发生的地点的不确定性或损失金额的不确定性。 随机变量是指取值依赖于随机现象的观察结果的变量，取值是随机的，取值特征通过概率分布来描述。随机变量一般用大写的英文字母表示，可以分为连续型随机变量和离散型随机变量。其中，离散型随机变量取有限个或可列个值，如保险事故发生的次数$N$ （简称为损失次数）。连续型随机变量的取值布满一个区间，如保险事故发生的损失金额$X$ （简称为损失金额）的取值范围为$(0,+∞)$
 
-## 风险度量方法（VaR和VaR、ES、CTE等）
+### 5.1.1分布函数和生存函数
 
+连续型随机变量$X$的累积分布函数 (Cumulative Distribution Function, cdf)表示为 $$F_{X}(x)=\Pr(X\le X)$$
 
-精算和风险管理的基础是对风险进行合理的度量。从数学上看，风险是用概率方法描述的，风险度量把一个代表风险的随机变量转化为一个实值的过程。假设 $X$ 表示随机风险，$\rho$  为风险度量方法，$r$ 为风险度量值，则风险度量过程可以表示为：
-$$r = \rho(X)$$
+-   R 代码
+
+```{r, plot-cdf, eval = FALSE, echo = TRUE}
+F1.f <- function(x) {
+  if (x < 0){
+    out <- 0
+  } else if(x < 100 & x >= 0){
+    out <- 0.01*x
+  } else if (x >= 100){
+    out <- 1
+  }
+  return(out)
+}
+F1.f <-  Vectorize(F1.f)
+
+x <- seq(from = 0, to = 100, length.out = 20)
+y <- F1.f(x)
+plot(x, y, type = 'l', col = "blue", lwd = 2)
+```
+
+随机变量的生存函数(Survival Function)定义为： $$S_{X}(x)=\Pr(X>x)=1-F_{X}(x)$$其中，生存函数表示随机变量$X$大于$x$的概率。若随机变量 是连续的，其密度函数和生存函数存在下述关系： $$S_{X}(x)=\int_{0}^\infty f_{X}(x)dx$$
+
+$$f(x)=-\frac{dS(x)}{dx}$$
+
+### 5.1.2矩(Moments)
+
+概率质量函数或概率密度函数包含了随机变量的全部信息，但是在实际问题中，有时只需要随机变量的某些数字特征，如均值 (mean)、方差 (variance)、偏度 (skewness)、峰度 (kurtosis) 和变异系数 (coefficient of variation)。这些数字特征都可以用随机变量的中心距和原点矩表示，例如均值就是1阶原点矩，方差就是2阶中心距。
+
+(1)原点矩 (Raw Moment)
+
+随机变量的k阶原点矩 (Raw Moment) 定义为: $$
+\mu_{k}'=\mathbb{E}(X^k)=\int_{-\infty}^{\infty}x^kf(x)dx
+$$
+
+(2)中心矩 (Central Moment)
+
+k阶中心矩 (Central Moment) 定义为： $$
+\mu_{k}=\mathbb{E}[(X-\mu)^k]=\int_{-\infty}^{\infty}(x-\mu)^kf(x)dx
+$$
+
+(3)偏度 (Skewness)
+
+偏度 (Skewness)是对分布偏斜方向和程度的测度，若偏度系数大于0，则表示分布正偏/右偏，若偏度系数小于0，则表示分布负偏/左偏。具体定义w为三阶中心矩与标准差的三次方的比例： $$r_3=\frac{\mu_3}{\sigma^3}$$
+
+(4)峰度 (Kurtosis)
+
+峰度 (Kurtosis)是分布尖峰程度的测度。峰度系数越大，就意味着方差增大是由低频度的大于或小于平均值的极端差值引起的。 $$r_4=\frac{\mu_4}{\sigma^4}$$ 在更通常的情况下，峰度 (Kurtosis)定义为$r_4-3$，这也被称为超值峰度（Excess Kurtosis）。需要注意的是，正态分布的峰度系数为3， $r_4-3$是为了让正态分布的峰度为0。
+
+(5)变异系数 (Coefficient of Variation)
+
+变异系数 (Coefficient of Variation)是标准差和均值的比率，衡量分布离散程度的大小，可以用于消除量纲对结果的影响： $$r=\frac{(\mu_2)^\frac{1}{2}}{\mu'_1}=\frac{\sqrt{Var(X)}}{E(X)}$$
+
+### 5.1.3矩母函数？
+
+### 5.1.4分位数函数？
+
+## 5.2常用的损失分布
+
+### 5.2.1损失次数分布
+
+在一段时间期间内，对损失发生的次数进行分析和预测是是精算和风险管理的第一步。在非寿险精算中，通常用用计数随机变量来描述一段时间内发生的损失次数。计数随机变量是离散型随机变量的一种，只在 0,1, 2, 3,4...正整数值域上取值。这一节主要介绍常用的三种损失次数分布：泊松分布（Poisson） 、二项分布（Binomial Distribution）和负二项分布（Negative Binomial distribution）。
+
+(1)泊松分布（Poisson）?
+
+(2)二项分布（Binomial Distribution）?
+
+(3)负二项分布（Negative Binomial distribution）?
+
+### 5.2.2 损失金额分布
+
+对保险损失金额进行分析和预测，是精算师和风险管理者的重要工作。通常情况下，保险损失金额具有不对称、定义域非负、尾部较厚的特点，像正态分布等高斯类的分布不适于拟合损失金额。由于损失金额具有较强的自然偏性，在实际运用中，指数分布 （Exponential）、伽马分布（Gamma）、威布尔分布（Weibull）、帕累托分布（Pareto）和对数正态分布（Log-normal）等等通常是精算师的首选。这一节将主要介绍几种常见的损失分布，以及分布函数、概率密度函数、矩母函数等分布性质。
+
+(1)指数分布 （Exponential）
+
+指数分布的概率密度函数和累积分布函数为:$$
+f(x)=\frac{1}{\theta}\exp\left({-\frac{1}{\theta}x}\right),\quad x \ge 0
+$$
+
+或者 $$
+f(x)=\lambda\exp\left({-\lambda x}\right),\quad x \ge 0
+$$ 指数分布的期望、方差分别为 $$E(X)=\theta$$ $$Var(X)=\theta^2$$ 同时，指数分布具有无记忆性，即 $$P(X>x+u|X>u)=P(X>x)$$
+
+下图显示了指数分布的比率参数取值不同情况下的密度函数图。指数分布的缺点是其概率密度函数是单调递减的，这在很多情况下，并不适于实际的需要。对应代码如下。
+
+```{r, plot-exp, eval = FALSE, echo = TRUE}
+# ==========================================
+# 指数分布
+# ===========================================
+theta <- c(0.5, 1, 2)
+x0 <- seq(0.001, 10, length.out = 100)
+par(mfrow = c(1, 1) )
+f1 <- dexp(x0, rate = 1/theta[1], log = FALSE)
+f2 <- dexp(x0, rate = 1/theta[2], log = FALSE)
+f3 <- dexp(x0, rate = 1/theta[3], log = FALSE)
+matplot(x0, cbind(f1, f2, f3), type = 'l', lty = 1:3, lwd = 2)
+legend('topright', 
+       legend = c('theta = 0.5', 'theta = 1', 'theta = 2'),
+       lty = c(1,2,3),
+       bty = "n", lwd = 2,  col = 1:3)
+```
+
+(2)伽马分布（Gamma）
+
+伽马分布的概率密度函数为 $$
+f(x)=\frac{{{\theta }^{-\alpha }}}{\Gamma \text{(}\alpha )}{{x}^{\alpha -1}}{{e}^{-\frac{1}{\theta} x}}.
+$$ 其中 $\alpha$ 是 **形状参数**，$\theta$ 是 **尺度参数**。另外，伽马分布还可以用形状参数$\alpha$和比率参数$\beta=1/\theta$来表示，即比率参数表示为尺度参数的倒数。
+
+伽马分布的期望、方差分别为 $$E(X)=\alpha/\beta$$ $$Var(X)=\alpha/\beta^2$$
+
+若两个随机变量$X_1$和$X_2$都服从形状参数$\alpha_1$和$\alpha_2$ ，比率参数都为$\beta$的伽马分布，即$X_1\sim GA(\alpha_1,\beta)$，$X_2\sim GA(\alpha_2,\beta)$ ，那么随机变量之和$X_1+X_2$ 服从形状参数为$\alpha_1+\alpha_2$，比率参数为$\beta$ 的伽马分布，即$$X_1+X_2\sim GA(\alpha_1+\alpha_2,\beta)$$ 。这就是伽马分布的可加性。
+
+当形状参数$\alpha=1$时，伽马分布可以退化为指数分布，即指数分布是伽马分布的特例。当$\alpha=n/2$和$\beta=1/2$ 时，伽马分布可以退化为卡方分布，其中卡方分布的自由度为$n/2$。
+
+下图显示了伽马分布的形状参数和比率参数在不同取值情况下的密度函数图。对应的R代码如下。
+
+```{r, gamma-pdf, eval = FALSE, echo = TRUE}
+# ==========================================
+# 伽马分布
+# ===========================================
+par(mfrow = c(1, 2) )
+# 固定形状参数
+alpha <- 2                # 形状参数
+theta <- c(0.5, 1, 2)     # 比率参数，尺度参数为 1/theta
+x0 <- seq(0.001, 15, length.out = 100)
+f1 <- dgamma(x0,  shape = alpha, rate = theta[1]) # 
+f2 <- dgamma(x0,  shape = alpha, rate = theta[2])
+f3 <- dgamma(x0,  shape = alpha, rate = theta[3])
+matplot(x0, cbind(f1, f2, f3),ylim = c(0,0.8), main = '',  type = 'l', lty = 1:3, lwd = 2, ylab = '密度函数')
+legend('topright', legend = c('alpha = 2, theta = 0.5', 
+                              'alpha = 2, theta = 1', 
+                              'alpha = 2, theta = 2'),
+       lty = c(1,2,3), bty = "n", lwd = 2,  col = 1:3)
+
+# 固定比率参数
+alpha <- c(1,2,3)
+theta <- 0.5
+x0 <- seq(0.001, 15, length.out = 100)
+f1 <- dgamma(x0,  shape = alpha[1], rate = theta)
+f2 <- dgamma(x0,  shape = alpha[2], rate = theta)
+f3 <- dgamma(x0,  shape = alpha[3], rate = theta)
+
+matplot(x0, cbind(f1, f2, f3),ylim = c(0,0.8), main = '',  type = 'l', lty = 1:3, lwd = 2, ylab = '密度函数')
+legend('topright',legend = c('alpha = 1, theta = 0.5', 
+                                     'alpha = 2, theta = 0.5', 
+                                     'alpha = 3, theta = 0.5'),
+       lty = c(1,2,3), bty = "n", lwd = 2,  col = 1:3)
+```
+
+(3)帕累托分布（Pareto）?
+
+(4)对数正态分布（Log-normal）
+
+对数正态分布的概率密度函数和分布函数为 $$
+f(x)=\frac{1}{x\sigma}\phi\left(\frac{\ln x - \mu}{\sigma}  \right)
+=\frac{1}{x\sigma\sqrt{2\pi}}\exp\left[
+-\frac{1}{2}\left(\frac{\ln x - \mu}{\sigma}  \right)^2.
+\right]
+$$ 对数正态分布的均值和方差分别为 $$
+ E(X)=\exp\left(\mu + \frac{1}{2}\sigma^2\right)
+ $$ $$
+Var(X)==(e^{\sigma^2}-1)e^{2\mu+\sigma^2}
+ $$ 假设随机变量服从参数为$(\mu,\sigma)$的正态分布$X\sim N(\mu,\sigma^2)$ ，那么随机变量$Y=e^X$则服从参数为$(\mu,\sigma)$ 的对数正态分布。需要注意的是，对数正态分布的参数$\mu$和$\sigma$ 并不是它的均值和方差。
+
+对数正态分布常用在损失额度的建模中。从下图可以看到：它的概率密度函数是右偏、厚尾的，因而可以很好地拟合许多损失分布的情形。当$\sigma$很小的时候，对数正态分布与正态分布非常相似。
+
+```{r, plot-lognormal, eval = FALSE, echo = TRUE}
+# ===========================================
+# 对数正态分布
+# ===========================================
+par(mfrow = c(1, 2) )
+# 固定 mu 
+mu <- 2                
+sigma <- c(0.5, 1, 2)     
+x0 <- seq(0.001, 15, length.out = 100)
+f1 <- dlnorm(x0,  meanlog = mu, sdlog = sigma[1])
+f2 <- dlnorm(x0,  meanlog = mu, sdlog = sigma[2])
+f3 <- dlnorm(x0,  meanlog = mu, sdlog = sigma[3])
+
+matplot(x0, cbind(f1, f2, f3), main = '',  type = 'l', lty = 1:3, lwd = 2, ylab = '密度函数')
+legend('topright',legend = c('mu = 2, sigma = 0.5', 
+                             'mu = 2, sigma = 1', 
+                             'mu = 2, sigma = 2'),
+       lty = c(1,2,3), bty = "n", lwd = 2,  col = 1:3)
+
+# 固定 sigma
+mu <- c(1,2,3)
+sigma <- 1
+x0 <- seq(0.001, 15, length.out = 100)
+f1 <- dlnorm(x0,  meanlog = mu[1], sdlog = sigma)
+f2 <- dlnorm(x0,  meanlog = mu[2], sdlog = sigma)
+f3 <- dlnorm(x0,  meanlog = mu[3], sdlog = sigma)
+
+matplot(x0, cbind(f1, f2, f3), main = '',  type = 'l', lty = 1:3, lwd = 2, ylab = '密度函数')
+legend('topright',       legend = c('mu = 1, sigma = 1', 
+                                    'mu = 2, sigma = 1', 
+                                    'mu = 3, sigma = 1'),
+       lty = c(1,2,3), bty = "n", lwd = 2,  col = 1:3)
+```
+
+## 5.3风险度量方法（VaR和TVaR）
+
+精算和风险管理的基础是对风险进行合理的度量。从数学上看，风险是用概率方法描述的，风险度量把一个代表风险的随机变量转化为一个实值的过程。假设 $X$ 表示随机风险，$\rho$ 为风险度量方法，$r$ 为风险度量值，则风险度量过程可以表示为： $$r = \rho(X)$$
 
 $\rho$ 就是将随机风险转化为非负实数的一个风险度量函数。常用的风险度量方法有：基于方差、半方差等的离差方法，基于在险价值、条件在险价值等的分位数方法，以及极值理论。这一节我们主要介绍常用的分位数风险度量方法。
 
-###第一节 风险度量的一致性要求
+### 5.3.1风险度量的一致性要求
 
- **一致性风险度量**是指风险度量$\rho$对任意两个随机变量$X$和$Y$应满足以下4个特性：
+风险的度量必须遵循一定的原则，合理的风险度量方法应该与经济原理、与人们的认知一致，不会出现悖论。因此，风险应该满足一致性风险度量公理体系。
 
+**一致性风险度量**是指风险度量$\rho$对任意两个随机变量$X$和$Y$应满足以下4个特性：
 
-- 次可加性(Subadditivity): $\rho(X) + \rho(Y) \le \rho(X+Y)$
+-   次可加性(Subadditivity): $\rho(X) + \rho(Y) \le \rho(X+Y)$
 
-- 单调性 (Monotonicity): 若 $X\le Y$ 则$\rho(X)\le \rho(Y)$
+-   单调性 (Monotonicity): 若 $X\le Y$ 则$\rho(X)\le \rho(Y)$
 
-- 正齐次性 (Positive homogeneity): 对于任意常数$c>0$,  $\rho(cX)=c\rho(X)$
+-   正齐次性 (Positive homogeneity): 对于任意常数$c>0$, $\rho(cX)=c\rho(X)$
 
-- 平移不变性 (Translation invariance):
-对于任意正常数 $c$, $\rho(X+c)=\rho(X)+c$
+-   平移不变性 (Translation invariance): 对于任意正常数 $c$, $\rho(X+c)=\rho(X)+c$
 
-###第二节 VaR（Value-at-Risk，在险价值）
-
+### 5.3.2 VaR（Value-at-Risk，在险价值）
 
 定义：如果 $X$ 表示随机风险造成的损失，那么 $X$ 在100p水平上的 **VaR** ，记为 $VaR_p(X)$ 或 $\pi_p$ 是X的分布的$100p$ 分位数。
 
@@ -39,14 +239,13 @@ $$
 \Pr(X>\pi_p)=1-p.
 $$
 
-- 在险价值是指在一定的置信水平下，在未来特定的一段时间内的最大可能损失
+-   在险价值是指在一定的置信水平下，在未来特定的一段时间内的最大可能损失
 
-- 至少有 $p=0.95,0.99,0.999...$ 的把握保证最大损失不超过 $x$
+-   至少有 $p=0.95,0.99,0.999...$ 的把握保证最大损失不超过 $x$
 
 #### Example1
 
-如果$X$有以下分布: 
-
+如果$X$有以下分布:
 
 $$
 X=\begin{cases}
@@ -59,55 +258,53 @@ $$
 
 请计算$VaR_{99\%}(X)$和$VaR_{95\%}(X)$.
 
-
 #### Solution1
 
 $\text{Va}{{\text{R}}_{0.95}}=10,\quad \text{Va}{{\text{R}}_{0.99}}=50, \quad \text{Va}{{\text{R}}_{0.999}}=100$
-
 
 #### Example2
 
 例：损失服从正态分布，均值为33，标准差为109，计算 $VaR_{95\%}$.
 
-
+```{=tex}
 \begin{align*}
   & F(\text{Va}{{\text{R}}_{0.95}})=0.95 \\ 
  & \Phi \left( \frac{\text{Va}{{\text{R}}_{0.95}}-33}{109} \right)=0.95 \\ 
  & \Rightarrow \frac{\text{Va}{{\text{R}}_{0.95}}-33}{109}=1.6449 \\ 
  & \Rightarrow \text{Va}{{\text{R}}_{0.95}}=212.289
 \end{align*}
-
-
-
+```
 ```{r echo=TRUE}
 qnorm ( 0.95, mean = 33, sd = 109)
 ```
 
-
-###第三节 TVaR （Tail-Value-at-Risk，尾部在险价值）
+### 5.3.3 TVaR （Tail-Value-at-Risk，尾部在险价值）
 
 TVaR弥补了VaR方法作为风险度量函数不满足次可加性的缺陷，因而是一个具有优良性质的一致性风险度量函数。
 
 定义：TVaR是超过的损失$VaR_p(X)$的期望值，即 TVaRp 是最坏的$100(1-p)%$ 损失的期望值。TVaRp定义为：
 
+```{=tex}
 \begin{align*}
   &  \\ 
  & \text{TVa}{{\text{R}}_{p}}(X)=\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}  
 \end{align*}
-
+```
 其中，TVaR 可以理解为是在区间（p, 1）上的VaR 的算数平均数，因此在相同的概率水平下，TVaR大于VaR的度量结果。
 
 性质: 对于连续分布而言，TVaRp还可以写成更为直观的表达式：
 
+```{=tex}
 \begin{align*}
 \text{TVa}{{\text{R}}_{p}}(X)
 =\mathbb{E}(X|X>\text{Va}{{\text{R}}_{p}})
 &= \frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-F(\text{Va}{{\text{R}}_{p}})}\\
 &=\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-p}
 \end{align*}
-
+```
 -证明
 
+```{=tex}
 \begin{align*}
   \text{TVa}{{\text{R}}_{p}}(X)& =\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-p}\text{   } \\ 
  & =\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{x\text{d}F(x)}}{1-p}
@@ -115,7 +312,7 @@ TVaR弥补了VaR方法作为风险度量函数不满足次可加性的缺陷，�
  \text{            if   }F(x)=u\Rightarrow x=\text{Va}{{\text{R}}_{u}}(X) \\ 
  & =\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}  
 \end{align*}
-
+```
 #### Example3
 
 假设随机变量服从参数为$(\mu,\sigma)$的正态分布，求该正态分布VaR和TVaR的表达式。
@@ -128,6 +325,7 @@ $$
 \text{TVa}{{\text{R}}_{p}}(X)=\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}(p) \right].
 $$
 
+```{=tex}
 \begin{align*}
   \text{TVa}{{\text{R}}_{p}}(X)& =\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}=\frac{\int_{p}^{1}{\left[ \mu +\sigma {{\Phi }^{-1}}(u) \right]du}}{1-p} \\ 
  & =\mu +\frac{\sigma }{1-p}\int_{p}^{1}{{{\Phi }^{-1}}(u)du}
@@ -135,8 +333,7 @@ $$
  & =\mu +\frac{\sigma }{1-p}\int_{{{\Phi }^{-1}}(p)}^{\infty }{x\phi (x)dx} \\ 
  & =\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}p \right]
 \end{align*}
-
-
+```
 如果损失分布是离散的，计算 TVaR 会复杂一些。
 
 #### 例4
@@ -147,22 +344,18 @@ $$X=\begin{cases}
  & 1000\text{    with probabilty   0}\text{.04} \\ 
 \end{cases} $$
 
-计算 TVaR 90\% 和 TVaR 95\%。
+计算 TVaR 90% 和 TVaR 95%。
 
-
--对于90\% 的水平,
+-对于90% 的水平,
 
 由于$\text{VaR}_{90\%}=0$,
 
 $$\text{TVa}{{\text{R}}_{0.90}}=\frac{(0.06)(100)+(0.04)(1000)}{0.10}=460$$
 
+-对于95% 的水平,
 
--对于95\% 的水平, 
-
-右尾的 5\% 由两部分组成：4\% 的损失为1000，1%的损失等于100 ，故
+右尾的 5% 由两部分组成：4% 的损失为1000，1%的损失等于100 ，故
 
 $$
 \text{TVa}{{\text{R}}_{0.95}}=\frac{(0.01)(100)+(0.04)(1000)}{0.05}=820
 $$
-
-
