@@ -1,10 +1,11 @@
-# 参数估计和统计推断 {#lossmodif}
+# 参数估计和统计推断 {#parest}
 We have finished a nice book.
 
 ## 极大似然估计
 
+
 ## 贝叶斯估计
 
-
+1
 
 
