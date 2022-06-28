@@ -911,19 +911,20 @@ $$ E[X]= 7500 E[$X^{2}$]=75,000,000 m is the median of X 请求$f(m)$的值。
 
 $$(\frac{5000}{m})^3=f(m)=0.5$$ $$m=6299.61$$ $$f(m)=(\frac{3}{5000})(\frac{5000}{6299.61})^4=0.0002381 $$
 
-2.X服从参数 $\alpha = 2.5$的伽马分布，$\theta = 10$，\$ Y = 1/X\$， 请计算 Var(Y)。 提示：伽马分布的矩有如下性质 $$E(X^k)=\frac{\theta^k\Gamma(\alpha+k)}{\Gamma(\alpha)}$$ - 解答：
+2.X服从参数 $\alpha = 2.5$的伽马分布，$\theta = 10$，$Y = 1/X$， 请计算 Var(Y)。 提示：伽马分布的矩有如下性质 $$E(X^k)=\frac{\theta^k\Gamma(\alpha+k)}{\Gamma(\alpha)}$$ - 解答：
 
 $$E(X^k)=\frac{\theta^k\Gamma(\alpha+k)}{\Gamma(\alpha)}$$ $$E(X^{-1})=\frac{\theta^{-1}\Gamma(\alpha-1)}{\Gamma(\alpha)}=\frac{1}{\theta(\alpha-1)}$$ $$E(X^{-2})=\frac{1}{\theta^2(\alpha-1)(\alpha-2)}$$ $$Var(Y)=\frac{1}{10^2(1.5)(0.5)}-\left(\frac{1}{10(1.5)}\right)^2=0.008889$$
 
 3.试求正态分布和指数分布的VaR和TVaR
 
--   解答 正态分布： $$
+-   解答 正态分布： 
+$$
     f(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[
     -\frac{1}{2}\left(
     \frac{x-\mu}{\sigma}
     \right)^2
-    \right].
-    $$
+    \right]
+$$
 
 $$
 \text{Va}{{\text{R}}_{p}}(X)=\mu +\sigma \text{ }{{\Phi }^{-1}}(p),
@@ -953,7 +954,9 @@ $$
  & =\phi \left[ {{\Phi }^{-1}}(p) \right] 
 \end{align*}
 ```
-指数分布： $$
+指数分布：
+
+$$
 f(x)=\frac{1}{\theta}\exp\left(
 -\frac{x}{\theta},\quad x>0.
 \right)
@@ -961,11 +964,17 @@ $$
 
 $$
 \text{Va}{{\text{R}}_{p}}(X)=-\theta \ln (1-p)
-$$ $$
+$$ 
+
+$$
 \text{TVa}{{\text{R}}_{p}}(X)=\text{Va}{{\text{R}}_{p}}(X)+\theta
 $$
 
-4.试证明以下等式成立： $$E(X)=e(d)S(d)+E(X\wedge d) $$ - 解答
+4.试证明以下等式成立：
+
+$$E(X)=e(d)S(d)+E(X\wedge d) $$ 
+
+-  解答
 
 $$
 \begin{aligned}
