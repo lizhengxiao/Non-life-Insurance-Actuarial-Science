@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 损失调整 | 非寿险精算学</title>
+  <title>Chapter 4 损失调整 | 非寿险精算学</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 损失调整 | 非寿险精算学" />
+  <meta property="og:title" content="Chapter 4 损失调整 | 非寿险精算学" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 损失调整 | 非寿险精算学" />
+  <meta name="twitter:title" content="Chapter 4 损失调整 | 非寿险精算学" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="李政宵、杨亮" />
 
 
-<meta name="date" content="2022-06-20" />
+<meta name="date" content="2022-06-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="riskmea.html"/>
-<link rel="next" href="parest.html"/>
+<link rel="next" href="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -72,57 +72,64 @@
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 课程简介</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> 课程介绍</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 课程简介</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#先修内容"><i class="fa fa-check"></i><b>2.1</b> 先修内容</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#教材和参考资料"><i class="fa fa-check"></i><b>2.2</b> 教材和参考资料</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#r与rmarkdown"><i class="fa fa-check"></i><b>2.3</b> R与Rmarkdown</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="chp1.html"><a href="chp1.html"><i class="fa fa-check"></i><b>3</b> 保险数据结构与R软件</a>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#课程内容"><i class="fa fa-check"></i><b>1.1</b> 课程内容</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#先修内容"><i class="fa fa-check"></i><b>1.2</b> 先修内容</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#教材和参考资料"><i class="fa fa-check"></i><b>1.3</b> 教材和参考资料</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-软件与-rmarkdown-可视化"><i class="fa fa-check"></i><b>1.4</b> R 软件与 rmarkdown 可视化</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="chp1.html"><a href="chp1.html#数据的分类"><i class="fa fa-check"></i><b>3.1</b> 数据的分类</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="chp1.html"><a href="chp1.html#型数据"><i class="fa fa-check"></i><b>3.1.1</b> 0-1型数据</a></li>
-<li class="chapter" data-level="3.1.2" data-path="chp1.html"><a href="chp1.html#计数型数据"><i class="fa fa-check"></i><b>3.1.2</b> 计数型数据</a></li>
-<li class="chapter" data-level="3.1.3" data-path="chp1.html"><a href="chp1.html#连续型数据"><i class="fa fa-check"></i><b>3.1.3</b> 连续型数据</a></li>
-<li class="chapter" data-level="3.1.4" data-path="chp1.html"><a href="chp1.html#半连续型数据"><i class="fa fa-check"></i><b>3.1.4</b> 半连续型数据</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="chp1.html"><a href="chp1.html#数据的基本属性"><i class="fa fa-check"></i><b>3.2</b> 数据的基本属性</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="chp1.html"><a href="chp1.html#分布形态还有什么"><i class="fa fa-check"></i><b>3.2.1</b> 分布形态还有什么？</a></li>
-<li class="chapter" data-level="3.2.2" data-path="chp1.html"><a href="chp1.html#经验密度"><i class="fa fa-check"></i><b>3.2.2</b> 经验密度</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="chp1.html"><a href="chp1.html#数据的可视化"><i class="fa fa-check"></i><b>3.3</b> 数据的可视化</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="riskmea.html"><a href="riskmea.html"><i class="fa fa-check"></i><b>4</b> 第五章 风险度量</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="riskmea.html"><a href="riskmea.html#随机变量的基础知识"><i class="fa fa-check"></i><b>4.1</b> 随机变量的基础知识</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="riskmea.html"><a href="riskmea.html#分布函数和生存函数"><i class="fa fa-check"></i><b>4.1.1</b> 分布函数和生存函数</a></li>
-<li class="chapter" data-level="4.1.2" data-path="riskmea.html"><a href="riskmea.html#矩母函数"><i class="fa fa-check"></i><b>4.1.2</b> 矩母函数</a></li>
-<li class="chapter" data-level="4.1.3" data-path="riskmea.html"><a href="riskmea.html#矩moments"><i class="fa fa-check"></i><b>4.1.3</b> 矩(Moments)</a></li>
-<li class="chapter" data-level="4.1.4" data-path="riskmea.html"><a href="riskmea.html#截断和删失"><i class="fa fa-check"></i><b>4.1.4</b> 截断和删失</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="riskmea.html"><a href="riskmea.html#常用的损失分布"><i class="fa fa-check"></i><b>4.2</b> 常用的损失分布</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="riskmea.html"><a href="riskmea.html#损失次数分布"><i class="fa fa-check"></i><b>4.2.1</b> 损失次数分布</a></li>
-<li class="chapter" data-level="4.2.2" data-path="riskmea.html"><a href="riskmea.html#损失金额分布"><i class="fa fa-check"></i><b>4.2.2</b> 损失金额分布</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="riskmea.html"><a href="riskmea.html#风险度量方法var和tvar"><i class="fa fa-check"></i><b>4.3</b> 风险度量方法（VaR和TVaR）</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="riskmea.html"><a href="riskmea.html#风险度量的一致性要求"><i class="fa fa-check"></i><b>4.3.1</b> 风险度量的一致性要求</a></li>
-<li class="chapter" data-level="4.3.2" data-path="riskmea.html"><a href="riskmea.html#varvalue-at-risk在险价值"><i class="fa fa-check"></i><b>4.3.2</b> VaR（Value-at-Risk，在险价值）</a></li>
-<li class="chapter" data-level="4.3.3" data-path="riskmea.html"><a href="riskmea.html#tvar-tail-value-at-risk尾部在险价值"><i class="fa fa-check"></i><b>4.3.3</b> TVaR （Tail-Value-at-Risk，尾部在险价值）</a></li>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#rmarkdown-简介"><i class="fa fa-check"></i><b>1.4.1</b> Rmarkdown 简介</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lossmodif.html"><a href="lossmodif.html"><i class="fa fa-check"></i><b>5</b> 损失调整</a>
+<li class="chapter" data-level="2" data-path="chp1.html"><a href="chp1.html"><i class="fa fa-check"></i><b>2</b> 保险数据结构与R软件</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="lossmodif.html"><a href="lossmodif.html#免赔额"><i class="fa fa-check"></i><b>5.1</b> 免赔额</a></li>
-<li class="chapter" data-level="5.2" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对赔付金额的影响"><i class="fa fa-check"></i><b>5.2</b> 免赔额对赔付金额的影响</a></li>
-<li class="chapter" data-level="5.3" data-path="lossmodif.html"><a href="lossmodif.html#赔偿限额"><i class="fa fa-check"></i><b>5.3</b> 赔偿限额</a></li>
-<li class="chapter" data-level="5.4" data-path="lossmodif.html"><a href="lossmodif.html#共同保险"><i class="fa fa-check"></i><b>5.4</b> 共同保险</a></li>
-<li class="chapter" data-level="5.5" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对索赔次数的影响"><i class="fa fa-check"></i><b>5.5</b> 免赔额对索赔次数的影响</a></li>
+<li class="chapter" data-level="2.1" data-path="chp1.html"><a href="chp1.html#数据的分类"><i class="fa fa-check"></i><b>2.1</b> 数据的分类</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chp1.html"><a href="chp1.html#型数据"><i class="fa fa-check"></i><b>2.1.1</b> 0-1型数据</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chp1.html"><a href="chp1.html#计数型数据"><i class="fa fa-check"></i><b>2.1.2</b> 计数型数据</a></li>
+<li class="chapter" data-level="2.1.3" data-path="chp1.html"><a href="chp1.html#连续型数据"><i class="fa fa-check"></i><b>2.1.3</b> 连续型数据</a></li>
+<li class="chapter" data-level="2.1.4" data-path="chp1.html"><a href="chp1.html#半连续型数据"><i class="fa fa-check"></i><b>2.1.4</b> 半连续型数据</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chp1.html"><a href="chp1.html#数据的基本属性"><i class="fa fa-check"></i><b>2.2</b> 数据的基本属性</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chp1.html"><a href="chp1.html#分布形态还有什么"><i class="fa fa-check"></i><b>2.2.1</b> 分布形态还有什么？</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chp1.html"><a href="chp1.html#经验密度"><i class="fa fa-check"></i><b>2.2.2</b> 经验密度</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chp1.html"><a href="chp1.html#数据的可视化"><i class="fa fa-check"></i><b>2.3</b> 数据的可视化</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="riskmea.html"><a href="riskmea.html"><i class="fa fa-check"></i><b>3</b> 第五章 风险度量</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="riskmea.html"><a href="riskmea.html#随机变量的基础知识"><i class="fa fa-check"></i><b>3.1</b> 随机变量的基础知识</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="riskmea.html"><a href="riskmea.html#分布函数和生存函数"><i class="fa fa-check"></i><b>3.1.1</b> 分布函数和生存函数</a></li>
+<li class="chapter" data-level="3.1.2" data-path="riskmea.html"><a href="riskmea.html#矩母函数"><i class="fa fa-check"></i><b>3.1.2</b> 矩母函数</a></li>
+<li class="chapter" data-level="3.1.3" data-path="riskmea.html"><a href="riskmea.html#矩moments"><i class="fa fa-check"></i><b>3.1.3</b> 矩(Moments)</a></li>
+<li class="chapter" data-level="3.1.4" data-path="riskmea.html"><a href="riskmea.html#截断和删失"><i class="fa fa-check"></i><b>3.1.4</b> 截断和删失</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="riskmea.html"><a href="riskmea.html#常用的损失分布"><i class="fa fa-check"></i><b>3.2</b> 常用的损失分布</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="riskmea.html"><a href="riskmea.html#损失次数分布"><i class="fa fa-check"></i><b>3.2.1</b> 损失次数分布</a></li>
+<li class="chapter" data-level="3.2.2" data-path="riskmea.html"><a href="riskmea.html#损失金额分布"><i class="fa fa-check"></i><b>3.2.2</b> 损失金额分布</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="riskmea.html"><a href="riskmea.html#风险度量方法var和tvar"><i class="fa fa-check"></i><b>3.3</b> 风险度量方法（VaR和TVaR）</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="riskmea.html"><a href="riskmea.html#风险度量的一致性要求"><i class="fa fa-check"></i><b>3.3.1</b> 风险度量的一致性要求</a></li>
+<li class="chapter" data-level="3.3.2" data-path="riskmea.html"><a href="riskmea.html#varvalue-at-risk在险价值"><i class="fa fa-check"></i><b>3.3.2</b> VaR（Value-at-Risk，在险价值）</a></li>
+<li class="chapter" data-level="3.3.3" data-path="riskmea.html"><a href="riskmea.html#tvar-tail-value-at-risk尾部在险价值"><i class="fa fa-check"></i><b>3.3.3</b> TVaR （Tail-Value-at-Risk，尾部在险价值）</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lossmodif.html"><a href="lossmodif.html"><i class="fa fa-check"></i><b>4</b> 损失调整</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对赔付金额的影响"><i class="fa fa-check"></i><b>4.1</b> 免赔额对赔付金额的影响</a></li>
+<li class="chapter" data-level="4.2" data-path="lossmodif.html"><a href="lossmodif.html#通货膨胀对赔付金额的影响"><i class="fa fa-check"></i><b>4.2</b> 通货膨胀对赔付金额的影响</a></li>
+<li class="chapter" data-level="4.3" data-path="lossmodif.html"><a href="lossmodif.html#赔偿限额对赔付金额的影响"><i class="fa fa-check"></i><b>4.3</b> 赔偿限额对赔付金额的影响</a></li>
+<li class="chapter" data-level="4.4" data-path="lossmodif.html"><a href="lossmodif.html#共同保险对赔付金额的影响"><i class="fa fa-check"></i><b>4.4</b> 共同保险对赔付金额的影响</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html"><a href="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html"><i class="fa fa-check"></i><b>5</b> 明年，每年的通货膨胀率为10%，免赔额为11，保险最多报销11，求明年报销的与今年报销金额的比值。</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html"><a href="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html#免赔额对索赔次数的影响"><i class="fa fa-check"></i><b>5.1</b> 免赔额对索赔次数的影响</a></li>
+<li class="chapter" data-level="5.2" data-path="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html"><a href="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html#课后习题"><i class="fa fa-check"></i><b>5.2</b> 课后习题</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="parest.html"><a href="parest.html"><i class="fa fa-check"></i><b>6</b> 参数估计和统计推断</a>
 <ul>
@@ -182,19 +189,21 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lossmodif" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> 损失调整<a href="lossmodif.html#lossmodif" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="lossmodif" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> 损失调整<a href="lossmodif.html#lossmodif" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>在非寿险精算中，风险实际造成的损失和保险公司的赔款通常是不一致的。赔款可能受到保单条款的影响，主要包括：</p>
 <ul>
-<li>在保险实务中，由于免赔额、赔偿限额、和共同保险等条款的使用，再加上通货膨胀的影响，索赔频率和索赔强度的计算就不是简单的损失次数和损失金额的计算，本章我们讨论免赔额、赔偿限额共同保险和通货膨胀对索赔频率和索赔强度的影响。</li>
+<li>免赔额</li>
+<li>赔偿限额</li>
+<li>共同保险</li>
+<li>通货膨胀</li>
 </ul>
-<div id="免赔额" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> 免赔额<a href="lossmodif.html#免赔额" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>许多保险合同中都规定了免赔额，其目的是提高保单持有人的风险防范意识，同时减少保险公司的小额赔款，降低理赔费用。如果用d表示免赔额，则当损失金额不超过d时，保险公司没有任何赔款支出:而当损失金额超过d时，保险公司的赔款为(x-d)。免赔额的应用对索赔次数和赔付额都会产生影响，下面分别进行分析。</p>
-</div>
-<div id="免赔额对赔付金额的影响" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> 免赔额对赔付金额的影响<a href="lossmodif.html#免赔额对赔付金额的影响" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>如果用x表示保单持有人的损失，用d表示免赔额，用Y表示保险公司的赔款，则对Y可以有下述两种解释:
-一种解释是保险公司对每次损失的赔款包括当保单持有人的损失不超过免赔额d时，保险公司支付的零赔款在内。如果把Y解释为保险公司对每次损失的赔款，则Y就是超额损失随机变量，也可以称作“含零赔款”的随机变量。该随机变量可表示为:</p>
+<p><strong>索赔频率</strong>和<strong>索赔强度</strong>的计算就不是简单的损失次数和损失金额的计算。</p>
+<div id="免赔额对赔付金额的影响" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> 免赔额对赔付金额的影响<a href="lossmodif.html#免赔额对赔付金额的影响" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>许多保险合同中都规定了免赔额，其目的是提高保单持有人的风险防范意识，同时减少保险公司的小额赔款，降低理赔费用。如果用 <span class="math inline">\(d\)</span> 表示免赔额，则当损失金额不超过 <span class="math inline">\(d\)</span> 时，保险公司没有任何赔款支出:而当损失金额超过 <span class="math inline">\(d\)</span> 时，保险公司的赔款为 <span class="math inline">\((x-d)\)</span>。免赔额的应用对索赔次数和赔付额都会产生影响，下面分别进行分析。</p>
+<p>如果用 <span class="math inline">\(x\)</span> 表示保单持有人的损失，用 <span class="math inline">\(d\)</span> 表示免赔额，用 <span class="math inline">\(Y\)</span> 表示保险公司的赔款，则对 <span class="math inline">\(Y\)</span> 可以有下述两种解释:
+一种解释是保险公司对每次损失的赔款包括当保单持有人的损失不超过免赔额 <span class="math inline">\(d\)</span> 时，保险公司支付的零赔款在内。如果把<span class="math inline">\(Y\)</span> 解释为保险公司对每次损失的赔款，则 <span class="math inline">\(Y\)</span> 就是超额损失随机变量，也可以称作“含零赔款”的随机变量。该随机变量可表示为:</p>
 <p><span class="math display">\[
 {{Y}^{L}}={{\left( X-d \right)}_{+}}= 
 \begin{cases}
@@ -202,59 +211,59 @@
  &amp; X-d,\quad X&gt;d .
 \end{cases} 
 \]</span>
-含零赔款的随机变量取零值的概率(即损失不超过免赔额d的概率)为:
+含零赔款的随机变量取零值的概率（即损失不超过免赔额 <span class="math inline">\(d\)</span> 的概率）为:
 <span class="math display">\[
 Pr(Y^L≤0)=Pr(X≤d)= F_x(d)
 \]</span>
-YL的分布函数和密度函数分别为:
+<span class="math inline">\(Y^L\)</span>的分布函数和密度函数分别为:
 <span class="math display">\[
-F_{Y^L}(y)= Pr(Y^L≤y)=Pr(X- d≤y)
-=Pr(X≤y+d)=F_x(y+d)，y&gt;0
+F_{Y^L}(y)= Pr(Y^L≤y)=Pr(X- d≤y)=Pr(X≤y+d)=F_x(y+d)，y&gt;0\]</span>
+<span class="math display">\[
 f_{Y^L}(y)= f_x(y+d)， y&gt;0
 \]</span>
-对赔款随机变量的另一种解释是保险公司发生的非零赔款，或者说是与保险公司的每次支付行为相对应的赔款，不包括当保单持有人的损失不超过免赔额d时，保险公司无须支付的零赔款。如果把Y解释为保险公司每次支付行为所发生的赔款，则Y就是“非零赔款”的随机变量。该随机变量可表示为:
+对赔款随机变量的另一种解释是保险公司发生的“非零赔款”，或者说是与保险公司的每次支付行为相对应的赔款，不包括当保单持有人的损失不超过免赔额 <span class="math inline">\(d\)</span> 时，保险公司无须支付的零赔款。如果把 <span class="math inline">\(Y\)</span> 解释为保险公司每次支付行为所发生的赔款，则 <span class="math inline">\(Y\)</span> 就是“非零赔款”的随机变量。该随机变量可表示为:
 <span class="math display">\[Y^P=X-d | X&gt;d\]</span>
-上式表明，<span class="math inline">\(Y^P\)</span>是一个条件随机变量，只有当X&gt;d时,<span class="math inline">\(Y^P\)</span>才有定义。
-<span class="math inline">\(Y^P\)</span>的分布函数和密度函数分别为:
-$$
-F_{Y<sup>P}(y)=Pr(Y</sup>{P}≤y|X&gt;d)
-=Pr(X-d≤y|X&gt;d)
-=</p>
-<p>=
+上式表明，<span class="math inline">\(Y^P\)</span> 是一个条件随机变量，只有当 <span class="math inline">\(X&gt;d\)</span> 时, <span class="math inline">\(Y^P\)</span> 才有定义。
+<span class="math inline">\(Y^P\)</span> 的分布函数和密度函数分别为:
 <span class="math display">\[
-\]</span>f_{Y^P}(y)=， y&gt;0$$</p>
-<p>定理：当一般免赔额为d时，含零赔款的均值为<span class="math inline">\(E({Y}^{L})=E(X)-E({X}\wedge {d})\)</span>,非零赔款的均值为：
+F_{Y^P}(y)=Pr(Y^{P}≤y|X&gt;d)
+=Pr(X-d≤y|X&gt;d)
+=\frac {Pr(0&lt;X-d≤y)}{Pr(X&gt;d)}
+=\frac{F_x (y+d)-F_x(d) }{1-F_x (d)}， y&gt;0
+\]</span>
+<span class="math display">\[f_{Y^P}(y)=\frac{ f_{x}(y+d)}{1-F_{X}(d)}， y&gt;0\]</span></p>
+<p>定理：当一般免赔额为<span class="math inline">\(d\)</span> 时，含零赔款的均值为<span class="math inline">\(E({Y}^{L})=E(X)-E({X}\wedge {d})\)</span>，非零赔款的均值为：
 <span class="math display">\[
 E(Y^P)=\frac{\mathbb{E}(X)-\mathbb{E}(X\wedge d)}{1-F_{X}(d)}
-\]</span>
-### 通货膨胀对赔付金额的影响</p>
-<p>定理：如果一般免赔额为d，均匀的通货膨胀率为r，则平均含零赔款为：
+\]</span></p>
+</div>
+<div id="通货膨胀对赔付金额的影响" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> 通货膨胀对赔付金额的影响<a href="lossmodif.html#通货膨胀对赔付金额的影响" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>定理：如果一般免赔额为 <span class="math inline">\(d\)</span>，均匀的通货膨胀率为 <span class="math inline">\(r\)</span>，则平均含零赔款为：
 <span class="math display">\[
 E(Y^L)=(1+r)\left\{
 \mathbb{E}(X) - \mathbb{E}(X \wedge \frac{d}{1+r})
 \right\}
 \]</span>
-例：损失服从<span class="math inline">\(\alpha=3,\theta=2000\)</span>的帕累托分布，讨论免赔额为500，通货膨胀率为10%时对损失的影响。</p>
-<p>The expected costs are 640 and 1,250 per loss and per payment,
-respectively. With 10% inflation we need</p>
-<p><span class="math display">\[\begin{align*}
+例：损失服从<span class="math inline">\(\alpha=3,\theta=2000\)</span> 的帕累托分布，讨论免赔额为<span class="math inline">\(500\)</span>，通货膨胀率为 <span class="math inline">\(10%\)</span> 时对损失的影响。</p>
+<p>答案：平均含零赔款为<span class="math inline">\(640\)</span>，平均非零赔款为 <span class="math inline">\(1250\)</span> ，当通货膨胀率为 <span class="math inline">\(10%\)</span> 时：
+<span class="math display">\[
+\begin{align*}
 \mathbb{E}\left(X \wedge \frac{500}{1.1}\right) &amp;= 
-\mathbb{E}(X \wedge 454.55)\\
-&amp;=336.08.
-\end{align*}\]</span></p>
-<p>The expected cost per loss after inflation is <span class="math inline">\(1.1(1,000 - 336.08) = 730.32\)</span>, an increase
-of 14.11%.
-On a per-payment basis we need</p>
-<p><span class="math display">\[
+\mathbb{E}(X \wedge 454.55)=336.08.
+\end{align*}
+\]</span>
+通货膨胀后的平均含零赔款为： <span class="math inline">\(1.1(1,000 - 336.08) = 730.32\)</span>，增加了<span class="math inline">\(14.11%\)</span>。
+<span class="math display">\[
 F_Y(500)=0.459.
 \]</span>
-The expected cost per payment is <span class="math inline">\(730.32/(1 - 0.459) = 1,350\)</span>, an increase of 8%.</p>
+平均非零赔款为： <span class="math inline">\(730.32/(1 - 0.459) = 1,350\)</span>， 增长了 <span class="math inline">\(8%\)</span>。</p>
 </div>
-<div id="赔偿限额" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> 赔偿限额<a href="lossmodif.html#赔偿限额" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>赔偿限额的作用与免赔额正好相反。在免赔额条件下，保险公司对低于免赔额的损失不予赔偿，而在赔偿限额条件下，保险公司对高于赔偿限额的损失不予赔偿。换言之，赔偿限额是保险公司对一次索赔的最大可能赔款。如果赔偿限额为u，则当损失低于u时，保险公司将全部赔偿，而当损失超过u时，保险公司只赔偿u。赔偿限额的作用是生成一个“右删改”随机变量，即将超过u的损失全部修改为u。
-假设x表示实际损失的随机变量，Y表示应用赔偿限额u所生成的随机变量，则Y的分布函数和密度函数分别为:
-<span class="math display">\[
+<div id="赔偿限额对赔付金额的影响" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> 赔偿限额对赔付金额的影响<a href="lossmodif.html#赔偿限额对赔付金额的影响" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>赔偿限额的作用与免赔额正好相反。在免赔额条件下，保险公司对低于免赔额的损失不予赔偿，而在赔偿限额条件下，保险公司对高于赔偿限额的损失不予赔偿。换言之，赔偿限额是保险公司对一次索赔的最大可能赔款。如果赔偿限额为 <span class="math inline">\(u\)</span>，则当损失低于<span class="math inline">\(u\)</span> 时，保险公司将全部赔偿，而当损失超过<span class="math inline">\(u\)</span> 时，保险公司只赔偿 <span class="math inline">\(u\)</span>。赔偿限额的作用是生成一个“右删改”随机变量，即将超过 <span class="math inline">\(u\)</span> 的损失全部修改为 <span class="math inline">\(u\)</span>。
+假设 <span class="math inline">\(x\)</span> 表示实际损失的随机变量，<span class="math inline">\(Y\)</span> 表示应用赔偿限额 <span class="math inline">\(u\)</span> 所生成的随机变量，则 <span class="math inline">\(Y\)</span> 的分布函数和密度函数分别为:</p>
+<p><span class="math display">\[
 F_Y(y)=\begin{cases}
 F_X(y),\quad &amp; y \le u,\\
 1, \quad &amp; y&gt;u,
@@ -266,17 +275,24 @@ f_X(y),\quad &amp; y \le u,\\
 1-F_X(u), \quad &amp; y&gt;u.
 \end{cases}
 \]</span>
-如果赔偿限额为u，均匀的通货膨胀率为r，则保险公司的平均赔款可表示为:
+如果赔偿限额为 <span class="math inline">\(u\)</span>，均匀的通货膨胀率为 <span class="math inline">\(r\)</span>，则保险公司的平均赔款可表示为:
 <span class="math display">\[
 E({Y}\wedge {U})=(1+r)\mathbb{E}[X\wedge \frac{u}{1+r}]
 \]</span></p>
-<p>当绝对免赔额和保单限额同时存在时，情况又如何？</p>
-<p>例：假设某险种的保单规定绝对免赔额为100元，保单赔偿限额为900元。假设损失服 Weibull 分布：</p>
+<p>如果保单的免赔额为 <span class="math inline">\(d\)</span>，赔偿限额为 <span class="math inline">\(u-d\)</span>，则保险公司的赔款为:</p>
+<p><span class="math display">\[
+Y=\begin{cases}
+   0 \ \ \ \ \ &amp;X\le d \\ 
+  X-d,\ \ \ &amp;d&lt;X&lt;u \\ 
+  u-d,\ \ \ \ &amp;X\ge u \\ 
+\end{cases} 
+\]</span>
+例：假设某险种的保单规定绝对免赔额为<span class="math inline">\(100\)</span>元，保单赔偿限额为<span class="math inline">\(900\)</span>元。假设损失服从 <span class="math inline">\(Weibull\)</span> 分布：</p>
 <p><span class="math display">\[
 F(x)=1-{{e}^{- {{{(x/\theta)}}{}^{\tau }}}},x&gt;0,\theta &gt;0,\tau &gt;0
 \]</span></p>
-<p>求理赔额 <span class="math inline">\(Y^P\)</span> 的分布?</p>
-<pre><code>假设 $X$ 表示实际损失额， $Y^P$ 表示理赔额（非零），则有</code></pre>
+<p>求理赔额 <span class="math inline">\(Y^P\)</span> 的分布函数。</p>
+<p>答案：假设 <span class="math inline">\(X\)</span> 表示实际损失额， <span class="math inline">\(Y^P\)</span> 表示理赔额（非零），则有</p>
 <p><span class="math display">\[
 {{Y}^{P}}=\left\{ \begin{matrix}
    \begin{matrix}
@@ -289,9 +305,10 @@ F(x)=1-{{e}^{- {{{(x/\theta)}}{}^{\tau }}}},x&gt;0,\theta &gt;0,\tau &gt;0
    X&gt;1000  \\
 \end{matrix}  \\
 \end{matrix} \right.
-\]</span>
-<span class="math inline">\(Y^P\)</span> 的分布函数为</p>
-<p><span class="math display">\[{{F}_{Y}}(y)=\left\{ \begin{matrix}
+\]</span></p>
+<p><span class="math inline">\(Y^P\)</span> 的分布函数为</p>
+<p><span class="math display">\[
+{{F}_{Y}}(y)=\left\{ \begin{matrix}
    \begin{matrix}
    0,  \\
    \frac{{{F}_{X}}(y+100)-{{F}_{X}}(100)}{1-{{F}_{X}}(100)},  \\
@@ -301,9 +318,11 @@ F(x)=1-{{e}^{- {{{(x/\theta)}}{}^{\tau }}}},x&gt;0,\theta &gt;0,\tau &gt;0
    0&lt;y\le 900  \\
    y\ge 900  \\
 \end{matrix}  \\
-\end{matrix} \right.\]</span></p>
+\end{matrix} \right.
+\]</span></p>
 <p><span class="math inline">\(Y^P\)</span> 的密度函数为</p>
-<p><span class="math display">\[{{f}_{{{Y}^{P}}}}(y)=\left\{ \begin{matrix}
+<p><span class="math display">\[
+{{f}_{{{Y}^{P}}}}(y)=\left\{ \begin{matrix}
    \begin{matrix}
    \frac{{{f}_{X}}(y+100)}{1-{{F}_{X}}(100)}, &amp; \text{   }0\le y&lt;900  \\
 \end{matrix}  \\
@@ -313,91 +332,44 @@ F(x)=1-{{e}^{- {{{(x/\theta)}}{}^{\tau }}}},x&gt;0,\theta &gt;0,\tau &gt;0
    \begin{matrix}
    0,\text{                   } &amp; y&gt;900  \\
 \end{matrix}  \\
-\end{matrix} \right.\text{        }\]</span></p>
-<p>when <span class="math inline">\(y = 900\)</span>,</p>
-<p><span class="math display">\[{{f}_{{{Y}^{p}}}}(900)=\frac{1-{{F}_{X}}(1000)}{1-{{F}_{X}}(100)}=\frac{\exp [-{{(1000/ \theta )}^{\tau }}]}{\exp [-{{(100/ \theta )}^{\tau }}]}\]</span></p>
-<p>when <span class="math inline">\(0\le y&lt;900\)</span>,</p>
-<p><span class="math display">\[{{f}_{{{Y}^{P}}}}(y)=\frac{{{f}_{X}}(y+100)}{1-{{F}_{X}}(100)}=\frac{{{(1/\theta) }^{\tau }}\tau {{(y+100)}^{\tau -1}}\exp [-{{(1/\theta) }^{\tau }}{{(y+100)}^{\tau }}]}{\exp [-{{(100/ \theta )}^{\tau }}]}\]</span></p>
+\end{matrix} \right.\text{        }
+\]</span></p>
+<p>当<span class="math inline">\(y = 900\)</span>时，</p>
+<p><span class="math display">\[
+{{f}_{{{Y}^{p}}}}(900)=\frac{1-{{F}_{X}}(1000)}{1-{{F}_{X}}(100)}=\frac{\exp [-{{(1000/ \theta )}^{\tau }}]}{\exp [-{{(100/ \theta )}^{\tau }}]}
+\]</span></p>
+<p>当<span class="math inline">\(0\le y&lt;900\)</span>时，</p>
+<p><span class="math display">\[
+{{f}_{{{Y}^{P}}}}(y)=\frac{{{f}_{X}}(y+100)}{1-{{F}_{X}}(100)}=\frac{{{(1/\theta) }^{\tau }}\tau {{(y+100)}^{\tau -1}}\exp [-{{(1/\theta) }^{\tau }}{{(y+100)}^{\tau }}]}{\exp [-{{(100/ \theta )}^{\tau }}]}
+\]</span></p>
 </div>
-<div id="共同保险" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> 共同保险<a href="lossmodif.html#共同保险" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>共同保险是指对每一次损失，保险公司只赔偿一定的比例，如<span class="math inline">\(100\alpha%\)</span>，而保单持有人自负剩余的损失。如果保险合同中只规定了共同保险，则保险公司的赔款随机变量可以表示为<span class="math inline">\(Y=\alpha X\)</span>,其中X为保单持有人的实际损失，在这种情况下，保险公司的平均赔款为<span class="math inline">\(E(Y)=\alpha E(X)\)</span>。</p>
-<p>下面讨论一种更加具有一般性的随机变量，即实际损失X经通货膨胀(r)、赔偿限额（u）、一般免赔额（d）和共同保险（<span class="math inline">\(\alpha\)</span>）调整后保险公司的赔款随机变量。此时，保险公司的含零赔款<span class="math inline">\(Y^L\)</span>可以表示为下述的随机变量:
+<div id="共同保险对赔付金额的影响" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> 共同保险对赔付金额的影响<a href="lossmodif.html#共同保险对赔付金额的影响" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>共同保险是指对每一次损失，保险公司只赔偿一定的比例，如<span class="math inline">\(100\alpha%\)</span>，而保单持有人自负剩余的损失。如果保险合同中只规定了共同保险，则保险公司的赔款随机变量可以表示为<span class="math inline">\(Y=\alpha X\)</span>,其中 <span class="math inline">\(X\)</span> 为保单持有人的实际损失，在这种情况下，保险公司的平均赔款为<span class="math inline">\(E(Y)=\alpha E(X)\)</span>。</p>
+<p>下面讨论一种更加具有一般性的随机变量，即实际损失<span class="math inline">\(X\)</span> 经通货膨胀 <span class="math inline">\((r)\)</span>、赔偿限额 <span class="math inline">\(（u）\)</span>、一般免赔额 <span class="math inline">\(（d）\)</span> 和共同保险 <span class="math inline">\(（\alpha）\)</span> 调整后保险公司的赔款随机变量。此时，保险公司的含零赔款 <span class="math inline">\(Y^L\)</span> 可以表示为下述的随机变量:
 <span class="math display">\[
 Y^L=\begin{cases}
-0,\quad &amp; X&lt;\frac{d}{1+r},\\
-\alpha[(1+r)X-d], \quad &amp; \frac{d}{1+r}\le X &lt; \frac{u}{1+r},\\
-\alpha(u-d),\quad &amp; X \ge \frac{u}{1+r}.
+0，\quad &amp; X&lt;\frac{d}{1+r}\\
+\alpha[(1+r)X-d]， \quad &amp; \frac{d}{1+r}\le X &lt; \frac{u}{1+r}\\
+\alpha(u-d)，\quad &amp; X \ge \frac{u}{1+r}
 \end{cases}
 \]</span>
-在上述定义中，假设对实际损失的调整是按照一个特定顺序进行的，即首先进行通货膨胀调整，再使用赔偿限额，然后应用免赔额，最后才是共同保险。由于赔偿限额在免赔额之前应用，所以，保险公司的最大可能赔款为α(u-d)。如果用<span class="math inline">\(Y^P\)</span>表示保险公司的非零赔款随机变量，则当<span class="math inline">\(X &lt; \frac{d}{1+r}\)</span>时，<span class="math inline">\(Y^P\)</span>没有定义。
-可以证明，当实际损失X按照通货膨胀(r)、赔偿限额(u)、一般免赔额(d)和共同保险(α)
-的顺序调整以后，其含零赔款<span class="math inline">\(Y^L\)</span>的均值为:
+在上述定义中，假设对实际损失的调整是按照一个特定顺序进行的，即首先进行通货膨胀调整，再使用赔偿限额，然后应用免赔额，最后才是共同保险。由于赔偿限额在免赔额之前应用，所以，保险公司的最大可能赔款为<span class="math inline">\(\alpha(u-d)\)</span>。如果用 <span class="math inline">\(Y^P\)</span> 表示保险公司的非零赔款随机变量，则当 <span class="math inline">\(X &lt; \frac{d}{1+r}\)</span> 时，<span class="math inline">\(Y^P\)</span> 没有定义。
+可以证明，当实际损失X按照通货膨胀 <span class="math inline">\((r)\)</span>、赔偿限额 <span class="math inline">\((u)\)</span>、一般免赔额 <span class="math inline">\((d)\)</span> 和共同保险 <span class="math inline">\((α)\)</span> 的顺序调整以后，其含零赔款 <span class="math inline">\(Y^L\)</span> 的均值为:
 <span class="math display">\[
 \mathbb{E}(Y^L)=\alpha(1+r)\left[
 \mathbb{E}\left(X \wedge \frac{u}{1+r}\right)-
 \mathbb{E}\left(X \wedge \frac{d}{1+r}\right)
-\right].
+\right]
 \]</span>
-对于非零赔款<span class="math inline">\(Y^P\)</span>，其均值为：
+对于非零赔款 <span class="math inline">\(Y^P\)</span>，其均值为：
 <span class="math display">\[
-\mathbb{E}(Y^p) = \frac{\mathbb{E}(Y^L)}{1-F_X\left(\frac{d}{1+r} \right)}.
+\mathbb{E}(Y^p) = \frac{\mathbb{E}(Y^L)}{1-F_X\left(\frac{d}{1+r} \right)}
 \]</span></p>
-<p>例：Losses this year have a distribution such that
+<p>例：今年，当 <span class="math inline">\(d = 10,11,12,.. .,26\)</span> 时，损失分布服从 ：
 <span class="math display">\[
 \mathbb{E}[X\wedge d]=-0.025d^2+1.475d-2.25
 \]</span></p>
-<p>for <span class="math inline">\(d = 10,11,12,.. .,26\)</span>.</p>
-<p>Next year, losses will be uniformly higher by 10%. An
-insurance policy reimburses 100% of losses subject to a deductible of 11 up to a maximum
-reimbursement of 11.</p>
-<p>Determine the ratio of next year’s reimbursements to this year’s
-reimbursements.</p>
-<p>The quantity we seek is</p>
-<p><span class="math display">\[
-\frac{1.1[\mathbb{E}[X\wedge 22/1.1]-\mathbb{E}[X\wedge 11/1.1]]}{\mathbb{E}[X\wedge 22]-\mathbb{E}[X\wedge 11]}
-=1.115.
-\]</span></p>
-</div>
-<div id="免赔额对索赔次数的影响" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> 免赔额对索赔次数的影响<a href="lossmodif.html#免赔额对索赔次数的影响" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>在前面的讨论中，我们用N表示实际发生的损失次数。现在考虑增加免赔额d以后，保单持有人的索赔次数N*。假设增加免赔额不会影响损失发生的过程。
-显然，对于任何一次实际发生的损失X，只有当它大于免赔额d时，保单持有人才会提出索赔。因此保单持有人提出索赔的概率(也是保险公司发生赔付的概率)为:
-<span class="math display">\[\upsilon=Pr(X&gt;d)\]</span>
-如果用<span class="math inline">\(I_j = 1\)</span>表示第j次损失导致了索赔，用<span class="math inline">\(I_j=0\)</span>表示第j次损失没有导致索赔，则<span class="math inline">\(I_j\)</span>就是服从参数为<span class="math inline">\(\upsilon\)</span>的贝努利分布，而索赔次数<span class="math inline">\(N^*\)</span>可以表示为:
-<span class="math display">\[N^*=I_1+...+I_N\]</span>
-如果假设<span class="math inline">\(I_j\)</span>相互独立，同时与N也相互独立，则<span class="math inline">\(N^*\)</span>是一个复合分布，其中首分布就是损失次数N的分布，而次分布是参数为<span class="math inline">\(\upsilon\)</span>的贝努利分布。因此
-<span class="math display">\[P_{N^*}(z)=P_N[1+\upsilon (z-1)]\]</span>
-可以证明，增加免赔额以后,(a,b,0)分布类和(a,b,1)都能保持其原来的形式不变，只是其参数的取值发生了变化。</p>
-<p>例1:若损失次数是泊松 <span class="math inline">\(\lambda\)</span>，则索赔次数也是泊松 <span class="math inline">\(v\lambda\)</span></p>
-<ul>
-<li><p>损失次数：
-<span class="math display">\[
-P_{N^L}(z)=\exp[\textcolor{red}{\lambda}\textcolor{blue}{(z-1)}]
-\]</span></p></li>
-<li><p>索赔次数</p></li>
-</ul>
-<p><span class="math display">\[\begin{align*}
-P_{N^P}(z)&amp;=\exp[\textcolor{red}{v\lambda}(z-1)]\\
-&amp;=P_{N^L}[1+v(z-1)]\\
-&amp;=\exp[\lambda(1+ v(z-1)-1)]\\
-&amp;=\exp[\textcolor{red}{v\lambda}\textcolor{blue}{(z-1)}].
-\end{align*}\]</span></p>
-<p>例2:如果损失次数 <span class="math inline">\(N^L\)</span> 服从负二项分布，参数为 <span class="math inline">\((r,\beta)\)</span>：</p>
-<p><span class="math display">\[
-P_{N^L}(z)=[1-\textcolor{red}{\beta}\textcolor{blue}{(z-1)}]^{-r}.
-\]</span></p>
-<p>索赔次数 <span class="math inline">\(N^P\)</span> 仍然服从负二项分布，参数为<span class="math inline">\((r,v\beta)\)</span>：</p>
-<p><span class="math display">\[\begin{align*}
-P_{N^P}(z)&amp;=P_{N^L}[1+v(z-1)]\\
-&amp;=[1-\beta(1+v(z-1)-1)]^{-r}\\
-&amp;=[1-\textcolor{red}{v\beta}\textcolor{blue}{(z-1)}]^{-r}.
-\end{align*}\]</span></p>
-<p>以下是常见的有关索赔次数的分布在增加免赔额后其参数取值发生的变化:
-1.损失次数服从泊松分布（λ），则索赔次数也服从泊松分布（<span class="math inline">\(\upsilon λ\)</span>）;
-2.损失次数服从负二项分布<span class="math inline">\(（r,\beta）\)</span>,则索赔次数服从负二项分布<span class="math inline">\((r,\upsilon\beta）\)</span>；
-3.损失次数服从二项分布（m,q）,则索赔次数服从负二项分布<span class="math inline">\((m,\upsilon q)\)</span></p>
-
 </div>
 </div>
             </section>
@@ -406,7 +378,7 @@ P_{N^P}(z)&amp;=P_{N^L}[1+v(z-1)]\\
         </div>
       </div>
 <a href="riskmea.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="parest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | 非寿险精算学</title>
+  <title>Chapter 5 明年，每年的通货膨胀率为10%，免赔额为11，保险最多报销11，求明年报销的与今年报销金额的比值。 | 非寿险精算学</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | 非寿险精算学" />
+  <meta property="og:title" content="Chapter 5 明年，每年的通货膨胀率为10%，免赔额为11，保险最多报销11，求明年报销的与今年报销金额的比值。 | 非寿险精算学" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | 非寿险精算学" />
+  <meta name="twitter:title" content="Chapter 5 明年，每年的通货膨胀率为10%，免赔额为11，保险最多报销11，求明年报销的与今年报销金额的比值。 | 非寿险精算学" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="lossmodif.html"/>
+<link rel="next" href="parest.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -189,19 +189,174 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> 明年，每年的通货膨胀率为10%，免赔额为11，保险最多报销11，求明年报销的与今年报销金额的比值。<a href="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html#明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>for <span class="math inline">\(d = 10,11,12,.. .,26\)</span>.</p>
+<p>Next year, losses will be uniformly higher by 10%. An
+insurance policy reimburses 100% of losses subject to a deductible of 11 up to a maximum
+reimbursement of 11.</p>
+<p>Determine the ratio of next year’s reimbursements to this year’s
+reimbursements.</p>
+<p>The quantity we seek is</p>
+<p>答案：
+<span class="math display">\[
+\frac{1.1[\mathbb{E}[X\wedge 22/1.1]-\mathbb{E}[X\wedge 11/1.1]]}{\mathbb{E}[X\wedge 22]-\mathbb{E}[X\wedge 11]}
+=1.115
+\]</span></p>
+<div id="免赔额对索赔次数的影响" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> 免赔额对索赔次数的影响<a href="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html#免赔额对索赔次数的影响" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在前面的讨论中，我们用 <span class="math inline">\(N\)</span> 表示实际发生的损失次数。现在考虑增加免赔额<span class="math inline">\(d\)</span> 以后，保单持有人的索赔次数 <span class="math inline">\(N^*\)</span>。假设增加免赔额不会影响损失发生的过程。
+显然，对于任何一次实际发生的损失 <span class="math inline">\(X\)</span>，只有当它大于免赔额 <span class="math inline">\(d\)</span> 时，保单持有人才会提出索赔。因此保单持有人提出索赔的概率(也是保险公司发生赔付的概率)为:
+=======
+在前面的讨论中，我们用N表示实际发生的损失次数。现在考虑增加免赔额d以后，保单持有人的索赔次数N*。假设增加免赔额不会影响损失发生的过程。
+显然，对于任何一次实际发生的损失X，只有当它大于免赔额d时，保单持有人才会提出索赔。因此保单持有人提出索赔的概率(也是保险公司发生赔付的概率)为:</p>
+<p><span class="math display">\[\upsilon=Pr(X&gt;d)\]</span>
+如果用 <span class="math inline">\(I_j = 1\)</span> 表示第j次损失导致了索赔，用 <span class="math inline">\(I_j=0\)</span> 表示第<span class="math inline">\(j\)</span> 次损失没有导致索赔，则<span class="math inline">\(I_j\)</span>就是服从参数为 <span class="math inline">\(\upsilon\)</span> 的贝努利分布，而索赔次数<span class="math inline">\(N^*\)</span>可以表示为:
+<span class="math display">\[N^*=I_1+...+I_N\]</span>
+如果假设<span class="math inline">\(I_j\)</span>相互独立，同时与<span class="math inline">\(N\)</span> 也相互独立，则<span class="math inline">\(N^*\)</span> 是一个复合分布，其中首分布就是损失次数<span class="math inline">\(N\)</span> 的分布，而次分布是参数为<span class="math inline">\(\upsilon\)</span> 的贝努利分布。因此
+<span class="math display">\[P_{N^*}(z)=P_N[1+\upsilon (z-1)]\]</span>
+可以证明，增加免赔额以后,<span class="math inline">\((a,b,0)\)</span> 分布类和<span class="math inline">\((a,b,1)\)</span> 都能保持其原来的形式不变，只是其参数的取值发生了变化。</p>
+<p>例1:
+证明：若损失次数是泊松 <span class="math inline">\(\lambda\)</span>，则索赔次数也是泊松 <span class="math inline">\(v\lambda\)</span>。</p>
+<p>答案：
+损失次数：
+<span class="math display">\[
+P_{N^L}(z)=\exp[{\lambda}{(z-1)}]
+\]</span></p>
+<p>索赔次数:
+<span class="math display">\[
+\begin{align*}
+P_{N^P}(z)&amp;=\exp[{v\lambda}(z-1)]\\
+&amp;=P_{N^L}[1+v(z-1)]\\
+&amp;=\exp[\lambda(1+ v(z-1)-1)]\\
+&amp;=\exp[{v\lambda}{(z-1)}]
+\end{align*}
+\]</span></p>
+<p>例2:
+证明：如果损失次数 <span class="math inline">\(N^L\)</span> 服从负二项分布，参数为 <span class="math inline">\((r,\beta)\)</span>。</p>
+<p>答案：
+<span class="math display">\[
+P_{N^L}(z)=[1-{\beta}{(z-1)}]^{-r}
+\]</span></p>
+<p>索赔次数 <span class="math inline">\(N^P\)</span> 仍然服从负二项分布，参数为<span class="math inline">\((r,v\beta)\)</span>：
+<span class="math display">\[
+\begin{align*}
+P_{N^P}(z)&amp;=P_{N^L}[1+v(z-1)]\\
+&amp;=[1-\beta(1+v(z-1)-1)]^{-r}\\
+&amp;=[1-{v\beta}{(z-1)}]^{-r}
+\end{align*}
+\]</span></p>
+<p>以下是<span class="math inline">\((a,b,0)\)</span>分布的索赔次数在增加免赔额后其对应参数取值发生的变化:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(N^L\)</span></th>
+<th align="center">母函数</th>
+<th align="center"><span class="math inline">\(N^P\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">泊松(<span class="math inline">\(\lambda\)</span>)</td>
+<td align="center"><span class="math inline">\(exp[\lambda (z-1)]\)</span></td>
+<td align="center"><span class="math inline">\(\lambda ^*=v\lambda\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">二项(<span class="math inline">\(m,q\)</span>)</td>
+<td align="center"><span class="math inline">\({[1+q(z-1)]}^m\)</span></td>
+<td align="center"><span class="math inline">\(m^*=m,q^*=vq\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">负二项(<span class="math inline">\(r,\beta\)</span>)</td>
+<td align="center"><span class="math inline">\({[1-\beta (z-1)]}^{-r}\)</span></td>
+<td align="center"><span class="math inline">\(r^*=r,\beta ^*=v\beta\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>例3:<br />
+损失金额服从帕累托分布，参数为<span class="math inline">\(\alpha=3，\theta=1000\)</span>，损失次数服从负二项分布，参数为<span class="math inline">\(r=2，\beta=3\)</span>，求免赔额为250时损失次数服从的分布及参数。</p>
+<p>答案：
+<span class="math inline">\(N^p\)</span> 一定服从负二项分布，对应参数为 <span class="math inline">\(r^* =r\)</span> ，<span class="math inline">\(\beta^* = v\beta\)</span>。</p>
+<p>其中：
+<span class="math display">\[
+v = 1-F(250)=0.512,
+\]</span>
+即<span class="math inline">\(r^* =2\)</span>，<span class="math inline">\(\beta^* = 1.536\)</span>。</p>
+</div>
+<div id="课后习题" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> 课后习题<a href="明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值.html#课后习题" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>某家公司购买了一份商业保险，财产保险的限额为70000，某次事故发生时财产的实际价值为100000，该保险的共同保险为80%，免赔额为200，免赔额优先于共同保险和限额考虑，实际损失为20000，求此次损失中保险公司的赔款。</p></li>
+<li><p>1993年，损失的概率密度函数为<span class="math inline">\(f(x)=e^x,x&gt;0\)</span>，1993年至1994年的通货膨胀率为5%，每年的赔偿限额为1，在考虑限额的情况下，求1993年至1994年的通货膨胀率。</p></li>
+<li><p>假设损失服从<span class="math inline">\(\sigma\)</span>=2.5, <span class="math inline">\(\theta\)</span>=1000的单参数帕累托分布，赔偿限额为5000，求平均含零赔款。</p></li>
+<li><p>损失的分布函数为：
+<span class="math display">\[
+F(x)=1-0.8e^{-0.02x}-0.2e^{-0.001x},x\ge0
+\]</span>
+每次损失的赔偿限额为1000，求赔款的期望。</p></li>
+<li><p>已知：
+1）<span class="math inline">\(E(X\wedge x)\)</span>= 500-1000000/x ，x &gt; 2000；
+2）赔偿限额为10000；
+3）通货膨胀率为25%。
+求通货膨胀后的期望赔款和通货膨胀前的期望赔款的比率。</p></li>
+<li><p>损失的概率密度函数为：
+<span class="math display">\[f_{x}(x) = 0.02x , 0 &lt; x &lt; 10\]</span>
+当免赔额为4时求平均非零赔款。</p></li>
+<li><p>损失的概率密度函数为：<span class="math inline">\(f(x)=2x,0&lt;x&lt;1\)</span>，当免赔额为<span class="math inline">\(d\)</span>时，索赔金额小于0.5的概率为0.64，求<span class="math inline">\(d\)</span>的值，其中<span class="math inline">\(0&lt;d&lt;1\)</span>。</p></li>
+<li><p>已知如下的损失相关的数据：</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">损失金额</th>
+<th align="center">损失次数</th>
+<th align="center">总损失金额</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0-99</td>
+<td align="center">1100</td>
+<td align="center">58,500</td>
+</tr>
+<tr class="even">
+<td align="center">100-247</td>
+<td align="center">400</td>
+<td align="center">70,000</td>
+</tr>
+<tr class="odd">
+<td align="center">250-499</td>
+<td align="center">300</td>
+<td align="center">120,000</td>
+</tr>
+<tr class="even">
+<td align="center">500-999</td>
+<td align="center">200</td>
+<td align="center">150,000</td>
+</tr>
+<tr class="odd">
+<td align="center">&gt;999</td>
+<td align="center">100</td>
+<td align="center">200,000</td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center">2100</td>
+<td align="center">598,500</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<p>计算当免赔额从100变成250时，损失减少了多少百分比。</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="lossmodif.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="parest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -232,7 +387,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/%s",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-loss-modification.Rmd",
 "text": "Edit"
 },
 "history": {
