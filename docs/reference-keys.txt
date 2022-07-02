@@ -76,3 +76,6 @@ rmarkdown-简介
 明年每年的通货膨胀率为10免赔额为11保险最多报销11求明年报销的与今年报销金额的比值
 习题
 课后习题
+概率母函数矩母函数
+左截断left-truncated和平移shifted变量
+左截断left-truncated和平移shifted
