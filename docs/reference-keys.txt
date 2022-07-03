@@ -79,3 +79,6 @@ rmarkdown-简介
 概率母函数矩母函数
 左截断left-truncated和平移shifted变量
 左截断left-truncated和平移shifted
+左删失left-censored和平移shifted
+右删失right-censored
+r代码

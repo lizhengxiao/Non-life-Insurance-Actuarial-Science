@@ -154,7 +154,11 @@ $$
 
 - 这种不一致性通常运用**截断**和**删失**的方法进行处理。
 
-- 假设随机变量 $X$ 表示原始的损失，其数学期望可以表示为： $$\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}$$
+假设随机变量 $X$ 表示原始的损失，其数学期望可以表示为： $$\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}$$
+
+
+![](picture/Expected.png)
+
 
 ### 左截断（left truncated）和平移（shifted）
 
@@ -173,55 +177,48 @@ $$
   
   -   $Y^p$ 左截断之后向左平移得到的，因此在截断基础上减少了 $d$
 
-- $Y^p=X-d|X>d$ 的期望值表示：
 
+> 定义：随机变量 $Y^p$ 的数学期望称之为 **平均超额损失函数**：
 $$
-e_X(d)=e(d)=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X>d)
-$$ 其中，$e_X(d)$ 也被称之为 **平均超额损失函数**。
-
-
-
-当$X$是一个索赔金额变量，平均超额损失是已发生的超过免赔额$d$的期望索赔金额
-
-当$X$是死亡年龄,平均超额损失是已知一个人在年龄$d$存货时的期望余寿。
-
-超额损失变量的$k$阶矩定义如下：
-
+e_X(d):=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X>d)
 $$
-\begin{align*}
+
+- 当 $X$ 表示保险事故造成的损失金额，$d$表示保险免赔额时，则平均超额损失表示已发生的超过免赔额 $d$ 的期望索赔金额
+
+- 当 $X$ 是死亡年龄，平均超额损失表示为已知某人在年龄 $d$ 存活的情况下的期望预期寿命
+
+> 定义：超额损失变量的 $k$ 阶矩表示为：
+$$
 e_{X}^k(d)
-&=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)}, \quad \text{连续}, \\
-{e}_{X}^k(d)&=\frac{\sum_{x_j>d}(x_j-d)^k p(x_j)dx}{1-F(d)},
-\quad \text{离散}
-.
-\end{align*}
+=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)},
 $$
-
-一阶矩：平均超额损失函数 当$k=1$ $$
+其中，当 $k=1$ 时，平均超额损失函数表示为
+$$
 {{e}_{X}}(d)=\mathbb{E}\left( X-d|X>d \right)=\frac{\int_{d}^{\infty }{{S}(x)dx}}{S(d)}.
-$$ 证明： $$
+$$ 
+
+> 证明： 
+$$
 \begin{align*}
 {{e}_{X}}(d)&=\frac{\int_{d}^{\infty }{(x-d)f(x)dx}}{1-F(d)}\\
 &=\frac{-(x-d)S(x)|_{d}^{\infty }+\int_{d}^{\infty }{S(x)dx}}{S(d)}\\
 &=\frac{\int_{d}^{\infty }{S(x)dx}}{S(d)}.
 \end{align*}
 $$
-
-证明$(x-d)S(x)|_{d}^{\infty }=0$
-
+> 下面证明 $(x-d)S(x)|_{d}^{\infty }=0$
 $$
 \begin{align*}
   & \underset{x\to \infty }{\mathop{\lim }}\,xS(x)=\underset{x\to \infty }{\mathop{\lim }}\,x\int\limits_{x}^{\infty }{f(t)dt} \\ 
  & =\underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{xf(t)dt} \\ 
  & \le \underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{tf(t)dt} \\ 
- & =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0  
+ & =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0
 \end{align*}
 $$
 
-(2)左删失（left censored）和平移（shifted）变量
 
-**左删失平移**变量是
+### 左删失（left censored）和平移（shifted）
 
+> **左删失平移** 变量定义为：
 $$
 {{Y}^{L}}={{\left( X-d \right)}_{+}}= 
 \begin{cases}
@@ -230,49 +227,43 @@ $$
 \end{cases} 
 $$
 
--   它是左删失的因为所有小于$d$的值并非是被忽略了而是被设定为0。
--   它是平移的因为剩余值都被减掉了$d$。
+-   左删失表示随机变量 $X<d$ 的取值都替换为 $d$ 
 
-$k$阶矩计算如下：
+-   平移表示将左删失的变量向左进行平移变化，使得左删失变量减去 $d$
 
+
+> ${Y}^{L}$ 的 $k$阶矩表示为：
 $$
-\mathbb{E}[(X-d)_{+}^k]=
-\begin{cases}
-&{\int_{d}^{\infty}(x-d)^kf(x)dx}, \quad \text{连续}, \\
-&{\sum_{x_j>d}(x_j-d)^k p(x_j)dx},
-\quad \text{离散}
-\end{cases}
+\mathbb{E}[(X-d)_{+}^k]={\int_{d}^{\infty}(x-d)^kf(x)dx}
 $$
 
--   $Y^L$ versus $Y^P$
+$Y^L$ 和 $Y^P$ 的比较：
 
-对于索赔事件，
+  - 假设 $X$ 表示损失，则 $Y^L$ 和 $Y^P$ 都表示赔款
+  
+  - $Y^L$ 是含零赔款（per loss），即当保险事故造成的损失没有产生赔款的时候， $Y^L=0$
+  
+  - $Y^P$ 是非零赔款（per payment），即当保险事故造成的损失没有产生赔款的时候， $\Pr(Y^p=0)=0$
 
-$Y^L$ 是含零赔款（per loss） $Y^P$ 是非零赔款（per payment）
+  - 数学期望存在下述关系：
+  
+    $$\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F_X(d)]=\int_{d}^{\infty}S(x)dx$$
+    ![](picture/YL.png){width="450"}
 
-含零赔款是当一个损失没有产生赔款时，给它赋予0值。
+### 右删失（right censored）
 
-$$\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F(d)]=\int_{d}^{\infty}S(x)dx$$
-
-（3）右删失（right censored）变量
-
-**有限损失** (limited loss variable) 定义为：
-
+> 定义：**右删失**变量表示为：
 $$
 Y=X\wedge u=\min (X,u)=\begin{cases}
   & X,\ \ \ X<u \\ 
  & u,\ \ \ \ X\ge u \\ 
 \end{cases}
 $$
+其中，$Y$ 也被称之为**有限损失** (limited loss variable)。
 
-其期望值, $E(X\wedge u)$,被叫做**有限期望** (limited expected value)。
+-   右删失表示随机变量 $X>u$ 的所有取值都用 $u$ 代替
 
-这类变量也可以被称为**右删失**变量。
-
--   它是右删失的因为所有大于$u$都被设定为等于 $u$。
-
-**有限期望** (Limited expected value)定义如下：
-
+> 定义：$Y$ 的数学期望 $E(X\wedge u)$ 称之为**有限期望** (limited expected value)，具体表示为：
 $$
 \begin{align*}
   E(X\wedge u)& =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\ 
@@ -314,7 +305,7 @@ $$E[X] = E[X \wedge 100 ] + e(100)(1 - F(100))$$
 $$331 = 91 + e(100)(1 - 0.2)$$
 $$e(100)=\frac{240}{0.8}=300$$
 
-例：R代码
+### R代码
 
 假设随机变量 $X\sim \text{Gamma}(\alpha = 2, \theta = 100)$，其中期望为 200。
 

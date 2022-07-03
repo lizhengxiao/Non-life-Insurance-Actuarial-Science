@@ -170,6 +170,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="riskmea.html"><a href="riskmea.html#截断和删失"><i class="fa fa-check"></i><b>3.4</b> 截断和删失<span></span></a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="riskmea.html"><a href="riskmea.html#左截断left-truncated和平移shifted"><i class="fa fa-check"></i><b>3.4.1</b> 左截断（left truncated）和平移（shifted）<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="riskmea.html"><a href="riskmea.html#左删失left-censored和平移shifted"><i class="fa fa-check"></i><b>3.4.2</b> 左删失（left censored）和平移（shifted）<span></span></a></li>
+<li class="chapter" data-level="3.4.3" data-path="riskmea.html"><a href="riskmea.html#右删失right-censored"><i class="fa fa-check"></i><b>3.4.3</b> 右删失（right censored）<span></span></a></li>
+<li class="chapter" data-level="3.4.4" data-path="riskmea.html"><a href="riskmea.html#r代码"><i class="fa fa-check"></i><b>3.4.4</b> R代码<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="riskmea.html"><a href="riskmea.html#常用的损失分布"><i class="fa fa-check"></i><b>3.5</b> 常用的损失分布<span></span></a>
 <ul>
@@ -390,8 +393,9 @@ P(N=1)=\frac{P_N^{(1)}(0)}{1!}\]</span> <span class="math display">\[P(N=k)=\fra
 <li><p>保险中的索赔通常指保险人给被保险人的赔款</p></li>
 <li><p>由于不同的保险产品通常存在免赔额和赔偿限额的情况，使得保险的损失和索赔的随机性通常是不一致的</p></li>
 <li><p>这种不一致性通常运用<strong>截断</strong>和<strong>删失</strong>的方法进行处理。</p></li>
-<li><p>假设随机变量 <span class="math inline">\(X\)</span> 表示原始的损失，其数学期望可以表示为： <span class="math display">\[\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}\]</span></p></li>
 </ul>
+<p>假设随机变量 <span class="math inline">\(X\)</span> 表示原始的损失，其数学期望可以表示为： <span class="math display">\[\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}\]</span></p>
+<p><img src="picture/expected.png" /></p>
 <div id="左截断left-truncated和平移shifted" class="section level3 hasAnchor" number="3.4.1">
 <h3><span class="header-section-number">3.4.1</span> 左截断（left truncated）和平移（shifted）<a href="riskmea.html#左截断left-truncated和平移shifted" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <blockquote>
@@ -410,91 +414,105 @@ X - d, \quad X&gt; d
 <li><p><span class="math inline">\(Y^p\)</span> 是 <span class="math inline">\(X\)</span> 在 <span class="math inline">\(d\)</span> 处左截断得到的，原因在于任意 <span class="math inline">\(X\)</span> 小于 <span class="math inline">\(d\)</span> 的值都是无法观测到</p></li>
 <li><p><span class="math inline">\(Y^p\)</span> 左截断之后向左平移得到的，因此在截断基础上减少了 <span class="math inline">\(d\)</span></p></li>
 </ul></li>
-<li><p><span class="math inline">\(Y^p=X-d|X&gt;d\)</span> 的期望值表示：</p></li>
 </ul>
-<p><span class="math display">\[
-e_X(d)=e(d)=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X&gt;d)
-\]</span> 其中，<span class="math inline">\(e_X(d)\)</span> 也被称之为 <strong>平均超额损失函数</strong>。</p>
-<p>当<span class="math inline">\(X\)</span>是一个索赔金额变量，平均超额损失是已发生的超过免赔额<span class="math inline">\(d\)</span>的期望索赔金额</p>
-<p>当<span class="math inline">\(X\)</span>是死亡年龄,平均超额损失是已知一个人在年龄<span class="math inline">\(d\)</span>存货时的期望余寿。</p>
-<p>超额损失变量的<span class="math inline">\(k\)</span>阶矩定义如下：</p>
-<p><span class="math display">\[
-\begin{align*}
-e_{X}^k(d)
-&amp;=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)}, \quad \text{连续}, \\
-{e}_{X}^k(d)&amp;=\frac{\sum_{x_j&gt;d}(x_j-d)^k p(x_j)dx}{1-F(d)},
-\quad \text{离散}
-.
-\end{align*}
+<blockquote>
+<p>定义：随机变量 <span class="math inline">\(Y^p\)</span> 的数学期望称之为 <strong>平均超额损失函数</strong>：
+<span class="math display">\[
+e_X(d):=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X&gt;d)
 \]</span></p>
-<p>一阶矩：平均超额损失函数 当<span class="math inline">\(k=1\)</span> <span class="math display">\[
+</blockquote>
+<ul>
+<li><p>当 <span class="math inline">\(X\)</span> 表示保险事故造成的损失金额，<span class="math inline">\(d\)</span>表示保险免赔额时，则平均超额损失表示已发生的超过免赔额 <span class="math inline">\(d\)</span> 的期望索赔金额</p></li>
+<li><p>当 <span class="math inline">\(X\)</span> 是死亡年龄，平均超额损失表示为已知某人在年龄 <span class="math inline">\(d\)</span> 存活的情况下的期望预期寿命</p></li>
+</ul>
+<blockquote>
+<p>定义：超额损失变量的 <span class="math inline">\(k\)</span> 阶矩表示为：
+<span class="math display">\[
+e_{X}^k(d)
+=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)},
+\]</span>
+其中，当 <span class="math inline">\(k=1\)</span> 时，平均超额损失函数表示为
+<span class="math display">\[
 {{e}_{X}}(d)=\mathbb{E}\left( X-d|X&gt;d \right)=\frac{\int_{d}^{\infty }{{S}(x)dx}}{S(d)}.
-\]</span> 证明： <span class="math display">\[
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>证明：
+<span class="math display">\[
 \begin{align*}
 {{e}_{X}}(d)&amp;=\frac{\int_{d}^{\infty }{(x-d)f(x)dx}}{1-F(d)}\\
 &amp;=\frac{-(x-d)S(x)|_{d}^{\infty }+\int_{d}^{\infty }{S(x)dx}}{S(d)}\\
 &amp;=\frac{\int_{d}^{\infty }{S(x)dx}}{S(d)}.
 \end{align*}
-\]</span></p>
-<p>证明<span class="math inline">\((x-d)S(x)|_{d}^{\infty }=0\)</span></p>
-<p><span class="math display">\[
+\]</span>
+下面证明 <span class="math inline">\((x-d)S(x)|_{d}^{\infty }=0\)</span>
+<span class="math display">\[
 \begin{align*}
-  &amp; \underset{x\to \infty }{\mathop{\lim }}\,xS(x)=\underset{x\to \infty }{\mathop{\lim }}\,x\int\limits_{x}^{\infty }{f(t)dt} \\ 
- &amp; =\underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{xf(t)dt} \\ 
- &amp; \le \underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{tf(t)dt} \\ 
- &amp; =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0  
+&amp; \underset{x\to \infty }{\mathop{\lim }}\,xS(x)=\underset{x\to \infty }{\mathop{\lim }}\,x\int\limits_{x}^{\infty }{f(t)dt} \\ 
+&amp; =\underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{xf(t)dt} \\ 
+&amp; \le \underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{tf(t)dt} \\ 
+&amp; =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0
 \end{align*}
 \]</span></p>
-<p>(2)左删失（left censored）和平移（shifted）变量</p>
-<p><strong>左删失平移</strong>变量是</p>
-<p><span class="math display">\[
+</blockquote>
+</div>
+<div id="左删失left-censored和平移shifted" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> 左删失（left censored）和平移（shifted）<a href="riskmea.html#左删失left-censored和平移shifted" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p><strong>左删失平移</strong> 变量定义为：
+<span class="math display">\[
 {{Y}^{L}}={{\left( X-d \right)}_{+}}= 
 \begin{cases}
-  &amp; 0,\quad \quad \quad X\le d \\ 
- &amp; X-d,\quad X&gt;d \\ 
+&amp; 0,\quad \quad \quad X\le d \\ 
+&amp; X-d,\quad X&gt;d \\ 
 \end{cases} 
 \]</span></p>
+</blockquote>
 <ul>
-<li>它是左删失的因为所有小于<span class="math inline">\(d\)</span>的值并非是被忽略了而是被设定为0。</li>
-<li>它是平移的因为剩余值都被减掉了<span class="math inline">\(d\)</span>。</li>
+<li><p>左删失表示随机变量 <span class="math inline">\(X&lt;d\)</span> 的取值都替换为 <span class="math inline">\(d\)</span></p></li>
+<li><p>平移表示将左删失的变量向左进行平移变化，使得左删失变量减去 <span class="math inline">\(d\)</span></p></li>
 </ul>
-<p><span class="math inline">\(k\)</span>阶矩计算如下：</p>
-<p><span class="math display">\[
-\mathbb{E}[(X-d)_{+}^k]=
-\begin{cases}
-&amp;{\int_{d}^{\infty}(x-d)^kf(x)dx}, \quad \text{连续}, \\
-&amp;{\sum_{x_j&gt;d}(x_j-d)^k p(x_j)dx},
-\quad \text{离散}
-\end{cases}
+<blockquote>
+<p><span class="math inline">\({Y}^{L}\)</span> 的 <span class="math inline">\(k\)</span>阶矩表示为：
+<span class="math display">\[
+\mathbb{E}[(X-d)_{+}^k]={\int_{d}^{\infty}(x-d)^kf(x)dx}
 \]</span></p>
+</blockquote>
+<p><span class="math inline">\(Y^L\)</span> 和 <span class="math inline">\(Y^P\)</span> 的比较：</p>
 <ul>
-<li><span class="math inline">\(Y^L\)</span> versus <span class="math inline">\(Y^P\)</span></li>
+<li><p>假设 <span class="math inline">\(X\)</span> 表示损失，则 <span class="math inline">\(Y^L\)</span> 和 <span class="math inline">\(Y^P\)</span> 都表示赔款</p></li>
+<li><p><span class="math inline">\(Y^L\)</span> 是含零赔款（per loss），即当保险事故造成的损失没有产生赔款的时候， <span class="math inline">\(Y^L=0\)</span></p></li>
+<li><p><span class="math inline">\(Y^P\)</span> 是非零赔款（per payment），即当保险事故造成的损失没有产生赔款的时候， <span class="math inline">\(\Pr(Y^p=0)=0\)</span></p></li>
+<li><p>数学期望存在下述关系：</p>
+<p><span class="math display">\[\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F_X(d)]=\int_{d}^{\infty}S(x)dx\]</span>
+<img src="picture/YL.png" width="450" /></p></li>
 </ul>
-<p>对于索赔事件，</p>
-<p><span class="math inline">\(Y^L\)</span> 是含零赔款（per loss） <span class="math inline">\(Y^P\)</span> 是非零赔款（per payment）</p>
-<p>含零赔款是当一个损失没有产生赔款时，给它赋予0值。</p>
-<p><span class="math display">\[\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F(d)]=\int_{d}^{\infty}S(x)dx\]</span></p>
-<p>（3）右删失（right censored）变量</p>
-<p><strong>有限损失</strong> (limited loss variable) 定义为：</p>
-<p><span class="math display">\[
+</div>
+<div id="右删失right-censored" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> 右删失（right censored）<a href="riskmea.html#右删失right-censored" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p>定义：<strong>右删失</strong>变量表示为：
+<span class="math display">\[
 Y=X\wedge u=\min (X,u)=\begin{cases}
-  &amp; X,\ \ \ X&lt;u \\ 
- &amp; u,\ \ \ \ X\ge u \\ 
+&amp; X,\ \ \ X&lt;u \\ 
+&amp; u,\ \ \ \ X\ge u \\ 
 \end{cases}
-\]</span></p>
-<p>其期望值, <span class="math inline">\(E(X\wedge u)\)</span>,被叫做<strong>有限期望</strong> (limited expected value)。</p>
-<p>这类变量也可以被称为<strong>右删失</strong>变量。</p>
+\]</span>
+其中，<span class="math inline">\(Y\)</span> 也被称之为<strong>有限损失</strong> (limited loss variable)。</p>
+</blockquote>
 <ul>
-<li>它是右删失的因为所有大于<span class="math inline">\(u\)</span>都被设定为等于 <span class="math inline">\(u\)</span>。</li>
+<li>右删失表示随机变量 <span class="math inline">\(X&gt;u\)</span> 的所有取值都用 <span class="math inline">\(u\)</span> 代替</li>
 </ul>
-<p><strong>有限期望</strong> (Limited expected value)定义如下：</p>
-<p><span class="math display">\[
+<blockquote>
+<p>定义：<span class="math inline">\(Y\)</span> 的数学期望 <span class="math inline">\(E(X\wedge u)\)</span> 称之为<strong>有限期望</strong> (limited expected value)，具体表示为：
+<span class="math display">\[
 \begin{align*}
-  E(X\wedge u)&amp; =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\ 
- &amp; =-xS(x)\left| _{0}^{u} \right.+\int_{0}^{u}{S(x)dx}+uS(u) \\ 
- &amp; =\int_{0}^{u}{S(x)dx}  
+E(X\wedge u)&amp; =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\ 
+&amp; =-xS(x)\left| _{0}^{u} \right.+\int_{0}^{u}{S(x)dx}+uS(u) \\ 
+&amp; =\int_{0}^{u}{S(x)dx}  
 \end{align*}
 \]</span></p>
+</blockquote>
 <p>例： 损失金额服从一个有如下密度函数的分布，
 <span class="math display">\[
 f(x)=\frac{4(100-x)^3}{100^4},\quad\quad  0&lt;x\le 100.
@@ -545,7 +563,9 @@ f(x)=\frac{4(100-x)^3}{100^4},\quad\quad  0&lt;x\le 100.
 <p><span class="math display">\[E[X] = E[X \wedge 100 ] + e(100)(1 - F(100))\]</span></p>
 <p><span class="math display">\[331 = 91 + e(100)(1 - 0.2)\]</span>
 <span class="math display">\[e(100)=\frac{240}{0.8}=300\]</span></p>
-<p>例：R代码</p>
+</div>
+<div id="r代码" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> R代码<a href="riskmea.html#r代码" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>假设随机变量 <span class="math inline">\(X\sim \text{Gamma}(\alpha = 2, \theta = 100)\)</span>，其中期望为 200。</p>
 <p>请用 R 软件进行绘图：</p>
 <ul>
