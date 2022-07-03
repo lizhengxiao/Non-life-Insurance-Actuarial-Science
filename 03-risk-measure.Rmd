@@ -1,18 +1,48 @@
-# 第五章 风险度量 {#riskmea}
+# 风险度量 {#riskmea}
 
-Some *significant* applications are demonstrated in this chapter.
+-------------
 
 ## 随机变量的基础知识
 
-在非寿险精算中，风险可以理解为保险损失的不确定性，通常用随机变量来表示。例如，风险可以是保险事故发生与否的不确定性、事故发生的时间的不确定性、事故发生的地点的不确定性或损失金额的不确定性。 随机变量是指取值依赖于随机现象的观察结果的变量，取值是随机的，取值特征通过概率分布来描述。随机变量一般用大写的英文字母表示，可以分为连续型随机变量和离散型随机变量。其中，离散型随机变量取有限个或可列个值，如保险事故发生的次数$N$ （简称为损失次数）。连续型随机变量的取值布满一个区间，如保险事故发生的损失金额$X$ （简称为损失金额）的取值范围为$(0,+∞)$
+在非寿险精算中，风险可以理解为保险损失的不确定性，通常用随机变量来表示。风险可以是：
 
-### 分布函数和生存函数
+- 保险事故发生与否的不确定性
 
-连续型随机变量$X$的累积分布函数 (Cumulative Distribution Function, cdf)表示为 $$F_{X}(x)=\Pr(X\le X)$$
+- 保险事故发生的时间的不确定性
 
--   R 代码
+- 保险事故发生的地点的不确定性
 
-```{r, plot-cdf, eval = FALSE, echo = TRUE}
+- 保险事故造成的损失金额的不确定性。
+
+随机变量是指取值依赖于随机现象的观察结果的变量，取值是随机的，取值特征通过概率分布来描述。一般用大写的英文字母表示。随机变量可以表示为：
+
+- **连续型随机变量**。其取值通常布满一个区间，如保险事故造成的损失金额 $X$ 的取值范围为 $(0,+\infty)$。
+
+- **离散型随机变量**。其取值为有限个或可列个值，如保险事故发生的次数 $N$ 的取值范围为 $0, 1, 2, 3, ...$。保险事故是否发生损失可以表示为取值为 0 和 1 的离散型变量 $I=0,1$。
+
+- **半连续型随机变量**。其取值通常为连续型和离散型的结合，如保险事故造成的累积损失 $S$，其取值范围为 $[0, +\infty$，其中 $S=0$ 表示保险事故没有造成损失，$S>0$ 表示保险事故造成了多大的损失。
+
+-------------
+
+## 分布函数和生存函数
+
+- 连续型随机变量 $X$ 的累积分布函数 (Cumulative Distribution Function, cdf) 表示为 $$F_{X}(x)=\Pr(X\le X)$$
+
+> 例: 运用 R 软件画出下面两种分布函数图。
+
+```{=tex}
+\begin{equation*}
+F_1(x) = \begin{cases}
+0 &\quad x <0,\\
+0.01x & \quad 0 \le x < 100,\\
+1, & \quad x\ge 100.
+\end{cases}
+\end{equation*}
+```
+
+
+```{r, plot-cdf, eval = TRUE, echo = TRUE}
+# 定义分布函数
 F1.f <- function(x) {
   if (x < 0){
     out <- 0
@@ -23,10 +53,10 @@ F1.f <- function(x) {
   }
   return(out)
 }
-F1.f <-  Vectorize(F1.f)
+F1.f <-  Vectorize(F1.f) # 将函数向量化，允许函数输入向量，输出向量
 
-x <- seq(from = 0, to = 100, length.out = 20)
-y <- F1.f(x)
+x <- seq(from = 0, to = 100, length.out = 20) # 画图横轴数据
+y <- F1.f(x)  # 画图纵轴数据
 plot(x, y, type = 'l', col = "blue", lwd = 2)
 ```
 
@@ -39,7 +69,7 @@ F_2(x) = \begin{cases}
 \end{equation}
 $$
 
-```{r, plot-pdf, eval = FALSE, echo = TRUE}
+```{r, plot-pdf, eval = TRUE, echo = TRUE}
 F2.f <- function(x) {
   if (x < 0){
     out <- 0
@@ -56,13 +86,19 @@ y <- F2.f(x)
 plot(x, y, type = 'l', col = "blue", lwd = 2)
 ```
 
-随机变量的生存函数(Survival Function)定义为： $$S_{X}(x)=\Pr(X>x)=1-F_{X}(x)$$其中，生存函数表示随机变量$X$大于$x$的概率。若随机变量 是连续的，其密度函数和生存函数存在下述关系： $$S_{X}(x)=\int_{0}^\infty f_{X}(x)dx$$
+- 随机变量的生存函数 (Survival Function) 定义为： 
+$$
+S_{X}(x)=\Pr(X>x)=1-F_{X}(x)
+$$
+其中，生存函数表示随机变量 $X$ 大于 $x$ 的概率。
+
+- 若随机变量是连续的，其密度函数和生存函数存在下述关系： $$S_{X}(x)=\int_{0}^\infty f_{X}(x)dx$$
 
 $$f(x)=-\frac{dS(x)}{dx}$$
 
-对于上述例子中的f2，
+> 例：运用 R 软件画出 **F2.f** 对应的密度函数图。
 
-```{r, eval = FALSE, echo = TRUE}
+```{r, eval = TRUE, echo = TRUE}
 f2.f <- function(x){
   if (x > 0){
     out <- 3*(2000)^3/(x + 2000)^4
@@ -76,123 +112,113 @@ y <- f2.f(x)
 plot(x, y, type = 'l', col = "blue", lwd = 2)
 ```
 
-### 矩母函数
+-------------
 
-用随机变量的概率母函数或矩母函数可以简化求随机变量各阶矩的计算。由于随机变量的概率母函数或矩母函数与它的分布函数存在一一对应的关系，利用这种关系，还可以解决随机变量和的分布问题，处理一些利用分布函数难以处理的难题。一般情况下，用概率母函数描述离散型随机变量，用矩母函数描述连续型随机变量。
+## 概率母函数/矩母函数 
 
-定义：对于取值为1,2,3,4...这样非负整数的离散随机变量$N$ ，其（概率）母函数 (Probability Generating Function, pgf) 表示为： $$
+- 随机变量的概率母函数或矩母函数与其分布函数存在一一对应的关系，同样可以描述随机变量的随机特征。
+
+  - 离散型随机变量： 概率母函数 (Probability Generating Function, pgf) 
+  
+  - 连续性随机变量： 矩母函数 (Moment Generating Function, mgf)
+
+- 概率母函数或矩母函数可以得到随机变量各阶矩。
+
+
+> 定义：离散随机变量 $N$ 的（概率）母函数表示为： 
+$$
 P_N(t)=E(t^N)=\sum_{k=0}^{\infty}t^kP(N=k)
-$$ 母函数可以用来随机变量$N=k$的概率，可以表示为母函数的k 阶偏导在0点处的取值，例如: $$P(N=1)=\frac{P_N^{(1)}(0)}{1!}$$ $$P(N=k)=\frac{P_N^{(k)}(0)}{k!}$$ 其中， $P_N^{(k)}(\cdot)$表示母函数的k阶偏导，$k!$表示 的阶乘。
+$$ 
 
-定义：对于连续型随机变量 ，矩母函数 (Moment Generating Function, mgf) $$M_X(t)=E(e^{tX})=\int_{-\infty}^{\infty}e^{tX}f(x)dx$$
-
-矩母函数可以得到多个独立随机变量之和的分布情况。假设$S=X_1+X_2+...+X_n=\sum_{i=1}^{n}X_i$ ，那么随机变量S的矩母函数表示为： $$M_s(t)=M_{X_1}(t)M_{X_2}(t)...M_{X_n}(t)$$
-
-### 矩(Moments)
-
-概率质量函数或概率密度函数包含了随机变量的全部信息，但是在实际问题中，有时只需要随机变量的某些数字特征，如均值 (mean)、方差 (variance)、偏度 (skewness)、峰度 (kurtosis) 和变异系数 (coefficient of variation)。这些数字特征都可以用随机变量的中心距和原点矩表示，例如均值就是1阶原点矩，方差就是2阶中心距。
-
-(1)原点矩 (Raw Moment)
-
-随机变量的k阶原点矩 (Raw Moment) 定义为: $$
-\mu_{k}'=\mathbb{E}(X^k)=\int_{-\infty}^{\infty}x^kf(x)dx
+> 推论：运用概率母函数可以表示出随机变量 $N=k$ 的概率，即 $\Pr(N=k)$ 为概率母函数的 $k$ 阶偏导在 $0$ 点出的取值。例如:
 $$
+P(N=1)=\frac{P_N^{(1)}(0)}{1!}$$ $$P(N=k)=\frac{P_N^{(k)}(0)}{k!}
+$$ 
+其中，$P_N^{(k)}(\cdot)$ 表示概率母函数的 $k$ 阶偏导，$k!=\Gamma(k)$ 表示 $k$ 阶乘。
 
-矩母函数可以用来计算原点矩，例如随机变量k阶原点矩等于矩母函数的k阶偏导在0点处的取值： $$E(X^k)=\frac{dM_X^{(k-1)}(t)}{dt}|_{t=0}=M_X^{(k)}(0)$$ 其中，$M_X^{(k)}(\cdot)$表示矩母函数的k阶偏导。
+> 定义：连续型随机变量 $X$ 的矩母函数表示为 $$M_X(t)=E(e^{tX})=\int_{-\infty}^{\infty}e^{tX}f(x)dx$$
 
-(2)中心矩 (Central Moment)
+> 推论：运用矩母函数可以得到多个独立随机变量之和的分布函数。例如，假设$S=X_1+X_2+...+X_n=\sum_{i=1}^{n}X_i$，则随机变量 $S$ 的矩母函数表示为： $$M_s(t)=M_{X_1}(t)M_{X_2}(t)...M_{X_n}(t)$$
+其中，$M_{X_j}(t)$ 表示 $X_j$ 的矩母函数在 $t$ 的取值。
 
-k阶中心矩 (Central Moment) 定义为： $$
-\mu_{k}=\mathbb{E}[(X-\mu)^k]=\int_{-\infty}^{\infty}(x-\mu)^kf(x)dx
-$$
 
-(3)偏度 (Skewness)
+-------------
 
-偏度 (Skewness)是对分布偏斜方向和程度的测度，若偏度系数大于0，则表示分布正偏/右偏，若偏度系数小于0，则表示分布负偏/左偏。具体定义w为三阶中心矩与标准差的三次方的比例： $$r_3=\frac{\mu_3}{\sigma^3}$$
+## 截断和删失
 
-(4)峰度 (Kurtosis)
+- 保险中的损失通常指被保险人发生的损失
 
-峰度 (Kurtosis)是分布尖峰程度的测度。峰度系数越大，就意味着方差增大是由低频度的大于或小于平均值的极端差值引起的。 $$r_4=\frac{\mu_4}{\sigma^4}$$ 在更通常的情况下，峰度 (Kurtosis)定义为$r_4-3$，这也被称为超值峰度（Excess Kurtosis）。需要注意的是，正态分布的峰度系数为3， $r_4-3$是为了让正态分布的峰度为0。
+- 保险中的索赔通常指保险人给被保险人的赔款
 
-(5)变异系数 (Coefficient of Variation)
+- 由于不同的保险产品通常存在免赔额和赔偿限额的情况，使得保险的损失和索赔的随机性通常是不一致的
 
-变异系数 (Coefficient of Variation)是标准差和均值的比率，衡量分布离散程度的大小，可以用于消除量纲对结果的影响： $$r=\frac{(\mu_2)^\frac{1}{2}}{\mu'_1}=\frac{\sqrt{Var(X)}}{E(X)}$$
+- 这种不一致性通常运用**截断**和**删失**的方法进行处理。
 
-例：随机变量$X$的矩母函数为$M_x(t)=(1-2t)^{-9},t<0.5$，求$X$ 的方差。 解：通过矩母函数可以求得$X$的原点矩 $$
-E(X)=M_x^{(1)}(0)=-2*(-9)*(1-2t)^{-10}\mid_{t=0}=18
-$$
+假设随机变量 $X$ 表示原始的损失，其数学期望可以表示为： $$\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}$$
 
-$$
-E(X^2)=M_x^{(2)}(0)=360*(1-2t)^{-11}\mid_{t=0}=360
-$$ 随机变量的方差表示为： $$Var(X)=E(X^2)-[E(X)]^2=360-18^2=36$$
 
-### 截断和删失
+![](picture/Expected.png)
 
-未删失或截断的随机变量： $X$表示索赔或损失，其期望值为： $$\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}$$
 
-(1)左截断（left truncated）和平移（shifted）变量
+### 左截断（left truncated）和平移（shifted）
 
-对于一个给定值$d$且$\Pr(X > d) > 0$ ，**超额损失变量** （excess loss variable）为$Y^p = X - d$给定 $X>d$，也就是，
-
+> 定义：给定常数 $d$，且满足 $\Pr(X > d) > 0$ ，对随机变量 $X$ 进行左截断和平移变换之后得到新的随机变量 $Y^p$，具体表示为：
 $$
 Y^p = X - d|X>d = \begin{cases}
 \text{NA}, \quad X\le d \\
 X - d, \quad X> d
 \end{cases}
 $$
+其中，$Y^p$ 也称之为 **超额损失变量** （excess loss variable）。
 
-这也被叫做 **左截断平移变量**.
+- **超额损失变量**也称之为**左截断平移变量**：
 
--   它是左截断的因为任意$X$小于$d$的值都是无法观测的。
--   他是平移的因为剩余值都被减掉了$d$。
+  -   $Y^p$ 是 $X$ 在 $d$ 处左截断得到的，原因在于任意 $X$ 小于 $d$ 的值都是无法观测到
+  
+  -   $Y^p$ 左截断之后向左平移得到的，因此在截断基础上减少了 $d$
 
-$Y^p=X-d|X>d$的期望值为：
 
+> 定义：随机变量 $Y^p$ 的数学期望称之为 **平均超额损失函数**：
 $$
-e_X(d)=e(d)=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X>d)
-$$ 被称为**平均超额损失函数**。
-
-当$X$是一个索赔金额变量，平均超额损失是已发生的超过免赔额$d$的期望索赔金额
-
-当$X$是死亡年龄,平均超额损失是已知一个人在年龄$d$存货时的期望余寿。
-
-超额损失变量的$k$阶矩定义如下：
-
+e_X(d):=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X>d)
 $$
-\begin{align*}
+
+- 当 $X$ 表示保险事故造成的损失金额，$d$表示保险免赔额时，则平均超额损失表示已发生的超过免赔额 $d$ 的期望索赔金额
+
+- 当 $X$ 是死亡年龄，平均超额损失表示为已知某人在年龄 $d$ 存活的情况下的期望预期寿命
+
+> 定义：超额损失变量的 $k$ 阶矩表示为：
+$$
 e_{X}^k(d)
-&=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)}, \quad \text{连续}, \\
-{e}_{X}^k(d)&=\frac{\sum_{x_j>d}(x_j-d)^k p(x_j)dx}{1-F(d)},
-\quad \text{离散}
-.
-\end{align*}
+=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)},
 $$
-
-一阶矩：平均超额损失函数 当$k=1$ $$
+其中，当 $k=1$ 时，平均超额损失函数表示为
+$$
 {{e}_{X}}(d)=\mathbb{E}\left( X-d|X>d \right)=\frac{\int_{d}^{\infty }{{S}(x)dx}}{S(d)}.
-$$ 证明： $$
+$$ 
+
+> 证明： 
+$$
 \begin{align*}
 {{e}_{X}}(d)&=\frac{\int_{d}^{\infty }{(x-d)f(x)dx}}{1-F(d)}\\
 &=\frac{-(x-d)S(x)|_{d}^{\infty }+\int_{d}^{\infty }{S(x)dx}}{S(d)}\\
 &=\frac{\int_{d}^{\infty }{S(x)dx}}{S(d)}.
 \end{align*}
 $$
-
-证明$(x-d)S(x)|_{d}^{\infty }=0$
-
+> 下面证明 $(x-d)S(x)|_{d}^{\infty }=0$
 $$
 \begin{align*}
   & \underset{x\to \infty }{\mathop{\lim }}\,xS(x)=\underset{x\to \infty }{\mathop{\lim }}\,x\int\limits_{x}^{\infty }{f(t)dt} \\ 
  & =\underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{xf(t)dt} \\ 
  & \le \underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{tf(t)dt} \\ 
- & =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0  
+ & =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0
 \end{align*}
 $$
 
-(2)左删失（left censored）和平移（shifted）变量
 
-**左删失平移**变量是
+### 左删失（left censored）和平移（shifted）
 
+> **左删失平移** 变量定义为：
 $$
 {{Y}^{L}}={{\left( X-d \right)}_{+}}= 
 \begin{cases}
@@ -201,49 +227,43 @@ $$
 \end{cases} 
 $$
 
--   它是左删失的因为所有小于$d$的值并非是被忽略了而是被设定为0。
--   它是平移的因为剩余值都被减掉了$d$。
+-   左删失表示随机变量 $X<d$ 的取值都替换为 $d$ 
 
-$k$阶矩计算如下：
+-   平移表示将左删失的变量向左进行平移变化，使得左删失变量减去 $d$
 
+
+> ${Y}^{L}$ 的 $k$阶矩表示为：
 $$
-\mathbb{E}[(X-d)_{+}^k]=
-\begin{cases}
-&{\int_{d}^{\infty}(x-d)^kf(x)dx}, \quad \text{连续}, \\
-&{\sum_{x_j>d}(x_j-d)^k p(x_j)dx},
-\quad \text{离散}
-\end{cases}
+\mathbb{E}[(X-d)_{+}^k]={\int_{d}^{\infty}(x-d)^kf(x)dx}
 $$
 
--   $Y^L$ versus $Y^P$
+$Y^L$ 和 $Y^P$ 的比较：
 
-对于索赔事件，
+  - 假设 $X$ 表示损失，则 $Y^L$ 和 $Y^P$ 都表示赔款
+  
+  - $Y^L$ 是含零赔款（per loss），即当保险事故造成的损失没有产生赔款的时候， $Y^L=0$
+  
+  - $Y^P$ 是非零赔款（per payment），即当保险事故造成的损失没有产生赔款的时候， $\Pr(Y^p=0)=0$
 
-$Y^L$ 是含零赔款（per loss） $Y^P$ 是非零赔款（per payment）
+  - 数学期望存在下述关系：
+  
+    $$\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F_X(d)]=\int_{d}^{\infty}S(x)dx$$
+    ![](picture/YL.png){width="450"}
 
-含零赔款是当一个损失没有产生赔款时，给它赋予0值。
+### 右删失（right censored）
 
-$$\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F(d)]=\int_{d}^{\infty}S(x)dx$$
-
-（3）右删失（right censored）变量
-
-**有限损失** (limited loss variable) 定义为：
-
+> 定义：**右删失**变量表示为：
 $$
 Y=X\wedge u=\min (X,u)=\begin{cases}
   & X,\ \ \ X<u \\ 
  & u,\ \ \ \ X\ge u \\ 
 \end{cases}
 $$
+其中，$Y$ 也被称之为**有限损失** (limited loss variable)。
 
-其期望值, $E(X\wedge u)$,被叫做**有限期望** (limited expected value)。
+-   右删失表示随机变量 $X>u$ 的所有取值都用 $u$ 代替
 
-这类变量也可以被称为**右删失**变量。
-
--   它是右删失的因为所有大于$u$都被设定为等于 $u$。
-
-**有限期望** (Limited expected value)定义如下：
-
+> 定义：$Y$ 的数学期望 $E(X\wedge u)$ 称之为**有限期望** (limited expected value)，具体表示为：
 $$
 \begin{align*}
   E(X\wedge u)& =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\ 
@@ -285,7 +305,7 @@ $$E[X] = E[X \wedge 100 ] + e(100)(1 - F(100))$$
 $$331 = 91 + e(100)(1 - 0.2)$$
 $$e(100)=\frac{240}{0.8}=300$$
 
-例：R代码
+### R代码
 
 假设随机变量 $X\sim \text{Gamma}(\alpha = 2, \theta = 100)$，其中期望为 200。
 
