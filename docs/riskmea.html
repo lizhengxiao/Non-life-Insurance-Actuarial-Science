@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 风险度量 | 非寿险精算学</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 风险度量 | 非寿险精算学" />
   <meta property="og:type" content="book" />
@@ -20,17 +20,16 @@
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="李政宵、杨亮" />
 
 
-<meta name="date" content="2022-05-05" />
+<meta name="date" content="2022-07-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="chp1.html"/>
+<link rel="prev" href="riskmod.html"/>
 <link rel="next" href="lossmodif.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -54,6 +53,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -72,75 +135,110 @@
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 课程简介</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> 课程介绍</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 课程简介<span></span></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#先修内容"><i class="fa fa-check"></i><b>2.1</b> 先修内容</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#教材和参考资料"><i class="fa fa-check"></i><b>2.2</b> 教材和参考资料</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#r与rmarkdown"><i class="fa fa-check"></i><b>2.3</b> R与Rmarkdown</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="chp1.html"><a href="chp1.html"><i class="fa fa-check"></i><b>3</b> 保险数据结构与R软件</a>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#课程内容"><i class="fa fa-check"></i><b>1.1</b> 课程内容<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#先修内容"><i class="fa fa-check"></i><b>1.2</b> 先修内容<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#教材和参考资料"><i class="fa fa-check"></i><b>1.3</b> 教材和参考资料<span></span></a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-软件与-rmarkdown-可视化"><i class="fa fa-check"></i><b>1.4</b> R 软件与 rmarkdown 可视化<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="chp1.html"><a href="chp1.html#数据的分类"><i class="fa fa-check"></i><b>3.1</b> 数据的分类</a>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#rmarkdown-简介"><i class="fa fa-check"></i><b>1.4.1</b> Rmarkdown 简介<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chp1.html"><a href="chp1.html"><i class="fa fa-check"></i><b>2</b> 保险数据结构与R软件<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="chp1.html"><a href="chp1.html#型数据"><i class="fa fa-check"></i><b>3.1.1</b> 0-1型数据</a></li>
-<li class="chapter" data-level="3.1.2" data-path="chp1.html"><a href="chp1.html#计数型数据"><i class="fa fa-check"></i><b>3.1.2</b> 计数型数据</a></li>
-<li class="chapter" data-level="3.1.3" data-path="chp1.html"><a href="chp1.html#连续型数据"><i class="fa fa-check"></i><b>3.1.3</b> 连续型数据</a></li>
-<li class="chapter" data-level="3.1.4" data-path="chp1.html"><a href="chp1.html#半连续型数据"><i class="fa fa-check"></i><b>3.1.4</b> 半连续型数据</a></li>
+<li class="chapter" data-level="2.1" data-path="chp1.html"><a href="chp1.html#数据类型"><i class="fa fa-check"></i><b>2.1</b> 数据类型<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="chp1.html"><a href="chp1.html#数据的可视化分析"><i class="fa fa-check"></i><b>2.2</b> 数据的可视化分析<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="chp1.html"><a href="chp1.html#数据的基本属性"><i class="fa fa-check"></i><b>3.2</b> 数据的基本属性</a>
+<li class="chapter" data-level="3" data-path="riskmod.html"><a href="riskmod.html"><i class="fa fa-check"></i><b>3</b> 基本的风险模型<span></span></a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="chp1.html"><a href="chp1.html#分布形态还有什么"><i class="fa fa-check"></i><b>3.2.1</b> 分布形态还有什么？</a></li>
-<li class="chapter" data-level="3.2.2" data-path="chp1.html"><a href="chp1.html#经验密度"><i class="fa fa-check"></i><b>3.2.2</b> 经验密度</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="chp1.html"><a href="chp1.html#数据的可视化"><i class="fa fa-check"></i><b>3.3</b> 数据的可视化</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="riskmea.html"><a href="riskmea.html"><i class="fa fa-check"></i><b>4</b> 风险度量</a>
+<li class="chapter" data-level="3.1" data-path="riskmod.html"><a href="riskmod.html#随机变量的基础知识"><i class="fa fa-check"></i><b>3.1</b> 随机变量的基础知识<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="riskmod.html"><a href="riskmod.html#分布函数和生存函数"><i class="fa fa-check"></i><b>3.2</b> 分布函数和生存函数<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="riskmod.html"><a href="riskmod.html#概率母函数矩母函数"><i class="fa fa-check"></i><b>3.3</b> 概率母函数/矩母函数<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="riskmod.html"><a href="riskmod.html#截断和删失"><i class="fa fa-check"></i><b>3.4</b> 截断和删失<span></span></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="riskmea.html"><a href="riskmea.html#随机变量的基础知识"><i class="fa fa-check"></i><b>4.1</b> 随机变量的基础知识</a></li>
-<li class="chapter" data-level="4.2" data-path="riskmea.html"><a href="riskmea.html#常用的损失分布"><i class="fa fa-check"></i><b>4.2</b> 常用的损失分布</a></li>
-<li class="chapter" data-level="4.3" data-path="riskmea.html"><a href="riskmea.html#风险度量方法var和varescte等"><i class="fa fa-check"></i><b>4.3</b> 风险度量方法（VaR和VaR、ES、CTE等）</a></li>
+<li class="chapter" data-level="3.4.1" data-path="riskmod.html"><a href="riskmod.html#左截断left-truncated和平移shifted"><i class="fa fa-check"></i><b>3.4.1</b> 左截断（left truncated）和平移（shifted）<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="riskmod.html"><a href="riskmod.html#左删失left-censored和平移shifted"><i class="fa fa-check"></i><b>3.4.2</b> 左删失（left censored）和平移（shifted）<span></span></a></li>
+<li class="chapter" data-level="3.4.3" data-path="riskmod.html"><a href="riskmod.html#右删失right-censored"><i class="fa fa-check"></i><b>3.4.3</b> 右删失（right censored）<span></span></a></li>
+<li class="chapter" data-level="3.4.4" data-path="riskmod.html"><a href="riskmod.html#r-代码"><i class="fa fa-check"></i><b>3.4.4</b> R 代码<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lossmodif.html"><a href="lossmodif.html"><i class="fa fa-check"></i><b>5</b> 损失调整</a>
+<li class="chapter" data-level="3.5" data-path="riskmod.html"><a href="riskmod.html#损失次数分布"><i class="fa fa-check"></i><b>3.5</b> 损失次数分布<span></span></a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="lossmodif.html"><a href="lossmodif.html#有限期望等公式"><i class="fa fa-check"></i><b>5.1</b> 有限期望等公式</a></li>
-<li class="chapter" data-level="5.2" data-path="lossmodif.html"><a href="lossmodif.html#免赔额和限额对损失金额的调整"><i class="fa fa-check"></i><b>5.2</b> 免赔额和限额对损失金额的调整</a></li>
-<li class="chapter" data-level="5.3" data-path="lossmodif.html"><a href="lossmodif.html#免赔额和限额对损失次数的调整"><i class="fa fa-check"></i><b>5.3</b> 免赔额和限额对损失次数的调整</a></li>
+<li class="chapter" data-level="3.5.1" data-path="riskmod.html"><a href="riskmod.html#ab0-分布类"><i class="fa fa-check"></i><b>3.5.1</b> <span class="math inline">\((a,b,0)\)</span> 分布类<span></span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="riskmod.html"><a href="riskmod.html#泊松分布poisson"><i class="fa fa-check"></i><b>3.5.2</b> 泊松分布（Poisson）<span></span></a></li>
+<li class="chapter" data-level="3.5.3" data-path="riskmod.html"><a href="riskmod.html#负二项分布negative-binomial-distribution"><i class="fa fa-check"></i><b>3.5.3</b> 负二项分布（Negative Binomial distribution）<span></span></a></li>
+<li class="chapter" data-level="3.5.4" data-path="riskmod.html"><a href="riskmod.html#二项分布binomial-distribution"><i class="fa fa-check"></i><b>3.5.4</b> 二项分布（Binomial Distribution）<span></span></a></li>
+<li class="chapter" data-level="3.5.5" data-path="riskmod.html"><a href="riskmod.html#ab1-分布类"><i class="fa fa-check"></i><b>3.5.5</b> <span class="math inline">\((a,b,1)\)</span> 分布类<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="parest.html"><a href="parest.html"><i class="fa fa-check"></i><b>6</b> 参数估计和统计推断</a>
+<li class="chapter" data-level="3.6" data-path="riskmod.html"><a href="riskmod.html#损失金额分布"><i class="fa fa-check"></i><b>3.6</b> 损失金额分布<span></span></a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="parest.html"><a href="parest.html#极大似然估计"><i class="fa fa-check"></i><b>6.1</b> 极大似然估计</a></li>
-<li class="chapter" data-level="6.2" data-path="parest.html"><a href="parest.html#贝叶斯估计"><i class="fa fa-check"></i><b>6.2</b> 贝叶斯估计</a></li>
+<li class="chapter" data-level="3.6.1" data-path="riskmod.html"><a href="riskmod.html#指数分布-exponential"><i class="fa fa-check"></i><b>3.6.1</b> 指数分布 （Exponential）<span></span></a></li>
+<li class="chapter" data-level="3.6.2" data-path="riskmod.html"><a href="riskmod.html#伽马分布gamma"><i class="fa fa-check"></i><b>3.6.2</b> 伽马分布（Gamma）<span></span></a></li>
+<li class="chapter" data-level="3.6.3" data-path="riskmod.html"><a href="riskmod.html#帕累托分布pareto"><i class="fa fa-check"></i><b>3.6.3</b> 帕累托分布（Pareto）<span></span></a></li>
+<li class="chapter" data-level="3.6.4" data-path="riskmod.html"><a href="riskmod.html#对数正态分布log-normal"><i class="fa fa-check"></i><b>3.6.4</b> 对数正态分布（Log-normal）<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="classrating.html"><a href="classrating.html"><i class="fa fa-check"></i><b>7</b> 分类费率定价方法</a>
+<li class="chapter" data-level="3.7" data-path="riskmod.html"><a href="riskmod.html#课后习题"><i class="fa fa-check"></i><b>3.7</b> 课后习题<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="riskmea.html"><a href="riskmea.html"><i class="fa fa-check"></i><b>4</b> 风险度量<span></span></a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="classrating.html"><a href="classrating.html#相关概念"><i class="fa fa-check"></i><b>7.1</b> 相关概念</a></li>
-<li class="chapter" data-level="7.2" data-path="classrating.html"><a href="classrating.html#多元线性回归模型"><i class="fa fa-check"></i><b>7.2</b> 多元线性回归模型</a></li>
-<li class="chapter" data-level="7.3" data-path="classrating.html"><a href="classrating.html#广义线性回归模型"><i class="fa fa-check"></i><b>7.3</b> 广义线性回归模型</a></li>
-<li class="chapter" data-level="7.4" data-path="classrating.html"><a href="classrating.html#分类定价基本框架"><i class="fa fa-check"></i><b>7.4</b> 分类定价基本框架</a></li>
-<li class="chapter" data-level="7.5" data-path="classrating.html"><a href="classrating.html#模型"><i class="fa fa-check"></i><b>7.5</b> 0-1模型</a></li>
-<li class="chapter" data-level="7.6" data-path="classrating.html"><a href="classrating.html#索赔次数预测模型"><i class="fa fa-check"></i><b>7.6</b> 索赔次数预测模型</a></li>
-<li class="chapter" data-level="7.7" data-path="classrating.html"><a href="classrating.html#索赔金额预测模型"><i class="fa fa-check"></i><b>7.7</b> 索赔金额预测模型</a></li>
-<li class="chapter" data-level="7.8" data-path="classrating.html"><a href="classrating.html#纯保费预测模型"><i class="fa fa-check"></i><b>7.8</b> 纯保费预测模型</a></li>
-<li class="chapter" data-level="7.9" data-path="classrating.html"><a href="classrating.html#两步定价法"><i class="fa fa-check"></i><b>7.9</b> 两步定价法</a></li>
+<li class="chapter" data-level="4.1" data-path="riskmea.html"><a href="riskmea.html#风险度量的原则"><i class="fa fa-check"></i><b>4.1</b> 风险度量的原则<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="riskmea.html"><a href="riskmea.html#风险度量的一致性要求"><i class="fa fa-check"></i><b>4.2</b> 风险度量的一致性要求<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="riskmea.html"><a href="riskmea.html#varvalue-at-risk在险价值"><i class="fa fa-check"></i><b>4.3</b> VaR（Value-at-Risk，在险价值）<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="riskmea.html"><a href="riskmea.html#tvar-tail-value-at-risk尾部在险价值"><i class="fa fa-check"></i><b>4.4</b> TVaR （Tail-Value-at-Risk，尾部在险价值）<span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="riskmea.html"><a href="riskmea.html#课后习题-1"><i class="fa fa-check"></i><b>4.5</b> 课后习题<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="experiencerate.html"><a href="experiencerate.html"><i class="fa fa-check"></i><b>8</b> 经验费率厘定方法</a>
+<li class="chapter" data-level="5" data-path="lossmodif.html"><a href="lossmodif.html"><i class="fa fa-check"></i><b>5</b> 损失调整<span></span></a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="experiencerate.html"><a href="experiencerate.html#线性混合模型"><i class="fa fa-check"></i><b>8.1</b> 线性混合模型</a></li>
-<li class="chapter" data-level="8.2" data-path="experiencerate.html"><a href="experiencerate.html#最精确信度模型"><i class="fa fa-check"></i><b>8.2</b> 最精确信度模型</a></li>
-<li class="chapter" data-level="8.3" data-path="experiencerate.html"><a href="experiencerate.html#经验贝叶斯"><i class="fa fa-check"></i><b>8.3</b> 经验贝叶斯</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="reserv.html"><a href="reserv.html"><i class="fa fa-check"></i><b>9</b> 准备金评估方法</a>
+<li class="chapter" data-level="5.1" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对赔付金额的影响"><i class="fa fa-check"></i><b>5.1</b> 免赔额对赔付金额的影响<span></span></a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="reserv.html"><a href="reserv.html#相关概念-1"><i class="fa fa-check"></i><b>9.1</b> 相关概念</a></li>
-<li class="chapter" data-level="9.2" data-path="reserv.html"><a href="reserv.html#确定性方法"><i class="fa fa-check"></i><b>9.2</b> 确定性方法</a></li>
-<li class="chapter" data-level="9.3" data-path="reserv.html"><a href="reserv.html#随机性方法"><i class="fa fa-check"></i><b>9.3</b> 随机性方法</a></li>
+<li class="chapter" data-level="5.1.1" data-path="lossmodif.html"><a href="lossmodif.html#含零赔款"><i class="fa fa-check"></i><b>5.1.1</b> 含零赔款<span></span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="lossmodif.html"><a href="lossmodif.html#非零赔款"><i class="fa fa-check"></i><b>5.1.2</b> 非零赔款<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>10</b> Methods</a>
+<li class="chapter" data-level="5.2" data-path="lossmodif.html"><a href="lossmodif.html#通货膨胀对赔付金额的影响"><i class="fa fa-check"></i><b>5.2</b> 通货膨胀对赔付金额的影响<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="lossmodif.html"><a href="lossmodif.html#赔偿限额对赔付金额的影响"><i class="fa fa-check"></i><b>5.3</b> 赔偿限额对赔付金额的影响<span></span></a></li>
+<li class="chapter" data-level="5.4" data-path="lossmodif.html"><a href="lossmodif.html#免赔额和赔偿限额的例子"><i class="fa fa-check"></i><b>5.4</b> 免赔额和赔偿限额的例子<span></span></a></li>
+<li class="chapter" data-level="5.5" data-path="lossmodif.html"><a href="lossmodif.html#共同保险对赔付金额的影响"><i class="fa fa-check"></i><b>5.5</b> 共同保险对赔付金额的影响<span></span></a></li>
+<li class="chapter" data-level="5.6" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对索赔次数的影响"><i class="fa fa-check"></i><b>5.6</b> 免赔额对索赔次数的影响<span></span></a></li>
+<li class="chapter" data-level="5.7" data-path="lossmodif.html"><a href="lossmodif.html#课后习题-2"><i class="fa fa-check"></i><b>5.7</b> 课后习题<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="parest.html"><a href="parest.html"><i class="fa fa-check"></i><b>6</b> 参数估计和统计推断<span></span></a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>10.1</b> Math example</a></li>
+<li class="chapter" data-level="6.1" data-path="parest.html"><a href="parest.html#极大似然估计"><i class="fa fa-check"></i><b>6.1</b> 极大似然估计<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="parest.html"><a href="parest.html#贝叶斯估计"><i class="fa fa-check"></i><b>6.2</b> 贝叶斯估计<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="7" data-path="classrating.html"><a href="classrating.html"><i class="fa fa-check"></i><b>7</b> 分类费率定价方法<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="classrating.html"><a href="classrating.html#相关概念"><i class="fa fa-check"></i><b>7.1</b> 相关概念<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="classrating.html"><a href="classrating.html#风险基础和风险单位"><i class="fa fa-check"></i><b>7.1.1</b> 风险基础和风险单位<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="classrating.html"><a href="classrating.html#多元线性回归模型"><i class="fa fa-check"></i><b>7.2</b> 多元线性回归模型<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="classrating.html"><a href="classrating.html#广义线性回归模型"><i class="fa fa-check"></i><b>7.3</b> 广义线性回归模型<span></span></a></li>
+<li class="chapter" data-level="7.4" data-path="classrating.html"><a href="classrating.html#分类定价基本框架"><i class="fa fa-check"></i><b>7.4</b> 分类定价基本框架<span></span></a></li>
+<li class="chapter" data-level="7.5" data-path="classrating.html"><a href="classrating.html#模型"><i class="fa fa-check"></i><b>7.5</b> 0-1模型<span></span></a></li>
+<li class="chapter" data-level="7.6" data-path="classrating.html"><a href="classrating.html#索赔次数预测模型"><i class="fa fa-check"></i><b>7.6</b> 索赔次数预测模型<span></span></a></li>
+<li class="chapter" data-level="7.7" data-path="classrating.html"><a href="classrating.html#索赔金额预测模型"><i class="fa fa-check"></i><b>7.7</b> 索赔金额预测模型<span></span></a></li>
+<li class="chapter" data-level="7.8" data-path="classrating.html"><a href="classrating.html#纯保费预测模型"><i class="fa fa-check"></i><b>7.8</b> 纯保费预测模型<span></span></a></li>
+<li class="chapter" data-level="7.9" data-path="classrating.html"><a href="classrating.html#两步定价法"><i class="fa fa-check"></i><b>7.9</b> 两步定价法<span></span></a></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="chapter" data-level="8" data-path="experiencerate.html"><a href="experiencerate.html"><i class="fa fa-check"></i><b>8</b> 经验费率厘定方法<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="experiencerate.html"><a href="experiencerate.html#线性混合模型"><i class="fa fa-check"></i><b>8.1</b> 线性混合模型<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="experiencerate.html"><a href="experiencerate.html#最精确信度模型"><i class="fa fa-check"></i><b>8.2</b> 最精确信度模型<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="experiencerate.html"><a href="experiencerate.html#经验贝叶斯"><i class="fa fa-check"></i><b>8.3</b> 经验贝叶斯<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="reserv.html"><a href="reserv.html"><i class="fa fa-check"></i><b>9</b> 准备金评估方法<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="reserv.html"><a href="reserv.html#相关概念-1"><i class="fa fa-check"></i><b>9.1</b> 相关概念<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="reserv.html"><a href="reserv.html#确定性方法"><i class="fa fa-check"></i><b>9.2</b> 确定性方法<span></span></a></li>
+<li class="chapter" data-level="9.3" data-path="reserv.html"><a href="reserv.html#随机性方法"><i class="fa fa-check"></i><b>9.3</b> 随机性方法<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>10</b> Methods<span></span></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>10.1</b> Math example<span></span></a></li>
+</ul></li>
+<li><a href="references-1.html#references-1">References<span></span></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -163,15 +261,325 @@
             <section class="normal" id="section-">
 <div id="riskmea" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Chapter 4</span> 风险度量<a href="riskmea.html#riskmea" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Some <em>significant</em> applications are demonstrated in this chapter.</p>
-<div id="随机变量的基础知识" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> 随机变量的基础知识<a href="riskmea.html#随机变量的基础知识" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<hr />
+<div id="风险度量的原则" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> 风险度量的原则<a href="riskmea.html#风险度量的原则" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>精算和风险管理的基础是对风险进行合理的度量。</p>
+<ul>
+<li><p>从数学上看，风险是用概率方法描述的，风险度量把一个代表风险的随机变量转化为一个实值的过程。</p></li>
+<li><p>假设 <span class="math inline">\(X\)</span> 表示随机风险，<span class="math inline">\(\rho\)</span> 为风险度量方法，<span class="math inline">\(r\)</span> 为风险度量值，则风险度量过程可以表示为： <span class="math display">\[r = \rho(X)\]</span></p></li>
+</ul>
+<p>其中，<span class="math inline">\(\rho\)</span> 就是将随机风险转化为非负实数的一个风险度量函数。</p>
+<p>常用的风险度量方法有：</p>
+<ul>
+<li><p>基于方差、半方差等的离差方法</p></li>
+<li><p>基于在险价值、条件在险价值等的分位数方法</p></li>
+<li><p>极值理论</p></li>
+</ul>
+<p>这一节我们主要介绍常用的<strong>分位数</strong>风险度量方法和<strong>极值理论</strong>。</p>
 </div>
-<div id="常用的损失分布" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> 常用的损失分布<a href="riskmea.html#常用的损失分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="风险度量的一致性要求" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> 风险度量的一致性要求<a href="riskmea.html#风险度量的一致性要求" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>风险的度量必须遵循一定的原则，合理的风险度量方法应该与经济原理、与人们的认知一致，不会出现悖论。因此，风险应该满足一致性风险度量公理体系。</p>
+<p><strong>一致性风险度量</strong>是指风险度量 <span class="math inline">\(\rho\)</span> 对任意两个随机变量 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 应满足以下4个特性：</p>
+<ul>
+<li><p>次可加性(Subadditivity): <span class="math inline">\(\rho(X) + \rho(Y) \le \rho(X+Y)\)</span></p></li>
+<li><p>单调性 (Monotonicity): 若 <span class="math inline">\(X\le Y\)</span> 则<span class="math inline">\(\rho(X)\le \rho(Y)\)</span></p></li>
+<li><p>正齐次性 (Positive homogeneity): 对于任意常数<span class="math inline">\(c&gt;0\)</span>, <span class="math inline">\(\rho(cX)=c\rho(X)\)</span></p></li>
+<li><p>平移不变性 (Translation invariance): 对于任意正常数 <span class="math inline">\(c\)</span>, <span class="math inline">\(\rho(X+c)=\rho(X)+c\)</span></p></li>
+</ul>
 </div>
-<div id="风险度量方法var和varescte等" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> 风险度量方法（VaR和VaR、ES、CTE等）<a href="riskmea.html#风险度量方法var和varescte等" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="varvalue-at-risk在险价值" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> VaR（Value-at-Risk，在险价值）<a href="riskmea.html#varvalue-at-risk在险价值" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>定义：如果 <span class="math inline">\(X\)</span> 表示随机风险造成的损失，那么 <span class="math inline">\(X\)</span> 在100p水平上的 <strong>VaR</strong> ，记为 <span class="math inline">\(VaR_p(X)\)</span> 或 <span class="math inline">\(\pi_p\)</span> 是X的分布的<span class="math inline">\(100p\)</span> 分位数。</p>
+<p>对于连续性分布，我们有</p>
+<p><span class="math display">\[
+\Pr(X&gt;\pi_p)=1-p.
+\]</span></p>
+<ul>
+<li><p>在险价值是指在一定的置信水平下，在未来特定的一段时间内的最大可能损失</p></li>
+<li><p>至少有 <span class="math inline">\(p=0.95,0.99,0.999...\)</span> 的把握保证最大损失不超过 <span class="math inline">\(x\)</span></p></li>
+</ul>
+<p><strong>不满足一致性的例子</strong>:</p>
+<p>假设 <span class="math inline">\(Z\)</span> 是一个连续损失随机变量，其分布函数为：</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;F_Z(1) = 0.91 \\
+&amp; F_Z(90) =  0.95\\
+&amp; F_Z(100) =  0.96
+\end{align*}
+\]</span></p>
+<p><span class="math inline">\(VaR_{95\%}(Z) = 90\)</span></p>
+<p>假设我们把风险<span class="math inline">\(Z\)</span>拆分成两个独立的风险<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>，使两个风险的总和相当于风险 <span class="math inline">\(Z\)</span>，即<span class="math inline">\(X+Y=Z\)</span></p>
+<p><span class="math display">\[
+X=\begin{cases}
+Z, &amp; \quad Z\le 100,\\
+0, &amp; \quad Z&gt; 100,
+\end{cases}
+\]</span> 和 <span class="math display">\[
+Y=\begin{cases}
+0, &amp; \quad Z\le 100,\\
+Z, &amp; \quad Z&gt; 100.
+\end{cases}
+\]</span> 那么<span class="math inline">\(VaR_{95\%}(X) = 1\)</span>并且<span class="math inline">\(VaR_{95\%}(Y) \le 0\)</span></p>
+<p><span class="math display">\[
+VaR_{95\%}(Z) = VaR_{95\%}(X+Y) &gt; VaR_{95\%}(X) + VaR_{95\%}(Y).
+\]</span></p>
+</div>
+<div id="tvar-tail-value-at-risk尾部在险价值" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> TVaR （Tail-Value-at-Risk，尾部在险价值）<a href="riskmea.html#tvar-tail-value-at-risk尾部在险价值" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>TVaR 弥补了 VaR 方法作为风险度量函数不满足次可加性的缺陷，因而是一个具有优良性质的一致性风险度量函数。</p>
+<blockquote>
+<p>定义：TVaR 是超过的损失 <span class="math inline">\(VaR_p(X)\)</span> 的期望值，即 <span class="math inline">\(TVaR_p\)</span> 是最坏的 <span class="math inline">\(100(1-p)%\)</span> 损失的期望值。<span class="math inline">\(TVaR_p\)</span> 定义为：</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;  \\ 
+&amp; \text{TVa}{{\text{R}}_{p}}(X)=\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}  
+\end{align*}
+\]</span></p>
+</blockquote>
+<p>其中，TVaR 可以理解为是在区间（p, 1）上的VaR 的算数平均数，因此在相同的概率水平下，TVaR大于VaR的度量结果。</p>
+<p>性质: 对于连续分布而言，TVaRp还可以写成更为直观的表达式：</p>
+<p><span class="math display">\[
+\begin{align*}
+\text{TVa}{{\text{R}}_{p}}(X)
+=\mathbb{E}(X|X&gt;\text{Va}{{\text{R}}_{p}})
+&amp;= \frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-F(\text{Va}{{\text{R}}_{p}})}\\
+&amp;=\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-p}
+\end{align*}
+\]</span>
+-证明</p>
+<p><span class="math display">\[
+\begin{align*}
+  \text{TVa}{{\text{R}}_{p}}(X)&amp; =\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{xf(x)dx}}{1-p}\text{   } \\ 
+ &amp; =\frac{\int_{\text{Va}{{\text{R}}_{p}}}^{\infty }{x\text{d}F(x)}}{1-p}
+ \quad\quad
+ \text{            if   }F(x)=u\Rightarrow x=\text{Va}{{\text{R}}_{u}}(X) \\ 
+ &amp; =\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}  
+\end{align*}
+\]</span>
+例：假设随机变量服从参数为<span class="math inline">\((\mu,\sigma)\)</span>的正态分布，求该正态分布VaR和TVaR的表达式。</p>
+<p><span class="math display">\[
+\text{Va}{{\text{R}}_{p}}(X)=\mu +\sigma \text{ }{{\Phi }^{-1}}(p),
+\]</span></p>
+<p><span class="math display">\[
+\text{TVa}{{\text{R}}_{p}}(X)=\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}(p) \right].
+\]</span></p>
+<p><span class="math display">\[
+\begin{align*}
+  \text{TVa}{{\text{R}}_{p}}(X)&amp; =\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}=\frac{\int_{p}^{1}{\left[ \mu +\sigma {{\Phi }^{-1}}(u) \right]du}}{1-p} \\ 
+ &amp; =\mu +\frac{\sigma }{1-p}\int_{p}^{1}{{{\Phi }^{-1}}(u)du}
+ \quad \text{      let }u=\Phi (x) \\ 
+ &amp; =\mu +\frac{\sigma }{1-p}\int_{{{\Phi }^{-1}}(p)}^{\infty }{x\phi (x)dx} \\ 
+ &amp; =\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}p \right]
+\end{align*}
+\]</span>
+如果损失分布是离散的，计算 TVaR 会复杂一些。</p>
+<p>例:</p>
+<p><span class="math display">\[
+X=\begin{cases}
+  &amp; 0\text{           的概率为  0}\text{.9} \\ 
+ &amp; 100\text{      的概率为   0}\text{.06} \\ 
+ &amp; 1000\text{    的概率为   0}\text{.04} \\ 
+\end{cases} 
+\]</span></p>
+<p>计算 TVaR 90% 和 TVaR 95%。</p>
+<p>-对于90% 的水平, 由于<span class="math inline">\(\text{VaR}_{90\%}=0\)</span>, <span class="math display">\[\text{TVa}{{\text{R}}_{0.90}}=\frac{(0.06)(100)+(0.04)(1000)}{0.10}=460\]</span></p>
+<p>-对于95% 的水平, 右尾的 5% 由两部分组成：4% 的损失为1000，1%的损失等于100 ，故
+<span class="math display">\[
+\text{TVa}{{\text{R}}_{0.95}}=\frac{(0.01)(100)+(0.04)(1000)}{0.05}=820
+\]</span></p>
+</div>
+<div id="课后习题-1" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> 课后习题<a href="riskmea.html#课后习题-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>如果 <span class="math inline">\(X\)</span> 有以下分布: <span class="math display">\[
+X=\begin{cases}
+&amp; 100, \quad \quad  0.5\% \\
+&amp; 50, \quad \quad  \ \  4.5\% \\
+&amp; 10, \quad \quad  \ \ 10\% \\
+&amp; 0, \quad \quad \ \ \ \ 85\%
+\end{cases}
+\]</span></li>
+</ol>
+<p>请计算<span class="math inline">\(VaR_{99\%}(X)\)</span>和<span class="math inline">\(VaR_{95\%}(X)\)</span>.</p>
+<p>解：<span class="math inline">\(\text{Va}{{\text{R}}_{0.95}}=10,\quad \text{Va}{{\text{R}}_{0.99}}=50, \quad \text{Va}{{\text{R}}_{0.999}}=100\)</span>。</p>
+<ol start="2" style="list-style-type: decimal">
+<li>损失服从正态分布，均值为33，标准差为109，计算 <span class="math inline">\(VaR_{95\%}\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+  &amp; F(\text{Va}{{\text{R}}_{0.95}})=0.95 \\ 
+ &amp; \Phi \left( \frac{\text{Va}{{\text{R}}_{0.95}}-33}{109} \right)=0.95 \\ 
+ &amp; \Rightarrow \frac{\text{Va}{{\text{R}}_{0.95}}-33}{109}=1.6449 \\ 
+ &amp; \Rightarrow \text{Va}{{\text{R}}_{0.95}}=212.289
+\end{align*}
+\]</span></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="riskmea.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span> ( <span class="fl">0.95</span>, <span class="at">mean =</span> <span class="dv">33</span>, <span class="at">sd =</span> <span class="dv">109</span>)</span></code></pre></div>
+<pre><code>## [1] 212.289</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>你有如下信息： X是一个随机变量，其概率密度函数如下： <span class="math display">\[
+f(x)=(\frac{\alpha}{\beta})(\frac{\beta}{x})^{\alpha+1}, x\geq\beta,\alpha&gt;0,\beta&gt;0
+\]</span> E[X]= 7500 E[<span class="math inline">\(X^{2}\)</span>]=75,000,000 m is the median of X 请求<span class="math inline">\(f(m)\)</span>的值。</li>
+</ol>
+<ul>
+<li>解答 <span class="math display">\[F(x)=1-(\frac{\beta}{x})^\alpha\]</span> <span class="math display">\[E(X)=\frac{\alpha\beta}{\alpha-2}\]</span> <span class="math display">\[E(X^2)=\frac{\alpha\beta^2}{\alpha-2}\]</span></li>
+</ul>
+<p>所以我们有<span class="math inline">\(\alpha=3,-1\)</span>，并且由于<span class="math inline">\(\alpha&gt;0\)</span>我们排除-1，所以 <span class="math inline">\(\beta\)</span>=5000。</p>
+<p><span class="math display">\[(\frac{5000}{m})^3=f(m)=0.5\]</span> <span class="math display">\[m=6299.61\]</span> <span class="math display">\[f(m)=(\frac{3}{5000})(\frac{5000}{6299.61})^4=0.0002381 \]</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li>X服从参数 <span class="math inline">\(\alpha = 2.5\)</span>的伽马分布，<span class="math inline">\(\theta = 10\)</span>，<span class="math inline">\(Y = 1/X\)</span>， 请计算 Var(Y)。 提示：伽马分布的矩有如下性质 <span class="math display">\[E(X^k)=\frac{\theta^k\Gamma(\alpha+k)}{\Gamma(\alpha)}\]</span> - 解答：</li>
+</ol>
+<p><span class="math display">\[E(X^k)=\frac{\theta^k\Gamma(\alpha+k)}{\Gamma(\alpha)}\]</span> <span class="math display">\[E(X^{-1})=\frac{\theta^{-1}\Gamma(\alpha-1)}{\Gamma(\alpha)}=\frac{1}{\theta(\alpha-1)}\]</span> <span class="math display">\[E(X^{-2})=\frac{1}{\theta^2(\alpha-1)(\alpha-2)}\]</span> <span class="math display">\[Var(Y)=\frac{1}{10^2(1.5)(0.5)}-\left(\frac{1}{10(1.5)}\right)^2=0.008889\]</span></p>
+<ol start="5" style="list-style-type: decimal">
+<li>试求正态分布和指数分布的VaR和TVaR</li>
+</ol>
+<ul>
+<li>解答 正态分布：
+<span class="math display">\[
+f(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[
+-\frac{1}{2}\left(
+\frac{x-\mu}{\sigma}
+\right)^2
+\right]
+\]</span></li>
+</ul>
+<p><span class="math display">\[
+\text{Va}{{\text{R}}_{p}}(X)=\mu +\sigma \text{ }{{\Phi }^{-1}}(p),
+\]</span></p>
+<p><span class="math display">\[
+\text{TVa}{{\text{R}}_{p}}(X)=\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}(p) \right]
+\]</span></p>
+<span class="math display">\[\begin{align*}
+  \text{TVa}{{\text{R}}_{p}}(X)&amp; =\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}=\frac{\int_{p}^{1}{\left[ \mu +\sigma {{\Phi }^{-1}}(u) \right]du}}{1-p} \\ 
+ &amp; =\mu +\frac{\sigma }{1-p}\int_{p}^{1}{{{\Phi }^{-1}}(u)du}
+ \quad \text{      let }u=\Phi (x) \\ 
+ &amp; =\mu +\frac{\sigma }{1-p}\int_{{{\Phi }^{-1}}(p)}^{\infty }{x\phi (x)dx} \\ 
+ &amp; =\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}p \right]
+\end{align*}\]</span>
+<p>证明：</p>
+<span class="math display">\[\begin{align*}
+   \int_{{{\Phi }^{-1}}(p)}^{\infty }{x\phi (x)dx}
+   &amp;=\frac{1}{\sqrt{2\pi }}\int_{{{\Phi }^{-1}}(p)}^{\infty }{x{{\text{e}}^{-{{x}^{2}}/2}}dx} \\ 
+ &amp; =-{\frac{{{\text{e}}^{-{{x}^{2}}/2}}}{\sqrt{2\pi }}}\vert^{\infty}_{{\Phi }^{-1}}(p) \\ 
+ &amp; =\frac{1}{\sqrt{2\pi }}{{\text{e}}^{-\frac{{{\left[ {{\Phi }^{-1}}(p) \right]}^{2}}}{2}}} \\ 
+ &amp; =\phi \left[ {{\Phi }^{-1}}(p) \right] 
+\end{align*}\]</span>
+<p>指数分布：</p>
+<p><span class="math display">\[
+f(x)=\frac{1}{\theta}\exp\left(
+-\frac{x}{\theta},\quad x&gt;0.
+\right)
+\]</span></p>
+<p><span class="math display">\[
+\text{Va}{{\text{R}}_{p}}(X)=-\theta \ln (1-p)
+\]</span></p>
+<p><span class="math display">\[
+\text{TVa}{{\text{R}}_{p}}(X)=\text{Va}{{\text{R}}_{p}}(X)+\theta
+\]</span></p>
+<ol start="6" style="list-style-type: decimal">
+<li>试证明以下等式成立：</li>
+</ol>
+<p><span class="math display">\[E(X)=e(d)S(d)+E(X\wedge d) \]</span></p>
+<ul>
+<li>解答</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+E(X)=&amp;\int_0^\infty xf(x)dx \\
+=&amp;\int_0^d xf(x)dx+\int_d^\infty df(x)dx+\int_d^\infty (x-d)f(x)dx\\
+=&amp;\int_0^d xf(x)dx +d[1-F(d)]+e(d)S(d)\\
+=&amp;E(X \wedge d)+e(d)S(d)
+\end{aligned}
+\]</span></p>
+<ol start="7" style="list-style-type: decimal">
+<li>损失服从参数为<span class="math inline">\(\alpha\)</span> 和 <span class="math inline">\(\theta\)</span>的帕累托分布，10%分位数为<span class="math inline">\(\theta-k\)</span>，90%分位数为<span class="math inline">\(5\theta-3k\)</span>，求<span class="math inline">\(\alpha\)</span>的值。</li>
+</ol>
+<ul>
+<li>解答</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+0.1=&amp;1-\left(\frac{\theta}{\theta+\theta-k}\right)^{\alpha}\\
+0.9=&amp;1-\left(\frac{\theta}{\theta+5\theta-3k}\right)^{\alpha}\\
+\frac{0.9}{0.1}=&amp;\left(\frac{6\theta-3k}{2\theta-k}\right)^{\alpha}=3^{\alpha}\\
+\alpha=&amp;2
+\end{aligned}
+\]</span></p>
+<ol start="8" style="list-style-type: decimal">
+<li>假设随机变量 <span class="math inline">\(X\sim \text{Gamma}(\alpha = 2, \theta = 100)\)</span>，其中期望为 200。</li>
+</ol>
+<p>请用 R 软件进行绘图：</p>
+<p>（1）请画出 <span class="math inline">\(\mathbb{E}(Y^L)\)</span> 和 <span class="math inline">\(\mathbb{E}(Y^p)\)</span> 随着 <span class="math inline">\(d\)</span> 增加而变化的曲线图</p>
+<p>（2）请画出有限期望<span class="math inline">\(\mathbb{E}(X\wedge u)\)</span> 随着 <span class="math inline">\(u\)</span> 变化而变化的曲线图</p>
+<p>若假设 <span class="math inline">\(X\sim \text{Pareto}(\alpha=2, \theta=200)\)</span> 和 <span class="math inline">\(X\sim \text{exp}(\theta = 1/200)\)</span>。</p>
+<p>（3）请画出 <span class="math inline">\(\mathbb{E}(Y^L)\)</span> 和 <span class="math inline">\(\mathbb{E}(Y^p)\)</span> 随着 <span class="math inline">\(d\)</span> 增加而变化的曲线图</p>
+<p>（4）请画出有限期望 <span class="math inline">\(\mathbb{E}(X\wedge u)\)</span> 随着 <span class="math inline">\(u\)</span> 变化而变化的曲线图</p>
+<p>注意： 上述三个分布的均值相等，均为 200。 指数分布: <span class="math inline">\(e_X(d)=\frac{1}{\theta}\)</span> 帕累托分布: <span class="math inline">\(e_X(d)=\frac{\theta}{\alpha-1}\)</span></p>
+<ul>
+<li>解答</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="riskmea.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 指数分布的生存函数</span></span>
+<span id="cb3-2"><a href="riskmea.html#cb3-2" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">200</span><span class="sc">*</span>x)</span>
+<span id="cb3-3"><a href="riskmea.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 指数分布的平均超额函数 ex1</span></span>
+<span id="cb3-4"><a href="riskmea.html#cb3-4" aria-hidden="true" tabindex="-1"></a>ex1 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb3-5"><a href="riskmea.html#cb3-5" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>) <span class="co"># 免赔额</span></span>
+<span id="cb3-6"><a href="riskmea.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(d1)){</span>
+<span id="cb3-7"><a href="riskmea.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  ex1[i] <span class="ot">&lt;-</span> <span class="fu">integrate</span>(S, d1[i], <span class="cn">Inf</span>)<span class="sc">$</span>value<span class="sc">/</span><span class="fu">S</span>(d1[i])</span>
+<span id="cb3-8"><a href="riskmea.html#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-9"><a href="riskmea.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 帕累托分布的生存函数</span></span>
+<span id="cb3-10"><a href="riskmea.html#cb3-10" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-11"><a href="riskmea.html#cb3-11" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb3-12"><a href="riskmea.html#cb3-12" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb3-13"><a href="riskmea.html#cb3-13" aria-hidden="true" tabindex="-1"></a>  (theta<span class="sc">/</span>(x <span class="sc">+</span> theta))<span class="sc">^</span>alpha</span>
+<span id="cb3-14"><a href="riskmea.html#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-15"><a href="riskmea.html#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 帕累托分布的平均超额函数 ex2</span></span>
+<span id="cb3-16"><a href="riskmea.html#cb3-16" aria-hidden="true" tabindex="-1"></a>ex2 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb3-17"><a href="riskmea.html#cb3-17" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="dv">500</span>, <span class="dv">1</span>) <span class="co"># 免赔额</span></span>
+<span id="cb3-18"><a href="riskmea.html#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(d2)){</span>
+<span id="cb3-19"><a href="riskmea.html#cb3-19" aria-hidden="true" tabindex="-1"></a>  ex2[i] <span class="ot">&lt;-</span> <span class="fu">integrate</span>(S, d2[i], <span class="cn">Inf</span>)<span class="sc">$</span>value<span class="sc">/</span><span class="fu">S</span>(d2[i])</span>
+<span id="cb3-20"><a href="riskmea.html#cb3-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-21"><a href="riskmea.html#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘图</span></span>
+<span id="cb3-22"><a href="riskmea.html#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb3-23"><a href="riskmea.html#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d1, ex1, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;mean excess function (1)&#39;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.01</span>))</span>
+<span id="cb3-24"><a href="riskmea.html#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d2, ex2, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;mean excess function (2)&#39;</span>)</span></code></pre></div>
+<ol start="9" style="list-style-type: decimal">
+<li>用 R 生成如下损失随机数：</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="riskmea.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>) </span>
+<span id="cb4-2"><a href="riskmea.html#cb4-2" aria-hidden="true" tabindex="-1"></a>loss <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rlnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">40</span>)) </span></code></pre></div>
+<p>（1） 在 99% 水平下，计算VaR和TVaR （2）假设损失服从形状参数为3，比率参数为1/400的伽马分布，计算95%水平下的VaR和TVaR （3） 假设损失服从 的对数正态分布，计算95%水平下的VaR和TVaR</p>
+<ul>
+<li>解答</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="riskmea.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb5-2"><a href="riskmea.html#cb5-2" aria-hidden="true" tabindex="-1"></a>loss <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rlnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">40</span>))</span>
+<span id="cb5-3"><a href="riskmea.html#cb5-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(loss)<span class="sc">/</span><span class="fu">length</span>(loss)</span>
+<span id="cb5-4"><a href="riskmea.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sort</span>(loss), p, <span class="at">type =</span> <span class="st">&quot;s&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="riskmea.html#cb6-1" aria-hidden="true" tabindex="-1"></a>VaR <span class="ot">=</span> <span class="fu">quantile</span>(loss, <span class="fl">0.99</span>)</span>
+<span id="cb6-2"><a href="riskmea.html#cb6-2" aria-hidden="true" tabindex="-1"></a>VaR</span></code></pre></div>
+<pre><code>##      99% 
+## 10.35728</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="riskmea.html#cb8-1" aria-hidden="true" tabindex="-1"></a>TVaR <span class="ot">=</span> <span class="fu">mean</span>(loss[loss <span class="sc">&gt;</span> VaR])</span>
+<span id="cb8-2"><a href="riskmea.html#cb8-2" aria-hidden="true" tabindex="-1"></a>TVaR</span></code></pre></div>
+<pre><code>## [1] 13.57995</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="riskmea.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设损失服从gamma(shape = 3,scale = 400)，计算95%水平下的VaR和TVaR</span></span>
+<span id="cb10-2"><a href="riskmea.html#cb10-2" aria-hidden="true" tabindex="-1"></a>Var.ga <span class="ot">&lt;-</span> <span class="cf">function</span>(q) <span class="fu">qgamma</span>(q, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">scale =</span> <span class="dv">400</span>) <span class="co"># 定义 VaR 函数</span></span>
+<span id="cb10-3"><a href="riskmea.html#cb10-3" aria-hidden="true" tabindex="-1"></a>TVar.ga <span class="ot">&lt;-</span> <span class="cf">function</span>(q) {</span>
+<span id="cb10-4"><a href="riskmea.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">integrate</span>(Var.ga, <span class="at">lower =</span> q, <span class="at">upper =</span> <span class="dv">1</span>)<span class="sc">$</span>value<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> q)  <span class="co"># 定义 TvaR 函数</span></span>
+<span id="cb10-5"><a href="riskmea.html#cb10-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-6"><a href="riskmea.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Var.ga</span>(<span class="fl">0.95</span>); <span class="fu">TVar.ga</span>(<span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## [1] 2518.317</code></pre>
+<pre><code>## [1] 3040.7</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="riskmea.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设损失服从lnorm(meanlog = 3,sdlog = 2)，计算95%水平下的VaR和TVaR</span></span>
+<span id="cb13-2"><a href="riskmea.html#cb13-2" aria-hidden="true" tabindex="-1"></a>Var.lnorm <span class="ot">&lt;-</span> <span class="cf">function</span>(q) <span class="fu">qlnorm</span>(q, <span class="at">meanlog =</span> <span class="dv">3</span>, <span class="at">sdlog =</span> <span class="dv">2</span>) <span class="co"># 定义 VaR 函数</span></span>
+<span id="cb13-3"><a href="riskmea.html#cb13-3" aria-hidden="true" tabindex="-1"></a>TVar.lnorm <span class="ot">&lt;-</span> <span class="cf">function</span>(q) {</span>
+<span id="cb13-4"><a href="riskmea.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">integrate</span>(Var.lnorm, <span class="at">lower =</span> q, <span class="at">upper =</span> <span class="dv">1</span>)<span class="sc">$</span>value<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> q)  <span class="co"># 定义 TvaR 函数</span></span>
+<span id="cb13-5"><a href="riskmea.html#cb13-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-6"><a href="riskmea.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Var.lnorm</span>(<span class="fl">0.95</span>); <span class="fu">TVar.lnorm</span>(<span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## [1] 538.9955</code></pre>
+<pre><code>## [1] 1896.008</code></pre>
 
 </div>
 </div>
@@ -180,7 +588,7 @@
           </div>
         </div>
       </div>
-<a href="chp1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="riskmod.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="lossmodif.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
