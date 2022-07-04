@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 基本的风险模型 | 非寿险精算学</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 基本的风险模型 | 非寿险精算学" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 基本的风险模型 | 非寿险精算学" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+
+
+<meta name="date" content="2022-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chp1.html"/>
+<link rel="next" href="riskmea.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> author: “李政宵、杨亮”<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#课程内容"><i class="fa fa-check"></i><b>1.1</b> 课程内容<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#先修内容"><i class="fa fa-check"></i><b>1.2</b> 先修内容<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#教材和参考资料"><i class="fa fa-check"></i><b>1.3</b> 教材和参考资料<span></span></a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-软件与-rmarkdown-可视化"><i class="fa fa-check"></i><b>1.4</b> R 软件与 rmarkdown 可视化<span></span></a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#rmarkdown-简介"><i class="fa fa-check"></i><b>1.4.1</b> Rmarkdown 简介<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chp1.html"><a href="chp1.html"><i class="fa fa-check"></i><b>2</b> 保险数据结构与R软件<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chp1.html"><a href="chp1.html#数据的分类"><i class="fa fa-check"></i><b>2.1</b> 数据的分类<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chp1.html"><a href="chp1.html#型数据"><i class="fa fa-check"></i><b>2.1.1</b> 0-1型数据<span></span></a></li>
+<li class="chapter" data-level="2.1.2" data-path="chp1.html"><a href="chp1.html#计数型数据"><i class="fa fa-check"></i><b>2.1.2</b> 计数型数据<span></span></a></li>
+<li class="chapter" data-level="2.1.3" data-path="chp1.html"><a href="chp1.html#连续型数据"><i class="fa fa-check"></i><b>2.1.3</b> 连续型数据<span></span></a></li>
+<li class="chapter" data-level="2.1.4" data-path="chp1.html"><a href="chp1.html#半连续型数据"><i class="fa fa-check"></i><b>2.1.4</b> 半连续型数据<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chp1.html"><a href="chp1.html#数据的基本属性"><i class="fa fa-check"></i><b>2.2</b> 数据的基本属性<span></span></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chp1.html"><a href="chp1.html#分布形态还有什么"><i class="fa fa-check"></i><b>2.2.1</b> 分布形态还有什么？<span></span></a></li>
+<li class="chapter" data-level="2.2.2" data-path="chp1.html"><a href="chp1.html#经验密度"><i class="fa fa-check"></i><b>2.2.2</b> 经验密度<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chp1.html"><a href="chp1.html#数据的可视化"><i class="fa fa-check"></i><b>2.3</b> 数据的可视化<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="riskmod.html"><a href="riskmod.html"><i class="fa fa-check"></i><b>3</b> 基本的风险模型<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="riskmod.html"><a href="riskmod.html#随机变量的基础知识"><i class="fa fa-check"></i><b>3.1</b> 随机变量的基础知识<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="riskmod.html"><a href="riskmod.html#分布函数和生存函数"><i class="fa fa-check"></i><b>3.2</b> 分布函数和生存函数<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="riskmod.html"><a href="riskmod.html#概率母函数矩母函数"><i class="fa fa-check"></i><b>3.3</b> 概率母函数/矩母函数<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="riskmod.html"><a href="riskmod.html#截断和删失"><i class="fa fa-check"></i><b>3.4</b> 截断和删失<span></span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="riskmod.html"><a href="riskmod.html#左截断left-truncated和平移shifted"><i class="fa fa-check"></i><b>3.4.1</b> 左截断（left truncated）和平移（shifted）<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="riskmod.html"><a href="riskmod.html#左删失left-censored和平移shifted"><i class="fa fa-check"></i><b>3.4.2</b> 左删失（left censored）和平移（shifted）<span></span></a></li>
+<li class="chapter" data-level="3.4.3" data-path="riskmod.html"><a href="riskmod.html#右删失right-censored"><i class="fa fa-check"></i><b>3.4.3</b> 右删失（right censored）<span></span></a></li>
+<li class="chapter" data-level="3.4.4" data-path="riskmod.html"><a href="riskmod.html#r-代码"><i class="fa fa-check"></i><b>3.4.4</b> R 代码<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="riskmod.html"><a href="riskmod.html#损失次数分布"><i class="fa fa-check"></i><b>3.5</b> 损失次数分布<span></span></a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="riskmod.html"><a href="riskmod.html#ab0-分布类"><i class="fa fa-check"></i><b>3.5.1</b> <span class="math inline">\((a,b,0)\)</span> 分布类<span></span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="riskmod.html"><a href="riskmod.html#泊松分布poisson"><i class="fa fa-check"></i><b>3.5.2</b> 泊松分布（Poisson）<span></span></a></li>
+<li class="chapter" data-level="3.5.3" data-path="riskmod.html"><a href="riskmod.html#负二项分布negative-binomial-distribution"><i class="fa fa-check"></i><b>3.5.3</b> 负二项分布（Negative Binomial distribution）<span></span></a></li>
+<li class="chapter" data-level="3.5.4" data-path="riskmod.html"><a href="riskmod.html#二项分布binomial-distribution"><i class="fa fa-check"></i><b>3.5.4</b> 二项分布（Binomial Distribution）<span></span></a></li>
+<li class="chapter" data-level="3.5.5" data-path="riskmod.html"><a href="riskmod.html#ab1-分布类"><i class="fa fa-check"></i><b>3.5.5</b> <span class="math inline">\((a,b,1)\)</span> 分布类<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="riskmod.html"><a href="riskmod.html#损失金额分布"><i class="fa fa-check"></i><b>3.6</b> 损失金额分布<span></span></a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="riskmod.html"><a href="riskmod.html#指数分布-exponential"><i class="fa fa-check"></i><b>3.6.1</b> 指数分布 （Exponential）<span></span></a></li>
+<li class="chapter" data-level="3.6.2" data-path="riskmod.html"><a href="riskmod.html#伽马分布gamma"><i class="fa fa-check"></i><b>3.6.2</b> 伽马分布（Gamma）<span></span></a></li>
+<li class="chapter" data-level="3.6.3" data-path="riskmod.html"><a href="riskmod.html#帕累托分布pareto"><i class="fa fa-check"></i><b>3.6.3</b> 帕累托分布（Pareto）<span></span></a></li>
+<li class="chapter" data-level="3.6.4" data-path="riskmod.html"><a href="riskmod.html#对数正态分布log-normal"><i class="fa fa-check"></i><b>3.6.4</b> 对数正态分布（Log-normal）<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="riskmod.html"><a href="riskmod.html#课后习题"><i class="fa fa-check"></i><b>3.7</b> 课后习题<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="riskmea.html"><a href="riskmea.html"><i class="fa fa-check"></i><b>4</b> 风险度量<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="riskmea.html"><a href="riskmea.html#风险度量的原则"><i class="fa fa-check"></i><b>4.1</b> 风险度量的原则<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="riskmea.html"><a href="riskmea.html#风险度量的一致性要求"><i class="fa fa-check"></i><b>4.2</b> 风险度量的一致性要求<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="riskmea.html"><a href="riskmea.html#varvalue-at-risk在险价值"><i class="fa fa-check"></i><b>4.3</b> VaR（Value-at-Risk，在险价值）<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="riskmea.html"><a href="riskmea.html#tvar-tail-value-at-risk尾部在险价值"><i class="fa fa-check"></i><b>4.4</b> TVaR （Tail-Value-at-Risk，尾部在险价值）<span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="riskmea.html"><a href="riskmea.html#课后习题-1"><i class="fa fa-check"></i><b>4.5</b> 课后习题<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lossmodif.html"><a href="lossmodif.html"><i class="fa fa-check"></i><b>5</b> 损失调整<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对赔付金额的影响"><i class="fa fa-check"></i><b>5.1</b> 免赔额对赔付金额的影响<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="lossmodif.html"><a href="lossmodif.html#通货膨胀对赔付金额的影响"><i class="fa fa-check"></i><b>5.2</b> 通货膨胀对赔付金额的影响<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="lossmodif.html"><a href="lossmodif.html#赔偿限额对赔付金额的影响"><i class="fa fa-check"></i><b>5.3</b> 赔偿限额对赔付金额的影响<span></span></a></li>
+<li class="chapter" data-level="5.4" data-path="lossmodif.html"><a href="lossmodif.html#共同保险对赔付金额的影响"><i class="fa fa-check"></i><b>5.4</b> 共同保险对赔付金额的影响<span></span></a></li>
+<li class="chapter" data-level="5.5" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对索赔次数的影响"><i class="fa fa-check"></i><b>5.5</b> 免赔额对索赔次数的影响<span></span></a></li>
+<li class="chapter" data-level="5.6" data-path="lossmodif.html"><a href="lossmodif.html#课后习题-2"><i class="fa fa-check"></i><b>5.6</b> 课后习题<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="parest.html"><a href="parest.html"><i class="fa fa-check"></i><b>6</b> 参数估计和统计推断<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="parest.html"><a href="parest.html#极大似然估计"><i class="fa fa-check"></i><b>6.1</b> 极大似然估计<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="parest.html"><a href="parest.html#贝叶斯估计"><i class="fa fa-check"></i><b>6.2</b> 贝叶斯估计<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="classrating.html"><a href="classrating.html"><i class="fa fa-check"></i><b>7</b> 分类费率定价方法<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="classrating.html"><a href="classrating.html#相关概念"><i class="fa fa-check"></i><b>7.1</b> 相关概念<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="classrating.html"><a href="classrating.html#风险基础和风险单位"><i class="fa fa-check"></i><b>7.1.1</b> 风险基础和风险单位<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="classrating.html"><a href="classrating.html#多元线性回归模型"><i class="fa fa-check"></i><b>7.2</b> 多元线性回归模型<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="classrating.html"><a href="classrating.html#广义线性回归模型"><i class="fa fa-check"></i><b>7.3</b> 广义线性回归模型<span></span></a></li>
+<li class="chapter" data-level="7.4" data-path="classrating.html"><a href="classrating.html#分类定价基本框架"><i class="fa fa-check"></i><b>7.4</b> 分类定价基本框架<span></span></a></li>
+<li class="chapter" data-level="7.5" data-path="classrating.html"><a href="classrating.html#模型"><i class="fa fa-check"></i><b>7.5</b> 0-1模型<span></span></a></li>
+<li class="chapter" data-level="7.6" data-path="classrating.html"><a href="classrating.html#索赔次数预测模型"><i class="fa fa-check"></i><b>7.6</b> 索赔次数预测模型<span></span></a></li>
+<li class="chapter" data-level="7.7" data-path="classrating.html"><a href="classrating.html#索赔金额预测模型"><i class="fa fa-check"></i><b>7.7</b> 索赔金额预测模型<span></span></a></li>
+<li class="chapter" data-level="7.8" data-path="classrating.html"><a href="classrating.html#纯保费预测模型"><i class="fa fa-check"></i><b>7.8</b> 纯保费预测模型<span></span></a></li>
+<li class="chapter" data-level="7.9" data-path="classrating.html"><a href="classrating.html#两步定价法"><i class="fa fa-check"></i><b>7.9</b> 两步定价法<span></span></a></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="chapter" data-level="8" data-path="experiencerate.html"><a href="experiencerate.html"><i class="fa fa-check"></i><b>8</b> 经验费率厘定方法<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="experiencerate.html"><a href="experiencerate.html#线性混合模型"><i class="fa fa-check"></i><b>8.1</b> 线性混合模型<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="experiencerate.html"><a href="experiencerate.html#最精确信度模型"><i class="fa fa-check"></i><b>8.2</b> 最精确信度模型<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="experiencerate.html"><a href="experiencerate.html#经验贝叶斯"><i class="fa fa-check"></i><b>8.3</b> 经验贝叶斯<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="reserv.html"><a href="reserv.html"><i class="fa fa-check"></i><b>9</b> 准备金评估方法<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="reserv.html"><a href="reserv.html#相关概念-1"><i class="fa fa-check"></i><b>9.1</b> 相关概念<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="reserv.html"><a href="reserv.html#确定性方法"><i class="fa fa-check"></i><b>9.2</b> 确定性方法<span></span></a></li>
+<li class="chapter" data-level="9.3" data-path="reserv.html"><a href="reserv.html#随机性方法"><i class="fa fa-check"></i><b>9.3</b> 随机性方法<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>10</b> Methods<span></span></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>10.1</b> Math example<span></span></a></li>
+</ul></li>
+<li><a href="references-1.html#references-1">References<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">非寿险精算学</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="riskmod" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> 基本的风险模型<a href="riskmod.html#riskmod" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<hr />
+<div id="随机变量的基础知识" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> 随机变量的基础知识<a href="riskmod.html#随机变量的基础知识" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在非寿险精算中，风险可以理解为保险损失的不确定性，通常用随机变量来表示。风险可以是：</p>
+<ul>
+<li><p>保险事故发生与否的不确定性</p></li>
+<li><p>保险事故发生的时间的不确定性</p></li>
+<li><p>保险事故发生的地点的不确定性</p></li>
+<li><p>保险事故造成的损失金额的不确定性。</p></li>
+</ul>
+<p>随机变量是指取值依赖于随机现象的观察结果的变量，取值是随机的，取值特征通过概率分布来描述。一般用大写的英文字母表示。随机变量可以表示为：</p>
+<ul>
+<li><p><strong>连续型随机变量</strong>。其取值通常布满一个区间，如保险事故造成的损失金额 <span class="math inline">\(X\)</span> 的取值范围为 <span class="math inline">\((0,+\infty)\)</span>。</p></li>
+<li><p><strong>离散型随机变量</strong>。其取值为有限个或可列个值，如保险事故发生的次数 <span class="math inline">\(N\)</span> 的取值范围为 <span class="math inline">\(0, 1, 2, 3, ...\)</span>。保险事故是否发生损失可以表示为取值为 0 和 1 的离散型变量 <span class="math inline">\(I=0,1\)</span>。</p></li>
+<li><p><strong>半连续型随机变量</strong>。其取值通常为连续型和离散型的结合，如保险事故造成的累积损失 <span class="math inline">\(S\)</span>，其取值范围为 <span class="math inline">\([0, +\infty\)</span>，其中 <span class="math inline">\(S=0\)</span> 表示保险事故没有造成损失，<span class="math inline">\(S&gt;0\)</span> 表示保险事故造成了多大的损失。</p></li>
+</ul>
+<hr />
+</div>
+<div id="分布函数和生存函数" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> 分布函数和生存函数<a href="riskmod.html#分布函数和生存函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>连续型随机变量 <span class="math inline">\(X\)</span> 的累积分布函数 (Cumulative Distribution Function, cdf) 表示为 <span class="math display">\[F_{X}(x)=\Pr(X\le X)\]</span></li>
+</ul>
+<blockquote>
+<p>例: 运用 R 软件画出下面两种分布函数图。</p>
+</blockquote>
+<span class="math display">\[\begin{equation*}
+F_1(x) = \begin{cases}
+0 &amp;\quad x &lt;0,\\
+0.01x &amp; \quad 0 \le x &lt; 100,\\
+1, &amp; \quad x\ge 100.
+\end{cases}
+\end{equation*}\]</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="riskmod.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义分布函数</span></span>
+<span id="cb1-2"><a href="riskmod.html#cb1-2" aria-hidden="true" tabindex="-1"></a>F1.f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-3"><a href="riskmod.html#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>){</span>
+<span id="cb1-4"><a href="riskmod.html#cb1-4" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb1-5"><a href="riskmod.html#cb1-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(x <span class="sc">&lt;</span> <span class="dv">100</span> <span class="sc">&amp;</span> x <span class="sc">&gt;=</span> <span class="dv">0</span>){</span>
+<span id="cb1-6"><a href="riskmod.html#cb1-6" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fl">0.01</span><span class="sc">*</span>x</span>
+<span id="cb1-7"><a href="riskmod.html#cb1-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;=</span> <span class="dv">100</span>){</span>
+<span id="cb1-8"><a href="riskmod.html#cb1-8" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-9"><a href="riskmod.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-10"><a href="riskmod.html#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb1-11"><a href="riskmod.html#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-12"><a href="riskmod.html#cb1-12" aria-hidden="true" tabindex="-1"></a>F1.f <span class="ot">&lt;-</span>  <span class="fu">Vectorize</span>(F1.f) <span class="co"># 将函数向量化，允许函数输入向量，输出向量</span></span>
+<span id="cb1-13"><a href="riskmod.html#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="riskmod.html#cb1-14" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">length.out =</span> <span class="dv">20</span>) <span class="co"># 画图横轴数据</span></span>
+<span id="cb1-15"><a href="riskmod.html#cb1-15" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">F1.f</span>(x)  <span class="co"># 画图纵轴数据</span></span>
+<span id="cb1-16"><a href="riskmod.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/plot-cdf-1.png" width="672" /></p>
+<p><span class="math display">\[
+\begin{equation}
+F_2(x) = \begin{cases}
+0 &amp;\quad x &lt;0,\\
+1 - \left(\frac{2000}{x + 2000}\right)^3, &amp; \quad x\ge 0,
+\end{cases}
+\end{equation}
+\]</span></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="riskmod.html#cb2-1" aria-hidden="true" tabindex="-1"></a>F2.f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb2-2"><a href="riskmod.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>){</span>
+<span id="cb2-3"><a href="riskmod.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb2-4"><a href="riskmod.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;=</span> <span class="dv">0</span>){</span>
+<span id="cb2-5"><a href="riskmod.html#cb2-5" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">2000</span><span class="sc">/</span>(<span class="dv">2000</span> <span class="sc">+</span> x))<span class="sc">^</span><span class="dv">3</span></span>
+<span id="cb2-6"><a href="riskmod.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-7"><a href="riskmod.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb2-8"><a href="riskmod.html#cb2-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-9"><a href="riskmod.html#cb2-9" aria-hidden="true" tabindex="-1"></a>F2.f <span class="ot">&lt;-</span>  <span class="fu">Vectorize</span>(F2.f)</span>
+<span id="cb2-10"><a href="riskmod.html#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="riskmod.html#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="riskmod.html#cb2-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">3000</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb2-13"><a href="riskmod.html#cb2-13" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">F2.f</span>(x)</span>
+<span id="cb2-14"><a href="riskmod.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/plot-pdf-1.png" width="672" /></p>
+<ul>
+<li><p>随机变量的生存函数 (Survival Function) 定义为：
+<span class="math display">\[
+S_{X}(x)=\Pr(X&gt;x)=1-F_{X}(x)
+\]</span>
+其中，生存函数表示随机变量 <span class="math inline">\(X\)</span> 大于 <span class="math inline">\(x\)</span> 的概率。</p></li>
+<li><p>若随机变量是连续的，其密度函数和生存函数存在下述关系： <span class="math display">\[S_{X}(x)=\int_{0}^\infty f_{X}(x)dx\]</span></p></li>
+</ul>
+<p><span class="math display">\[f(x)=-\frac{dS(x)}{dx}\]</span></p>
+<blockquote>
+<p>例：运用 R 软件画出 <strong>F2.f</strong> 对应的密度函数图。</p>
+</blockquote>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="riskmod.html#cb3-1" aria-hidden="true" tabindex="-1"></a>f2.f <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb3-2"><a href="riskmod.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb3-3"><a href="riskmod.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">*</span>(<span class="dv">2000</span>)<span class="sc">^</span><span class="dv">3</span><span class="sc">/</span>(x <span class="sc">+</span> <span class="dv">2000</span>)<span class="sc">^</span><span class="dv">4</span></span>
+<span id="cb3-4"><a href="riskmod.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> out <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb3-5"><a href="riskmod.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb3-6"><a href="riskmod.html#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-7"><a href="riskmod.html#cb3-7" aria-hidden="true" tabindex="-1"></a>f2.f <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(f2.f)</span>
+<span id="cb3-8"><a href="riskmod.html#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="riskmod.html#cb3-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fl">0.001</span>, <span class="at">to =</span> <span class="dv">3000</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb3-10"><a href="riskmod.html#cb3-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">f2.f</span>(x)</span>
+<span id="cb3-11"><a href="riskmod.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="概率母函数矩母函数" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> 概率母函数/矩母函数<a href="riskmod.html#概率母函数矩母函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>随机变量的概率母函数或矩母函数与其分布函数存在一一对应的关系，同样可以描述随机变量的随机特征。</p>
+<ul>
+<li><p>离散型随机变量： 概率母函数 (Probability Generating Function, pgf)</p></li>
+<li><p>连续性随机变量： 矩母函数 (Moment Generating Function, mgf)</p></li>
+</ul></li>
+<li><p>概率母函数或矩母函数可以得到随机变量各阶矩。</p></li>
+</ul>
+<blockquote>
+<p>定义：离散随机变量 <span class="math inline">\(N\)</span> 的（概率）母函数表示为：
+<span class="math display">\[
+P_N(t)=E(t^N)=\sum_{k=0}^{\infty}t^kP(N=k)
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>推论：运用概率母函数可以表示出随机变量 <span class="math inline">\(N=k\)</span> 的概率，即 <span class="math inline">\(\Pr(N=k)\)</span> 为概率母函数的 <span class="math inline">\(k\)</span> 阶偏导在 <span class="math inline">\(0\)</span> 点出的取值。例如:
+<span class="math display">\[
+P(N=1)=\frac{P_N^{(1)}(0)}{1!}\]</span> <span class="math display">\[P(N=k)=\frac{P_N^{(k)}(0)}{k!}
+\]</span>
+其中，<span class="math inline">\(P_N^{(k)}(\cdot)\)</span> 表示概率母函数的 <span class="math inline">\(k\)</span> 阶偏导，<span class="math inline">\(k!=\Gamma(k)\)</span> 表示 <span class="math inline">\(k\)</span> 阶乘。</p>
+</blockquote>
+<blockquote>
+<p>定义：连续型随机变量 <span class="math inline">\(X\)</span> 的矩母函数表示为 <span class="math display">\[M_X(t)=E(e^{tX})=\int_{-\infty}^{\infty}e^{tX}f(x)dx\]</span></p>
+</blockquote>
+<blockquote>
+<p>推论：运用矩母函数可以得到多个独立随机变量之和的分布函数。例如，假设<span class="math inline">\(S=X_1+X_2+...+X_n=\sum_{i=1}^{n}X_i\)</span>，则随机变量 <span class="math inline">\(S\)</span> 的矩母函数表示为： <span class="math display">\[M_s(t)=M_{X_1}(t)M_{X_2}(t)...M_{X_n}(t)\]</span>
+其中，<span class="math inline">\(M_{X_j}(t)\)</span> 表示 <span class="math inline">\(X_j\)</span> 的矩母函数在 <span class="math inline">\(t\)</span> 的取值。</p>
+</blockquote>
+<hr />
+</div>
+<div id="截断和删失" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> 截断和删失<a href="riskmod.html#截断和删失" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>保险中的损失通常指被保险人发生的损失</p></li>
+<li><p>保险中的索赔通常指保险人给被保险人的赔款</p></li>
+<li><p>由于不同的保险产品通常存在免赔额和赔偿限额的情况，使得保险的损失和索赔的随机性通常是不一致的</p></li>
+<li><p>这种不一致性通常运用<strong>截断</strong>和<strong>删失</strong>的方法进行处理。</p></li>
+</ul>
+<p>假设随机变量 <span class="math inline">\(X\)</span> 表示原始的损失，其数学期望可以表示为： <span class="math display">\[\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}\]</span></p>
+<p><img src="picture/expected.png" width="450" /></p>
+<div id="左截断left-truncated和平移shifted" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> 左截断（left truncated）和平移（shifted）<a href="riskmod.html#左截断left-truncated和平移shifted" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p>定义：给定常数 <span class="math inline">\(d\)</span>，且满足 <span class="math inline">\(\Pr(X &gt; d) &gt; 0\)</span> ，对随机变量 <span class="math inline">\(X\)</span> 进行左截断和平移变换之后得到新的随机变量 <span class="math inline">\(Y^p\)</span>，具体表示为：
+<span class="math display">\[
+Y^p = X - d|X&gt;d = \begin{cases}
+\text{NA}, \quad X\le d \\
+X - d, \quad X&gt; d
+\end{cases}
+\]</span>
+其中，<span class="math inline">\(Y^p\)</span> 也称之为 <strong>超额损失变量</strong> （excess loss variable）。</p>
+</blockquote>
+<ul>
+<li><p><strong>超额损失变量</strong>也称之为<strong>左截断平移变量</strong>：</p>
+<ul>
+<li><p><span class="math inline">\(Y^p\)</span> 是 <span class="math inline">\(X\)</span> 在 <span class="math inline">\(d\)</span> 处左截断得到的，原因在于任意 <span class="math inline">\(X\)</span> 小于 <span class="math inline">\(d\)</span> 的值都是无法观测到</p></li>
+<li><p><span class="math inline">\(Y^p\)</span> 左截断之后向左平移得到的，因此在截断基础上减少了 <span class="math inline">\(d\)</span></p></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>定义：随机变量 <span class="math inline">\(Y^p\)</span> 的数学期望称之为 <strong>平均超额损失函数</strong>：
+<span class="math display">\[
+e_X(d):=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X&gt;d)
+\]</span></p>
+</blockquote>
+<ul>
+<li><p>当 <span class="math inline">\(X\)</span> 表示保险事故造成的损失金额，<span class="math inline">\(d\)</span>表示保险免赔额时，则平均超额损失表示已发生的超过免赔额 <span class="math inline">\(d\)</span> 的期望索赔金额</p></li>
+<li><p>当 <span class="math inline">\(X\)</span> 是死亡年龄，平均超额损失表示为已知某人在年龄 <span class="math inline">\(d\)</span> 存活的情况下的期望预期寿命</p></li>
+</ul>
+<blockquote>
+<p>定义：超额损失变量的 <span class="math inline">\(k\)</span> 阶矩表示为：
+<span class="math display">\[
+e_{X}^k(d)
+=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)},
+\]</span>
+其中，当 <span class="math inline">\(k=1\)</span> 时，平均超额损失函数表示为
+<span class="math display">\[
+{{e}_{X}}(d)=\mathbb{E}\left( X-d|X&gt;d \right)=\frac{\int_{d}^{\infty }{{S}(x)dx}}{S(d)}.
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>证明：
+<span class="math display">\[
+\begin{align*}
+{{e}_{X}}(d)&amp;=\frac{\int_{d}^{\infty }{(x-d)f(x)dx}}{1-F(d)}\\
+&amp;=\frac{-(x-d)S(x)|_{d}^{\infty }+\int_{d}^{\infty }{S(x)dx}}{S(d)}\\
+&amp;=\frac{\int_{d}^{\infty }{S(x)dx}}{S(d)}.
+\end{align*}
+\]</span>
+下面证明 <span class="math inline">\((x-d)S(x)|_{d}^{\infty }=0\)</span>
+<span class="math display">\[
+\begin{align*}
+&amp; \underset{x\to \infty }{\mathop{\lim }}\,xS(x)=\underset{x\to \infty }{\mathop{\lim }}\,x\int\limits_{x}^{\infty }{f(t)dt} \\ 
+&amp; =\underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{xf(t)dt} \\ 
+&amp; \le \underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{tf(t)dt} \\ 
+&amp; =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0
+\end{align*}
+\]</span></p>
+</blockquote>
+</div>
+<div id="左删失left-censored和平移shifted" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> 左删失（left censored）和平移（shifted）<a href="riskmod.html#左删失left-censored和平移shifted" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p><strong>左删失平移</strong> 变量定义为：
+<span class="math display">\[
+{{Y}^{L}}={{\left( X-d \right)}_{+}}= 
+\begin{cases}
+&amp; 0,\quad \quad \quad X\le d \\ 
+&amp; X-d,\quad X&gt;d \\ 
+\end{cases} 
+\]</span></p>
+</blockquote>
+<ul>
+<li><p>左删失表示随机变量 <span class="math inline">\(X&lt;d\)</span> 的取值都替换为 <span class="math inline">\(d\)</span></p></li>
+<li><p>平移表示将左删失的变量向左进行平移变化，使得左删失变量减去 <span class="math inline">\(d\)</span></p></li>
+</ul>
+<blockquote>
+<p><span class="math inline">\({Y}^{L}\)</span> 的 <span class="math inline">\(k\)</span>阶矩表示为：
+<span class="math display">\[
+\mathbb{E}[(X-d)_{+}^k]={\int_{d}^{\infty}(x-d)^kf(x)dx}
+\]</span></p>
+</blockquote>
+<p><span class="math inline">\(Y^L\)</span> 和 <span class="math inline">\(Y^P\)</span> 的比较：</p>
+<ul>
+<li><p>假设 <span class="math inline">\(X\)</span> 表示损失，则 <span class="math inline">\(Y^L\)</span> 和 <span class="math inline">\(Y^P\)</span> 都表示赔款</p></li>
+<li><p><span class="math inline">\(Y^L\)</span> 是含零赔款（per loss），即当保险事故造成的损失没有产生赔款的时候， <span class="math inline">\(Y^L=0\)</span></p></li>
+<li><p><span class="math inline">\(Y^P\)</span> 是非零赔款（per payment），即当保险事故造成的损失没有产生赔款的时候， <span class="math inline">\(\Pr(Y^p=0)=0\)</span></p></li>
+<li><p>数学期望存在下述关系：</p>
+<p><span class="math display">\[\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F_X(d)]=\int_{d}^{\infty}S(x)dx\]</span>
+<img src="picture/YL.png" width="450" /></p></li>
+</ul>
+</div>
+<div id="右删失right-censored" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> 右删失（right censored）<a href="riskmod.html#右删失right-censored" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p>定义：<strong>右删失</strong>变量表示为：
+<span class="math display">\[
+Y=X\wedge u=\min (X,u)=\begin{cases}
+&amp; X,\ \ \ X&lt;u \\ 
+&amp; u,\ \ \ \ X\ge u \\ 
+\end{cases}
+\]</span>
+其中，<span class="math inline">\(Y\)</span> 也被称之为<strong>有限损失</strong> (limited loss variable)。</p>
+</blockquote>
+<ul>
+<li>注意：右删失表示随机变量 <span class="math inline">\(X&gt;u\)</span> 的所有取值都用 <span class="math inline">\(u\)</span> 代替</li>
+</ul>
+<blockquote>
+<p>定义：<span class="math inline">\(Y\)</span> 的数学期望 <span class="math inline">\(E(X\wedge u)\)</span> 称之为<strong>有限期望</strong> (limited expected value)，具体表示为：
+<span class="math display">\[
+\begin{align*}
+E(X\wedge u)&amp; =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\ 
+&amp; =-xS(x)\left| _{0}^{u} \right.+\int_{0}^{u}{S(x)dx}+uS(u) \\ 
+&amp; =\int_{0}^{u}{S(x)dx}  
+\end{align*}
+\]</span></p>
+</blockquote>
+<p><img src="picture/limit.png" width="450" /></p>
+</div>
+<div id="r-代码" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> R 代码<a href="riskmod.html#r-代码" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>假设随机变量 <span class="math inline">\(X\sim \text{Gamma}(\alpha = 2, \theta = 100)\)</span>，其中期望为 200。</li>
+</ol>
+<p>请用 R 软件进行绘图：</p>
+<ul>
+<li><p>请画出 <span class="math inline">\(\mathbb{E}(Y^L)\)</span> 和 <span class="math inline">\(\mathbb{E}(Y^p)\)</span> 随着 <span class="math inline">\(d\)</span> 增加而变化的曲线图</p></li>
+<li><p>请画出有限期望<span class="math inline">\(\mathbb{E}(X\wedge u)\)</span> 随着 <span class="math inline">\(u\)</span> 变化而变化的曲线图</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>若假设 <span class="math inline">\(X\sim \text{Pareto}(\alpha=2, \theta=200)\)</span> 和 <span class="math inline">\(X\sim \text{exp}(\theta = 1/200)\)</span>。</li>
+</ol>
+<ul>
+<li><p>请画出 <span class="math inline">\(\mathbb{E}(Y^L)\)</span> 和 <span class="math inline">\(\mathbb{E}(Y^p)\)</span> 随着 <span class="math inline">\(d\)</span> 增加而变化的曲线图</p></li>
+<li><p>请画出 limited expected value <span class="math inline">\(\mathbb{E}(X\wedge u)\)</span> 随着 <span class="math inline">\(u\)</span> 变化而变化的曲线图</p></li>
+</ul>
+<p>注意： 上述三个分布的均值相等，均为 200。</p>
+<ul>
+<li><p>指数分布: <span class="math inline">\(e_X(d)=\frac{1}{\theta}\)</span></p></li>
+<li><p>帕累托分布: <span class="math inline">\(e_X(d)=\frac{\theta}{\alpha-1}\)</span></p></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="riskmod.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 指数分布的生存函数</span></span>
+<span id="cb4-2"><a href="riskmod.html#cb4-2" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">200</span><span class="sc">*</span>x)</span>
+<span id="cb4-3"><a href="riskmod.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 指数分布的平均超额函数 ex1</span></span>
+<span id="cb4-4"><a href="riskmod.html#cb4-4" aria-hidden="true" tabindex="-1"></a>ex1 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-5"><a href="riskmod.html#cb4-5" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>) <span class="co"># 免赔额</span></span>
+<span id="cb4-6"><a href="riskmod.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(d1)){</span>
+<span id="cb4-7"><a href="riskmod.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  ex1[i] <span class="ot">&lt;-</span> <span class="fu">integrate</span>(S, d1[i], <span class="cn">Inf</span>)<span class="sc">$</span>value<span class="sc">/</span><span class="fu">S</span>(d1[i])</span>
+<span id="cb4-8"><a href="riskmod.html#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-9"><a href="riskmod.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 帕累托分布的生存函数</span></span>
+<span id="cb4-10"><a href="riskmod.html#cb4-10" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb4-11"><a href="riskmod.html#cb4-11" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb4-12"><a href="riskmod.html#cb4-12" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb4-13"><a href="riskmod.html#cb4-13" aria-hidden="true" tabindex="-1"></a>  (theta<span class="sc">/</span>(x <span class="sc">+</span> theta))<span class="sc">^</span>alpha</span>
+<span id="cb4-14"><a href="riskmod.html#cb4-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-15"><a href="riskmod.html#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 帕累托分布的平均超额函数 ex2</span></span>
+<span id="cb4-16"><a href="riskmod.html#cb4-16" aria-hidden="true" tabindex="-1"></a>ex2 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-17"><a href="riskmod.html#cb4-17" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="dv">500</span>, <span class="dv">1</span>) <span class="co"># 免赔额</span></span>
+<span id="cb4-18"><a href="riskmod.html#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(d2)){</span>
+<span id="cb4-19"><a href="riskmod.html#cb4-19" aria-hidden="true" tabindex="-1"></a>  ex2[i] <span class="ot">&lt;-</span> <span class="fu">integrate</span>(S, d2[i], <span class="cn">Inf</span>)<span class="sc">$</span>value<span class="sc">/</span><span class="fu">S</span>(d2[i])</span>
+<span id="cb4-20"><a href="riskmod.html#cb4-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-21"><a href="riskmod.html#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘图</span></span>
+<span id="cb4-22"><a href="riskmod.html#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb4-23"><a href="riskmod.html#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d1, ex1, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;mean excess function (1)&#39;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.01</span>))</span>
+<span id="cb4-24"><a href="riskmod.html#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d2, ex2, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;mean excess function (2)&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/plot-excess-1.png" width="672" /></p>
+</div>
+</div>
+<div id="损失次数分布" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> 损失次数分布<a href="riskmod.html#损失次数分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>在非寿险精算中，通常用用计数随机变量来描述一段时间内发生的损失次数或索赔次数。</p></li>
+<li><p>计数随机变量是离散型随机变量的一种，随机变量的取值是在 <span class="math inline">\(0,1,2, 3,4...\)</span> 正整数值域。</p></li>
+</ul>
+<div id="ab0-分布类" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> <span class="math inline">\((a,b,0)\)</span> 分布类<a href="riskmod.html#ab0-分布类" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math inline">\((a,b,0)\)</span> 分布类仅包括：</p>
+<ul>
+<li><p>泊松分布（Poisson）</p></li>
+<li><p>二项分布（Binomial Distribution）</p></li>
+<li><p>负二项分布（Negative Binomial distribution）</p></li>
+</ul>
+<blockquote>
+<p>定义：<span class="math inline">\((a,b,0)\)</span> 分布类满足下述递推关系：
+<span class="math display">\[p_k=(a+\frac{b}{k})p_{k-1}, \quad, k=1,2,3,...,\]</span>
+其中，<span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 为常数，<span class="math inline">\(p_k = \Pr(N=k)\)</span>。已知 <span class="math inline">\(a,b\)</span> 和 <span class="math inline">\(p_0\)</span>，就能唯一确定整个概率分布函数。</p>
+</blockquote>
+</div>
+<div id="泊松分布poisson" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> 泊松分布（Poisson）<a href="riskmod.html#泊松分布poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>泊松分布的概率密度函数： <span class="math display">\[
+{{p}_{k}}=\frac{{{e}^{-\lambda }}{{\lambda }^{k}}}{k!},\quad k=0,1,2....
+\]</span> 概率母函数：
+<span class="math display">\[
+P(z)=e^{(\lambda(z-1))},\quad \lambda&gt;0.
+\]</span>
+均值和方差可以通过母函数求得：
+<span class="math display">\[
+\begin{align*}
+\mathbb{E}(N)&amp;=\lambda \\
+\text{Var}(N)&amp;=\lambda
+\end{align*}
+\]</span>
+- 泊松分布的方差和均值相等，都可以表示为<span class="math inline">\(\lambda\)</span>。</p>
+<ul>
+<li><p>若干个独立的泊松分布之和仍然服从泊松分布。</p></li>
+<li><p>泊松分布可以分解为若干个泊松分布之和。</p></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="riskmod.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># density function 概率函数</span></span>
+<span id="cb5-2"><a href="riskmod.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#dpois(x, lambda, log = FALSE) # lambda 表示均值, log = TRUE 表示输出log(f(x))</span></span>
+<span id="cb5-3"><a href="riskmod.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution function 分布函数</span></span>
+<span id="cb5-4"><a href="riskmod.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#ppois(q, lambda, lower.tail = TRUE, log.p = FALSE)</span></span>
+<span id="cb5-5"><a href="riskmod.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile function 分布函数的逆函数（分位数函数）</span></span>
+<span id="cb5-6"><a href="riskmod.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#qpois(p, lambda, lower.tail = TRUE, log.p = FALSE)</span></span>
+<span id="cb5-7"><a href="riskmod.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 泊松分布的随机数 - 模拟</span></span>
+<span id="cb5-8"><a href="riskmod.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#rpois(n, lambda = 10) # 模拟 n 个服从期望为10的泊松分布</span></span>
+<span id="cb5-9"><a href="riskmod.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 画图- 不同lambda的泊松分布的概率函数图</span></span>
+<span id="cb5-10"><a href="riskmod.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb5-11"><a href="riskmod.html#cb5-11" aria-hidden="true" tabindex="-1"></a>lambda.po <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>) <span class="co"># lambda 取值为 1,2,5,10</span></span>
+<span id="cb5-12"><a href="riskmod.html#cb5-12" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>)            <span class="co"># x 取值为 0-25 的整数</span></span>
+<span id="cb5-13"><a href="riskmod.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(lambda.po <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>)){</span>
+<span id="cb5-14"><a href="riskmod.html#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">dpois</span>(x0, lambda.po), <span class="at">names.arg =</span> x0, <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&#39;lambda = &#39;</span>, lambda.po, <span class="at">sep =</span> <span class="st">&#39;&#39;</span>))</span>
+<span id="cb5-15"><a href="riskmod.html#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<blockquote>
+<p>R 代码:
+假设索赔次数 <span class="math inline">\(N\)</span> 服从参数为 的泊松分布，请计算：</p>
+<ul>
+<li><p>索赔次数等于 3 的概率 <span class="math inline">\(\Pr(N=3)\)</span></p></li>
+<li><p>索赔次数小于等于 4 的概率 <span class="math inline">\(\Pr(N\leq4)\)</span></p></li>
+<li><p>索赔次数大于等于 3 小于等于 5 的概率 <span class="math inline">\(\Pr(3\leq N \leq 5)\)</span></p></li>
+</ul>
+</blockquote>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="riskmod.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 索赔次数等于3的概率</span></span>
+<span id="cb6-2"><a href="riskmod.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">3</span>, <span class="at">lambda =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.180447</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="riskmod.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 索赔次数小于等于4的概率为</span></span>
+<span id="cb8-2"><a href="riskmod.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">4</span>, <span class="at">lambda =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.947347</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="riskmod.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 索赔次数大于等于3小于等于5的概率</span></span>
+<span id="cb10-2"><a href="riskmod.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">5</span>, <span class="dv">2</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.30676</code></pre>
+</div>
+<div id="负二项分布negative-binomial-distribution" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> 负二项分布（Negative Binomial distribution）<a href="riskmod.html#负二项分布negative-binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>负二项分布的概率密度函数：
+<span class="math display">\[
+{{p}_{k}}=\frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{\left( \frac{1}{1+\beta } \right)}^{r}}{{\left( \frac{\beta }{1+\beta } \right)}^{k}}, \quad k=0,1,2,....
+\]</span></p>
+<p>概率母函数、均值和方差分别表示为：</p>
+<p><span class="math display">\[
+P(z)={{\left[ 1-\beta (z-1) \right]}^{-r}}
+\]</span>
+<span class="math display">\[
+\begin{align*}
+\mathbb{E}(X)&amp;=r\beta\\
+\text{Var}(X)&amp;=r\beta(1+\beta)
+\end{align*}
+\]</span>
+证明：</p>
+<p><span class="math display">\[
+\begin{align*}
+  P(z)&amp;=\sum\limits_{k=0}^{\infty }{{{p}_{k}}{{z}^{k}}}=\sum\limits_{k=0}^{\infty }{\left[ \frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{\left( \frac{1}{1+\beta } \right)}^{r}}{{\left( \frac{\beta }{1+\beta } \right)}^{k}} \right]{{z}^{k}}} \\ 
+ &amp; =\sum\limits_{k=0}^{\infty }{\left[ \frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{\left( \frac{1+\beta -z\beta }{1+\beta } \right)}^{r}}{{\left( \frac{z\beta }{1+\beta } \right)}^{k}} \right]}{{\left( 1+\beta -z\beta  \right)}^{-r}} \\ 
+ &amp; ={{\left( 1+\beta -z\beta  \right)}^{-r}}
+\end{align*} 
+\]</span></p>
+<ul>
+<li><p>注意：几何分布是负二项分布在<span class="math inline">\(r=1\)</span>时的特殊情况。</p></li>
+<li><p>令 <span class="math inline">\(p=\frac{1}{1+\beta}\)</span>, 负二项分布密度函数的另一种形式：
+<span class="math display">\[
+{{p}_{k}}=\frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{p}^{r}}{{\left( 1-p \right)}^{k}}
+\]</span></p></li>
+<li><p>其中，负二项分布的方差大于均值，通常可以用来描述具有过离散数据特征的损失次数。</p></li>
+<li><p>下图显示了参数 <span class="math inline">\(r\)</span> 在不同取值条件下负二项分布的概率分布图。可以发现，当负二项分布均值越大时，分布形状约趋近于正态分布。对应的 R 代码如下：</p></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="riskmod.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 负二项分布的概率函数</span></span>
+<span id="cb12-2"><a href="riskmod.html#cb12-2" aria-hidden="true" tabindex="-1"></a>r0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb12-3"><a href="riskmod.html#cb12-3" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.3</span>,<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>)</span>
+<span id="cb12-4"><a href="riskmod.html#cb12-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>)</span>
+<span id="cb12-5"><a href="riskmod.html#cb12-5" aria-hidden="true" tabindex="-1"></a>ylim0 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>),</span>
+<span id="cb12-6"><a href="riskmod.html#cb12-6" aria-hidden="true" tabindex="-1"></a>              <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>),</span>
+<span id="cb12-7"><a href="riskmod.html#cb12-7" aria-hidden="true" tabindex="-1"></a>              <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>),</span>
+<span id="cb12-8"><a href="riskmod.html#cb12-8" aria-hidden="true" tabindex="-1"></a>              <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>))  <span class="co"># 上下界</span></span>
+<span id="cb12-9"><a href="riskmod.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>) )</span>
+<span id="cb12-10"><a href="riskmod.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(p0)){</span>
+<span id="cb12-11"><a href="riskmod.html#cb12-11" aria-hidden="true" tabindex="-1"></a>  fpo <span class="ot">&lt;-</span> <span class="fu">dnbinom</span>(x0, <span class="at">size =</span> r0[i], <span class="at">prob =</span> p0[i], <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-12"><a href="riskmod.html#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(fpo, </span>
+<span id="cb12-13"><a href="riskmod.html#cb12-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">paste0</span>(<span class="st">&#39;r = &#39;</span>, r0[i], <span class="st">&#39;,  &#39;</span>,<span class="st">&#39;p = &#39;</span>, p0[i]), </span>
+<span id="cb12-14"><a href="riskmod.html#cb12-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">names.arg =</span> x0, <span class="at">ylim =</span> ylim0[[i]]</span>
+<span id="cb12-15"><a href="riskmod.html#cb12-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-16"><a href="riskmod.html#cb12-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/plot-nb-1.png" width="672" /></p>
+<ul>
+<li>令 <span class="math inline">\(r\to\infty\)</span> 且 <span class="math inline">\(\beta\to 0\)</span>，令 <span class="math inline">\(r\beta=\lambda\)</span> 是一个常数，可以发现
+<span class="math display">\[
+\begin{align*}
+\mathbb{E}(X)&amp;=r\beta \to \lambda\\
+\text{Var}(X)&amp;=r\beta(1+\beta) \to \lambda
+\end{align*}
+\]</span>
+负二项分布的<strong>极限分布</strong>是泊松分布。</li>
+</ul>
+</div>
+<div id="二项分布binomial-distribution" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> 二项分布（Binomial Distribution）<a href="riskmod.html#二项分布binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>个体风险发生索赔的概率为 <span class="math inline">\(q\)</span>, 不发生索赔的概率为 <span class="math inline">\(1-q\)</span>, 则索赔次数分布的母函数为 <span class="math display">\[
+P\left( z \right)=\mathbb{E}\left( {{z}^{N}} \right)=\left( 1-q \right){{z}^{0}}+q{{z}^{1}}=1-q+qz=1+q\left( z-1 \right)
+\]</span>
+对 <span class="math inline">\(m\)</span> 个独立同分布的个体风险，其索赔次数分布的母函数为
+<span class="math display">\[
+P\left( z \right)=[1+q\left( z-1 \right)]^m.
+\]</span>
+这 <span class="math inline">\(m\)</span> 个风险发生<span class="math inline">\(k\)</span>次索赔的概率为二项分布
+<span class="math display">\[
+{{p}_{k}}=\left(^m 
+_k 
+\right){{q}^{k}}{{(1-q)}^{m-k}}\quad \quad k=0,1,2,...,m.
+\]</span></p>
+<ul>
+<li><p>二项分布的均值和方差为 <span class="math inline">\(\mathbb{E}(X)=mq, \quad \text{Var}(X)=mq(1-q)\)</span></p></li>
+<li><p>二项分布的取值存在一个最大值<span class="math inline">\(m\)</span>。</p></li>
+<li><p>参数 <span class="math inline">\(m&gt;0\)</span> 使得二项分布的均值大于方差，主要用于描述具有欠离散数据特征的损失次数（精算中并不常用）。</p></li>
+</ul>
+<blockquote>
+<p>下图显示二项分布的均值越大，分布形态越对称。R 代码如下：</p>
+</blockquote>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="riskmod.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================</span></span>
+<span id="cb13-2"><a href="riskmod.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 二项分布</span></span>
+<span id="cb13-3"><a href="riskmod.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================</span></span>
+<span id="cb13-4"><a href="riskmod.html#cb13-4" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb13-5"><a href="riskmod.html#cb13-5" aria-hidden="true" tabindex="-1"></a>q0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>)</span>
+<span id="cb13-6"><a href="riskmod.html#cb13-6" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb13-7"><a href="riskmod.html#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="riskmod.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>) )</span>
+<span id="cb13-9"><a href="riskmod.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(m0)){</span>
+<span id="cb13-10"><a href="riskmod.html#cb13-10" aria-hidden="true" tabindex="-1"></a>  fpo <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x0, <span class="at">size =</span> m0[i], <span class="at">prob =</span> q0[i], <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-11"><a href="riskmod.html#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(fpo, </span>
+<span id="cb13-12"><a href="riskmod.html#cb13-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">paste0</span>(<span class="st">&#39;m = &#39;</span>, m0[i], <span class="st">&#39;,  &#39;</span>,</span>
+<span id="cb13-13"><a href="riskmod.html#cb13-13" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&#39;q = &#39;</span>, q0[i]),</span>
+<span id="cb13-14"><a href="riskmod.html#cb13-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">names.arg =</span> x0)</span>
+<span id="cb13-15"><a href="riskmod.html#cb13-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/plot-bi-1.png" width="672" /></p>
+</div>
+<div id="ab1-分布类" class="section level3 hasAnchor" number="3.5.5">
+<h3><span class="header-section-number">3.5.5</span> <span class="math inline">\((a,b,1)\)</span> 分布类<a href="riskmod.html#ab1-分布类" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math inline">\((a,b,1)\)</span> 分布类包含两个子类：</p>
+<ul>
+<li><p>零截断分布 (zero-truncated distribution)</p></li>
+<li><p>零调整分布 (zero-modified distribution)</p></li>
+<li><p>对于零截断分布，发生 <span class="math inline">\(k\)</span> 次损失的概率用<span class="math inline">\(p_k^T\)</span>表示，其中<span class="math inline">\(p_0^T=0\)</span></p></li>
+<li><p>对于零调整分布，发生 <span class="math inline">\(k\)</span> 次损失的概率用 <span class="math inline">\(p_k^M\)</span> 表示，其中 <span class="math inline">\(p_0^M\)</span> 表示可以是任意概率值。</p></li>
+</ul>
+<blockquote>
+<p><span class="math inline">\((a,b,1)\)</span>分布类满足下述递推关系： <span class="math display">\[p_k=(a+\frac{b}{k})p_{k-1}\]</span> <span class="math inline">\(k=2,3,...\)</span>,</p>
+<ul>
+<li><p>递推关系与 <span class="math inline">\((a,b,0)\)</span> 分布类的递推关系完全相同</p></li>
+<li><p><span class="math inline">\((a,b,1)\)</span> 分布类的递推关系是从 <span class="math inline">\(p_1\)</span>开始，而<span class="math inline">\((a,b,1)\)</span>分布类的递推关系是从<span class="math inline">\(p_0\)</span>开始。</p></li>
+</ul>
+</blockquote>
+<p>R 代码： 零截断负二项分布的计算</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="riskmod.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 负二项分布的概率</span></span>
+<span id="cb14-2"><a href="riskmod.html#cb14-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb14-3"><a href="riskmod.html#cb14-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">dnbinom</span>(x,<span class="dv">4</span>,<span class="fl">0.7</span>)</span>
+<span id="cb14-4"><a href="riskmod.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(p,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##  [1] 0.240 0.288 0.216 0.130 0.068 0.033 0.015 0.006 0.003 0.001 0.000</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="riskmod.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 零截断负二项分布的概率</span></span>
+<span id="cb16-2"><a href="riskmod.html#cb16-2" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">=</span> p[<span class="dv">1</span>]   <span class="do">##零点的概率</span></span>
+<span id="cb16-3"><a href="riskmod.html#cb16-3" aria-hidden="true" tabindex="-1"></a>pt1 <span class="ot">=</span> p[<span class="dv">2</span><span class="sc">:</span><span class="dv">11</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>p0)  <span class="do">##其它点上的概率</span></span>
+<span id="cb16-4"><a href="riskmod.html#cb16-4" aria-hidden="true" tabindex="-1"></a>pt <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, pt1)</span>
+<span id="cb16-5"><a href="riskmod.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pt,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##  [1] 0.000 0.379 0.284 0.171 0.090 0.043 0.019 0.008 0.003 0.001 0.001</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="riskmod.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 绘图比较负二项和零截断负二项的概率</span></span>
+<span id="cb18-2"><a href="riskmod.html#cb18-2" aria-hidden="true" tabindex="-1"></a>com <span class="ot">=</span> <span class="fu">rbind</span>(负二项 <span class="ot">=</span> p, 零截断负二项 <span class="ot">=</span> pt)</span>
+<span id="cb18-3"><a href="riskmod.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(com,<span class="at">beside=</span><span class="cn">TRUE</span>,<span class="at">names.arg=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">legend.text=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>R 代码： 零调整负二项分布的计算</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="riskmod.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 负二项分布的概率</span></span>
+<span id="cb19-2"><a href="riskmod.html#cb19-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb19-3"><a href="riskmod.html#cb19-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">dnbinom</span>(x, <span class="dv">4</span>, <span class="fl">0.7</span>)</span>
+<span id="cb19-4"><a href="riskmod.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(p,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##  [1] 0.240 0.288 0.216 0.130 0.068 0.033 0.015 0.006 0.003 0.001 0.000</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="riskmod.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 零调整负二项分布的概率</span></span>
+<span id="cb21-2"><a href="riskmod.html#cb21-2" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">=</span> <span class="fl">0.3</span>  <span class="do">##调整零点的概率</span></span>
+<span id="cb21-3"><a href="riskmod.html#cb21-3" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">=</span> (<span class="dv">1</span><span class="sc">-</span>p0)<span class="sc">*</span>p[<span class="dv">2</span><span class="sc">:</span><span class="dv">11</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>p[<span class="dv">1</span>])  <span class="do">##其它点上的概率</span></span>
+<span id="cb21-4"><a href="riskmod.html#cb21-4" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">=</span> <span class="fu">c</span>(p0,pm)</span>
+<span id="cb21-5"><a href="riskmod.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pm, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##  [1] 0.300 0.265 0.199 0.119 0.063 0.030 0.014 0.006 0.002 0.001 0.000</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="riskmod.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 绘图</span></span>
+<span id="cb23-2"><a href="riskmod.html#cb23-2" aria-hidden="true" tabindex="-1"></a>com <span class="ot">=</span> <span class="fu">rbind</span>(负二项 <span class="ot">=</span> p, 零调整负二项 <span class="ot">=</span> pm)</span>
+<span id="cb23-3"><a href="riskmod.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(com, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">legend.text=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+</div>
+<div id="损失金额分布" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> 损失金额分布<a href="riskmod.html#损失金额分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>对保险损失金额进行分析和预测，是精算师和风险管理者的重要工作。通常情况下，保险损失金额具有不对称、定义域非负、尾部较厚的特点，像正态分布等高斯类的分布不适于拟合损失金额。常用的偏态损失分布包括：</p>
+<ul>
+<li><p>指数分布 （Exponential）</p></li>
+<li><p>伽马分布（Gamma）</p></li>
+<li><p>威布尔分布（Weibull）</p></li>
+<li><p>帕累托分布（Pareto）</p></li>
+<li><p>对数正态分布（Log-normal）</p></li>
+</ul>
+<p>这一节将主要介绍几种常见的损失分布，以及分布函数、概率密度函数、矩母函数等分布性质。</p>
+<div id="指数分布-exponential" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> 指数分布 （Exponential）<a href="riskmod.html#指数分布-exponential" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>指数分布的概率密度函数和累积分布函数为:
+<span class="math display">\[
+f(x)=\frac{1}{\theta}\exp\left({-\frac{1}{\theta}x}\right),\quad x \ge 0
+\]</span></p>
+<p>或者
+<span class="math display">\[
+f(x)=\lambda\exp\left({-\lambda x}\right),\quad x \ge 0
+\]</span>
+指数分布的期望、方差分别为 <span class="math display">\[E(X)=\theta\]</span> <span class="math display">\[Var(X)=\theta^2\]</span> 同时，指数分布具有无记忆性，即 <span class="math display">\[P(X&gt;x+u|X&gt;u)=P(X&gt;x)\]</span></p>
+<ul>
+<li><p>下图显示了指数分布的比率参数取值不同情况下的密度函数图。</p></li>
+<li><p>指数分布的缺点是其概率密度函数是单调递减的，这在很多情况下，并不适于实际的需要。</p></li>
+<li><p>R 对应代码如下：</p></li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="riskmod.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ==========================================</span></span>
+<span id="cb24-2"><a href="riskmod.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 指数分布</span></span>
+<span id="cb24-3"><a href="riskmod.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ===========================================</span></span>
+<span id="cb24-4"><a href="riskmod.html#cb24-4" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb24-5"><a href="riskmod.html#cb24-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.001</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb24-6"><a href="riskmod.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>) )</span>
+<span id="cb24-7"><a href="riskmod.html#cb24-7" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">dexp</span>(x0, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span>theta[<span class="dv">1</span>], <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb24-8"><a href="riskmod.html#cb24-8" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">dexp</span>(x0, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span>theta[<span class="dv">2</span>], <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb24-9"><a href="riskmod.html#cb24-9" aria-hidden="true" tabindex="-1"></a>f3 <span class="ot">&lt;-</span> <span class="fu">dexp</span>(x0, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span>theta[<span class="dv">3</span>], <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb24-10"><a href="riskmod.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(x0, <span class="fu">cbind</span>(f1, f2, f3), <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb24-11"><a href="riskmod.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>, </span>
+<span id="cb24-12"><a href="riskmod.html#cb24-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;theta = 0.5&#39;</span>, <span class="st">&#39;theta = 1&#39;</span>, <span class="st">&#39;theta = 2&#39;</span>),</span>
+<span id="cb24-13"><a href="riskmod.html#cb24-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),</span>
+<span id="cb24-14"><a href="riskmod.html#cb24-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>,  <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+</div>
+<div id="伽马分布gamma" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> 伽马分布（Gamma）<a href="riskmod.html#伽马分布gamma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>第一种</strong>伽马分布的概率密度函数为 <span class="math display">\[
+f(x; \alpha, \theta)=\frac{{{\theta }^{-\alpha }}}{\Gamma \text{(}\alpha )}{{x}^{\alpha -1}}{{e}^{-\frac{1}{\theta} x}}.\]</span></p>
+<ul>
+<li><p>其中 <span class="math inline">\(\alpha\)</span> 是 <strong>形状参数</strong>，<span class="math inline">\(\theta\)</span> 是 <strong>尺度参数</strong>。</p></li>
+<li><p>伽马分布的期望、方差分别为 <span class="math display">\[E(X)=\alpha/\beta\]</span> <span class="math display">\[Var(X)=\alpha/\beta^2\]</span>。</p></li>
+</ul>
+<p><strong>第二种</strong>伽马分布的概率密度函数为:
+<span class="math display">\[
+f(x; \alpha, \beta)=\frac{{{\theta }^{\alpha }}}{\Gamma \text{(}\alpha )}{{x}^{\alpha -1}}{{e}^{-\beta x}}.\]</span></p>
+<ul>
+<li>其中 <span class="math inline">\(\alpha\)</span> 是 <strong>形状参数</strong>，<span class="math inline">\(\beta=1/\theta\)</span> 是 <strong>比率参数</strong>。</li>
+</ul>
+<p><strong>第三种</strong>伽马分布的概率密度函数为:
+<span class="math display">\[
+f(x; \mu, \phi)=.\]</span></p>
+<ul>
+<li><p>其中，<span class="math inline">\(\mu=\alpha/\beta\)</span> 是均值参数，<span class="math inline">\(\phi=1/\alpha\)</span> 是离散参数。</p></li>
+<li><p>均值和方差分别为 <span class="math inline">\(\mu\)</span> 和 <span class="math inline">\(\phi\mu^2\)</span>。</p></li>
+<li><p>伽马分布的可加性：
+假设两个随机变量 <span class="math inline">\(X_1\)</span> 和 <span class="math inline">\(X_2\)</span> 都服从形状参数<span class="math inline">\(\alpha_1\)</span>和<span class="math inline">\(\alpha_2\)</span> ，比率参数都为 <span class="math inline">\(\beta\)</span> 的伽马分布，即 <span class="math inline">\(X_1\sim GA(\alpha_1,\beta)\)</span>，<span class="math inline">\(X_2\sim GA(\alpha_2,\beta)\)</span> ，那么随机变量之和<span class="math inline">\(X_1+X_2\)</span> 服从形状参数为 <span class="math inline">\(\alpha_1+\alpha_2\)</span>，比率参数为<span class="math inline">\(\beta\)</span> 的伽马分布，即<span class="math display">\[X_1+X_2\sim GA(\alpha_1+\alpha_2,\beta)\]</span> 。</p></li>
+<li><p>当形状参数<span class="math inline">\(\alpha=1\)</span>时，伽马分布可以退化为指数分布，即指数分布是伽马分布的特例。</p></li>
+<li><p>当<span class="math inline">\(\alpha=n/2\)</span>和<span class="math inline">\(\beta=1/2\)</span> 时，伽马分布可以退化为卡方分布，其中卡方分布的自由度为<span class="math inline">\(n/2\)</span>。</p></li>
+<li><p>R 代码：下图显示了伽马分布的形状参数和比率参数在不同取值情况下的密度函数图。</p></li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="riskmod.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ==========================================</span></span>
+<span id="cb25-2"><a href="riskmod.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 伽马分布</span></span>
+<span id="cb25-3"><a href="riskmod.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ===========================================</span></span>
+<span id="cb25-4"><a href="riskmod.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) )</span>
+<span id="cb25-5"><a href="riskmod.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 固定形状参数</span></span>
+<span id="cb25-6"><a href="riskmod.html#cb25-6" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">2</span>                <span class="co"># 形状参数</span></span>
+<span id="cb25-7"><a href="riskmod.html#cb25-7" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>)     <span class="co"># 比率参数，尺度参数为 1/theta</span></span>
+<span id="cb25-8"><a href="riskmod.html#cb25-8" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.001</span>, <span class="dv">15</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb25-9"><a href="riskmod.html#cb25-9" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x0,  <span class="at">shape =</span> alpha, <span class="at">rate =</span> theta[<span class="dv">1</span>]) <span class="co"># </span></span>
+<span id="cb25-10"><a href="riskmod.html#cb25-10" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x0,  <span class="at">shape =</span> alpha, <span class="at">rate =</span> theta[<span class="dv">2</span>])</span>
+<span id="cb25-11"><a href="riskmod.html#cb25-11" aria-hidden="true" tabindex="-1"></a>f3 <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x0,  <span class="at">shape =</span> alpha, <span class="at">rate =</span> theta[<span class="dv">3</span>])</span>
+<span id="cb25-12"><a href="riskmod.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(x0, <span class="fu">cbind</span>(f1, f2, f3),<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.8</span>), <span class="at">main =</span> <span class="st">&#39;&#39;</span>,  <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">ylab =</span> <span class="st">&#39;密度函数&#39;</span>)</span>
+<span id="cb25-13"><a href="riskmod.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;alpha = 2, theta = 0.5&#39;</span>, </span>
+<span id="cb25-14"><a href="riskmod.html#cb25-14" aria-hidden="true" tabindex="-1"></a>                              <span class="st">&#39;alpha = 2, theta = 1&#39;</span>, </span>
+<span id="cb25-15"><a href="riskmod.html#cb25-15" aria-hidden="true" tabindex="-1"></a>                              <span class="st">&#39;alpha = 2, theta = 2&#39;</span>),</span>
+<span id="cb25-16"><a href="riskmod.html#cb25-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>,  <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb25-17"><a href="riskmod.html#cb25-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-18"><a href="riskmod.html#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 固定比率参数</span></span>
+<span id="cb25-19"><a href="riskmod.html#cb25-19" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb25-20"><a href="riskmod.html#cb25-20" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb25-21"><a href="riskmod.html#cb25-21" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.001</span>, <span class="dv">15</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb25-22"><a href="riskmod.html#cb25-22" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x0,  <span class="at">shape =</span> alpha[<span class="dv">1</span>], <span class="at">rate =</span> theta)</span>
+<span id="cb25-23"><a href="riskmod.html#cb25-23" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x0,  <span class="at">shape =</span> alpha[<span class="dv">2</span>], <span class="at">rate =</span> theta)</span>
+<span id="cb25-24"><a href="riskmod.html#cb25-24" aria-hidden="true" tabindex="-1"></a>f3 <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x0,  <span class="at">shape =</span> alpha[<span class="dv">3</span>], <span class="at">rate =</span> theta)</span>
+<span id="cb25-25"><a href="riskmod.html#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-26"><a href="riskmod.html#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(x0, <span class="fu">cbind</span>(f1, f2, f3),<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.8</span>), <span class="at">main =</span> <span class="st">&#39;&#39;</span>,  <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">ylab =</span> <span class="st">&#39;密度函数&#39;</span>)</span>
+<span id="cb25-27"><a href="riskmod.html#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>,<span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;alpha = 1, theta = 0.5&#39;</span>, </span>
+<span id="cb25-28"><a href="riskmod.html#cb25-28" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&#39;alpha = 2, theta = 0.5&#39;</span>, </span>
+<span id="cb25-29"><a href="riskmod.html#cb25-29" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&#39;alpha = 3, theta = 0.5&#39;</span>),</span>
+<span id="cb25-30"><a href="riskmod.html#cb25-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>,  <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/gamma-pdf-1.png" width="672" /></p>
+</div>
+<div id="帕累托分布pareto" class="section level3 hasAnchor" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> 帕累托分布（Pareto）<a href="riskmod.html#帕累托分布pareto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>帕累托分布一般分为双参数和单参数两种。若没有特殊说米，一般指<strong>双参数</strong>帕累托。</p>
+<p>帕累托分布的分布函数、密度函数、期望和方差分别表示为：
+<span class="math display">\[
+\begin{align*}
+  &amp; {{F}_{X}}(x)=1-{{\left( \frac{\theta }{x+\theta } \right)}^{\alpha }}\ \ \ \ 0&lt;x&lt;\infty  \\ 
+ &amp;  \\ 
+ &amp; {{f}_{X}}(x)=\frac{\alpha {{\theta }^{\alpha }}}{{{(x+\theta )}^{\alpha +1}}} \\ 
+ &amp;  \\ 
+ &amp; \mathbb{E}(X)=\frac{\theta }{\alpha -1},\ \ \ \ \ \ \text{Var}(X)=\frac{\alpha {{\theta }^{2}}}{{{(\alpha -1)}^{2}}(\alpha -2)}.
+\end{align*}
+\]</span></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="riskmod.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(actuar)</span></code></pre></div>
+<pre><code>## 
+## 载入程辑包：&#39;actuar&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:grDevices&#39;:
+## 
+##     cm</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="riskmod.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shape = alpha, scale = theta</span></span>
+<span id="cb29-2"><a href="riskmod.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mean = 50</span></span>
+<span id="cb29-3"><a href="riskmod.html#cb29-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">2</span>,<span class="dv">5</span>)              </span>
+<span id="cb29-4"><a href="riskmod.html#cb29-4" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">50</span>,<span class="dv">200</span>)     </span>
+<span id="cb29-5"><a href="riskmod.html#cb29-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.001</span>, <span class="dv">100</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb29-6"><a href="riskmod.html#cb29-6" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">dpareto</span>(x0,  <span class="at">shape =</span> alpha[<span class="dv">1</span>], <span class="at">scale =</span> theta[<span class="dv">1</span>])</span>
+<span id="cb29-7"><a href="riskmod.html#cb29-7" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">dpareto</span>(x0,  <span class="at">shape =</span> alpha[<span class="dv">2</span>], <span class="at">scale =</span> theta[<span class="dv">2</span>])</span>
+<span id="cb29-8"><a href="riskmod.html#cb29-8" aria-hidden="true" tabindex="-1"></a>f3 <span class="ot">&lt;-</span> <span class="fu">dpareto</span>(x0,  <span class="at">shape =</span> alpha[<span class="dv">3</span>], <span class="at">scale =</span> theta[<span class="dv">3</span>])</span>
+<span id="cb29-9"><a href="riskmod.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(x0, <span class="fu">cbind</span>(f1, f2, f3), <span class="at">main =</span> <span class="st">&#39;&#39;</span>,  <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, </span>
+<span id="cb29-10"><a href="riskmod.html#cb29-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">ylab =</span> <span class="st">&#39;pdf&#39;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.05</span>))</span>
+<span id="cb29-11"><a href="riskmod.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;alpha = 0.5, theta = 5&#39;</span>, </span>
+<span id="cb29-12"><a href="riskmod.html#cb29-12" aria-hidden="true" tabindex="-1"></a>                              <span class="st">&#39;alpha = 2, theta = 50&#39;</span>, </span>
+<span id="cb29-13"><a href="riskmod.html#cb29-13" aria-hidden="true" tabindex="-1"></a>                              <span class="st">&#39;alpha = 5, theta = 200&#39;</span>),</span>
+<span id="cb29-14"><a href="riskmod.html#cb29-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>,  <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/plot-Pareto-1.png" width="672" /></p>
+<p><strong>单参数</strong>帕累托的概率密度函数为：
+<span class="math display">\[
+\begin{align*}
+f(x)&amp;=\frac{\alpha\theta^\alpha}{x^{\alpha+1}},\quad x&gt;\theta,\\
+F(x)&amp;=1-\left(\frac{\theta}{x}\right)^\alpha,
+\end{align*}
+\]</span>
+- 其中 <span class="math inline">\(\alpha\)</span> 是真实参数而 <span class="math inline">\(\theta\)</span> 是预先给定的。</p>
+<p>单参数帕累托的 <span class="math inline">\(k\)</span> 阶矩为：</p>
+<p><span class="math display">\[
+\mathbb{E}(X^k)=\frac{\alpha \theta^k}{\alpha-k},\quad k &lt; \alpha.
+\]</span></p>
+<ul>
+<li>R 代码：</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="riskmod.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
+<span id="cb30-2"><a href="riskmod.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># shape = alpha, scale = theta</span></span>
+<span id="cb30-3"><a href="riskmod.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mean = 50</span></span>
+<span id="cb30-4"><a href="riskmod.html#cb30-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">2</span>,<span class="dv">5</span>)              </span>
+<span id="cb30-5"><a href="riskmod.html#cb30-5" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">80</span>)     </span>
+<span id="cb30-6"><a href="riskmod.html#cb30-6" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.001</span>, <span class="dv">200</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb30-7"><a href="riskmod.html#cb30-7" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">dpareto1</span>(x0,  <span class="at">shape =</span> alpha[<span class="dv">1</span>], <span class="at">min =</span> theta[<span class="dv">1</span>])</span>
+<span id="cb30-8"><a href="riskmod.html#cb30-8" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">dpareto1</span>(x0,  <span class="at">shape =</span> alpha[<span class="dv">2</span>], <span class="at">min =</span> theta[<span class="dv">2</span>])</span>
+<span id="cb30-9"><a href="riskmod.html#cb30-9" aria-hidden="true" tabindex="-1"></a>f3 <span class="ot">&lt;-</span> <span class="fu">dpareto1</span>(x0,  <span class="at">shape =</span> alpha[<span class="dv">3</span>], <span class="at">min =</span> theta[<span class="dv">3</span>])</span>
+<span id="cb30-10"><a href="riskmod.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(x0, <span class="fu">cbind</span>(f1, f2, f3), <span class="at">main =</span> <span class="st">&#39;&#39;</span>,  <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, </span>
+<span id="cb30-11"><a href="riskmod.html#cb30-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">ylab =</span> <span class="st">&#39;pdf&#39;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.08</span>))</span>
+<span id="cb30-12"><a href="riskmod.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;alpha = 0.5, theta = 5&#39;</span>, </span>
+<span id="cb30-13"><a href="riskmod.html#cb30-13" aria-hidden="true" tabindex="-1"></a>                              <span class="st">&#39;alpha = 2, theta = 50&#39;</span>, </span>
+<span id="cb30-14"><a href="riskmod.html#cb30-14" aria-hidden="true" tabindex="-1"></a>                              <span class="st">&#39;alpha = 5, theta = 200&#39;</span>),</span>
+<span id="cb30-15"><a href="riskmod.html#cb30-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>,  <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/plot-Single-Pareto-1.png" width="672" /></p>
+</div>
+<div id="对数正态分布log-normal" class="section level3 hasAnchor" number="3.6.4">
+<h3><span class="header-section-number">3.6.4</span> 对数正态分布（Log-normal）<a href="riskmod.html#对数正态分布log-normal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>对数正态分布的概率密度函数和分布函数为 <span class="math display">\[
+f(x)=\frac{1}{x\sigma}\phi\left(\frac{\ln x - \mu}{\sigma}  \right)
+=\frac{1}{x\sigma\sqrt{2\pi}}\exp\left[
+-\frac{1}{2}\left(\frac{\ln x - \mu}{\sigma}  \right)^2
+\right]
+\]</span></p>
+<p>对数正态分布的均值和方差分别为</p>
+<p><span class="math display">\[
+ E(X)=\exp\left(\mu + \frac{1}{2}\sigma^2\right)
+\]</span> <span class="math display">\[
+Var(X)=(e^{\sigma^2}-1)e^{2\mu+\sigma^2}
+\]</span></p>
+<ul>
+<li><p>假设随机变量服从参数为<span class="math inline">\((\mu,\sigma)\)</span>的正态分布<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span> ，那么随机变量<span class="math inline">\(Y=e^X\)</span>则服从参数为<span class="math inline">\((\mu,\sigma)\)</span> 的对数正态分布。</p></li>
+<li><p>对数正态分布的参数<span class="math inline">\(\mu\)</span>和<span class="math inline">\(\sigma\)</span> 并不是它的均值和方差。</p></li>
+<li><p>对数正态分布的概率密度函数是右偏、厚尾的，因而可以很好地拟合许多损失分布的情形。</p></li>
+<li><p>当<span class="math inline">\(\sigma\)</span>很小的时候，对数正态分布与正态分布非常相似。</p></li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="riskmod.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ===========================================</span></span>
+<span id="cb31-2"><a href="riskmod.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 对数正态分布</span></span>
+<span id="cb31-3"><a href="riskmod.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ===========================================</span></span>
+<span id="cb31-4"><a href="riskmod.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) )</span>
+<span id="cb31-5"><a href="riskmod.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 固定 mu </span></span>
+<span id="cb31-6"><a href="riskmod.html#cb31-6" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">2</span>                </span>
+<span id="cb31-7"><a href="riskmod.html#cb31-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>)     </span>
+<span id="cb31-8"><a href="riskmod.html#cb31-8" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.001</span>, <span class="dv">15</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb31-9"><a href="riskmod.html#cb31-9" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(x0,  <span class="at">meanlog =</span> mu, <span class="at">sdlog =</span> sigma[<span class="dv">1</span>])</span>
+<span id="cb31-10"><a href="riskmod.html#cb31-10" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(x0,  <span class="at">meanlog =</span> mu, <span class="at">sdlog =</span> sigma[<span class="dv">2</span>])</span>
+<span id="cb31-11"><a href="riskmod.html#cb31-11" aria-hidden="true" tabindex="-1"></a>f3 <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(x0,  <span class="at">meanlog =</span> mu, <span class="at">sdlog =</span> sigma[<span class="dv">3</span>])</span>
+<span id="cb31-12"><a href="riskmod.html#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="riskmod.html#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(x0, <span class="fu">cbind</span>(f1, f2, f3), <span class="at">main =</span> <span class="st">&#39;&#39;</span>,  <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">ylab =</span> <span class="st">&#39;密度函数&#39;</span>)</span>
+<span id="cb31-14"><a href="riskmod.html#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>,<span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;mu = 2, sigma = 0.5&#39;</span>, </span>
+<span id="cb31-15"><a href="riskmod.html#cb31-15" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&#39;mu = 2, sigma = 1&#39;</span>, </span>
+<span id="cb31-16"><a href="riskmod.html#cb31-16" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&#39;mu = 2, sigma = 2&#39;</span>),</span>
+<span id="cb31-17"><a href="riskmod.html#cb31-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>,  <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb31-18"><a href="riskmod.html#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="riskmod.html#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 固定 sigma</span></span>
+<span id="cb31-20"><a href="riskmod.html#cb31-20" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb31-21"><a href="riskmod.html#cb31-21" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb31-22"><a href="riskmod.html#cb31-22" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.001</span>, <span class="dv">15</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb31-23"><a href="riskmod.html#cb31-23" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(x0,  <span class="at">meanlog =</span> mu[<span class="dv">1</span>], <span class="at">sdlog =</span> sigma)</span>
+<span id="cb31-24"><a href="riskmod.html#cb31-24" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(x0,  <span class="at">meanlog =</span> mu[<span class="dv">2</span>], <span class="at">sdlog =</span> sigma)</span>
+<span id="cb31-25"><a href="riskmod.html#cb31-25" aria-hidden="true" tabindex="-1"></a>f3 <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(x0,  <span class="at">meanlog =</span> mu[<span class="dv">3</span>], <span class="at">sdlog =</span> sigma)</span>
+<span id="cb31-26"><a href="riskmod.html#cb31-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-27"><a href="riskmod.html#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(x0, <span class="fu">cbind</span>(f1, f2, f3), <span class="at">main =</span> <span class="st">&#39;&#39;</span>,  <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">ylab =</span> <span class="st">&#39;密度函数&#39;</span>)</span>
+<span id="cb31-28"><a href="riskmod.html#cb31-28" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>,       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;mu = 1, sigma = 1&#39;</span>, </span>
+<span id="cb31-29"><a href="riskmod.html#cb31-29" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&#39;mu = 2, sigma = 1&#39;</span>, </span>
+<span id="cb31-30"><a href="riskmod.html#cb31-30" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&#39;mu = 3, sigma = 1&#39;</span>),</span>
+<span id="cb31-31"><a href="riskmod.html#cb31-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>,  <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/plot-lognormal-1.png" width="672" /></p>
+</div>
+</div>
+<div id="课后习题" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> 课后习题<a href="riskmod.html#课后习题" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>假设损失金额服从下述概率分布：
+<span class="math display">\[
+f(x)=\frac{4(100-x)^3}{100^4},\quad\quad  0&lt;x\le 100.
+\]</span>
+且保单限额为 60。
+请计算含零赔款的期望值 <span class="math inline">\(\mathbb{E}(X \wedge 60)\)</span>。</li>
+</ol>
+<p>解：</p>
+<p><span class="math display">\[S(x)=\left(\frac{100-x}{100}\right)^4\]</span>
+<span class="math display">\[
+\mathbb{E}(X \wedge 60)
+=\int_{0}^{60}\left(\frac{100-x}{100}\right)^4dx
+= 19.7952
+\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>一个损失随机变量 <span class="math inline">\(X\)</span> 有如下特征：</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(x\)</span></th>
+<th align="center"><span class="math inline">\(F(x)\)</span></th>
+<th align="center"><span class="math inline">\(\mathbb{E}(X\wedge x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">100</td>
+<td align="center">0.2</td>
+<td align="center">91</td>
+</tr>
+<tr class="odd">
+<td align="center">200</td>
+<td align="center">0.6</td>
+<td align="center">153</td>
+</tr>
+<tr class="even">
+<td align="center">1000</td>
+<td align="center">1.0</td>
+<td align="center">331</td>
+</tr>
+</tbody>
+</table>
+<p>请计算含有免赔额100的平均超额损失。</p>
+<p>解：
+<span class="math display">\[由于F(1000) = 1，E[X \wedge 1000] = E[X]。\]</span></p>
+<p><span class="math display">\[E[X] = E[X \wedge 100 ] + e(100)(1 - F(100))\]</span></p>
+<p><span class="math display">\[331 = 91 + e(100)(1 - 0.2)\]</span>
+<span class="math display">\[e(100)=\frac{240}{0.8}=300\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>假设某险种的索赔次数服从参数<span class="math inline">\(\lambda=2\)</span>的泊松分布，如果将保险责任减少一项（假设此项责任的索赔次数占总索赔次数的10％），那么剩余责任的索赔次数仍将服从泊松分布，泊松参数成为<span class="math inline">\(\lambda=0.9*2=1.8\)</span>。</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chp1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="riskmea.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-risk-model.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,6 +1,5 @@
 --- 
 title: "非寿险精算学"
-author: "李政宵、杨亮"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -19,9 +18,13 @@ description: "This is a minimal example of using the bookdown package to write a
 
 ***编写人员***：
 
-- 刘坤（2020 级硕士生）
+- 李政宵（对外经济贸易大学保险学院副教授）
 
-- 刘雅薇（2020 级硕士生）
+- 杨亮（西南财经大学金融学院副教授）
+
+- 刘坤（对外经济贸易大学 2020 级硕士生）
+
+- 刘雅薇（对外经济贸易大学 2020 级硕士生）
 
 ## 课程内容
 
@@ -47,9 +50,13 @@ description: "This is a minimal example of using the bookdown package to write a
 
 ## 教材和参考资料
 
-- Klugman S. A., Panjer H. H., Willmot G. E. Loss models: from data to decisions (5th edition).  London: John Wiley & Sons, 2016.
+- Klugman S. A., Panjer H. H., Willmot G. E. Loss models: from data to decisions (5th edition).  London: John Wiley & Sons, 2016
 
-- 非寿险精算学（第4版），孟生旺、刘乐平、肖争艳、高光远，人民大学出版社，2019年。
+![](picture/textbook.png)
+
+- 非寿险精算学（第4版），孟生旺、刘乐平、肖争艳、高光远，人民大学出版社，2019年
+
+![](picture/lec0-reference1.jpg)
 
 
 ## R 软件与 rmarkdown 可视化
