@@ -194,3 +194,183 @@ $$
 ```{r echo=TRUE}
 qnorm ( 0.95, mean = 33, sd = 109)
 ```
+
+
+3. 你有如下信息： X是一个随机变量，其概率密度函数如下： $$
+f(x)=(\frac{\alpha}{\beta})(\frac{\beta}{x})^{\alpha+1}, x\geq\beta,\alpha>0,\beta>0
+$$ E[X]= 7500 E[$X^{2}$]=75,000,000 m is the median of X 请求$f(m)$的值。
+
+-   解答 $$F(x)=1-(\frac{\beta}{x})^\alpha$$ $$E(X)=\frac{\alpha\beta}{\alpha-2}$$ $$E(X^2)=\frac{\alpha\beta^2}{\alpha-2}$$
+
+所以我们有$\alpha=3,-1$，并且由于$\alpha>0$我们排除-1，所以 $\beta$=5000。
+
+$$(\frac{5000}{m})^3=f(m)=0.5$$ $$m=6299.61$$ $$f(m)=(\frac{3}{5000})(\frac{5000}{6299.61})^4=0.0002381 $$
+
+4. X服从参数 $\alpha = 2.5$的伽马分布，$\theta = 10$，$Y = 1/X$， 请计算 Var(Y)。 提示：伽马分布的矩有如下性质 $$E(X^k)=\frac{\theta^k\Gamma(\alpha+k)}{\Gamma(\alpha)}$$ - 解答：
+
+$$E(X^k)=\frac{\theta^k\Gamma(\alpha+k)}{\Gamma(\alpha)}$$ $$E(X^{-1})=\frac{\theta^{-1}\Gamma(\alpha-1)}{\Gamma(\alpha)}=\frac{1}{\theta(\alpha-1)}$$ $$E(X^{-2})=\frac{1}{\theta^2(\alpha-1)(\alpha-2)}$$ $$Var(Y)=\frac{1}{10^2(1.5)(0.5)}-\left(\frac{1}{10(1.5)}\right)^2=0.008889$$
+
+5. 试求正态分布和指数分布的VaR和TVaR
+
+-   解答 正态分布： 
+$$
+    f(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[
+    -\frac{1}{2}\left(
+    \frac{x-\mu}{\sigma}
+    \right)^2
+    \right]
+$$
+
+$$
+\text{Va}{{\text{R}}_{p}}(X)=\mu +\sigma \text{ }{{\Phi }^{-1}}(p),
+$$
+
+$$
+\text{TVa}{{\text{R}}_{p}}(X)=\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}(p) \right]
+$$
+
+```{=tex}
+\begin{align*}
+  \text{TVa}{{\text{R}}_{p}}(X)& =\frac{\int_{p}^{1}{\text{Va}{{\text{R}}_{u}}(X)du}}{1-p}=\frac{\int_{p}^{1}{\left[ \mu +\sigma {{\Phi }^{-1}}(u) \right]du}}{1-p} \\ 
+ & =\mu +\frac{\sigma }{1-p}\int_{p}^{1}{{{\Phi }^{-1}}(u)du}
+ \quad \text{      let }u=\Phi (x) \\ 
+ & =\mu +\frac{\sigma }{1-p}\int_{{{\Phi }^{-1}}(p)}^{\infty }{x\phi (x)dx} \\ 
+ & =\mu +\frac{\sigma }{1-p}\phi \left[ {{\Phi }^{-1}}p \right]
+\end{align*}
+```
+证明：
+
+```{=tex}
+\begin{align*}
+   \int_{{{\Phi }^{-1}}(p)}^{\infty }{x\phi (x)dx}
+   &=\frac{1}{\sqrt{2\pi }}\int_{{{\Phi }^{-1}}(p)}^{\infty }{x{{\text{e}}^{-{{x}^{2}}/2}}dx} \\ 
+ & =-{\frac{{{\text{e}}^{-{{x}^{2}}/2}}}{\sqrt{2\pi }}}\vert^{\infty}_{{\Phi }^{-1}}(p) \\ 
+ & =\frac{1}{\sqrt{2\pi }}{{\text{e}}^{-\frac{{{\left[ {{\Phi }^{-1}}(p) \right]}^{2}}}{2}}} \\ 
+ & =\phi \left[ {{\Phi }^{-1}}(p) \right] 
+\end{align*}
+```
+指数分布：
+
+$$
+f(x)=\frac{1}{\theta}\exp\left(
+-\frac{x}{\theta},\quad x>0.
+\right)
+$$
+
+$$
+\text{Va}{{\text{R}}_{p}}(X)=-\theta \ln (1-p)
+$$ 
+
+$$
+\text{TVa}{{\text{R}}_{p}}(X)=\text{Va}{{\text{R}}_{p}}(X)+\theta
+$$
+
+6. 试证明以下等式成立：
+
+$$E(X)=e(d)S(d)+E(X\wedge d) $$ 
+
+-  解答
+
+$$
+\begin{aligned}
+E(X)=&\int_0^\infty xf(x)dx \\
+=&\int_0^d xf(x)dx+\int_d^\infty df(x)dx+\int_d^\infty (x-d)f(x)dx\\
+=&\int_0^d xf(x)dx +d[1-F(d)]+e(d)S(d)\\
+=&E(X \wedge d)+e(d)S(d)
+\end{aligned}
+$$
+
+7. 损失服从参数为$\alpha$ 和 $\theta$的帕累托分布，10%分位数为$\theta-k$，90%分位数为$5\theta-3k$，求$\alpha$的值。
+
+-   解答
+
+$$
+\begin{aligned}
+0.1=&1-\left(\frac{\theta}{\theta+\theta-k}\right)^{\alpha}\\
+0.9=&1-\left(\frac{\theta}{\theta+5\theta-3k}\right)^{\alpha}\\
+\frac{0.9}{0.1}=&\left(\frac{6\theta-3k}{2\theta-k}\right)^{\alpha}=3^{\alpha}\\
+\alpha=&2
+\end{aligned}
+$$
+
+8. 假设随机变量 $X\sim \text{Gamma}(\alpha = 2, \theta = 100)$，其中期望为 200。
+
+请用 R 软件进行绘图：
+
+（1）请画出 $\mathbb{E}(Y^L)$ 和 $\mathbb{E}(Y^p)$ 随着 $d$ 增加而变化的曲线图
+
+（2）请画出有限期望$\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
+
+若假设 $X\sim \text{Pareto}(\alpha=2, \theta=200)$ 和 $X\sim \text{exp}(\theta = 1/200)$。
+
+（3）请画出 $\mathbb{E}(Y^L)$ 和 $\mathbb{E}(Y^p)$ 随着 $d$ 增加而变化的曲线图
+
+（4）请画出有限期望 $\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
+
+注意： 上述三个分布的均值相等，均为 200。 指数分布: $e_X(d)=\frac{1}{\theta}$ 帕累托分布: $e_X(d)=\frac{\theta}{\alpha-1}$
+
+-   解答
+
+```{r, plot-excess, eval = FALSE, echo = TRUE}
+# 指数分布的生存函数
+S <- function(x) exp(-200*x)
+# 指数分布的平均超额函数 ex1
+ex1 <- NULL
+d1 <- seq(0.1, 2, 0.1) # 免赔额
+for(i in 1:length(d1)){
+  ex1[i] <- integrate(S, d1[i], Inf)$value/S(d1[i])
+}
+# 帕累托分布的生存函数
+alpha <- 5
+theta <- 100
+S <- function(x) {
+  (theta/(x + theta))^alpha
+}
+# 帕累托分布的平均超额函数 ex2
+ex2 <- NULL
+d2 <- seq(0.1, 500, 1) # 免赔额
+for(i in 1:length(d2)){
+  ex2[i] <- integrate(S, d2[i], Inf)$value/S(d2[i])
+}
+# 绘图
+par(mfrow = c(1, 2))
+plot(d1, ex1, type = 'l', ylab = 'mean excess function (1)', ylim = c(0,0.01))
+plot(d2, ex2, type = 'l', ylab = 'mean excess function (2)')
+```
+
+9. 用 R 生成如下损失随机数：
+
+```{r}
+set.seed(111) 
+loss = c(rlnorm(100,0,1),rep(2,40)) 
+```
+
+（1） 在 99% 水平下，计算VaR和TVaR （2）假设损失服从形状参数为3，比率参数为1/400的伽马分布，计算95%水平下的VaR和TVaR （3） 假设损失服从 的对数正态分布，计算95%水平下的VaR和TVaR
+
+-   解答
+
+```{r}
+
+set.seed(111)
+loss = c(rlnorm(100, 0, 1), rep(2, 40))
+p = 1:length(loss)/length(loss)
+plot(sort(loss), p, type = "s")
+VaR = quantile(loss, 0.99)
+VaR
+TVaR = mean(loss[loss > VaR])
+TVaR
+
+# 假设损失服从gamma(shape = 3,scale = 400)，计算95%水平下的VaR和TVaR
+Var.ga <- function(q) qgamma(q, shape = 3, scale = 400) # 定义 VaR 函数
+TVar.ga <- function(q) {
+  integrate(Var.ga, lower = q, upper = 1)$value/(1 - q)  # 定义 TvaR 函数
+}
+Var.ga(0.95); TVar.ga(0.95)
+
+# 假设损失服从lnorm(meanlog = 3,sdlog = 2)，计算95%水平下的VaR和TVaR
+Var.lnorm <- function(q) qlnorm(q, meanlog = 3, sdlog = 2) # 定义 VaR 函数
+TVar.lnorm <- function(q) {
+  integrate(Var.lnorm, lower = q, upper = 1)$value/(1 - q)  # 定义 TvaR 函数
+}
+Var.lnorm(0.95); TVar.lnorm(0.95)
+```
