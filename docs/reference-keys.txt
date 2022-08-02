@@ -78,3 +78,6 @@ math-example
 案均赔款法
 准备金进展法
 b-f法
+方差和置信区间
+aic和bic
+r语言练习
