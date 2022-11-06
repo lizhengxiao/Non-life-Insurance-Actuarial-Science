@@ -68,6 +68,7 @@ reserv
 随机性方法
 methods
 math-example
+<<<<<<< Updated upstream
 未到期责任准备金的评估
 比例法二十四分之一法
 比例法三百六十五分之一法
@@ -81,3 +82,20 @@ b-f法
 方差和置信区间
 aic和bic
 r语言练习
+=======
+r-软件
+风险单位
+风险单位数的统计指标
+风险单位数统计量的比较
+claim-索赔
+claim-frequency-索赔频率
+example
+赔款loss-claim
+赔款loss-claim-1
+已报案赔款占最终赔款的比率
+理赔费用loss-adjustment-expenses
+claim-severity-索赔强度
+pure-premium-纯保费
+保费premium
+赔付率loss-ratio
+>>>>>>> Stashed changes

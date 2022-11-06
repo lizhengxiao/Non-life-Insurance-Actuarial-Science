@@ -52,28 +52,46 @@ description: "This is a minimal example of using the bookdown package to write a
 
 - Klugman S. A., Panjer H. H., Willmot G. E. Loss models: from data to decisions (5th edition).  London: John Wiley & Sons, 2016
 
-![](picture/textbook.png)
+![](picture/textbook.png =400x300)
 
 - 非寿险精算学（第4版），孟生旺、刘乐平、肖争艳、高光远，人民大学出版社，2019年
 
-![](picture/lec0-reference1.jpg)
+![](picture/lec0-reference1.jpg =400x300)
 
 
 ## R 软件与 rmarkdown 可视化
 
-### Rmarkdown 简介
+### R 软件
 
-Rmarkdown 是 R 语言环境中提供的 markdown 编辑工具，运用 rmarkdown 撰写文章，既可以像一般的 markdown 编辑器一样编辑文本，也可以在 rmarkdown 中插入代码块，并将代码运行结果输出在 markdown 里。R Markdown 格式，简称为 Rmd 格式， 相应的源文件扩展名为.Rmd。输出格式可以是 HTML、docx、pdf、beamer 等。
+R 软件是用于统计计算和绘图的免费软件环境。
+安装 R 软件的步骤主要分下述几步步：
 
-对于专注于用 R 语言写报告的数据分析师来说，rmarkdown 既提高了数据分析工作的便捷性，也提高了数据分析报告的复用性。markdown 的教程以及对应的编辑器介绍可见：
+- [安装 R 软件](https://cran.r-project.org/)
 
-R沟通｜markdown编辑器—Typora（可跳转） 这一期主要介绍 Rmarkdown。
 
-增加R软件的介绍
+- [安装 RStudio](https://posit.co/download/rstudio-desktop/)。RStudio 是一款 R 语言的 IDE（集成开发环境），操作界面简洁美观。
 
-增加markdown的介绍
+- [安装 rtools](https://mirrors.tuna.tsinghua.edu.cn/CRAN/)。rtools 是 R 软件在构建和编译包所需要的编译工具。
 
-增加rmarkdown的介绍、安装和使用说明，包括如何导出html和pdf格式，介绍一些简答的公式输入
+### rmarkdown 简介
+
+ rmarkdown 是 R 语言环境中提供的 markdown 编辑工具。运用 rmarkdown 可以：
+ 
+ 
+ - 像一般的 markdown 编辑器一样编辑文本
+ 
+ - 也可以在 rmarkdown 中插入代码块，并将代码运行结果输出在 markdown 里
+ 
+ - R Markdown 格式，简称为 Rmd 格式， 相应的源文件扩展名为.Rmd。输出格式可以是 HTML、docx、pdf、beamer 等。
+ 
+- 对于专注于用 R 语言写报告的数据分析师来说，rmarkdown 既提高了数据分析工作的便捷性，也提高了数据分析报告的复用性。
+
+
+<!-- rmarkdown 的简易教程如下： -->
+
+<!-- - 在 RStudio 新建一个 rmarkdown 文件后，会出现如下一个最简单的 rmarkdown 的模板。 -->
+
+<!-- 增加rmarkdown的介绍、安装和使用说明，包括如何导出html和pdf格式，介绍一些简答的公式输入 -->
 
 
 
