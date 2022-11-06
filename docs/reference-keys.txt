@@ -79,8 +79,6 @@ reserv
 methods
 math-example
 <<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
 未到期责任准备金的评估
 比例法二十四分之一法
 比例法三百六十五分之一法
@@ -94,7 +92,6 @@ b-f法
 方差和置信区间
 aic和bic
 r语言练习
-=======
 r-软件
 风险单位
 风险单位数的统计指标
@@ -124,4 +121,4 @@ delta-method
 风险分布法
 七十八法则与逆七十八法则
 流量预期法
->>>>>>> Stashed changes
+第一节-风险度量的一致性要求
