@@ -293,7 +293,7 @@ $$
 指数分布的缺点是其概率密度函数是单调递减的，这在很多情况下，并不适于实际的需要。
 
 <!-- 下图显示了指数分布的比率参数取值不同情况下的密度函数图。 -->
-```{r, plot-exp, eval = FALSE, echo = TRUE}
+```{r, plot-exp, eval = TRUE, echo = TRUE, fig.height=4.5, fig.width=5}
 # ==========================================
 # 指数分布
 # ===========================================
@@ -312,13 +312,13 @@ legend('topright',
 
 ### 伽马分布（Gamma）
 
-**第一种**伽马分布的概率密度函数为 $$
+**第一种**伽马分布的概率密度函数为 
+$$
 f(x; \alpha, \theta)=\frac{{{\theta }^{-\alpha }}}{\Gamma \text{(}\alpha )}{{x}^{\alpha -1}}{{e}^{-\frac{1}{\theta} x}}.$$ 
 
 - 其中 $\alpha$ 是 **形状参数**，$\theta$ 是 **尺度参数**。
 
-- 
-伽马分布的期望、方差分别为 $$E(X)=\alpha/\beta$$ $$Var(X)=\alpha/\beta^2$$。
+- 伽马分布的期望、方差分别为 $$\mathbb{E}(X)=\alpha/\beta$$ $$\text{Var}(X)=\alpha/\beta^2.$$
 
 **第二种**伽马分布的概率密度函数为:
 $$
@@ -327,25 +327,25 @@ f(x; \alpha, \beta)=\frac{{{\theta }^{\alpha }}}{\Gamma \text{(}\alpha )}{{x}^{\
 - 其中 $\alpha$ 是 **形状参数**，$\beta=1/\theta$ 是 **比率参数**。
 
 
-**第三种**伽马分布的概率密度函数为:
+**第三种**伽马分布的概率密度函数为: 
 $$
-f(x; \mu, \phi)=.$$ 
+f(x;\mu, \phi)=\frac{{{(\phi\mu)}^{-1/\phi }}}{\Gamma \text{(}1/\phi )}{{x}^{1/\phi -1}}{{e}^{-\frac{1}{\phi\mu} x}},
+$$
 
 - 其中，$\mu=\alpha/\beta$ 是均值参数，$\phi=1/\alpha$ 是离散参数。
 
 - 均值和方差分别为 $\mu$ 和 $\phi\mu^2$。
 
 
-- 伽马分布的可加性：
-假设两个随机变量 $X_1$ 和 $X_2$ 都服从形状参数$\alpha_1$和$\alpha_2$ ，比率参数都为 $\beta$ 的伽马分布，即 $X_1\sim GA(\alpha_1,\beta)$，$X_2\sim GA(\alpha_2,\beta)$ ，那么随机变量之和$X_1+X_2$ 服从形状参数为 $\alpha_1+\alpha_2$，比率参数为$\beta$ 的伽马分布，即$$X_1+X_2\sim GA(\alpha_1+\alpha_2,\beta)$$ 。
+**【定理】** 伽马分布具有可加性：假设两个随机变量 $X_1$ 和 $X_2$ 都服从形状参数$\alpha_1$和$\alpha_2$ ，比率参数都为 $\beta$ 的伽马分布，即 $X_1\sim GA(\alpha_1,\beta)$，$X_2\sim GA(\alpha_2,\beta)$ ，那么随机变量之和$X_1+X_2$ 服从形状参数为 $\alpha_1+\alpha_2$，比率参数为$\beta$ 的伽马分布，即$$X_1+X_2\sim GA(\alpha_1+\alpha_2,\beta).$$
 
 - 当形状参数$\alpha=1$时，伽马分布可以退化为指数分布，即指数分布是伽马分布的特例。
 
 - 当$\alpha=n/2$和$\beta=1/2$ 时，伽马分布可以退化为卡方分布，其中卡方分布的自由度为$n/2$。
 
-- R 代码：下图显示了伽马分布的形状参数和比率参数在不同取值情况下的密度函数图。
+<!-- - R 代码：下图显示了伽马分布的形状参数和比率参数在不同取值情况下的密度函数图。 -->
 
-```{r, gamma-pdf, eval = TRUE, echo = TRUE}
+```{r, gamma-pdf, eval = TRUE, echo = TRUE, fig.height=4.5, fig.width=10}
 # ==========================================
 # 伽马分布
 # ===========================================
@@ -393,7 +393,7 @@ $$
 \end{align*}
 $$
 
-```{r, plot-Pareto, eval = TRUE, echo = TRUE}
+```{r echo=TRUE, message=FALSE, warning=FALSE, plot-Pareto, eval=TRUE, fig.height=4.5, fig.width=5}
 library(actuar)
 # shape = alpha, scale = theta
 # mean = 50
@@ -419,6 +419,7 @@ f(x)&=\frac{\alpha\theta^\alpha}{x^{\alpha+1}},\quad x>\theta,\\
 F(x)&=1-\left(\frac{\theta}{x}\right)^\alpha,
 \end{align*}
 $$ 
+
 - 其中 $\alpha$ 是真实参数而 $\theta$ 是预先给定的。
 
 单参数帕累托的 $k$ 阶矩为：
@@ -427,9 +428,9 @@ $$
 \mathbb{E}(X^k)=\frac{\alpha \theta^k}{\alpha-k},\quad k < \alpha.
 $$
 
-- R 代码：
 
-```{r, plot-Single-Pareto, eval = TRUE, echo = TRUE}
+
+```{r, plot-Single-Pareto, eval = TRUE, echo = TRUE, fig.height=4.5, fig.width=5}
 library(actuar)
 # shape = alpha, scale = theta
 # mean = 50
