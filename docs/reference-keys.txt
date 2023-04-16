@@ -122,3 +122,4 @@ r-软件与-rmarkdown-简介
 example-1
 风险与随机变量
 tab:mylabel
+概率母函数和矩母函数

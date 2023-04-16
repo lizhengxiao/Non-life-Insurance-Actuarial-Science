@@ -12,7 +12,11 @@ output:
 
 - 掌握概率母函数/矩母函数
 
-- 
+- 掌握基本的损失次数和损失金额分布
+
+- 理解随机变量中截断和删失的原理
+
+- 能够运用 R 语言
 
 
 <!-- ## 风险度量的相关概念 -->
@@ -89,7 +93,7 @@ output:
 
 
 
-随机变量是描述不确定性的重要数学工具，因此风险可以用随机变量来表示。
+**随机变量**是描述不确定性的重要数学工具，因此风险可以用随机变量来表示。
 随机变量是指取值依赖于随机现象的观察结果的变量，取值是随机的，取值特征通过概率分布来描述。一般用大写的英文字母表示。随机变量可以表示为：
 
 - **连续型随机变量**。其取值通常布满一个区间，如保险事故造成的损失金额 $X$ 的取值范围为 $(0,+\infty)$。
@@ -124,13 +128,12 @@ Table: (\#tab:mylabel) 寿险和非寿险业务的区别
 
 
 
--------------
 
 ## 分布函数和生存函数
 
-- 连续型随机变量 $X$ 的累积分布函数 (Cumulative Distribution Function, cdf) 表示为 $$F_{X}(x)=\Pr(X\le X)$$
+连续型随机变量 $X$ 的累积分布函数 (Cumulative Distribution Function, cdf) 表示为 $$F_{X}(x)=\Pr(X\le X)$$
 
-> 例: 运用 R 软件画出下面两种分布函数图。
+**【例】**：运用 R 软件画出下面两种分布函数图。
 
 ```{=tex}
 \begin{equation*}
@@ -188,7 +191,7 @@ y <- F2.f(x)
 plot(x, y, type = 'l', col = "blue", lwd = 2)
 ```
 
-- 随机变量的生存函数 (Survival Function) 定义为： 
+随机变量的生存函数 (Survival Function) 定义为： 
 $$
 S_{X}(x)=\Pr(X>x)=1-F_{X}(x)
 $$
@@ -198,7 +201,7 @@ $$
 
 $$f(x)=-\frac{dS(x)}{dx}$$
 
-> 例：运用 R 软件画出 **F2.f** 对应的密度函数图。
+**【例】**：运用 R 软件画出 **F2.f** 对应的密度函数图。
 
 ```{r, eval = TRUE, echo = TRUE}
 f2.f <- function(x){
@@ -216,467 +219,40 @@ plot(x, y, type = 'l', col = "blue", lwd = 2)
 
 -------------
 
-## 概率母函数/矩母函数 
+## 概率母函数和矩母函数 
 
-- 随机变量的概率母函数或矩母函数与其分布函数存在一一对应的关系，同样可以描述随机变量的随机特征。
+随机变量的概率母函数或矩母函数与其分布函数存在一一对应的关系，同样可以描述随机变量的随机特征。
 
-  - 离散型随机变量： 概率母函数 (Probability Generating Function, pgf) 
+- 离散型随机变量： 概率母函数 (Probability Generating Function, pgf) 
   
-  - 连续性随机变量： 矩母函数 (Moment Generating Function, mgf)
-
-- 概率母函数或矩母函数可以得到随机变量各阶矩。
+- 连续性随机变量： 矩母函数 (Moment Generating Function, mgf)
 
 
-> 定义：离散随机变量 $N$ 的（概率）母函数表示为： 
+概率母函数或矩母函数可以得到随机变量各阶矩。
+
+
+**【定义】**：离散随机变量 $N$ 的（概率）母函数表示为： 
 $$
 P_N(t)=E(t^N)=\sum_{k=0}^{\infty}t^kP(N=k)
 $$ 
 
-> 推论：运用概率母函数可以表示出随机变量 $N=k$ 的概率，即 $\Pr(N=k)$ 为概率母函数的 $k$ 阶偏导在 $0$ 点出的取值。例如:
+**【推论】**：运用概率母函数可以表示出随机变量 $N=k$ 的概率，即 $\Pr(N=k)$ 为概率母函数的 $k$ 阶偏导在 $0$ 点出的取值。例如:
 $$
 P(N=1)=\frac{P_N^{(1)}(0)}{1!}$$ $$P(N=k)=\frac{P_N^{(k)}(0)}{k!}
 $$ 
 其中，$P_N^{(k)}(\cdot)$ 表示概率母函数的 $k$ 阶偏导，$k!=\Gamma(k)$ 表示 $k$ 阶乘。
 
-> 定义：连续型随机变量 $X$ 的矩母函数表示为 $$M_X(t)=E(e^{tX})=\int_{-\infty}^{\infty}e^{tX}f(x)dx$$
+**【定义】**：连续型随机变量 $X$ 的矩母函数表示为 $$M_X(t)=E(e^{tX})=\int_{-\infty}^{\infty}e^{tX}f(x)dx$$
 
-> 推论：运用矩母函数可以得到多个独立随机变量之和的分布函数。例如，假设$S=X_1+X_2+...+X_n=\sum_{i=1}^{n}X_i$，则随机变量 $S$ 的矩母函数表示为： $$M_s(t)=M_{X_1}(t)M_{X_2}(t)...M_{X_n}(t)$$
+**【推论】**：运用矩母函数可以得到多个独立随机变量之和的分布函数。例如，假设$S=X_1+X_2+...+X_n=\sum_{i=1}^{n}X_i$，则随机变量 $S$ 的矩母函数表示为： $$M_s(t)=M_{X_1}(t)M_{X_2}(t)...M_{X_n}(t)$$
 其中，$M_{X_j}(t)$ 表示 $X_j$ 的矩母函数在 $t$ 的取值。
 
 
--------------
-
-## 截断和删失
-
-- 保险中的损失通常指被保险人发生的损失
-
-- 保险中的索赔通常指保险人给被保险人的赔款
-
-- 由于不同的保险产品通常存在免赔额和赔偿限额的情况，使得保险的损失和索赔的随机性通常是不一致的
-
-- 这种不一致性通常运用**截断**和**删失**的方法进行处理。
-
-假设随机变量 $X$ 表示原始的损失，其数学期望可以表示为： $$\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}$$
-
-
-![](picture/Expected.png){width="450"}
-
-
-### 左截断（left truncated）和平移（shifted）
-
-> 定义：给定常数 $d$，且满足 $\Pr(X > d) > 0$ ，对随机变量 $X$ 进行左截断和平移变换之后得到新的随机变量 $Y^p$，具体表示为：
-$$
-Y^p = X - d|X>d = \begin{cases}
-\text{NA}, \quad X\le d \\
-X - d, \quad X> d
-\end{cases}
-$$
-其中，$Y^p$ 也称之为 **超额损失变量** （excess loss variable）。
-
-- **超额损失变量**也称之为**左截断平移变量**：
-
-  -   $Y^p$ 是 $X$ 在 $d$ 处左截断得到的，原因在于任意 $X$ 小于 $d$ 的值都是无法观测到
-  
-  -   $Y^p$ 左截断之后向左平移得到的，因此在截断基础上减少了 $d$
-
-
-> 定义：随机变量 $Y^p$ 的数学期望称之为 **平均超额损失函数**：
-$$
-e_X(d):=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X>d)
-$$
-
-- 当 $X$ 表示保险事故造成的损失金额，$d$表示保险免赔额时，则平均超额损失表示已发生的超过免赔额 $d$ 的期望索赔金额
-
-- 当 $X$ 是死亡年龄，平均超额损失表示为已知某人在年龄 $d$ 存活的情况下的期望预期寿命
-
-> 定义：超额损失变量的 $k$ 阶矩表示为：
-$$
-e_{X}^k(d)
-=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)},
-$$
-其中，当 $k=1$ 时，平均超额损失函数表示为
-$$
-{{e}_{X}}(d)=\mathbb{E}\left( X-d|X>d \right)=\frac{\int_{d}^{\infty }{{S}(x)dx}}{S(d)}.
-$$ 
-
-> 证明： 
-$$
-\begin{align*}
-{{e}_{X}}(d)&=\frac{\int_{d}^{\infty }{(x-d)f(x)dx}}{1-F(d)}\\
-&=\frac{-(x-d)S(x)|_{d}^{\infty }+\int_{d}^{\infty }{S(x)dx}}{S(d)}\\
-&=\frac{\int_{d}^{\infty }{S(x)dx}}{S(d)}.
-\end{align*}
-$$
-> 下面证明 $(x-d)S(x)|_{d}^{\infty }=0$
-$$
-\begin{align*}
-  & \underset{x\to \infty }{\mathop{\lim }}\,xS(x)=\underset{x\to \infty }{\mathop{\lim }}\,x\int\limits_{x}^{\infty }{f(t)dt} \\ 
- & =\underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{xf(t)dt} \\ 
- & \le \underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{tf(t)dt} \\ 
- & =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0
-\end{align*}
-$$
-
-
-### 左删失（left censored）和平移（shifted）
-
-> **左删失平移** 变量定义为：
-$$
-{{Y}^{L}}={{\left( X-d \right)}_{+}}= 
-\begin{cases}
-  & 0,\quad \quad \quad X\le d \\ 
- & X-d,\quad X>d \\ 
-\end{cases} 
-$$
-
--   左删失表示随机变量 $X<d$ 的取值都替换为 $d$ 
-
--   平移表示将左删失的变量向左进行平移变化，使得左删失变量减去 $d$
-
-
-> ${Y}^{L}$ 的 $k$阶矩表示为：
-$$
-\mathbb{E}[(X-d)_{+}^k]={\int_{d}^{\infty}(x-d)^kf(x)dx}
-$$
-
-$Y^L$ 和 $Y^P$ 的比较：
-
-  - 假设 $X$ 表示损失，则 $Y^L$ 和 $Y^P$ 都表示赔款
-  
-  - $Y^L$ 是含零赔款（per loss），即当保险事故造成的损失没有产生赔款的时候， $Y^L=0$
-  
-  - $Y^P$ 是非零赔款（per payment），即当保险事故造成的损失没有产生赔款的时候， $\Pr(Y^p=0)=0$
-
-  - 数学期望存在下述关系：
-  
-    $$\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F_X(d)]=\int_{d}^{\infty}S(x)dx$$
-    ![](picture/YL.png){width="450"}
-
-### 右删失（right censored）
-
-> 定义：**右删失**变量表示为：
-$$
-Y=X\wedge u=\min (X,u)=\begin{cases}
-  & X,\ \ \ X<u \\ 
- & u,\ \ \ \ X\ge u \\ 
-\end{cases}
-$$
-其中，$Y$ 也被称之为**有限损失** (limited loss variable)。
-
--   注意：右删失表示随机变量 $X>u$ 的所有取值都用 $u$ 代替
-
-> 定义：$Y$ 的数学期望 $E(X\wedge u)$ 称之为**有限期望** (limited expected value)，具体表示为：
-$$
-\begin{align*}
-  E(X\wedge u)& =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\ 
- & =-xS(x)\left| _{0}^{u} \right.+\int_{0}^{u}{S(x)dx}+uS(u) \\ 
- & =\int_{0}^{u}{S(x)dx}  
-\end{align*}
-$$
-
-![](picture/limit.png){width="450"}
-
-### R 代码
-
-1. 假设随机变量 $X\sim \text{Gamma}(\alpha = 2, \theta = 100)$，其中期望为 200。
-
-请用 R 软件进行绘图：
-
-  -   请画出 $\mathbb{E}(Y^L)$ 和 $\mathbb{E}(Y^p)$ 随着 $d$ 增加而变化的曲线图
-  
-  -   请画出有限期望$\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
-
-2. 若假设 $X\sim \text{Pareto}(\alpha=2, \theta=200)$ 和 $X\sim \text{exp}(\theta = 1/200)$。
-
-  -   请画出 $\mathbb{E}(Y^L)$ 和 $\mathbb{E}(Y^p)$ 随着 $d$ 增加而变化的曲线图
-  
-  -   请画出 limited expected value $\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
-
-注意： 上述三个分布的均值相等，均为 200。 
-
-  - 指数分布: $e_X(d)=\frac{1}{\theta}$
-  
-  - 帕累托分布: $e_X(d)=\frac{\theta}{\alpha-1}$
-
-```{r, plot-excess, eval = TRUE, echo = TRUE}
-# 指数分布的生存函数
-S <- function(x) exp(-200*x)
-# 指数分布的平均超额函数 ex1
-ex1 <- NULL
-d1 <- seq(0.1, 2, 0.1) # 免赔额
-for(i in 1:length(d1)){
-  ex1[i] <- integrate(S, d1[i], Inf)$value/S(d1[i])
-}
-# 帕累托分布的生存函数
-alpha <- 5
-theta <- 100
-S <- function(x) {
-  (theta/(x + theta))^alpha
-}
-# 帕累托分布的平均超额函数 ex2
-ex2 <- NULL
-d2 <- seq(0.1, 500, 1) # 免赔额
-for(i in 1:length(d2)){
-  ex2[i] <- integrate(S, d2[i], Inf)$value/S(d2[i])
-}
-# 绘图
-par(mfrow = c(1, 2))
-plot(d1, ex1, type = 'l', ylab = 'mean excess function (1)', ylim = c(0,0.01))
-plot(d2, ex2, type = 'l', ylab = 'mean excess function (2)')
-```
-
-## 损失次数分布
-
-- 在非寿险精算中，通常用用计数随机变量来描述一段时间内发生的损失次数或索赔次数。
-
-- 计数随机变量是离散型随机变量的一种，随机变量的取值是在 $0,1,2, 3,4...$ 正整数值域。
-
-### $(a,b,0)$ 分布类
-
-$(a,b,0)$ 分布类仅包括：
-
- - 泊松分布（Poisson）
- 
- - 二项分布（Binomial Distribution）
- 
- - 负二项分布（Negative Binomial distribution）
-
-> 定义：$(a,b,0)$ 分布类满足下述递推关系： 
-$$p_k=(a+\frac{b}{k})p_{k-1}, \quad, k=1,2,3,...,$$
-其中，$a$ 和 $b$ 为常数，$p_k = \Pr(N=k)$。已知 $a,b$ 和 $p_0$，就能唯一确定整个概率分布函数。
-
-
-
-### 泊松分布（Poisson）
-
-泊松分布的概率密度函数： $$
-{{p}_{k}}=\frac{{{e}^{-\lambda }}{{\lambda }^{k}}}{k!},\quad k=0,1,2....
-$$ 概率母函数： 
-$$
-P(z)=e^{(\lambda(z-1))},\quad \lambda>0.
-$$ 
-均值和方差可以通过母函数求得： 
-$$
-\begin{align*}
-\mathbb{E}(N)&=\lambda \\
-\text{Var}(N)&=\lambda
-\end{align*}
-$$ 
- - 泊松分布的方差和均值相等，都可以表示为$\lambda$。
- 
- - 若干个独立的泊松分布之和仍然服从泊松分布。
- 
- - 泊松分布可以分解为若干个泊松分布之和。
-
-```{r}
-# density function 概率函数
-#dpois(x, lambda, log = FALSE) # lambda 表示均值, log = TRUE 表示输出log(f(x))
-# distribution function 分布函数
-#ppois(q, lambda, lower.tail = TRUE, log.p = FALSE)
-# quantile function 分布函数的逆函数（分位数函数）
-#qpois(p, lambda, lower.tail = TRUE, log.p = FALSE)
-# 泊松分布的随机数 - 模拟
-#rpois(n, lambda = 10) # 模拟 n 个服从期望为10的泊松分布
-# 画图- 不同lambda的泊松分布的概率函数图
-par(mfrow = c(2,2))
-lambda.po <- c(1, 2, 5, 10) # lambda 取值为 1,2,5,10
-x0 <- seq(0, 20)            # x 取值为 0-25 的整数
-for(lambda.po in c(1, 2, 5, 10)){
-  barplot(dpois(x0, lambda.po), names.arg = x0, main = paste('lambda = ', lambda.po, sep = ''))
-}
-```
-
-
-
-> R 代码:
-> 假设索赔次数 $N$ 服从参数为 的泊松分布，请计算： 
->
->  - 索赔次数等于 3 的概率 $\Pr(N=3)$
-> 
->  - 索赔次数小于等于 4 的概率 $\Pr(N\leq4)$
->  
->  - 索赔次数大于等于 3 小于等于 5 的概率 $\Pr(3\leq N \leq 5)$
-
-```{r}
-## 索赔次数等于3的概率
-dpois(3, lambda = 2)
-## 索赔次数小于等于4的概率为
-ppois(4, lambda = 2)
-## 索赔次数大于等于3小于等于5的概率
-ppois(5, 2) - ppois(2, 2)
-```
-
-### 负二项分布（Negative Binomial distribution）
-
-负二项分布的概率密度函数： 
-$$
-{{p}_{k}}=\frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{\left( \frac{1}{1+\beta } \right)}^{r}}{{\left( \frac{\beta }{1+\beta } \right)}^{k}}, \quad k=0,1,2,....
-$$
-
-概率母函数、均值和方差分别表示为：
-
-$$
-P(z)={{\left[ 1-\beta (z-1) \right]}^{-r}}
-$$ 
-$$
-\begin{align*}
-\mathbb{E}(X)&=r\beta\\
-\text{Var}(X)&=r\beta(1+\beta)
-\end{align*}
-$$ 
-证明：
-
-$$
-\begin{align*}
-  P(z)&=\sum\limits_{k=0}^{\infty }{{{p}_{k}}{{z}^{k}}}=\sum\limits_{k=0}^{\infty }{\left[ \frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{\left( \frac{1}{1+\beta } \right)}^{r}}{{\left( \frac{\beta }{1+\beta } \right)}^{k}} \right]{{z}^{k}}} \\ 
- & =\sum\limits_{k=0}^{\infty }{\left[ \frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{\left( \frac{1+\beta -z\beta }{1+\beta } \right)}^{r}}{{\left( \frac{z\beta }{1+\beta } \right)}^{k}} \right]}{{\left( 1+\beta -z\beta  \right)}^{-r}} \\ 
- & ={{\left( 1+\beta -z\beta  \right)}^{-r}}
-\end{align*} 
-$$ 
-
-- 注意：几何分布是负二项分布在$r=1$时的特殊情况。
-
-- 令 $p=\frac{1}{1+\beta}$, 负二项分布密度函数的另一种形式： 
-$$
-{{p}_{k}}=\frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{p}^{r}}{{\left( 1-p \right)}^{k}}
-$$
-
-- 其中，负二项分布的方差大于均值，通常可以用来描述具有过离散数据特征的损失次数。
-
-- 下图显示了参数 $r$ 在不同取值条件下负二项分布的概率分布图。可以发现，当负二项分布均值越大时，分布形状约趋近于正态分布。对应的 R 代码如下：
-
-```{r, plot-nb, eval = TRUE, echo = TRUE}
-# 负二项分布的概率函数
-r0 <- c(1, 1, 2, 2)
-p0 <- c(0.3,0.5, 0.3, 0.5)
-x0 <- seq(0, 20)
-ylim0 <- list(c(0,0.5),
-              c(0,0.5),
-              c(0,0.5),
-              c(0,0.5))  # 上下界
-par(mfrow = c(2, 2) )
-for (i in 1:length(p0)){
-  fpo <- dnbinom(x0, size = r0[i], prob = p0[i], log = FALSE)
-  barplot(fpo, 
-          main = paste0('r = ', r0[i], ',  ','p = ', p0[i]), 
-          names.arg = x0, ylim = ylim0[[i]]
-  )
-}
-```
-
-- 令 $r\to\infty$ 且 $\beta\to 0$，令 $r\beta=\lambda$ 是一个常数，可以发现
-$$
-\begin{align*}
-\mathbb{E}(X)&=r\beta \to \lambda\\
-\text{Var}(X)&=r\beta(1+\beta) \to \lambda
-\end{align*}
-$$ 
-负二项分布的**极限分布**是泊松分布。
-
-### 二项分布（Binomial Distribution）
-
-个体风险发生索赔的概率为 $q$, 不发生索赔的概率为 $1-q$, 则索赔次数分布的母函数为 $$
-P\left( z \right)=\mathbb{E}\left( {{z}^{N}} \right)=\left( 1-q \right){{z}^{0}}+q{{z}^{1}}=1-q+qz=1+q\left( z-1 \right)
-$$ 
-对 $m$ 个独立同分布的个体风险，其索赔次数分布的母函数为 
-$$
-P\left( z \right)=[1+q\left( z-1 \right)]^m.
-$$ 
-这 $m$ 个风险发生$k$次索赔的概率为二项分布 
-$$
-{{p}_{k}}=\left(^m 
-_k 
-\right){{q}^{k}}{{(1-q)}^{m-k}}\quad \quad k=0,1,2,...,m.
-$$ 
-
-- 二项分布的均值和方差为 $\mathbb{E}(X)=mq, \quad \text{Var}(X)=mq(1-q)$
-
-- 二项分布的取值存在一个最大值$m$。
-
-- 参数 $m>0$ 使得二项分布的均值大于方差，主要用于描述具有欠离散数据特征的损失次数（精算中并不常用）。
-
-> 下图显示二项分布的均值越大，分布形态越对称。R 代码如下：
-
-```{r, plot-bi, eval = TRUE, echo = TRUE}
-# ==============================================================
-# 二项分布
-# ==============================================================
-m0 <- c(1, 5, 10, 10, 10, 10)
-q0 <- c(0.3, 0.3, 0.3, 0.1, 0.2, 0.3)
-x0 <- seq(0, 10)
-
-par(mfrow = c(2, 3) )
-for (i in 1:length(m0)){
-  fpo <- dbinom(x0, size = m0[i], prob = q0[i], log = FALSE)
-  barplot(fpo, 
-          main = paste0('m = ', m0[i], ',  ',
-                        'q = ', q0[i]),
-          names.arg = x0)
-}
-```
-
-
-
-### $(a,b,1)$ 分布类
-
-$(a,b,1)$ 分布类包含两个子类： 
-
-- 零截断分布 (zero-truncated distribution) 
-
-- 零调整分布 (zero-modified distribution) 
-
-- 对于零截断分布，发生 $k$ 次损失的概率用$p_k^T$表示，其中$p_0^T=0$ 
-
-- 对于零调整分布，发生 $k$ 次损失的概率用 $p_k^M$ 表示，其中 $p_0^M$ 表示可以是任意概率值。
-
-> $(a,b,1)$分布类满足下述递推关系： $$p_k=(a+\frac{b}{k})p_{k-1}$$ $k=2,3,...$,
->
-> - 递推关系与 $(a,b,0)$ 分布类的递推关系完全相同
->
-> - $(a,b,1)$ 分布类的递推关系是从 $p_1$开始，而$(a,b,1)$分布类的递推关系是从$p_0$开始。
-
-R 代码： 零截断负二项分布的计算
-
-```{r}
-## 负二项分布的概率
-x = 0:10
-p = dnbinom(x,4,0.7)
-round(p,3)
-
-## 零截断负二项分布的概率
-p0 = p[1]   ##零点的概率
-pt1 = p[2:11]/(1-p0)  ##其它点上的概率
-pt = c(0, pt1)
-round(pt,3)
-
-## 绘图比较负二项和零截断负二项的概率
-com = rbind(负二项 = p, 零截断负二项 = pt)
-barplot(com,beside=TRUE,names.arg=0:10,legend.text=TRUE)
-```
-
-R 代码： 零调整负二项分布的计算
-
-```{r}
-## 负二项分布的概率
-x = 0:10
-p = dnbinom(x, 4, 0.7)
-round(p,3)
-
-## 零调整负二项分布的概率
-p0 = 0.3  ##调整零点的概率
-pm = (1-p0)*p[2:11]/(1-p[1])  ##其它点上的概率
-pm = c(p0,pm)
-round(pm, 3)
-
-## 绘图
-com = rbind(负二项 = p, 零调整负二项 = pm)
-barplot(com, beside = TRUE, names.arg = 0:10,legend.text=TRUE)
-
-```
-
 ## 损失金额分布
 
-对保险损失金额进行分析和预测，是精算师和风险管理者的重要工作。通常情况下，保险损失金额具有不对称、定义域非负、尾部较厚的特点，像正态分布等高斯类的分布不适于拟合损失金额。常用的偏态损失分布包括：
+对保险损失金额进行分析和预测，是精算师和风险管理者的重要工作。通常情况下，保险损失金额具有不对称、定义域非负、尾部较厚的特点，像正态分布等高斯类的分布不适于拟合损失金额。
+
+这一节将主要介绍几种常见的损失分布（偏态），以及分布函数、概率密度函数、矩母函数等分布性质。主要包括：
 
 - 指数分布 （Exponential）
 
@@ -688,27 +264,35 @@ barplot(com, beside = TRUE, names.arg = 0:10,legend.text=TRUE)
 
 - 对数正态分布（Log-normal）
 
-这一节将主要介绍几种常见的损失分布，以及分布函数、概率密度函数、矩母函数等分布性质。
+
 
 ### 指数分布 （Exponential）
 
-指数分布的概率密度函数和累积分布函数为: 
+指数分布通常有两种参数化的形式。**第一种**参数化的概率密度函数和累积分布函数为: 
 $$
-f(x)=\frac{1}{\theta}\exp\left({-\frac{1}{\theta}x}\right),\quad x \ge 0
+\begin{aligned}
+f(x;\theta)&=\frac{1}{\theta}\exp\left({-\frac{1}{\theta}x}\right),\quad x > 0,\\
+F(x;\theta)&=1-\exp\left({-\frac{1}{\theta}x}\right).
+\end{aligned}
 $$
 
-或者 
+**第二种**参数化的概率密度函数和累积分布函数为: 
 $$
-f(x)=\lambda\exp\left({-\lambda x}\right),\quad x \ge 0
-$$ 
-指数分布的期望、方差分别为 $$E(X)=\theta$$ $$Var(X)=\theta^2$$ 同时，指数分布具有无记忆性，即 $$P(X>x+u|X>u)=P(X>x)$$
+\begin{aligned}
+f(x;\lambda)&=\lambda\exp\left({-\lambda x}\right),\quad x > 0,\\
+F(x;\lambda)&=1-\exp\left({-\lambda x}\right),
+\end{aligned}
+$$
+其中，$\lambda=\frac{1}{\theta}$ 为比率参数。
 
-- 下图显示了指数分布的比率参数取值不同情况下的密度函数图。
 
-- 指数分布的缺点是其概率密度函数是单调递减的，这在很多情况下，并不适于实际的需要。
+指数分布的期望、方差分别为 $$\mathbb{E}(X)=\theta,$$ $$\text{Var}(X)=\theta^2.$$
 
-- R 对应代码如下：
+同时，指数分布具有无记忆性，即 $$\Pr(X>x+u|X>u)=\Pr(X>x).$$
 
+指数分布的缺点是其概率密度函数是单调递减的，这在很多情况下，并不适于实际的需要。
+
+<!-- 下图显示了指数分布的比率参数取值不同情况下的密度函数图。 -->
 ```{r, plot-exp, eval = FALSE, echo = TRUE}
 # ==========================================
 # 指数分布
@@ -922,6 +506,439 @@ legend('topright',       legend = c('mu = 1, sigma = 1',
                                     'mu = 3, sigma = 1'),
        lty = c(1,2,3), bty = "n", lwd = 2,  col = 1:3)
 ```
+
+
+-------------
+
+## 截断和删失
+
+- 保险中的损失通常指被保险人发生的损失
+
+- 保险中的索赔通常指保险人给被保险人的赔款
+
+- 由于不同的保险产品通常存在免赔额和赔偿限额的情况，使得保险的损失和索赔的随机性通常是不一致的
+
+- 这种不一致性通常运用**截断**和**删失**的方法进行处理。
+
+假设随机变量 $X$ 表示原始的损失，其数学期望可以表示为： $$\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}$$
+
+
+![](picture/Expected.png){width="450"}
+
+
+### 左截断（left truncated）和平移（shifted）
+
+> 定义：给定常数 $d$，且满足 $\Pr(X > d) > 0$ ，对随机变量 $X$ 进行左截断和平移变换之后得到新的随机变量 $Y^p$，具体表示为：
+$$
+Y^p = X - d|X>d = \begin{cases}
+\text{NA}, \quad X\le d \\
+X - d, \quad X> d
+\end{cases}
+$$
+其中，$Y^p$ 也称之为 **超额损失变量** （excess loss variable）。
+
+- **超额损失变量**也称之为**左截断平移变量**：
+
+  -   $Y^p$ 是 $X$ 在 $d$ 处左截断得到的，原因在于任意 $X$ 小于 $d$ 的值都是无法观测到
+  
+  -   $Y^p$ 左截断之后向左平移得到的，因此在截断基础上减少了 $d$
+
+
+> 定义：随机变量 $Y^p$ 的数学期望称之为 **平均超额损失函数**：
+$$
+e_X(d):=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X>d)
+$$
+
+- 当 $X$ 表示保险事故造成的损失金额，$d$表示保险免赔额时，则平均超额损失表示已发生的超过免赔额 $d$ 的期望索赔金额
+
+- 当 $X$ 是死亡年龄，平均超额损失表示为已知某人在年龄 $d$ 存活的情况下的期望预期寿命
+
+> 定义：超额损失变量的 $k$ 阶矩表示为：
+$$
+e_{X}^k(d)
+=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)},
+$$
+其中，当 $k=1$ 时，平均超额损失函数表示为
+$$
+{{e}_{X}}(d)=\mathbb{E}\left( X-d|X>d \right)=\frac{\int_{d}^{\infty }{{S}(x)dx}}{S(d)}.
+$$ 
+
+> 证明： 
+$$
+\begin{align*}
+{{e}_{X}}(d)&=\frac{\int_{d}^{\infty }{(x-d)f(x)dx}}{1-F(d)}\\
+&=\frac{-(x-d)S(x)|_{d}^{\infty }+\int_{d}^{\infty }{S(x)dx}}{S(d)}\\
+&=\frac{\int_{d}^{\infty }{S(x)dx}}{S(d)}.
+\end{align*}
+$$
+> 下面证明 $(x-d)S(x)|_{d}^{\infty }=0$
+$$
+\begin{align*}
+  & \underset{x\to \infty }{\mathop{\lim }}\,xS(x)=\underset{x\to \infty }{\mathop{\lim }}\,x\int\limits_{x}^{\infty }{f(t)dt} \\ 
+ & =\underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{xf(t)dt} \\ 
+ & \le \underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{tf(t)dt} \\ 
+ & =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0
+\end{align*}
+$$
+
+
+### 左删失（left censored）和平移（shifted）
+
+> **左删失平移** 变量定义为：
+$$
+{{Y}^{L}}={{\left( X-d \right)}_{+}}= 
+\begin{cases}
+  & 0,\quad \quad \quad X\le d \\ 
+ & X-d,\quad X>d \\ 
+\end{cases} 
+$$
+
+-   左删失表示随机变量 $X<d$ 的取值都替换为 $d$ 
+
+-   平移表示将左删失的变量向左进行平移变化，使得左删失变量减去 $d$
+
+
+> ${Y}^{L}$ 的 $k$阶矩表示为：
+$$
+\mathbb{E}[(X-d)_{+}^k]={\int_{d}^{\infty}(x-d)^kf(x)dx}
+$$
+
+$Y^L$ 和 $Y^P$ 的比较：
+
+  - 假设 $X$ 表示损失，则 $Y^L$ 和 $Y^P$ 都表示赔款
+  
+  - $Y^L$ 是含零赔款（per loss），即当保险事故造成的损失没有产生赔款的时候， $Y^L=0$
+  
+  - $Y^P$ 是非零赔款（per payment），即当保险事故造成的损失没有产生赔款的时候， $\Pr(Y^p=0)=0$
+
+  - 数学期望存在下述关系：
+  
+    $$\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F_X(d)]=\int_{d}^{\infty}S(x)dx$$
+    ![](picture/YL.png){width="450"}
+
+### 右删失（right censored）
+
+> 定义：**右删失**变量表示为：
+$$
+Y=X\wedge u=\min (X,u)=\begin{cases}
+  & X,\ \ \ X<u \\ 
+ & u,\ \ \ \ X\ge u \\ 
+\end{cases}
+$$
+其中，$Y$ 也被称之为**有限损失** (limited loss variable)。
+
+-   注意：右删失表示随机变量 $X>u$ 的所有取值都用 $u$ 代替
+
+> 定义：$Y$ 的数学期望 $E(X\wedge u)$ 称之为**有限期望** (limited expected value)，具体表示为：
+$$
+\begin{align*}
+  E(X\wedge u)& =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\ 
+ & =-xS(x)\left| _{0}^{u} \right.+\int_{0}^{u}{S(x)dx}+uS(u) \\ 
+ & =\int_{0}^{u}{S(x)dx}  
+\end{align*}
+$$
+
+![](picture/limit.png){width="450"}
+
+<!-- ### R 代码 -->
+
+【例】假设随机变量 $X\sim \text{Gamma}(\alpha = 2, \theta = 100)$，其中期望为 200。
+
+- 请用 R 软件进行绘图：
+
+  -   请画出 $\mathbb{E}(Y^L)$ 和 $\mathbb{E}(Y^p)$ 随着 $d$ 增加而变化的曲线图
+  
+  -   请画出有限期望$\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
+
+2. 若假设 $X\sim \text{Pareto}(\alpha=2, \theta=200)$ 和 $X\sim \text{exp}(\theta = 1/200)$。
+
+  -   请画出 $\mathbb{E}(Y^L)$ 和 $\mathbb{E}(Y^p)$ 随着 $d$ 增加而变化的曲线图
+  
+  -   请画出 limited expected value $\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
+
+``注意``： 上述三个分布的均值相等，均为 200。 
+
+  - 指数分布: $e_X(d)=\frac{1}{\theta}$
+  
+  - 帕累托分布: $e_X(d)=\frac{\theta}{\alpha-1}$
+
+```{r, plot-excess, eval = TRUE, echo = TRUE}
+# 指数分布的生存函数
+S <- function(x) exp(-200*x)
+# 指数分布的平均超额函数 ex1
+ex1 <- NULL
+d1 <- seq(0.1, 2, 0.1) # 免赔额
+for(i in 1:length(d1)){
+  ex1[i] <- integrate(S, d1[i], Inf)$value/S(d1[i])
+}
+# 帕累托分布的生存函数
+alpha <- 5
+theta <- 100
+S <- function(x) {
+  (theta/(x + theta))^alpha
+}
+# 帕累托分布的平均超额函数 ex2
+ex2 <- NULL
+d2 <- seq(0.1, 500, 1) # 免赔额
+for(i in 1:length(d2)){
+  ex2[i] <- integrate(S, d2[i], Inf)$value/S(d2[i])
+}
+# 绘图
+par(mfrow = c(1, 2))
+plot(d1, ex1, type = 'l', ylab = 'mean excess function (1)', ylim = c(0,0.01))
+plot(d2, ex2, type = 'l', ylab = 'mean excess function (2)')
+```
+
+## 损失次数分布
+
+- 在非寿险精算中，通常用用计数随机变量来描述一段时间内发生的损失次数或索赔次数。
+
+- 计数随机变量是离散型随机变量的一种，随机变量的取值是在 $0,1,2, 3,4...$ 正整数值域。
+
+### $(a,b,0)$ 分布类
+
+$(a,b,0)$ 分布类仅包括：
+
+ - 泊松分布（Poisson）
+ 
+ - 二项分布（Binomial Distribution）
+ 
+ - 负二项分布（Negative Binomial distribution）
+
+> 定义：$(a,b,0)$ 分布类满足下述递推关系： 
+$$p_k=(a+\frac{b}{k})p_{k-1}, \quad, k=1,2,3,...,$$
+其中，$a$ 和 $b$ 为常数，$p_k = \Pr(N=k)$。已知 $a,b$ 和 $p_0$，就能唯一确定整个概率分布函数。
+
+
+
+### 泊松分布（Poisson）
+
+泊松分布的概率密度函数： $$
+{{p}_{k}}=\frac{{{e}^{-\lambda }}{{\lambda }^{k}}}{k!},\quad k=0,1,2....
+$$ 概率母函数： 
+$$
+P(z)=e^{(\lambda(z-1))},\quad \lambda>0.
+$$ 
+均值和方差可以通过母函数求得： 
+$$
+\begin{align*}
+\mathbb{E}(N)&=\lambda \\
+\text{Var}(N)&=\lambda
+\end{align*}
+$$ 
+ - 泊松分布的方差和均值相等，都可以表示为$\lambda$。
+ 
+ - 若干个独立的泊松分布之和仍然服从泊松分布。
+ 
+ - 泊松分布可以分解为若干个泊松分布之和。
+
+```{r}
+# density function 概率函数
+#dpois(x, lambda, log = FALSE) # lambda 表示均值, log = TRUE 表示输出log(f(x))
+# distribution function 分布函数
+#ppois(q, lambda, lower.tail = TRUE, log.p = FALSE)
+# quantile function 分布函数的逆函数（分位数函数）
+#qpois(p, lambda, lower.tail = TRUE, log.p = FALSE)
+# 泊松分布的随机数 - 模拟
+#rpois(n, lambda = 10) # 模拟 n 个服从期望为10的泊松分布
+# 画图- 不同lambda的泊松分布的概率函数图
+par(mfrow = c(2,2))
+lambda.po <- c(1, 2, 5, 10) # lambda 取值为 1,2,5,10
+x0 <- seq(0, 20)            # x 取值为 0-25 的整数
+for(lambda.po in c(1, 2, 5, 10)){
+  barplot(dpois(x0, lambda.po), names.arg = x0, main = paste('lambda = ', lambda.po, sep = ''))
+}
+```
+
+
+
+
+**【例】**： 假设索赔次数 $N$ 服从参数为 的泊松分布，请计算： 
+
+- 索赔次数等于 3 的概率 $\Pr(N=3)$
+ 
+- 索赔次数小于等于 4 的概率 $\Pr(N\leq4)$
+
+- 索赔次数大于等于 3 小于等于 5 的概率 $\Pr(3\leq N \leq 5)$
+
+```{r}
+## 索赔次数等于3的概率
+dpois(3, lambda = 2)
+## 索赔次数小于等于4的概率为
+ppois(4, lambda = 2)
+## 索赔次数大于等于3小于等于5的概率
+ppois(5, 2) - ppois(2, 2)
+```
+
+### 负二项分布（Negative Binomial distribution）
+
+负二项分布的概率密度函数： 
+$$
+{{p}_{k}}=\frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{\left( \frac{1}{1+\beta } \right)}^{r}}{{\left( \frac{\beta }{1+\beta } \right)}^{k}}, \quad k=0,1,2,....
+$$
+
+概率母函数、均值和方差分别表示为：
+
+$$
+P(z)={{\left[ 1-\beta (z-1) \right]}^{-r}}
+$$ 
+$$
+\begin{align*}
+\mathbb{E}(X)&=r\beta\\
+\text{Var}(X)&=r\beta(1+\beta)
+\end{align*}
+$$ 
+证明：
+
+$$
+\begin{align*}
+  P(z)&=\sum\limits_{k=0}^{\infty }{{{p}_{k}}{{z}^{k}}}=\sum\limits_{k=0}^{\infty }{\left[ \frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{\left( \frac{1}{1+\beta } \right)}^{r}}{{\left( \frac{\beta }{1+\beta } \right)}^{k}} \right]{{z}^{k}}} \\ 
+ & =\sum\limits_{k=0}^{\infty }{\left[ \frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{\left( \frac{1+\beta -z\beta }{1+\beta } \right)}^{r}}{{\left( \frac{z\beta }{1+\beta } \right)}^{k}} \right]}{{\left( 1+\beta -z\beta  \right)}^{-r}} \\ 
+ & ={{\left( 1+\beta -z\beta  \right)}^{-r}}
+\end{align*} 
+$$ 
+
+- 注意：几何分布是负二项分布在$r=1$时的特殊情况。
+
+- 令 $p=\frac{1}{1+\beta}$, 负二项分布密度函数的另一种形式： 
+$$
+{{p}_{k}}=\frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{p}^{r}}{{\left( 1-p \right)}^{k}}
+$$
+
+- 其中，负二项分布的方差大于均值，通常可以用来描述具有过离散数据特征的损失次数。
+
+- 下图显示了参数 $r$ 在不同取值条件下负二项分布的概率分布图。可以发现，当负二项分布均值越大时，分布形状约趋近于正态分布。对应的 R 代码如下：
+
+```{r, plot-nb, eval = TRUE, echo = TRUE}
+# 负二项分布的概率函数
+r0 <- c(1, 1, 2, 2)
+p0 <- c(0.3,0.5, 0.3, 0.5)
+x0 <- seq(0, 20)
+ylim0 <- list(c(0,0.5),
+              c(0,0.5),
+              c(0,0.5),
+              c(0,0.5))  # 上下界
+par(mfrow = c(2, 2) )
+for (i in 1:length(p0)){
+  fpo <- dnbinom(x0, size = r0[i], prob = p0[i], log = FALSE)
+  barplot(fpo, 
+          main = paste0('r = ', r0[i], ',  ','p = ', p0[i]), 
+          names.arg = x0, ylim = ylim0[[i]]
+  )
+}
+```
+
+- 令 $r\to\infty$ 且 $\beta\to 0$，令 $r\beta=\lambda$ 是一个常数，可以发现
+$$
+\begin{align*}
+\mathbb{E}(X)&=r\beta \to \lambda\\
+\text{Var}(X)&=r\beta(1+\beta) \to \lambda
+\end{align*}
+$$ 
+负二项分布的**极限分布**是泊松分布。
+
+### 二项分布（Binomial Distribution）
+
+个体风险发生索赔的概率为 $q$, 不发生索赔的概率为 $1-q$, 则索赔次数分布的母函数为 $$
+P\left( z \right)=\mathbb{E}\left( {{z}^{N}} \right)=\left( 1-q \right){{z}^{0}}+q{{z}^{1}}=1-q+qz=1+q\left( z-1 \right)
+$$ 
+对 $m$ 个独立同分布的个体风险，其索赔次数分布的母函数为 
+$$
+P\left( z \right)=[1+q\left( z-1 \right)]^m.
+$$ 
+这 $m$ 个风险发生$k$次索赔的概率为二项分布 
+$$
+{{p}_{k}}=\left(^m 
+_k 
+\right){{q}^{k}}{{(1-q)}^{m-k}}\quad \quad k=0,1,2,...,m.
+$$ 
+
+- 二项分布的均值和方差为 $\mathbb{E}(X)=mq, \quad \text{Var}(X)=mq(1-q)$
+
+- 二项分布的取值存在一个最大值$m$。
+
+- 参数 $m>0$ 使得二项分布的均值大于方差，主要用于描述具有欠离散数据特征的损失次数（精算中并不常用）。
+
+> 下图显示二项分布的均值越大，分布形态越对称。R 代码如下：
+
+```{r, plot-bi, eval = TRUE, echo = TRUE}
+# ==============================================================
+# 二项分布
+# ==============================================================
+m0 <- c(1, 5, 10, 10, 10, 10)
+q0 <- c(0.3, 0.3, 0.3, 0.1, 0.2, 0.3)
+x0 <- seq(0, 10)
+
+par(mfrow = c(2, 3) )
+for (i in 1:length(m0)){
+  fpo <- dbinom(x0, size = m0[i], prob = q0[i], log = FALSE)
+  barplot(fpo, 
+          main = paste0('m = ', m0[i], ',  ',
+                        'q = ', q0[i]),
+          names.arg = x0)
+}
+```
+
+
+
+### $(a,b,1)$ 分布类
+
+$(a,b,1)$ 分布类包含两个子类： 
+
+- 零截断分布 (zero-truncated distribution) 
+
+- 零调整分布 (zero-modified distribution) 
+
+- 对于零截断分布，发生 $k$ 次损失的概率用$p_k^T$表示，其中$p_0^T=0$ 
+
+- 对于零调整分布，发生 $k$ 次损失的概率用 $p_k^M$ 表示，其中 $p_0^M$ 表示可以是任意概率值。
+
+> $(a,b,1)$分布类满足下述递推关系： $$p_k=(a+\frac{b}{k})p_{k-1}$$ $k=2,3,...$,
+>
+> - 递推关系与 $(a,b,0)$ 分布类的递推关系完全相同
+>
+> - $(a,b,1)$ 分布类的递推关系是从 $p_1$开始，而$(a,b,1)$分布类的递推关系是从$p_0$开始。
+
+R 代码： 零截断负二项分布的计算
+
+```{r}
+## 负二项分布的概率
+x = 0:10
+p = dnbinom(x,4,0.7)
+round(p,3)
+
+## 零截断负二项分布的概率
+p0 = p[1]   ##零点的概率
+pt1 = p[2:11]/(1-p0)  ##其它点上的概率
+pt = c(0, pt1)
+round(pt,3)
+
+## 绘图比较负二项和零截断负二项的概率
+com = rbind(负二项 = p, 零截断负二项 = pt)
+barplot(com,beside=TRUE,names.arg=0:10,legend.text=TRUE)
+```
+
+R 代码： 零调整负二项分布的计算
+
+```{r}
+## 负二项分布的概率
+x = 0:10
+p = dnbinom(x, 4, 0.7)
+round(p,3)
+
+## 零调整负二项分布的概率
+p0 = 0.3  ##调整零点的概率
+pm = (1-p0)*p[2:11]/(1-p[1])  ##其它点上的概率
+pm = c(p0,pm)
+round(pm, 3)
+
+## 绘图
+com = rbind(负二项 = p, 零调整负二项 = pm)
+barplot(com, beside = TRUE, names.arg = 0:10,legend.text=TRUE)
+
+```
+
+
 
 ## 课后习题
 
