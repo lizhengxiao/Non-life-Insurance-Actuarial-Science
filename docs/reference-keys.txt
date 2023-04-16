@@ -121,3 +121,4 @@ r-软件与-rmarkdown-简介
 索赔次数和索赔频率
 example-1
 风险与随机变量
+tab:mylabel

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-04-15" />
+<meta name="date" content="2023-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -323,23 +323,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>通常根据保险业务不同（寿险业务和非寿险业务），保险风险的具体对象有不同的含义：</p>
 <ul>
-<li><p>寿险业务的保险风险通常包括损失风险的风险（死亡、伤残）、费用风险和退保风险。</p></li>
-<li><p>非寿险业务通常指财产险业务，通常为短期险种，主要包括保险期间为一年或一年以内的短期意外险、短期健康险和短期寿险。保险风险通常包括保费以及准备金风险、巨灾风险。</p></li>
-</ul>
-<p>因此，风险造成损失的不确定性，通常用随机变量来表示。在保险风险度量中，风险可以是：</p>
+<li><p><strong>寿险业务</strong>是指人身为保险标的的保险，包括长期寿险（含年金保险）业务、长期健康险业务以及长期意外险业务。其中的保险风险通常包括：</p>
 <ul>
-<li><p>保险事故发生与否的不确定性</p></li>
-<li><p>保险事故发生的时间的不确定性</p></li>
-<li><p>保险事故发生的地点的不确定性</p></li>
-<li><p>保险事故造成的损失金额的不确定性。</p></li>
+<li><p>死亡、伤残等发生的风险</p></li>
+<li><p>费用风险</p></li>
+<li><p>退保风险</p></li>
+</ul></li>
+<li><p><strong>非寿险业务</strong>通常指财产险业务，通常为短期险种，主要包括保险期间为一年或一年以内的 财产保险、责任保险、短期意外险、短期健康险和短期寿险。保险风险通常包括</p>
+<ul>
+<li><p>保费风险</p></li>
+<li><p>准备金风险</p></li>
+<li><p>巨灾风险</p></li>
+</ul></li>
 </ul>
-<p>从统计学/保险精算的视角来看，风险造成损失的不确定性，可以用随机变量来表示。</p>
-<p>随机变量是指取值依赖于随机现象的观察结果的变量，取值是随机的，取值特征通过概率分布来描述。一般用大写的英文字母表示。随机变量可以表示为：</p>
+<p>随机变量是描述不确定性的重要数学工具，因此风险可以用随机变量来表示。
+随机变量是指取值依赖于随机现象的观察结果的变量，取值是随机的，取值特征通过概率分布来描述。一般用大写的英文字母表示。随机变量可以表示为：</p>
 <ul>
 <li><p><strong>连续型随机变量</strong>。其取值通常布满一个区间，如保险事故造成的损失金额 <span class="math inline">\(X\)</span> 的取值范围为 <span class="math inline">\((0,+\infty)\)</span>。</p></li>
 <li><p><strong>离散型随机变量</strong>。其取值为有限个或可列个值，如保险事故发生的次数 <span class="math inline">\(N\)</span> 的取值范围为 <span class="math inline">\(0, 1, 2, 3, ...\)</span>。保险事故是否发生损失可以表示为取值为 0 和 1 的离散型变量 <span class="math inline">\(I=0,1\)</span>。</p></li>
 <li><p><strong>半连续型随机变量</strong>。其取值通常为连续型和离散型的结合，如保险事故造成的累积损失 <span class="math inline">\(S\)</span>，其取值范围为 <span class="math inline">\([0, +\infty\)</span>，其中 <span class="math inline">\(S=0\)</span> 表示保险事故没有造成损失，<span class="math inline">\(S&gt;0\)</span> 表示保险事故造成了多大的损失。</p></li>
 </ul>
+<table>
+<caption><span id="tab:mylabel">Table 2.1: </span> 寿险和非寿险业务的区别</caption>
+<thead>
+<tr class="header">
+<th>寿险业务</th>
+<th>非寿险业务</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>业务比较稳定</td>
+<td>业务极其不稳定</td>
+</tr>
+<tr class="even">
+<td>保险金的给付具有可预期性</td>
+<td>理赔频率和赔付额具有很强的随机性</td>
+</tr>
+<tr class="odd">
+<td>保险业务具有长期性</td>
+<td>业务多位短期险种</td>
+</tr>
+</tbody>
+</table>
+<!-- 在保险风险度量中，风险可以是： -->
+<!-- - 保险事故发生与否的不确定性 -->
+<!-- - 保险事故发生的时间的不确定性 -->
+<!-- - 保险事故发生的地点的不确定性 -->
+<!-- - 保险事故造成的损失金额的不确定性。 -->
 <hr />
 </div>
 <div id="分布函数和生存函数" class="section level2 hasAnchor" number="2.2">
