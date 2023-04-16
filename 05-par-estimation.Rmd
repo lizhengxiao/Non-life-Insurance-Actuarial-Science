@@ -1,11 +1,415 @@
-# 参数估计和统计推断 {#parest}
-We have finished a nice book.
+# 参数估计
 
-## 极大似然估计
+## 极大似然估计法
+
+  极大似然估计法 $(MLE)$ 是常用的一种估计参数的方法， 使用该方法时要求总体的分布类型已知，其基本思想是我们对总体 $X$ 进行 $n$ 次观测可以得到一组观测值 $(x_1 , x_2, ..., x_n)$, 将得到这组观测值的概率看作一个似然函数 $L(\theta)$, 而将使 $L(\theta)$ 达到最大化时的 $\hat{\theta}$ 作为参数 $\theta$ 的估计值。
+  
+  若总体 $X$ 属于离散型，其分布律 $P(X=x)=p(x;\theta)$，$\theta \in \Theta$ 的形式已知，$\theta$ 为待估参数，$\Theta$ 是 $\theta$ 可能取值的范围。设 $(x_1 , x_2, ..., x_n)$ 为来自总体 $X$ 的一个样本且相互独立。则样本取值的概率分布就可以表示为 
+$$\prod_{i=1}^n p(x_i ,\theta)$$
+  这一概率随$\theta$ 的取值而变化，他是$\theta$ 的函数，
+  $$L(\theta)=L(x_1,x_2,...,x_n;\theta)=\prod_{i=1}^n p(x_i ,\theta)$$ 被称为样本的似然函数。
+  
+  关于极大似然估计法,我们有以下的直观想法:现在已经取到样本值$(x_1 , x_2, ..., x_n)$ , 这表明取到这一样本值的概率$L(\theta)$比较大,我们不考虑那些
+不能使样本$(x_1 , x_2, ..., x_n)$出现的$\theta \in \Theta$ 作为 $\theta$ 的估计,再者,如果已知当 $\theta =\theta_0 \in \Theta$ 时使 $L(\theta )$
+取很大值,而$\Theta$中的其他 $\theta$ 的值使 $L(\theta )$ 取很小值,我们自然认为取$\theta_0$ 作为未知参数 $\theta$ 的估计值,较为合理。极大似然估计法,就是固定样本观察值 $(x_1 , x_2, ..., x_n)$ ,在 $\theta$ 取值的可能范围$\Theta$ 内挑选使似然函数 $L(x_1,x_2,...,x_n;\theta)$ 达到最大的参数值$\hat \theta$,作为参数 $\theta$ 的估计值。即取$\hat \theta$ 使 $$L(x_1,x_2,...,x_n;\hat \theta)=max_{\theta \in \Theta} L(x_1,x_2,...,x_n; \theta) $$ 
+这样得到的$\hat \theta$ 与样本值$(x_1 , x_2, ..., x_n)$ 有关,常记为 $\hat \theta(x_1 , x_2, ..., x_n)$ ,称为参数 $\theta$ 的极大似然估计值。
+
+若总体$X$属于连续型,其概率密度$f(x;\theta)$,$\theta \in \Theta$ 的形式已知, $\theta$ 为待估参数，$\Theta$ 是 $\theta$ 可能取值的范围。设 $(x_1 , x_2, ..., x_n)$ 为来自总体 $X$ 的一个样本且相互独立。则样本取值的联合密度就可以表示为 
+$$\prod_{i=1}^n f(x_i ,\theta)$$
+其取值随$\theta$ 的取值而变化，与离散型的情况一样，他是$\theta$ 的函数，
+  $$L(\theta)=L(x_1,x_2,...,x_n;\theta)=\prod_{i=1}^n f(x_i ,\theta)$$ 被称为样本的似然函数。
+  
+  $$L(x_1,x_2,...,x_n;\hat \theta)=max_{\theta \in \Theta} L(x_1,x_2,...,x_n; \theta) $$ 
+则 $\hat \theta(x_1 , x_2, ..., x_n)$ ,称为参数 $\theta$ 的极大似然估计值。
+
+这样，确定极大似然估计量的问题就归结为求最大值的问题了。
+
+  求极大似然估计 $(MLE)$ 的一般步骤是：
+
+1.由总体分布导出样本的联合概率函数(或联合密度);
+
+2.把样本联合概率函数（或联合密度）中的自变量看成已知常数，而把参数 $\theta$ 看作自变量，得到似然函数 $L(\theta)$;
+
+3.求似然函数 $L(\theta)$ 的最大值点(常常转化为求 $lnL(\theta)$ 的最大值点;
+
+4.在最大值点的表达式中，用样本值代入就得到了参数的极大似然估计值。
+
+  几点说明：
+
+1.求似然函数 $L(\theta)$ 的最大值点，可应用微分中的技巧。由于$ln(x)$ 是 $x$ 的增函数，所以$lnL(\theta)$ 和 $L(\theta)$ 在 $\theta$ 的同一点处达到各自的最大值。
+
+2.若 $\theta$ 是向量(不止一个待估参数)，上述似然方程需用似然方程组代替，即用对数似然函数对每个参数 $\theta_i$ 求偏导令其为0。
+
+3.若通过上述方法无法求得参数的极大似然估计，此时需要用极大似然原理来求。
+
+例1：
+设 $x_1 , x_2, ..., x_n$ 是取自总体 $X\sim B(1,p)$ 的一个样本，求参数 $p$ 的极大似然估计值。
+
+答案：
+似然函数为：
+$$L(p)=\prod_{i=1}^n p(x_i ,\theta)=\prod_{i=1}^n p^{x_i} (1-p)^{1-{x_i}}=p^{\sum_{i=1}^n x_i}(1-p)^{n-\sum_{i=1}^n x_i}$$ 
+对数似然函数为：
+$$lnL(p)=\sum_{i=1}^n x_iln(p)+(n-\sum_{i=1}^n x_i)ln(1-p) $$ 
+对p求导并令其为0得：
+$$\frac{dlnL(p)}{dp}=\frac{\sum_{i=1}^n x_i}{p}-\frac{(n-\sum_{i=1}^n x_i)}{1-p}=0$$
+上式等价于：
+$$\frac{\bar{x}}{p}=\frac{1-\bar{x}}{1-p}$$
+解上述方程得：$p=\bar{x}$.
+
+例2
+设 $x_1 , x_2, ..., x_n$ 是取自总体$X\sim N(\mu,\sigma^2)$ 的一个样本，求参数 $\mu,\sigma^2$ 的极大似然估计值。
+
+答案：
+$X$ 的概率密度为：
+$$f(x;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}exp[-\frac{1}{2\sigma^2}(x-\mu)^2]$$
+似然函数为：
+$$L(\mu,\sigma^2)= \prod_{i=1}^n \frac{1}{\sqrt{2\pi}\sigma}exp[-\frac{1}{2\sigma^2}(x-\mu)^2] 
+=(2\pi)^{-n/2}(\sigma^2)^{-n/2}exp[-\frac{1}{2\sigma^2} \sum_{i=1}^n(x-\mu)^2]$$ 
+对数似然函数为：
+$$lnL=-\frac{n}{2}ln(2\pi)-\frac{n}{2}ln(2\sigma^2)-\frac{1}{2\sigma^2}\sum_{i=1}^n (x-\mu)^2 $$ 
+对$\mu,\sigma^2 $分别求导并令其为0得：
+$$\frac{\partial lnL}{\partial \mu}=\frac{1}{\sigma^2}(\sum^{n}_{i}x_i-n\mu)=0$$
+$$\frac{\partial lnL}{\partial \sigma^2}=-\frac{n}{2\sigma^2}+\frac{1}{2(\sigma^2)^2}\sum^{n}_{i=1}(x_i-\mu)^2=0$$
+解上述方程得：$\hat \mu=\frac{\sum^{n}_{i=1}x_i}{n}=\bar{x}$,
+$\hat \sigma^2=\frac{\sum^{n}_{i=1}(x_i-\bar x)^2}{n}$。
+
+有时损失数据会出现截断删失等情况，对于此类数据，我们可以通过以下表格写出似然函数：
+
+  | 数据类型 | 单个数据对应的似然函数 |
+  | :----: |  :----: |
+  | 离散分布的单个数据 | $p_x$ |
+  | 连续分布的单个数据 | $f(x)$ |
+  | 分组数据  | $F(c_j)-F(c_{j-1})$ |
+  | 在u处右删失的单个数据  | $1-F(u)$ |
+  | 在d处左删失的单个数据  | $F(d)$ |
+  | 在u处右截断的单个数据  | $\frac{f(x)}{F(u)}$ |
+  | 在d处左截断的单个数据  | $\frac{f(x)}{1-F(d)}$|
+  
+例3
+已知一个样本为：27，82，115，126，155，161，243，294，340，384，457，680，855，877，974，1193，1340，1884，2558，15743，对该样本数据在200处进行左截断，得到数据服从取自$\theta=800$  的帕累托分布，求帕累托分布的另一个参数 $\alpha$ 的极大似然估计值。
+
+答案：
+由于截断后的数据服从参数 $\theta=800$ 的帕累托分布，则截断前的数据服从参数 $\theta=800+200=1000$ 的帕累托分布，我们得出似然函数为：
+$$
+L(\alpha)=\prod_{j=1}^{14}\frac{f(x_j|\alpha)}{1-F(200|\alpha)}=\prod_{j=1}^{14}\frac{\alpha(1000^\alpha)}{(800+x_j)^{\alpha+1}},
+$$
+对数似然函数为：
+$$
+lnL(\alpha)=14ln(\alpha)+14\alpha ln(1000)-(\alpha+1)\sum_{j=1}^{14} ln(800+x_j),
+$$
+对$\alpha$求导并令其为0得：
+$$
+\frac{dlnL}{d\alpha}=\frac{14}{\alpha}+14ln(1000)-\sum_{j=1}^{14} ln(800+x_j)=0,
+$$
+求解得：$\hat{\alpha}=1.5383$。
+
+## 方差和置信区间
+
+### 极大似然估计值的方差
+
+求出极大似然估计值后，我们感兴趣的便是估计值的方差，参考相关文献推导可知极大似然估计满足以下两条性质，其中 $n$ 为样本容量, $\theta$ 为待估参数，$x$ 为样本的观测值。
+
+1.当 $n \to \infty$ , $L'(\theta)=0$ 有解的概率趋近1；
+
+2.当 $n \to \infty$ , 极大似然估计量 $\hat{\theta}_n$ 的分布收敛于均值为 $\theta$ ，方差满足 $I(\theta) \text{Var}(\hat{\theta}_n) \to 1$ 的正态分布, 其中：
+
+\begin{align*}
+I(\theta)&=-n\mathbb{E}\left[\frac{\partial^2}{\partial \theta^2}\ln f(X;\theta)\right]\\
+&=n\mathbb{E}\left[\left(\frac{\partial}{\partial \theta}\ln f(X;\theta)\right)^2\right]
+\end{align*}
+
+我们可以认为$[I(\theta)]^{-1}$ 是$\text{Var}(\hat{\theta}_n)$的近似估计，$I(\theta)$ 被称为费雪信息（Fisher's information），定义如下：
+
+$$
+I(\theta)=-\mathbb{E}\left[\frac{\partial^2}{\partial \theta^2}\ell(\theta)\right]
+=\mathbb{E}\left[\left(\frac{\partial}{\partial \theta}\ell(\theta)\right)^2\right].
+$$
+当待估参数不止一个时，我们引入$(r, s)$阶的海森矩阵（Hessian matrix）：
+
+$$
+H(\theta)_{rs}=\frac{\partial^2}{\partial \theta_r \theta_s}\ell(\theta)
+$$
+此时费雪信息阵（Fisher information matrix）为：
 
 
-## 贝叶斯估计
+$$
+I(\theta)=-\mathbb{E}[H(\theta)]=-\mathbb{E}\left[\frac{\partial^2}{\partial \theta_r \theta_s}\ell(\theta)\right]=\mathbb{E}\left[\left(\frac{\partial}{\partial \theta}\ell(\theta_r)\right)\left(\frac{\partial}{\partial \theta}\ell(\theta_s)\right)\right].
+$$
 
-1
+### Delta Method
+
+大部分时候，我们感兴趣的不是某个参数 $\hat{\theta}$，而是与未知参数有关的函数 $g(\hat{\theta})$，比如，为了估计服从对数正态分布的某个总体的均值，我们需要估计 $\exp(\hat{\mu} + \hat{\sigma}^2/2)$ ，而不是简单的参数 $\hat{\theta}$ 和 $\hat{\sigma}$。对于这种情况，我们需要了解 delta method：
+
+假设$\hat{\theta}$ 是 $\theta$ 的估计量，服从均值为 $\theta$ ，方差为 $\sigma^2/n$ 的渐进正态分布，那么我们可以认为 $g(\hat{\theta})$ 也服从渐进正态分布，其中 $g({\theta})$ 是关于 $\theta$ 的单调递增函数，其均值和方差分别为：
+$$\mathbb{E}[g(\hat{\theta})]=g(\theta)$$
+$$ \mathbb{Var}[g(\hat{\theta})]={g'( \theta )}^2 {\sigma}^2/n $$
+$\theta$ 的置信区间为 $\hat{\theta} ± z_{\alpha/2}\sigma$，其中 $\alpha$ 为置信度， $\sigma$ 为估计的标准差。
+
+例题：
+
+已知随机变量服从对数正态分布，从中得到一个样本为：27，82，115，126，155，161，243，294，340，384，457，680，855，877，974，1193，1340，1884，2558，15743，求该对数正态分布的MLE的协方差矩阵以及参数 $\mu，\sigma$ 的95%的置信区间。
+
+答案：
+
+对数正态分布的极大似然函数及其取对数为： 
+
+\begin{align*}
+L(\mu,\sigma)&=\prod_{j=1}^{n}\frac{1}{x_j\sigma\sqrt{2\pi}}\exp\left[-\frac{(\ln x_j - \mu)^2}{2\sigma^2}
+\right],\\
+\ell(\mu,\sigma)&=\sum_{j=1}^{n}\left[
+-\ln x_j - \ln \sigma - \frac{1}{2}\ln(2\pi)-\frac{1}{2}\left(
+\frac{\ln x_j - \mu}{\sigma}
+\right)^2
+\right].
+\end{align*}
+
+对未知参数 $\mu，\sigma$ 求一阶导为：
+
+\begin{align*}
+\frac{\partial \ell}{\partial \mu}&=\sum_{j=1}^{n} \frac{\ln x_j - \mu}{\sigma^2},\\
+\frac{\partial \ell}{\partial \sigma}&=-\frac{n}{\sigma}+
+\sum_{j=1}^{n} \frac{(\ln x_j - \mu)^2}{\sigma^3}
+\end{align*}
 
 
+对未知参数 $\mu，\sigma$ 求二阶导为：
+
+\begin{align*}
+\frac{\partial^2 \ell}{\partial \mu^2}&=-\frac{n}{\sigma^2},\\
+\frac{\partial^2 \ell}{\partial \mu \partial \sigma}&=
+-2\sum_{j=1}^{n}\frac{(\ln x_j - \mu)}{\sigma^3}
+,\\
+\frac{\partial^2 \ell}{\partial \sigma^2}&=\frac{n}{\sigma^2} - 3\sum_{j=1}^{n}\frac{(\ln x_j - \mu)^2}{\sigma^4}.
+\end{align*}
+
+信息矩阵为：
+$$
+ I(\mu,\sigma)= \left[\begin{matrix}
+   \frac{-n}{\sigma^2} & 0 \\
+   0 & -\frac{2n}{\sigma^2} 
+  \end{matrix} 
+  \right]
+$$
+协方差矩阵为：
+
+$$
+ \text{Cov}(\mu,\sigma)= \left[\begin{matrix}
+   \frac{\sigma^2}{n} & 0 \\
+   0 & \frac{\sigma^2}{2n} 
+  \end{matrix} 
+  \right]
+$$
+
+根据样本求得： $\hat{\mu} = 6.1379$ ， $\hat{\sigma}_2 = 1.9305$，
+ $\sigma = 1.3894$.
+
+
+$$
+\widehat{\text{Var}}(\hat{\mu},\hat{\sigma})=
+\left[\begin{matrix}
+0.0965 & 0\\
+0&0.0483
+\end{matrix}
+\right].
+$$
+
+置信区间为：
+
+\begin{align*}
+\mu &\quad 6.1379 \pm 1.96(0.0965)^{1/2}=6.1379 \pm 0.6089,\\
+\sigma & \quad 1.3894 \pm 1.96(0.0483)^{1/2}=1.3894 \pm 0.4308.
+\end{align*}
+
+## 模型评价与比较
+
+### 模型的评价
+
+在对模型进行估计后，我们必须对其进行评估，这常常在使用模型进行预测前完成。评估模型的方法有很多，这里我们介绍两种图形化方法：$p-p$ 图和 $q-q$ 图。
+
+$p-p$ 图：
+
+假设样本观测值$(x_1 , x_2, ..., x_n)$ 按$x_{(1)}\le x_{(2)}\le...\le x_{(n)}$ 的递增顺序排列, $x_{(i)}$ 为 $i$ 阶统计量，定义$F_n (x_{(i)})=\frac{i}{n+1}$，$F_n ^*(x_{(i)})$ 为根据假设分布或参数估计后的分布计算的累计分布函数值，$p-p$图是根据变量的累积概率对应于所指定的理论分布累积概率绘制的散点图，其坐标为: $(F_n (x_{(i)}),F_n ^*(x_{(i)}))$ , 用于直观地检测样本数据是否符合某一概率分布。如果样本数据符合所指定的分布，则代表样本数据的点应当基本在代表理论分布的对角线上。
+
+$q-q$ 图：
+
+$q-q$ 图和 $p-p$ 图的用途完全相同，只是检验方法存在差异。$q-q$ 图的坐标为 $(x_{(i)},{F^*}^{-1}(F_n (x_{(i)})))$, 如果 $F ^*(.)$ 能较好的拟合样本数据，则 $q-q$ 图趋近于落在y=x线上。用QQ图可获得样本偏度和峰度的粗略信息。
+
+### 模型的比较
+
+评价模型好坏时我们通常需要考虑模型复杂程度和模型的拟合程度两个指标，赤池信息准则 $(Akaike information criterion, AIC)$ 和贝叶斯信息准则 $(Bayesian Information Criterion，BIC)$ 为选取最优模型的最常使用的指标。由于对数似然函数的值会随着模型中参数数目的增加而增加，但增加模型中未知参数的个数会提高模型的复杂度，所以除非增加参数能显著增加对数似然函数值，否则我们不考虑给模型增加参数个数。为了使含有不同个数的未知参数的模型具有可比性，我们对参数的对数似然进行惩罚，计算 $(AIC)$ 和 $(BIC)$ 的取值。
+
+对于样本量为 $n$，模型参数个数为 $k$ ，似然函数为 $L$ 的 $(AIC)$ 和贝叶斯信息准则 $(BIC)$ 的计算公式如下：
+$$AIC = 2k -2ln(L)$$
+$$BIC = k ln(n)-2ln(L)$$
+其中，BIC的惩罚项比AIC大，考虑了样本个数，样本数量多时可以防止模型精度过高造成的模型复杂程度过高。通常选取AIC或BIC最小的模型为最优模型。
+
+例题
+已知有样本量为20的损失的数据，使用不同的4个分布对模型进行拟合，以下表格为使用含有不同个数参数的分布对数据进行拟合的结果，使用 $AIC$ 和 $BIC$ 指标对其进行评估，请问应该选择哪个模型？
+
+| 分布中参数个数$k$ | 极大对数似然函数$lnL$ |
+  | :----: |  :----: |
+  | 1  | -321.32 |
+  | 2  | -319.93 |
+  | 3  | -319.12 |
+  | 4  | -318.12 |
+
+答案
+根据公式计算各模型的 $AIC$，$BIC$ 值为：
+
+| 分布中参数个数$k$ | 极大对数似然函数$lnL$ | $AIC$ | $BIC$ |
+  | :----: |  :----: |  :----: |  :----: |
+  | 1  | -321.32 |  644.64 |  645.64 |
+  | 2  | -319.93 |  643.86 |  645.85 |
+  | 3  | -319.12 |  644.24 |  647.23 |
+  | 4  | -318.12 |  644.24 |  648.22 |
+  
+根据 $AIC$ 值，我们选取参数个数为2的分布，根据 $BIC$ 值，我们选取参数个数为1的分布。 
+
+## R语言练习
+
+载入数据集：
+
+```{r}
+# read the data set 
+x <- c(27, 82, 115, 126, 155, 161, 243, 294, 340, 384,
+457, 680, 855, 877, 974, 1193, 1340, 1884, 2558, 15743)
+```
+
+
+方法一：使用optim函数
+
+```{r}
+# 1. 构建对数正态分布的对数似然函数
+
+LLlognormal <- function(x, pars){
+  mu <- pars[1]
+  sigma <- pars[2]
+  # 定义对数似然函数
+  loglike <- dlnorm(x, meanlog = mu, sdlog = sigma, log = T)
+  
+  LL <- sum(loglike)
+  return(LL)
+}
+
+
+# 2. 用optim 函数估计参数值
+
+mlognomal <- optim(par = c(1, 2), # 初始值
+                   fn = LLlognormal, # 对数似然函数
+                   x = x, # 样本观测值
+                   hessian = T, # 是否输出 Hessian 矩阵
+                   method = c("Nelder-Mead"),
+                   control = list(fnscale = -1, # -1 表示最大化；1 表示最小化
+                                  maxit = 100000)  # 最大迭代次数
+                   )
+
+estimates <- mlognomal$par # 参数估计值
+mu.est <- estimates[1]
+sigma.est <- estimates[2]
+Hessian <- mlognomal$hessian # Hessian矩阵
+var.est <- diag(solve(-Hessian)) # 估计量的方差
+se.est <- var.est^(0.5)  # 标准误
+
+results <- cbind(estimates, 
+                 se.est, 
+                 upper = estimates + 1.96*se.est, # 置信区间上界
+                 lower = estimates - 1.96*se.est) # 置信区间下界              
+round(results, 3)
+```
+
+运用 Delta method 估计对数正态分布的期望的方差：
+
+```{r}
+# g(\theta)的方程
+g <- exp(mu.est + 0.5*sigma.est^2)
+# g(\theta)的一阶导
+g_dev <- c(exp(mu.est + 0.5*sigma.est^2), sigma.est*exp(mu.est + 0.5*sigma.est^2))
+Cov <- solve(-Hessian) # the covariance-variance matrix 
+var.mean <- t(g_dev)%*%Cov%*%(g_dev)
+# 均值的渐进方差 
+var.mean
+```
+
+```{r}
+# 均值的置信区间
+c(g - 1.96*var.mean^0.5, g + 1.96*var.mean^0.5)
+```
+
+```{r}
+# 用gamma分布和normal分布拟合数据并根据AIC、BIC选取拟合数据最好的模型
+LLgamma <- function(x, pars){
+  alpha <- exp(pars[1])
+  beta <- exp(pars[2])
+  # gamma分布的每个观测值对应的对数似然函数
+  loglike <- alpha*log(beta)-log(gamma(alpha))+(alpha-1)*log(x)-beta*x
+  LL1 <- -sum(loglike)
+  return(LL1)
+}
+
+mgamma <- optim(par = c(1,2), 
+                   fn = LLgamma, 
+                   x = x, 
+                   hessian = T, 
+)
+LLnormal <- function(x, pars){
+  mu <- pars[1]
+  sigma <- pars[2]
+  # normal分布的每个观测值对应的对数似然函数
+  loglike <- log(dnorm(x, mean = mu, sd = sigma))
+  LL2 <- sum(loglike)
+  return(LL2)
+}
+mnormal <- optim(par = c(1500, 3400), 
+                fn = LLnormal, 
+                x = x, 
+                hessian = T, 
+                method = c("Nelder-Mead"),
+                control = list(fnscale = -1, 
+                               maxit = 100000) 
+)
+# 计算AIC和BIC,lognormal对应的取值最小
+AIC <- c(1,3)
+BIC <- c(1,3)
+AIC[1] <- 2*length(mlognomal$par) - 2*mlognomal$value
+BIC[1] <- log(length(x))*length(mlognomal$par) - 2*mlognomal$value
+AIC[2] <- 2*length(mgamma$par) + 2*mgamma$value
+BIC[2] <- log(length(x))*length(mgamma$par) + 2*mgamma$value
+AIC[3] <- 2*length(mnormal$par) - 2*mnormal$value
+BIC[3] <- log(length(x))*length(mnormal$par) - 2*mnormal$value
+results <- cbind(AIC, BIC)
+round(results, 3)
+```
+
+方法二：使用fitdistrplus包
+
+```{r}
+library(fitdistrplus)
+```
+
+```{r}
+mlognomal2 <- fitdistrplus::fitdist(data = x, 
+                                    distr = 'lnorm', 
+                                    method = 'mle',
+                                    start = list(meanlog = 6, sdlog = 1)
+                                    )
+```
+
+```{r}
+mlognomal2$estimate # 估计值
+```
+
+```{r}
+mlognomal2$sd  # 标准误
+```
+
+```{r}
+mlognomal2$vcov # 协方差矩阵
+```
+
+```{r}
+mlognomal2
+```
+
+```{r}
+plot(mlognomal2)
+```
