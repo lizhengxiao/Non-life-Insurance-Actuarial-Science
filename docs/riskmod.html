@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-04-16" />
+<meta name="date" content="2023-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -289,7 +289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>掌握概率母函数/矩母函数</p></li>
 <li><p>掌握基本的损失次数和损失金额分布</p></li>
 <li><p>理解随机变量中截断和删失的原理</p></li>
-<li><p>能够运用 R 语言</p></li>
+<li><p>能够运用 R 语言定义分布函数等并画图</p></li>
 </ul>
 <!-- ## 风险度量的相关概念 -->
 <!-- ## 风险单位 -->
@@ -400,7 +400,12 @@ F_1(x) = \begin{cases}
 <span id="cb1-14"><a href="riskmod.html#cb1-14" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">length.out =</span> <span class="dv">20</span>) <span class="co"># 画图横轴数据</span></span>
 <span id="cb1-15"><a href="riskmod.html#cb1-15" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">F1.f</span>(x)  <span class="co"># 画图纵轴数据</span></span>
 <span id="cb1-16"><a href="riskmod.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/plot-cdf-1.png" width="672" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot-cdf"></span>
+<img src="bookdown-demo_files/figure-html/plot-cdf-1.png" alt="$F_1(x)$ 的分布函数图" width="672" />
+<p class="caption">
+Figure 2.1: <span class="math inline">\(F_1(x)\)</span> 的分布函数图
+</p>
+</div>
 <p><span class="math display">\[
 \begin{equation}
 F_2(x) = \begin{cases}
@@ -423,7 +428,12 @@ F_2(x) = \begin{cases}
 <span id="cb2-12"><a href="riskmod.html#cb2-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">3000</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
 <span id="cb2-13"><a href="riskmod.html#cb2-13" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">F2.f</span>(x)</span>
 <span id="cb2-14"><a href="riskmod.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/plot-pdf-1.png" width="672" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot-pdf"></span>
+<img src="bookdown-demo_files/figure-html/plot-pdf-1.png" alt="$F_2(x)$ 的分布函数图" width="672" />
+<p class="caption">
+Figure 2.2: <span class="math inline">\(F_2(x)\)</span> 的分布函数图
+</p>
+</div>
 <p>随机变量的生存函数 (Survival Function) 定义为：
 <span class="math display">\[
 S_{X}(x)=\Pr(X&gt;x)=1-F_{X}(x)
@@ -445,7 +455,12 @@ S_{X}(x)=\Pr(X&gt;x)=1-F_{X}(x)
 <span id="cb3-9"><a href="riskmod.html#cb3-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fl">0.001</span>, <span class="at">to =</span> <span class="dv">3000</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
 <span id="cb3-10"><a href="riskmod.html#cb3-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">f2.f</span>(x)</span>
 <span id="cb3-11"><a href="riskmod.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-1-1.png" alt="$S_2(x)$ 生存函数图" width="672" />
+<p class="caption">
+Figure 2.3: <span class="math inline">\(S_2(x)\)</span> 生存函数图
+</p>
+</div>
 <hr />
 </div>
 <div id="概率母函数和矩母函数" class="section level2 hasAnchor" number="2.3">

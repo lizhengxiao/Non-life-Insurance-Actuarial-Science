@@ -16,7 +16,7 @@ output:
 
 - 理解随机变量中截断和删失的原理
 
-- 能够运用 R 语言
+- 能够运用 R 语言定义分布函数等并画图
 
 
 <!-- ## 风险度量的相关概念 -->
@@ -146,7 +146,7 @@ F_1(x) = \begin{cases}
 ```
 
 
-```{r, plot-cdf, eval = TRUE, echo = TRUE}
+```{r, plot-cdf, eval = TRUE, echo = TRUE, fig.cap='$F_1(x)$ 的分布函数图', fig.align = 'center'}
 # 定义分布函数
 F1.f <- function(x) {
   if (x < 0){
@@ -174,7 +174,7 @@ F_2(x) = \begin{cases}
 \end{equation}
 $$
 
-```{r, plot-pdf, eval = TRUE, echo = TRUE}
+```{r, plot-pdf, eval = TRUE, echo = TRUE, fig.cap='$F_2(x)$ 的分布函数图', fig.align = 'center'}
 F2.f <- function(x) {
   if (x < 0){
     out <- 0
@@ -203,7 +203,7 @@ $$f(x)=-\frac{dS(x)}{dx}$$
 
 **【例】**：运用 R 软件画出 **F2.f** 对应的密度函数图。
 
-```{r, eval = TRUE, echo = TRUE}
+```{r, eval = TRUE, echo = TRUE, fig.cap='$S_2(x)$ 生存函数图', fig.align = 'center'}
 f2.f <- function(x){
   if (x > 0){
     out <- 3*(2000)^3/(x + 2000)^4

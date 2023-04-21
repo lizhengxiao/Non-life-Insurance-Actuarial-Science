@@ -123,3 +123,6 @@ example-1
 风险与随机变量
 tab:mylabel
 概率母函数和矩母函数
+fig:plot-cdf
+fig:plot-pdf
+fig:unnamed-chunk-1
