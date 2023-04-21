@@ -133,7 +133,7 @@ Table: (\#tab:mylabel) 寿险和非寿险业务的区别
 
 连续型随机变量 $X$ 的累积分布函数 (Cumulative Distribution Function, cdf) 表示为 $$F_{X}(x)=\Pr(X\le X)$$
 
-**【例】**：运用 R 软件画出下面两种分布函数图。
+**【例 \ref{F1}】**：运用 R 软件画出下面两种分布函数图 \label{F1}。
 
 ```{=tex}
 \begin{equation*}
@@ -268,7 +268,9 @@ $$
 
 ### 指数分布 （Exponential）
 
-指数分布通常有两种参数化的形式。**第一种**参数化的概率密度函数和累积分布函数为: 
+指数分布通常有两种参数化的形式。
+
+**第一种**参数化的概率密度函数和累积分布函数为: 
 $$
 \begin{aligned}
 f(x;\theta)&=\frac{1}{\theta}\exp\left({-\frac{1}{\theta}x}\right),\quad x > 0,\\
@@ -286,14 +288,14 @@ $$
 其中，$\lambda=\frac{1}{\theta}$ 为比率参数。
 
 
-指数分布的期望、方差分别为 $$\mathbb{E}(X)=\theta,$$ $$\text{Var}(X)=\theta^2.$$
+- 指数分布的期望、方差分别为 $$\mathbb{E}(X)=\theta,$$ $$\text{Var}(X)=\theta^2.$$
 
-同时，指数分布具有无记忆性，即 $$\Pr(X>x+u|X>u)=\Pr(X>x).$$
+- 指数分布具有无记忆性，即 $$\Pr(X>x+u|X>u)=\Pr(X>x).$$
 
-指数分布的缺点是其概率密度函数是单调递减的，这在很多情况下，并不适于实际的需要。
+- 指数分布的缺点是其概率密度函数是单调递减的，这在很多情况下，并不适于实际的需要。
 
 <!-- 下图显示了指数分布的比率参数取值不同情况下的密度函数图。 -->
-```{r, plot-exp, eval = TRUE, echo = TRUE, fig.height=4.5, fig.width=5}
+```{r, plot-exp, eval = TRUE, echo = TRUE, fig.height=4.5, fig.width=5, fig.cap='指数分布的密度函数图', fig.align = 'center'}
 # ==========================================
 # 指数分布
 # ===========================================
@@ -316,25 +318,22 @@ legend('topright',
 $$
 f(x; \alpha, \theta)=\frac{{{\theta }^{-\alpha }}}{\Gamma \text{(}\alpha )}{{x}^{\alpha -1}}{{e}^{-\frac{1}{\theta} x}}.$$ 
 
-- 其中 $\alpha$ 是 **形状参数**，$\theta$ 是 **尺度参数**。
+其中 $\alpha$ 是 **形状参数**，$\theta$ 是 **尺度参数**。
 
-- 伽马分布的期望、方差分别为 $$\mathbb{E}(X)=\alpha/\beta$$ $$\text{Var}(X)=\alpha/\beta^2.$$
+伽马分布的期望、方差分别为 $$\mathbb{E}(X)=\alpha/\beta$$ $$\text{Var}(X)=\alpha/\beta^2.$$
 
 **第二种**伽马分布的概率密度函数为:
 $$
 f(x; \alpha, \beta)=\frac{{{\theta }^{\alpha }}}{\Gamma \text{(}\alpha )}{{x}^{\alpha -1}}{{e}^{-\beta x}}.$$ 
 
-- 其中 $\alpha$ 是 **形状参数**，$\beta=1/\theta$ 是 **比率参数**。
+其中 $\alpha$ 是 **形状参数**，$\beta=1/\theta$ 是 **比率参数**。
 
 
 **第三种**伽马分布的概率密度函数为: 
 $$
 f(x;\mu, \phi)=\frac{{{(\phi\mu)}^{-1/\phi }}}{\Gamma \text{(}1/\phi )}{{x}^{1/\phi -1}}{{e}^{-\frac{1}{\phi\mu} x}},
 $$
-
-- 其中，$\mu=\alpha/\beta$ 是均值参数，$\phi=1/\alpha$ 是离散参数。
-
-- 均值和方差分别为 $\mu$ 和 $\phi\mu^2$。
+其中，$\mu=\alpha/\beta$ 是均值参数，$\phi=1/\alpha$ 是离散参数。均值和方差分别为 $\mu$ 和 $\phi\mu^2$。
 
 
 **【定理】** 伽马分布具有可加性：假设两个随机变量 $X_1$ 和 $X_2$ 都服从形状参数$\alpha_1$和$\alpha_2$ ，比率参数都为 $\beta$ 的伽马分布，即 $X_1\sim GA(\alpha_1,\beta)$，$X_2\sim GA(\alpha_2,\beta)$ ，那么随机变量之和$X_1+X_2$ 服从形状参数为 $\alpha_1+\alpha_2$，比率参数为$\beta$ 的伽马分布，即$$X_1+X_2\sim GA(\alpha_1+\alpha_2,\beta).$$
@@ -345,7 +344,7 @@ $$
 
 <!-- - R 代码：下图显示了伽马分布的形状参数和比率参数在不同取值情况下的密度函数图。 -->
 
-```{r, gamma-pdf, eval = TRUE, echo = TRUE, fig.height=4.5, fig.width=10}
+```{r, gamma-pdf, eval = TRUE, echo = TRUE, fig.height=4.5, fig.width=10, fig.cap='伽马分布密度函数图', fig.align = 'center'}
 # ==========================================
 # 伽马分布
 # ===========================================
@@ -380,9 +379,7 @@ legend('topright',legend = c('alpha = 1, theta = 0.5',
 
 ### 帕累托分布（Pareto）
 
-帕累托分布一般分为双参数和单参数两种。若没有特殊说米，一般指**双参数**帕累托。
-
-帕累托分布的分布函数、密度函数、期望和方差分别表示为：
+帕累托分布一般分为双参数和单参数两种。若没有特殊说米，一般指**双参数**帕累托。帕累托分布的分布函数、密度函数、期望和方差分别表示为：
 $$
 \begin{align*}
   & {{F}_{X}}(x)=1-{{\left( \frac{\theta }{x+\theta } \right)}^{\alpha }}\ \ \ \ 0<x<\infty  \\ 
@@ -393,7 +390,7 @@ $$
 \end{align*}
 $$
 
-```{r echo=TRUE, message=FALSE, warning=FALSE, plot-Pareto, eval=TRUE, fig.height=4.5, fig.width=5}
+```{r echo=TRUE, message=FALSE, warning=FALSE, plot-Pareto, eval=TRUE, fig.height=4.5, fig.width=5, fig.cap='帕累托密度函数图', fig.align = 'center'}
 library(actuar)
 # shape = alpha, scale = theta
 # mean = 50
@@ -420,7 +417,7 @@ F(x)&=1-\left(\frac{\theta}{x}\right)^\alpha,
 \end{align*}
 $$ 
 
-- 其中 $\alpha$ 是真实参数而 $\theta$ 是预先给定的。
+其中 $\alpha$ 是真实参数，$\theta$ 是预先给定的。
 
 单参数帕累托的 $k$ 阶矩为：
 
@@ -430,7 +427,7 @@ $$
 
 
 
-```{r, plot-Single-Pareto, eval = TRUE, echo = TRUE, fig.height=4.5, fig.width=5}
+```{r, plot-Single-Pareto, eval = TRUE, echo = TRUE, fig.height=4.5, fig.width=5, fig.cap='单参数帕累托密度函数图', fig.align = 'center'}
 library(actuar)
 # shape = alpha, scale = theta
 # mean = 50
@@ -451,7 +448,8 @@ legend('topright', legend = c('alpha = 0.5, theta = 5',
 
 ### 对数正态分布（Log-normal）
 
-对数正态分布的概率密度函数和分布函数为 $$
+对数正态分布的概率密度函数和分布函数为 
+$$
 f(x)=\frac{1}{x\sigma}\phi\left(\frac{\ln x - \mu}{\sigma}  \right)
 =\frac{1}{x\sigma\sqrt{2\pi}}\exp\left[
 -\frac{1}{2}\left(\frac{\ln x - \mu}{\sigma}  \right)^2
