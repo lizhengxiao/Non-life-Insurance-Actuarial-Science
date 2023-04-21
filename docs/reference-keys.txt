@@ -112,4 +112,21 @@ delta-method
 风险分布法
 七十八法则与逆七十八法则
 流量预期法
+<<<<<<< HEAD
 索赔
+=======
+索赔次数索赔金额和累积赔款
+赔款和损失
+索赔频率-claim-frequency
+风险度量的相关概念
+风险单位-1
+r-软件与-rmarkdown-简介
+索赔次数和索赔频率
+example-1
+风险与随机变量
+tab:mylabel
+概率母函数和矩母函数
+fig:plot-cdf
+fig:plot-pdf
+fig:unnamed-chunk-1
+>>>>>>> a9c1af5f1208bfcaf624a9e1290d70db00030d56

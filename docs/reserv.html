@@ -4,25 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 准备金评估方法 | 非寿险精算学</title>
+  <title>Chapter 8 准备金评估方法 | 非寿险精算与风险模型</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 准备金评估方法 | 非寿险精算学" />
+  <meta property="og:title" content="Chapter 8 准备金评估方法 | 非寿险精算与风险模型" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 准备金评估方法 | 非寿险精算学" />
+  <meta name="twitter:title" content="Chapter 8 准备金评估方法 | 非寿险精算与风险模型" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
 
 
-<meta name="date" content="2022-08-01" />
+<meta name="date" content="2023-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="experiencerate.html"/>
-<link rel="next" href="methods.html"/>
+<link rel="next" href="chp1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -53,6 +53,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -76,111 +140,121 @@
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#课程内容"><i class="fa fa-check"></i><b>1.1</b> 课程内容</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#先修内容"><i class="fa fa-check"></i><b>1.2</b> 先修内容</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#教材和参考资料"><i class="fa fa-check"></i><b>1.3</b> 教材和参考资料</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-软件与-rmarkdown-可视化"><i class="fa fa-check"></i><b>1.4</b> R 软件与 rmarkdown 可视化</a>
-<ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#rmarkdown-简介"><i class="fa fa-check"></i><b>1.4.1</b> Rmarkdown 简介</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-软件与-rmarkdown-简介"><i class="fa fa-check"></i><b>1.4</b> R 软件与 Rmarkdown 简介</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="chp1.html"><a href="chp1.html"><i class="fa fa-check"></i><b>2</b> 保险数据结构与R软件</a>
+<li class="chapter" data-level="2" data-path="riskmod.html"><a href="riskmod.html"><i class="fa fa-check"></i><b>2</b> 基本的风险模型</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="chp1.html"><a href="chp1.html#数据类型"><i class="fa fa-check"></i><b>2.1</b> 数据类型</a></li>
-<li class="chapter" data-level="2.2" data-path="chp1.html"><a href="chp1.html#数据的可视化分析"><i class="fa fa-check"></i><b>2.2</b> 数据的可视化分析</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="riskmod.html"><a href="riskmod.html"><i class="fa fa-check"></i><b>3</b> 基本的风险模型</a>
+<li class="chapter" data-level="2.1" data-path="riskmod.html"><a href="riskmod.html#风险与随机变量"><i class="fa fa-check"></i><b>2.1</b> 风险与随机变量</a></li>
+<li class="chapter" data-level="2.2" data-path="riskmod.html"><a href="riskmod.html#分布函数和生存函数"><i class="fa fa-check"></i><b>2.2</b> 分布函数和生存函数</a></li>
+<li class="chapter" data-level="2.3" data-path="riskmod.html"><a href="riskmod.html#概率母函数和矩母函数"><i class="fa fa-check"></i><b>2.3</b> 概率母函数和矩母函数</a></li>
+<li class="chapter" data-level="2.4" data-path="riskmod.html"><a href="riskmod.html#损失金额分布"><i class="fa fa-check"></i><b>2.4</b> 损失金额分布</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="riskmod.html"><a href="riskmod.html#随机变量的基础知识"><i class="fa fa-check"></i><b>3.1</b> 随机变量的基础知识</a></li>
-<li class="chapter" data-level="3.2" data-path="riskmod.html"><a href="riskmod.html#分布函数和生存函数"><i class="fa fa-check"></i><b>3.2</b> 分布函数和生存函数</a></li>
-<li class="chapter" data-level="3.3" data-path="riskmod.html"><a href="riskmod.html#概率母函数矩母函数"><i class="fa fa-check"></i><b>3.3</b> 概率母函数/矩母函数</a></li>
-<li class="chapter" data-level="3.4" data-path="riskmod.html"><a href="riskmod.html#截断和删失"><i class="fa fa-check"></i><b>3.4</b> 截断和删失</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="riskmod.html"><a href="riskmod.html#左截断left-truncated和平移shifted"><i class="fa fa-check"></i><b>3.4.1</b> 左截断（left truncated）和平移（shifted）</a></li>
-<li class="chapter" data-level="3.4.2" data-path="riskmod.html"><a href="riskmod.html#左删失left-censored和平移shifted"><i class="fa fa-check"></i><b>3.4.2</b> 左删失（left censored）和平移（shifted）</a></li>
-<li class="chapter" data-level="3.4.3" data-path="riskmod.html"><a href="riskmod.html#右删失right-censored"><i class="fa fa-check"></i><b>3.4.3</b> 右删失（right censored）</a></li>
-<li class="chapter" data-level="3.4.4" data-path="riskmod.html"><a href="riskmod.html#r-代码"><i class="fa fa-check"></i><b>3.4.4</b> R 代码</a></li>
+<li class="chapter" data-level="2.4.1" data-path="riskmod.html"><a href="riskmod.html#指数分布-exponential"><i class="fa fa-check"></i><b>2.4.1</b> 指数分布 （Exponential）</a></li>
+<li class="chapter" data-level="2.4.2" data-path="riskmod.html"><a href="riskmod.html#伽马分布gamma"><i class="fa fa-check"></i><b>2.4.2</b> 伽马分布（Gamma）</a></li>
+<li class="chapter" data-level="2.4.3" data-path="riskmod.html"><a href="riskmod.html#帕累托分布pareto"><i class="fa fa-check"></i><b>2.4.3</b> 帕累托分布（Pareto）</a></li>
+<li class="chapter" data-level="2.4.4" data-path="riskmod.html"><a href="riskmod.html#对数正态分布log-normal"><i class="fa fa-check"></i><b>2.4.4</b> 对数正态分布（Log-normal）</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="riskmod.html"><a href="riskmod.html#损失次数分布"><i class="fa fa-check"></i><b>3.5</b> 损失次数分布</a>
+<li class="chapter" data-level="2.5" data-path="riskmod.html"><a href="riskmod.html#截断和删失"><i class="fa fa-check"></i><b>2.5</b> 截断和删失</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="riskmod.html"><a href="riskmod.html#ab0-分布类"><i class="fa fa-check"></i><b>3.5.1</b> <span class="math inline">\((a,b,0)\)</span> 分布类</a></li>
-<li class="chapter" data-level="3.5.2" data-path="riskmod.html"><a href="riskmod.html#泊松分布poisson"><i class="fa fa-check"></i><b>3.5.2</b> 泊松分布（Poisson）</a></li>
-<li class="chapter" data-level="3.5.3" data-path="riskmod.html"><a href="riskmod.html#负二项分布negative-binomial-distribution"><i class="fa fa-check"></i><b>3.5.3</b> 负二项分布（Negative Binomial distribution）</a></li>
-<li class="chapter" data-level="3.5.4" data-path="riskmod.html"><a href="riskmod.html#二项分布binomial-distribution"><i class="fa fa-check"></i><b>3.5.4</b> 二项分布（Binomial Distribution）</a></li>
-<li class="chapter" data-level="3.5.5" data-path="riskmod.html"><a href="riskmod.html#ab1-分布类"><i class="fa fa-check"></i><b>3.5.5</b> <span class="math inline">\((a,b,1)\)</span> 分布类</a></li>
+<li class="chapter" data-level="2.5.1" data-path="riskmod.html"><a href="riskmod.html#左截断left-truncated和平移shifted"><i class="fa fa-check"></i><b>2.5.1</b> 左截断（left truncated）和平移（shifted）</a></li>
+<li class="chapter" data-level="2.5.2" data-path="riskmod.html"><a href="riskmod.html#左删失left-censored和平移shifted"><i class="fa fa-check"></i><b>2.5.2</b> 左删失（left censored）和平移（shifted）</a></li>
+<li class="chapter" data-level="2.5.3" data-path="riskmod.html"><a href="riskmod.html#右删失right-censored"><i class="fa fa-check"></i><b>2.5.3</b> 右删失（right censored）</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="riskmod.html"><a href="riskmod.html#损失金额分布"><i class="fa fa-check"></i><b>3.6</b> 损失金额分布</a>
+<li class="chapter" data-level="2.6" data-path="riskmod.html"><a href="riskmod.html#损失次数分布"><i class="fa fa-check"></i><b>2.6</b> 损失次数分布</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="riskmod.html"><a href="riskmod.html#指数分布-exponential"><i class="fa fa-check"></i><b>3.6.1</b> 指数分布 （Exponential）</a></li>
-<li class="chapter" data-level="3.6.2" data-path="riskmod.html"><a href="riskmod.html#伽马分布gamma"><i class="fa fa-check"></i><b>3.6.2</b> 伽马分布（Gamma）</a></li>
-<li class="chapter" data-level="3.6.3" data-path="riskmod.html"><a href="riskmod.html#帕累托分布pareto"><i class="fa fa-check"></i><b>3.6.3</b> 帕累托分布（Pareto）</a></li>
-<li class="chapter" data-level="3.6.4" data-path="riskmod.html"><a href="riskmod.html#对数正态分布log-normal"><i class="fa fa-check"></i><b>3.6.4</b> 对数正态分布（Log-normal）</a></li>
+<li class="chapter" data-level="2.6.1" data-path="riskmod.html"><a href="riskmod.html#ab0-分布类"><i class="fa fa-check"></i><b>2.6.1</b> <span class="math inline">\((a,b,0)\)</span> 分布类</a></li>
+<li class="chapter" data-level="2.6.2" data-path="riskmod.html"><a href="riskmod.html#泊松分布poisson"><i class="fa fa-check"></i><b>2.6.2</b> 泊松分布（Poisson）</a></li>
+<li class="chapter" data-level="2.6.3" data-path="riskmod.html"><a href="riskmod.html#负二项分布negative-binomial-distribution"><i class="fa fa-check"></i><b>2.6.3</b> 负二项分布（Negative Binomial distribution）</a></li>
+<li class="chapter" data-level="2.6.4" data-path="riskmod.html"><a href="riskmod.html#二项分布binomial-distribution"><i class="fa fa-check"></i><b>2.6.4</b> 二项分布（Binomial Distribution）</a></li>
+<li class="chapter" data-level="2.6.5" data-path="riskmod.html"><a href="riskmod.html#ab1-分布类"><i class="fa fa-check"></i><b>2.6.5</b> <span class="math inline">\((a,b,1)\)</span> 分布类</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="riskmod.html"><a href="riskmod.html#课后习题"><i class="fa fa-check"></i><b>3.7</b> 课后习题</a></li>
+<li class="chapter" data-level="2.7" data-path="riskmod.html"><a href="riskmod.html#课后习题"><i class="fa fa-check"></i><b>2.7</b> 课后习题</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="riskmea.html"><a href="riskmea.html"><i class="fa fa-check"></i><b>4</b> 风险度量</a>
+<li class="chapter" data-level="3" data-path="riskmea.html"><a href="riskmea.html"><i class="fa fa-check"></i><b>3</b> 风险度量</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="riskmea.html"><a href="riskmea.html#风险度量的原则"><i class="fa fa-check"></i><b>4.1</b> 风险度量的原则</a></li>
-<li class="chapter" data-level="4.2" data-path="riskmea.html"><a href="riskmea.html#风险度量的一致性要求"><i class="fa fa-check"></i><b>4.2</b> 风险度量的一致性要求</a></li>
-<li class="chapter" data-level="4.3" data-path="riskmea.html"><a href="riskmea.html#varvalue-at-risk在险价值"><i class="fa fa-check"></i><b>4.3</b> VaR（Value-at-Risk，在险价值）</a></li>
-<li class="chapter" data-level="4.4" data-path="riskmea.html"><a href="riskmea.html#tvar-tail-value-at-risk尾部在险价值"><i class="fa fa-check"></i><b>4.4</b> TVaR （Tail-Value-at-Risk，尾部在险价值）</a></li>
-<li class="chapter" data-level="4.5" data-path="riskmea.html"><a href="riskmea.html#课后习题-1"><i class="fa fa-check"></i><b>4.5</b> 课后习题</a></li>
+<li class="chapter" data-level="3.1" data-path="riskmea.html"><a href="riskmea.html#风险度量的原则"><i class="fa fa-check"></i><b>3.1</b> 风险度量的原则</a></li>
+<li class="chapter" data-level="3.2" data-path="riskmea.html"><a href="riskmea.html#风险度量的一致性要求"><i class="fa fa-check"></i><b>3.2</b> 风险度量的一致性要求</a></li>
+<li class="chapter" data-level="3.3" data-path="riskmea.html"><a href="riskmea.html#varvalue-at-risk在险价值"><i class="fa fa-check"></i><b>3.3</b> VaR（Value-at-Risk，在险价值）</a></li>
+<li class="chapter" data-level="3.4" data-path="riskmea.html"><a href="riskmea.html#tvar-tail-value-at-risk尾部在险价值"><i class="fa fa-check"></i><b>3.4</b> TVaR （Tail-Value-at-Risk，尾部在险价值）</a></li>
+<li class="chapter" data-level="3.5" data-path="riskmea.html"><a href="riskmea.html#课后习题-1"><i class="fa fa-check"></i><b>3.5</b> 课后习题</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lossmodif.html"><a href="lossmodif.html"><i class="fa fa-check"></i><b>5</b> 损失调整</a>
+<li class="chapter" data-level="4" data-path="lossmodif.html"><a href="lossmodif.html"><i class="fa fa-check"></i><b>4</b> 损失调整</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对赔付金额的影响"><i class="fa fa-check"></i><b>5.1</b> 免赔额对赔付金额的影响</a>
+<li class="chapter" data-level="4.1" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对赔付金额的影响"><i class="fa fa-check"></i><b>4.1</b> 免赔额对赔付金额的影响</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="lossmodif.html"><a href="lossmodif.html#含零赔款"><i class="fa fa-check"></i><b>5.1.1</b> 含零赔款</a></li>
-<li class="chapter" data-level="5.1.2" data-path="lossmodif.html"><a href="lossmodif.html#非零赔款"><i class="fa fa-check"></i><b>5.1.2</b> 非零赔款</a></li>
+<li class="chapter" data-level="4.1.1" data-path="lossmodif.html"><a href="lossmodif.html#含零赔款"><i class="fa fa-check"></i><b>4.1.1</b> 含零赔款</a></li>
+<li class="chapter" data-level="4.1.2" data-path="lossmodif.html"><a href="lossmodif.html#非零赔款"><i class="fa fa-check"></i><b>4.1.2</b> 非零赔款</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="lossmodif.html"><a href="lossmodif.html#通货膨胀对赔付金额的影响"><i class="fa fa-check"></i><b>5.2</b> 通货膨胀对赔付金额的影响</a></li>
-<li class="chapter" data-level="5.3" data-path="lossmodif.html"><a href="lossmodif.html#赔偿限额对赔付金额的影响"><i class="fa fa-check"></i><b>5.3</b> 赔偿限额对赔付金额的影响</a></li>
-<li class="chapter" data-level="5.4" data-path="lossmodif.html"><a href="lossmodif.html#免赔额和赔偿限额的例子"><i class="fa fa-check"></i><b>5.4</b> 免赔额和赔偿限额的例子</a></li>
-<li class="chapter" data-level="5.5" data-path="lossmodif.html"><a href="lossmodif.html#共同保险对赔付金额的影响"><i class="fa fa-check"></i><b>5.5</b> 共同保险对赔付金额的影响</a></li>
-<li class="chapter" data-level="5.6" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对索赔次数的影响"><i class="fa fa-check"></i><b>5.6</b> 免赔额对索赔次数的影响</a></li>
-<li class="chapter" data-level="5.7" data-path="lossmodif.html"><a href="lossmodif.html#课后习题-2"><i class="fa fa-check"></i><b>5.7</b> 课后习题</a></li>
+<li class="chapter" data-level="4.2" data-path="lossmodif.html"><a href="lossmodif.html#通货膨胀对赔付金额的影响"><i class="fa fa-check"></i><b>4.2</b> 通货膨胀对赔付金额的影响</a></li>
+<li class="chapter" data-level="4.3" data-path="lossmodif.html"><a href="lossmodif.html#赔偿限额对赔付金额的影响"><i class="fa fa-check"></i><b>4.3</b> 赔偿限额对赔付金额的影响</a></li>
+<li class="chapter" data-level="4.4" data-path="lossmodif.html"><a href="lossmodif.html#免赔额和赔偿限额的例子"><i class="fa fa-check"></i><b>4.4</b> 免赔额和赔偿限额的例子</a></li>
+<li class="chapter" data-level="4.5" data-path="lossmodif.html"><a href="lossmodif.html#共同保险对赔付金额的影响"><i class="fa fa-check"></i><b>4.5</b> 共同保险对赔付金额的影响</a></li>
+<li class="chapter" data-level="4.6" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对索赔次数的影响"><i class="fa fa-check"></i><b>4.6</b> 免赔额对索赔次数的影响</a></li>
+<li class="chapter" data-level="4.7" data-path="lossmodif.html"><a href="lossmodif.html#课后习题-2"><i class="fa fa-check"></i><b>4.7</b> 课后习题</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="parest.html"><a href="parest.html"><i class="fa fa-check"></i><b>6</b> 参数估计和统计推断</a>
+<li class="chapter" data-level="5" data-path="参数估计.html"><a href="参数估计.html"><i class="fa fa-check"></i><b>5</b> 参数估计</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="parest.html"><a href="parest.html#极大似然估计"><i class="fa fa-check"></i><b>6.1</b> 极大似然估计</a></li>
-<li class="chapter" data-level="6.2" data-path="parest.html"><a href="parest.html#贝叶斯估计"><i class="fa fa-check"></i><b>6.2</b> 贝叶斯估计</a></li>
+<li class="chapter" data-level="5.1" data-path="参数估计.html"><a href="参数估计.html#极大似然估计法"><i class="fa fa-check"></i><b>5.1</b> 极大似然估计法</a></li>
+<li class="chapter" data-level="5.2" data-path="参数估计.html"><a href="参数估计.html#方差和置信区间"><i class="fa fa-check"></i><b>5.2</b> 方差和置信区间</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="参数估计.html"><a href="参数估计.html#极大似然估计值的方差"><i class="fa fa-check"></i><b>5.2.1</b> 极大似然估计值的方差</a></li>
+<li class="chapter" data-level="5.2.2" data-path="参数估计.html"><a href="参数估计.html#delta-method"><i class="fa fa-check"></i><b>5.2.2</b> Delta Method</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="classrating.html"><a href="classrating.html"><i class="fa fa-check"></i><b>7</b> 分类费率定价方法</a>
+<li class="chapter" data-level="5.3" data-path="参数估计.html"><a href="参数估计.html#模型评价与比较"><i class="fa fa-check"></i><b>5.3</b> 模型评价与比较</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="classrating.html"><a href="classrating.html#相关概念"><i class="fa fa-check"></i><b>7.1</b> 相关概念</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="classrating.html"><a href="classrating.html#风险基础和风险单位"><i class="fa fa-check"></i><b>7.1.1</b> 风险基础和风险单位</a></li>
+<li class="chapter" data-level="5.3.1" data-path="参数估计.html"><a href="参数估计.html#模型的评价"><i class="fa fa-check"></i><b>5.3.1</b> 模型的评价</a></li>
+<li class="chapter" data-level="5.3.2" data-path="参数估计.html"><a href="参数估计.html#模型的比较"><i class="fa fa-check"></i><b>5.3.2</b> 模型的比较</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="classrating.html"><a href="classrating.html#多元线性回归模型"><i class="fa fa-check"></i><b>7.2</b> 多元线性回归模型</a></li>
-<li class="chapter" data-level="7.3" data-path="classrating.html"><a href="classrating.html#广义线性回归模型"><i class="fa fa-check"></i><b>7.3</b> 广义线性回归模型</a></li>
-<li class="chapter" data-level="7.4" data-path="classrating.html"><a href="classrating.html#分类定价基本框架"><i class="fa fa-check"></i><b>7.4</b> 分类定价基本框架</a></li>
-<li class="chapter" data-level="7.5" data-path="classrating.html"><a href="classrating.html#模型"><i class="fa fa-check"></i><b>7.5</b> 0-1模型</a></li>
-<li class="chapter" data-level="7.6" data-path="classrating.html"><a href="classrating.html#索赔次数预测模型"><i class="fa fa-check"></i><b>7.6</b> 索赔次数预测模型</a></li>
-<li class="chapter" data-level="7.7" data-path="classrating.html"><a href="classrating.html#索赔金额预测模型"><i class="fa fa-check"></i><b>7.7</b> 索赔金额预测模型</a></li>
-<li class="chapter" data-level="7.8" data-path="classrating.html"><a href="classrating.html#纯保费预测模型"><i class="fa fa-check"></i><b>7.8</b> 纯保费预测模型</a></li>
-<li class="chapter" data-level="7.9" data-path="classrating.html"><a href="classrating.html#两步定价法"><i class="fa fa-check"></i><b>7.9</b> 两步定价法</a></li>
+<li class="chapter" data-level="5.4" data-path="参数估计.html"><a href="参数估计.html#r语言练习"><i class="fa fa-check"></i><b>5.4</b> R语言练习</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="classrating.html"><a href="classrating.html"><i class="fa fa-check"></i><b>6</b> 分类费率定价方法</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="classrating.html"><a href="classrating.html#相关概念"><i class="fa fa-check"></i><b>6.1</b> 相关概念</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="classrating.html"><a href="classrating.html#风险基础和风险单位"><i class="fa fa-check"></i><b>6.1.1</b> 风险基础和风险单位</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="classrating.html"><a href="classrating.html#索赔次数和索赔频率"><i class="fa fa-check"></i><b>6.2</b> 索赔次数和索赔频率</a></li>
+<li class="chapter" data-level="6.3" data-path="classrating.html"><a href="classrating.html#example"><i class="fa fa-check"></i><b>6.3</b> Example</a></li>
+<li class="chapter" data-level="6.4" data-path="classrating.html"><a href="classrating.html#广义线性回归模型"><i class="fa fa-check"></i><b>6.4</b> 广义线性回归模型</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="8" data-path="experiencerate.html"><a href="experiencerate.html"><i class="fa fa-check"></i><b>8</b> 经验费率厘定方法</a>
+<li class="chapter" data-level="7" data-path="experiencerate.html"><a href="experiencerate.html"><i class="fa fa-check"></i><b>7</b> 经验费率厘定方法</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="experiencerate.html"><a href="experiencerate.html#线性混合模型"><i class="fa fa-check"></i><b>8.1</b> 线性混合模型</a></li>
-<li class="chapter" data-level="8.2" data-path="experiencerate.html"><a href="experiencerate.html#最精确信度模型"><i class="fa fa-check"></i><b>8.2</b> 最精确信度模型</a></li>
-<li class="chapter" data-level="8.3" data-path="experiencerate.html"><a href="experiencerate.html#经验贝叶斯"><i class="fa fa-check"></i><b>8.3</b> 经验贝叶斯</a></li>
+<li class="chapter" data-level="7.1" data-path="experiencerate.html"><a href="experiencerate.html#线性混合模型"><i class="fa fa-check"></i><b>7.1</b> 线性混合模型</a></li>
+<li class="chapter" data-level="7.2" data-path="experiencerate.html"><a href="experiencerate.html#最精确信度模型"><i class="fa fa-check"></i><b>7.2</b> 最精确信度模型</a></li>
+<li class="chapter" data-level="7.3" data-path="experiencerate.html"><a href="experiencerate.html#经验贝叶斯"><i class="fa fa-check"></i><b>7.3</b> 经验贝叶斯</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="reserv.html"><a href="reserv.html"><i class="fa fa-check"></i><b>9</b> 准备金评估方法</a>
+<li class="chapter" data-level="8" data-path="reserv.html"><a href="reserv.html"><i class="fa fa-check"></i><b>8</b> 准备金评估方法</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="reserv.html"><a href="reserv.html#相关概念-1"><i class="fa fa-check"></i><b>9.1</b> 相关概念</a></li>
-<li class="chapter" data-level="9.2" data-path="reserv.html"><a href="reserv.html#未到期责任准备金的评估"><i class="fa fa-check"></i><b>9.2</b> 未到期责任准备金的评估</a>
+<li class="chapter" data-level="8.1" data-path="reserv.html"><a href="reserv.html#相关概念-1"><i class="fa fa-check"></i><b>8.1</b> 相关概念</a></li>
+<li class="chapter" data-level="8.2" data-path="reserv.html"><a href="reserv.html#未到期责任准备金的评估"><i class="fa fa-check"></i><b>8.2</b> 未到期责任准备金的评估</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="reserv.html"><a href="reserv.html#比例法二十四分之一法"><i class="fa fa-check"></i><b>9.2.1</b> 比例法：二十四分之一法</a></li>
-<li class="chapter" data-level="9.2.2" data-path="reserv.html"><a href="reserv.html#比例法三百六十五分之一法"><i class="fa fa-check"></i><b>9.2.2</b> 比例法：三百六十五分之一法</a></li>
-<li class="chapter" data-level="9.2.3" data-path="reserv.html"><a href="reserv.html#风险分布法七十八法则与逆七十八法则"><i class="fa fa-check"></i><b>9.2.3</b> 风险分布法：七十八法则与逆七十八法则</a></li>
-<li class="chapter" data-level="9.2.4" data-path="reserv.html"><a href="reserv.html#风险分布法流量预期法"><i class="fa fa-check"></i><b>9.2.4</b> 风险分布法：流量预期法</a></li>
+<li class="chapter" data-level="8.2.1" data-path="reserv.html"><a href="reserv.html#比例法"><i class="fa fa-check"></i><b>8.2.1</b> 比例法</a></li>
+<li class="chapter" data-level="8.2.2" data-path="reserv.html"><a href="reserv.html#风险分布法"><i class="fa fa-check"></i><b>8.2.2</b> 风险分布法</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="reserv.html"><a href="reserv.html#未决赔款准备金评估"><i class="fa fa-check"></i><b>9.3</b> 未决赔款准备金评估</a>
+<li class="chapter" data-level="8.3" data-path="reserv.html"><a href="reserv.html#未决赔款准备金评估"><i class="fa fa-check"></i><b>8.3</b> 未决赔款准备金评估</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="reserv.html"><a href="reserv.html#链梯法"><i class="fa fa-check"></i><b>9.3.1</b> 链梯法</a></li>
-<li class="chapter" data-level="9.3.2" data-path="reserv.html"><a href="reserv.html#案均赔款法"><i class="fa fa-check"></i><b>9.3.2</b> 案均赔款法</a></li>
-<li class="chapter" data-level="9.3.3" data-path="reserv.html"><a href="reserv.html#准备金进展法"><i class="fa fa-check"></i><b>9.3.3</b> 准备金进展法</a></li>
-<li class="chapter" data-level="9.3.4" data-path="reserv.html"><a href="reserv.html#b-f法"><i class="fa fa-check"></i><b>9.3.4</b> B-F法</a></li>
+<li class="chapter" data-level="8.3.1" data-path="reserv.html"><a href="reserv.html#链梯法"><i class="fa fa-check"></i><b>8.3.1</b> 链梯法</a></li>
+<li class="chapter" data-level="8.3.2" data-path="reserv.html"><a href="reserv.html#案均赔款法"><i class="fa fa-check"></i><b>8.3.2</b> 案均赔款法</a></li>
+<li class="chapter" data-level="8.3.3" data-path="reserv.html"><a href="reserv.html#准备金进展法"><i class="fa fa-check"></i><b>8.3.3</b> 准备金进展法</a></li>
+<li class="chapter" data-level="8.3.4" data-path="reserv.html"><a href="reserv.html#b-f法"><i class="fa fa-check"></i><b>8.3.4</b> B-F法</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chp1.html"><a href="chp1.html"><i class="fa fa-check"></i><b>9</b> 基本概念</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chp1.html"><a href="chp1.html#风险单位"><i class="fa fa-check"></i><b>9.1</b> 风险单位</a></li>
+<li class="chapter" data-level="9.2" data-path="chp1.html"><a href="chp1.html#风险单位数统计量的比较"><i class="fa fa-check"></i><b>9.2</b> 风险单位数统计量的比较</a></li>
+<li class="chapter" data-level="9.3" data-path="chp1.html"><a href="chp1.html#claim-索赔"><i class="fa fa-check"></i><b>9.3</b> Claim (索赔)</a></li>
+<li class="chapter" data-level="9.4" data-path="chp1.html"><a href="chp1.html#claim-frequency-索赔频率"><i class="fa fa-check"></i><b>9.4</b> Claim Frequency (索赔频率)</a></li>
+<li class="chapter" data-level="9.5" data-path="chp1.html"><a href="chp1.html#example-1"><i class="fa fa-check"></i><b>9.5</b> Example</a></li>
+<li class="chapter" data-level="9.6" data-path="chp1.html"><a href="chp1.html#赔款loss-claim"><i class="fa fa-check"></i><b>9.6</b> 赔款(loss, claim)</a></li>
+<li class="chapter" data-level="9.7" data-path="chp1.html"><a href="chp1.html#赔款loss-claim-1"><i class="fa fa-check"></i><b>9.7</b> 赔款(loss, claim)</a></li>
+<li class="chapter" data-level="9.8" data-path="chp1.html"><a href="chp1.html#已报案赔款占最终赔款的比率"><i class="fa fa-check"></i><b>9.8</b> 已报案赔款占最终赔款的比率</a></li>
+<li class="chapter" data-level="9.9" data-path="chp1.html"><a href="chp1.html#理赔费用loss-adjustment-expenses"><i class="fa fa-check"></i><b>9.9</b> 理赔费用（loss adjustment expenses）</a></li>
+<li class="chapter" data-level="9.10" data-path="chp1.html"><a href="chp1.html#claim-severity-索赔强度"><i class="fa fa-check"></i><b>9.10</b> Claim Severity (索赔强度)</a></li>
+<li class="chapter" data-level="9.11" data-path="chp1.html"><a href="chp1.html#pure-premium-纯保费"><i class="fa fa-check"></i><b>9.11</b> pure premium （纯保费）</a></li>
+<li class="chapter" data-level="9.12" data-path="chp1.html"><a href="chp1.html#保费premium"><i class="fa fa-check"></i><b>9.12</b> 保费（premium）</a></li>
+<li class="chapter" data-level="9.13" data-path="chp1.html"><a href="chp1.html#赔付率loss-ratio"><i class="fa fa-check"></i><b>9.13</b> 赔付率（loss ratio）</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>10</b> Methods</a>
 <ul>
@@ -199,7 +273,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">非寿险精算学</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">非寿险精算与风险模型</a>
           </h1>
         </div>
 
@@ -207,53 +281,156 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="reserv" class="section level1 hasAnchor" number="9">
-<h1><span class="header-section-number">Chapter 9</span> 准备金评估方法<a href="reserv.html#reserv" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>非寿险责任准备金是保险公司为履行在非寿险业务中出售的保单责任及其相关支出所做的资金准备，是财产保险保险公司资产负债表负债项中的主要成分。责任准备金的评估是精算师非常重要的职能和具有挑战性的工作，这不仅是由于评估技术的复杂性，而且还需要精算师大量的主观判断。对责任准备金准确评估主要出于以下一些目的：保险公司的偿付能力评估的需要、保险公司的盈利能力评估的需要、公司经营计划的制定和保险理赔管理的需要。提取充足的责任准备金对于确保保险公司的有足够的偿付能力极为重要。如果不能对责任准备金进行合理的评估就不能对保险公司的财务状况作出正确的判断，评估责任准备金还有利于保险公司估计未来赔款的现金流，有利于公司做出合适的经营计划，此外责任准备金的评估对于公司的理赔人员处理赔案有重要的借鉴作用。</p>
+<div id="reserv" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 准备金评估方法<a href="reserv.html#reserv" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>保险行业的一个显著特点是负债经营。也就是说，保险公司在出售保险产品的时候并不知道产品的真实成本，按照会计核算的权责发生制原则，一般需要在每个会计年度末提取各种责任准备金，以应对未来的负债。我们可以将责任准备金理解为: 相对于某一个评估时点，保险公司应承担的保单责任大小的一种估计。一般选取会计年度末作为评估时点。</p>
+<p>特别地，对于非寿险公司来说，以 1 年期保单为例，假设保单生效日为 2021 年 5 月 1 日，到期日为 2022 年 4 月 30 日，准备金评估日为 2021年 12 月 31 日。准备金评估日介于保单生效到期日之间。</p>
+<p><img src="images/paste-E33117CA.png" width="519" /></p>
+<p>在准备金评估日，基于会计核算的权责发生制原则，对于过去已经发生的保险事故，在准备金评估时点，一部分可能已经理赔完毕，对应于已支付的赔款部分，也称为<strong>已决赔款</strong>。而另一部分可能由于存在报案延迟或理赔延迟，尚没有结案，对于这部分尚没有结案的赔款需要提取<strong>未决赔款责任准备金</strong>( Outstanding Claims Liabilities Ｒeserves) ，也称为<strong>索赔准备金</strong> ( Claims Reserves) 或<strong>损失准备金</strong>( Loss Reserves) 。这部分尚未结案的未决赔款，又可以进一步细分为已报案未决部分和未报案未决部分，其中，已报案未决部分需要提取已报案未决赔款责任准备金; 未报案未决部分需要提取<strong>未报案未决赔款责任准备金</strong>( Incurred But Not Reported，IBNR) 。一般情况下，我们将已报案未决赔款准备金和未报案未决赔款准备金合起来，统称为索赔准备金。对于尚未满期的保险责任，需要提取<strong>未到期责任准备金</strong>。索赔准备金和未到期责任准备金合起来就是责任准备金，也就是非寿险公司资产负债表中份额最大的负债。</p>
+<p>对责任准备金准确评估主要出于以下一些目的：保险公司的偿付能力评估的需要、保险公司的盈利能力评估的需要、公司经营计划的制定和保险理赔管理的需要。提取充足的责任准备金对于确保保险公司的有足够的偿付能力极为重要。如果不能对责任准备金进行合理的评估就不能对保险公司的财务状况作出正确的判断，评估责任准备金还有利于保险公司估计未来赔款的现金流，有利于公司做出合适的经营计划，此外责任准备金的评估对于公司的理赔人员处理赔案有重要的借鉴作用。</p>
+<p>一般来说，未到期责任准备金的评估相对比较简单、直观，而关于索赔准备金的评估，无论从理论方法上还是从实务操作中都存在很多复杂的技术难点，这也是非寿险精算技术得以存在的主要原因之一。</p>
 <p>本章将从非寿险准备金的基本进行概述，将重点介绍未决赔款准备金最常用的评估方法（链梯法）。</p>
-<div id="相关概念-1" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> 相关概念<a href="reserv.html#相关概念-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>非寿险业务准备金主要分为三类：未到期责任准备金（未赚保费准备金）、未决赔款准备金和理赔费用准备金。未到期责任准备金是在准备金评估日为尚未终止的保险责任而提取的准备金。理赔费用准备金为尚未结案的赔案可能发生的费用而提取的准备金。未决赔款准备金对尚未结案的赔案而提取的准备金，主要分为两类：</p>
+<div id="相关概念-1" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> 相关概念<a href="reserv.html#相关概念-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>首先，我们需要对赔款和保费相关概念作以区分。</p>
+<ul>
+<li><p><strong>赔款</strong>，或损失，是保险人已付或应付的金额，有时也称作赔付额。</p>
+<ul>
+<li><p>赔款=已付赔款(paid loss)+未决赔款</p></li>
+<li><p>未决赔款=应付赔款（或个案准备金）+已发生未完全报案赔款（IBENR）+已发生未报案赔款（IBNR）</p></li>
+<li><p>应付赔款是保险人已经街道报案而预期在未来 将要支付的赔款，通常表现为个案准备金。</p></li>
+<li><p>已报案赔款=已付赔款+个案准备金</p></li>
+<li><p>最终赔款（ultimate loss）=已报案赔款+IBNR准备金+IBENR准备金</p></li>
+</ul></li>
+<li><p><strong>保费</strong>，可以分为承保保费、已赚保费和未到期保费，分别是在一定时期内保险人已经签订了保险合同收到的保费、实际承担了保险责任的保费和正在或即将承担保险责任的保费。</p></li>
+</ul>
+<p>我们常提到的赔付率既是赔款除以保费，赔款可以是已付的、已报案的或预测的最终赔款，保费可以是承保保费或已赚保费。</p>
+<p>而对于非寿险业务来说，准备金主要分为三类：<strong>未到期责任准备金（未赚保费准备金）</strong>、<strong>未决赔款准备金</strong>和<strong>理赔费用准备金</strong>。理赔费用准备金为尚未结案的赔案可能发生的费用而提取的准备金。</p>
 <ul>
 <li><p><strong>直接理赔费用准备金</strong>：为直接发生于具体赔案的专家费、律师费、损失检验费等而提取的；</p></li>
-<li><p><strong>间接理赔费用准备金</strong>：为非直接发生于具体赔案的费用而提取的。未决赔款准备金对尚未结案的赔案而提取的准备金，包括</p>
+<li><p><strong>间接理赔费用准备金</strong>：为非直接发生于具体赔案的费用而提取的。</p></li>
+</ul>
+<p>未决赔款准备金对尚未结案的赔案而提取的准备金，包括</p>
 <ul>
 <li><p><strong>已发生已报案未决赔款准备金（IBNER）</strong>：为保险事故已经发生并已向保险公司提出索赔，保险公司尚未结案的赔案而提取的准备金；</p></li>
 <li><p><strong>已发生未报案未决赔款准备金（IBNR）</strong>：狭义上是指保险事故已经发生，但尚未向保险公司提出索赔而提取的准备金。</p></li>
-</ul></li>
 </ul>
 <p>但是广义上IBNR还包括：已报案但尚未进入理赔程序的准备金、重立赔案的准备金和已发生已报案未决赔款准备金在未来的发展变化。</p>
 </div>
-<div id="未到期责任准备金的评估" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> 未到期责任准备金的评估<a href="reserv.html#未到期责任准备金的评估" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><strong>比例法</strong>：如果风险的发生在承保期内大致服从均匀分布，即可采用比例法对未到期责任准备金进行评估。根据假设的不同，比例法又可以分为二十四分之一法、三百六十五分之一法等</li>
-<li><strong>风险分布法</strong> ：考虑被评估险种风险发生的实际分布状况，根据未来赔付、费用等支出的预期流量分布来计提未到期责任准备金。风险分布法主要适用于保险期限较长的险种。可以分为：
-<ul>
-<li>七十八法则</li>
-<li>逆七十八法则</li>
-<li>流量预期法 其中前两种方法是其特例。</li>
-</ul></li>
-</ul>
-<div id="比例法二十四分之一法" class="section level3 hasAnchor" number="9.2.1">
-<h3><span class="header-section-number">9.2.1</span> 比例法：二十四分之一法<a href="reserv.html#比例法二十四分之一法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="picture/lec8-1.png" width="450" /></p>
+<div id="未到期责任准备金的评估" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> 未到期责任准备金的评估<a href="reserv.html#未到期责任准备金的评估" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>未到期责任准备金是在准备金评估日为尚未终止的保险责任而提取的准备金。主要有<strong>比例法</strong>和<strong>风险分布法</strong>两种估计方法。</p>
+<div id="比例法" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> 比例法<a href="reserv.html#比例法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果风险的发生在承保期内大致服从均匀分布，即可采用比例法对未到期责任准备金进行评估。根据假设的不同，比例法又可以分为<strong>二十四分之一法</strong>、<strong>三百六十五分之一法</strong>等。</p>
+<div id="二十四分之一法" class="section level4 hasAnchor" number="8.2.1.1">
+<h4><span class="header-section-number">8.2.1.1</span> 二十四分之一法<a href="reserv.html#二十四分之一法" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table>
+<caption>各月未赚保费因子</caption>
+<thead>
+<tr class="header">
+<th>2022起期月份</th>
+<th>未赚保费因子</th>
+<th>2022起期月份</th>
+<th>未赚保费因子</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>一月</td>
+<td>1/24</td>
+<td>七月</td>
+<td>13/24</td>
+</tr>
+<tr class="even">
+<td>二月</td>
+<td>3/24</td>
+<td>八月</td>
+<td>15/24</td>
+</tr>
+<tr class="odd">
+<td>三月</td>
+<td>5/24</td>
+<td>九月</td>
+<td>17/24</td>
+</tr>
+<tr class="even">
+<td>四月</td>
+<td>7/24</td>
+<td>十月</td>
+<td>19/24</td>
+</tr>
+<tr class="odd">
+<td>五月</td>
+<td>9/24</td>
+<td>十一月</td>
+<td>21/24</td>
+</tr>
+<tr class="even">
+<td>六月</td>
+<td>11/24</td>
+<td>十二月</td>
+<td>23/24</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="比例法三百六十五分之一法" class="section level3 hasAnchor" number="9.2.2">
-<h3><span class="header-section-number">9.2.2</span> 比例法：三百六十五分之一法<a href="reserv.html#比例法三百六十五分之一法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="三百六十五分之一法" class="section level4 hasAnchor" number="8.2.1.2">
+<h4><span class="header-section-number">8.2.1.2</span> 三百六十五分之一法<a href="reserv.html#三百六十五分之一法" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span class="math inline">\(\frac{保险止期-准备金评估日}{保险止期-保险起期}*保费收入\)</span></p>
 </div>
-<div id="风险分布法七十八法则与逆七十八法则" class="section level3 hasAnchor" number="9.2.3">
-<h3><span class="header-section-number">9.2.3</span> 风险分布法：七十八法则与逆七十八法则<a href="reserv.html#风险分布法七十八法则与逆七十八法则" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="风险分布法" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> 风险分布法<a href="reserv.html#风险分布法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>风险分布法</strong>考虑被评估险种风险发生的实际分布状况，根据未来赔付、费用等支出的预期流量分布来计提未到期责任准备金。风险分布法主要适用于保险期限较长的险种。可以分为：<strong>七十八法则</strong>、<strong>逆七十八法则</strong>和<strong>流量预期法</strong>，其中前两种方法可以认为是流量预期法的特例。</p>
+<div id="七十八法则与逆七十八法则" class="section level4 hasAnchor" number="8.2.2.1">
+<h4><span class="header-section-number">8.2.2.1</span> 七十八法则与逆七十八法则<a href="reserv.html#七十八法则与逆七十八法则" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><p>假设：</p>
 <ul>
 <li>对于七十八法则，自承保起期开始后，风险的发生呈现逐月等额递减的趋势。对一年期的保单，自承保起期开始，在每月内的风险以比例<span class="math inline">\(12:11:10:……\)</span>逐月递减。<span class="math inline">\(12+11+…+1=78\)</span>。</li>
 <li>对于逆七十八法则，自承保起期开始后，风险以比例<span class="math inline">\(1:2:3:……\)</span>逐月等额递增。</li>
 </ul></li>
-<li><p>应用：</p></li>
+<li><p>应用：</p>
+<table>
+<caption>一年期保单七十八法则和逆七十八法则的已赚保费比例</caption>
+<thead>
+<tr class="header">
+<th>承保起期开始后第X月</th>
+<th>七十八法则</th>
+<th>逆七十八法则</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>12/78</td>
+<td>1/78</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>11/78</td>
+<td>2/78</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>10/78</td>
+<td>3/78</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>9/78</td>
+<td>4/78</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table></li>
 </ul>
-<p><img src="picture/lec8-2.png" width="450" /></p>
+<!-- -->
 <ul>
 <li><p>问题：</p>
 <ul>
@@ -263,14 +440,68 @@
 </ul></li>
 </ul>
 </div>
-<div id="风险分布法流量预期法" class="section level3 hasAnchor" number="9.2.4">
-<h3><span class="header-section-number">9.2.4</span> 风险分布法：流量预期法<a href="reserv.html#风险分布法流量预期法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="picture/lec8-3.png" width="450" /></p>
-<p>例： 假设某公司 2014 年四个季度财产保险的保费收入依次为 500 万元、230万元、320万元、100万元，假定保费收入呈现均匀分布，请分别按照下列方式计提 2014 年末的未到期责任准备金。 （1）按季平均法（1/8 法） （2）按年平均法（1/2 法） 答案： - 按季平均法（1/8 法） 500×（1/8）+ 230×（3/8）+ 320×（5/8）+ 100×（7/8） = 436.25（万） - 按年平均法（1/2 法） （500 + 230 + 320 + 100） ×（1/2）= 575 万</p>
+<div id="流量预期法" class="section level4 hasAnchor" number="8.2.2.2">
+<h4><span class="header-section-number">8.2.2.2</span> 流量预期法<a href="reserv.html#流量预期法" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>流量预期法则会根据历史经验数据，预先假设该险种的预期损失分布和已赚保费比例，之后评估人员会依据假设评估未到期责任准备金。</p>
+<table style="width:100%;">
+<caption>某险种的假定风险分布状况、已赚保费比例和相应的未赚保费比例</caption>
+<colgroup>
+<col width="20%" />
+<col width="11%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>时间</th>
+<th>0-12月</th>
+<th>12-24月</th>
+<th>24-36月</th>
+<th>36-48月</th>
+<th>48-60月</th>
+<th>60-72月</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>预期损失分布</td>
+<td>2%</td>
+<td>3%</td>
+<td>10%</td>
+<td>30%</td>
+<td>30%</td>
+<td>25%</td>
+</tr>
+<tr class="even">
+<td>已赚保费比例</td>
+<td>2%</td>
+<td>5%</td>
+<td>15%</td>
+<td>45%</td>
+<td>75%</td>
+<td>100%</td>
+</tr>
+<tr class="odd">
+<td>未赚保费比例</td>
+<td>98%</td>
+<td>95%</td>
+<td>85%</td>
+<td>55%</td>
+<td>25%</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<p>例： 假设某公司 2014 年四个季度财产保险的保费收入依次为 500 万元、230万元、320万元、100万元，假定保费收入呈现均匀分布，请分别按照下列方式计提 2014 年末的未到期责任准备金。</p>
+<p>（1）按季平均法（1/8 法） （2）按年平均法（1/2 法） 答案： - 按季平均法（1/8 法） 500×（1/8）+ 230×（3/8）+ 320×（5/8）+ 100×（7/8） = 436.25（万） - 按年平均法（1/2 法） （500 + 230 + 320 + 100） ×（1/2）= 575 万</p>
 </div>
 </div>
-<div id="未决赔款准备金评估" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> 未决赔款准备金评估<a href="reserv.html#未决赔款准备金评估" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="未决赔款准备金评估" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> 未决赔款准备金评估<a href="reserv.html#未决赔款准备金评估" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>未决赔款准备金的概念：</p>
 <ul>
 <li><p><strong>已发生已报案未决赔款准备金</strong>：保险事故已经发生并已向保险公司提出索赔，保险公司尚未结案。</p></li>
@@ -286,9 +517,102 @@
 <li>间接理赔费用准备金</li>
 </ul></li>
 </ul>
-<p>常用的未决赔款准备金评估方法 - 链梯法 - 案均赔款法 - 准备金进展法 - B-F法 - 广义线性模型（Generalized Linear Models）</p>
-<div id="链梯法" class="section level3 hasAnchor" number="9.3.1">
-<h3><span class="header-section-number">9.3.1</span> 链梯法<a href="reserv.html#链梯法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>常用的未决赔款准备金评估方法有：链梯法 、案均赔款法 、准备金进展法 、B-F法 、广义线性模型（Generalized Linear Models）</p>
+<div id="链梯法" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> 链梯法<a href="reserv.html#链梯法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>链梯法</strong>是按照流量三角形中各列的比例关系来预测未来赔款数据的一种未决赔款准备金评估方法，主要的数据结构是流量三角形。</p>
+<p><strong>流量三角形</strong>是保险公司将保险公司历年的保费数据、已决赔款金额或赔款次数可以按事故年和进展年的方式组成一个上三角形，从而对未来的未决赔款金额或赔款次数进行预测。</p>
+<p>未决赔款准备金评估的目的是根据流量三角形的上三角部分，预测流量三角形的下三角形部分，即未决赔款金额或未决赔款次数。<strong>事故年（Accident year）</strong>指的是保单发生保险事故的时间。这是评估IBNR最为常用和最合理的赔款流量三角形数据组织基础。事故年能够真正地反映出未决赔款准备中”已发生但未报告”的规律，揭示了保险事故发生的具体时间段。<strong>进展年（Development year）</strong>指的是赔付年与事故年之间的时间间隔称。对于同一事故年的保单而言，随着进展年的增加，保险公司在当年的赔付会越来越少，即当进展年足够大的时候，保险公司对该类保单的赔付已经完成， 此时未决赔款准备金为零。</p>
+<p>下表绘制了以事故年统计的单个累计赔款流量三角形的一般结构。其中，每一行代表一个事故年，每一列代表一个进展年。事故年的标号分别为: 事故年 0、1、…、I，由于每个事故年的损失在该年内不一定能赔付完全，故引入进展年的概念，相应的进展年的标号分别为: 进展年 0、1、…、J。一般假设 I = J。此时，对角线代表的是最近评估日历年 I( J) 。</p>
+<table>
+<caption>单个累积赔款流量三角形的一般结构</caption>
+<colgroup>
+<col width="13%" />
+<col width="16%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">进展年</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>事故年</strong></td>
+<td align="left">0</td>
+<td align="center">1</td>
+<td align="center">…</td>
+<td align="center">J-2</td>
+<td align="center">J-1</td>
+<td align="center">J</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td align="left"><span class="math inline">\(C_{0,0}\)</span></td>
+<td align="center"><span class="math inline">\(C_{0,1}\)</span></td>
+<td align="center">…</td>
+<td align="center"><span class="math inline">\(C_{0,J-2}\)</span></td>
+<td align="center"><span class="math inline">\(C_{0,J-1}\)</span></td>
+<td align="center"><span class="math inline">\(C_{0,J}\)</span></td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td align="left"><span class="math inline">\(C_{1,0}\)</span></td>
+<td align="center"><span class="math inline">\(C_{1,1}\)</span></td>
+<td align="center">…</td>
+<td align="center"><span class="math inline">\(C_{1,J-2}\)</span></td>
+<td align="center"><span class="math inline">\(C_{1,J-1}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td align="left">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td>I-2</td>
+<td align="left"><span class="math inline">\(C_{I-2,0}\)</span></td>
+<td align="center"><span class="math inline">\(C_{I-2,1}\)</span></td>
+<td align="center"><span class="math inline">\(C_{I-2,2}\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td>I-1</td>
+<td align="left"><span class="math inline">\(C_{I-1,0}\)</span></td>
+<td align="center"><span class="math inline">\(C_{I-1,1}\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td>I</td>
+<td align="left"><span class="math inline">\(C_{I,0}\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>链梯法是索赔准备金评估的经典方法，它基于累计赔款流量三角形评估索赔准备金，假设各个事故年具有相同的进展模式，首先计算出各进展年的进展因子，然后估计出流量三角形下三角的累计赔款数据，在不考虑进展年 J 以后的尾部进展的情况下，估计的最后一列的累计赔款额就是各事故年的最终损失，再减去相应对角线上的累计赔款额，就是相应事故年的索赔准备金，将各事故年的索赔准备金求和就可以得到所有事故年的总的索赔准备金。</p>
 <ul>
 <li><p>基本假设：每个事故年的赔款支出具有相同的发展模式</p></li>
 <li><p>基本方法：</p>
@@ -297,29 +621,258 @@
 <li>使用已报案赔款数据，已报案赔款链梯法</li>
 </ul></li>
 <li><p>扩展：已发生已报案未决赔款准备、已报案案件数、已结案件数、案均赔款</p></li>
-<li><p>应用最为广泛的准备金评估方法之一</p></li>
 <li><p>基本思想：“平均”和”稳定”，依据流量三角形各列的比例关系来外推未来的赔款</p>
 <ul>
 <li>链：后一年与前一年的比率逐年构成</li>
 <li>梯：精算人员沿着”链”向上攀登，从历史数据中一步步预测未来的最终赔款</li>
 </ul></li>
 </ul>
-<p>步骤：</p>
-<p><strong><em>流量三角形</em></strong></p>
-<p><img src="picture/lec8-4.png" width="450" /></p>
-<p><strong><em>进展因子</em></strong></p>
-<p><img src="picture/lec8-5.png" width="450" /></p>
-<p><img src="picture/lec8-6.png" width="450" /></p>
-<p><img src="picture/lec8-7.png" width="450" /></p>
-<p><strong><em>最终赔款</em></strong></p>
-<p><img src="picture/lec8-8.png" width="450" /></p>
-<p><strong><em>未决赔款准备金</em></strong></p>
-<p><img src="picture/lec8-9.png" width="450" /></p>
+<p>链梯法的具体步骤与举例如下：</p>
+<p>第一步，构建赔款流量三角形，将赔案按事故年度和进展年度整理为流量三角形模式。</p>
+<table>
+<thead>
+<tr class="header">
+<th>累计已发生赔款</th>
+<th>进展年度</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>事故年度</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>2014</td>
+<td>125168</td>
+<td>130042</td>
+<td>135964</td>
+<td>142374</td>
+<td>143692</td>
+</tr>
+<tr class="odd">
+<td>2015</td>
+<td>137285</td>
+<td>141834</td>
+<td>144862</td>
+<td>146713</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2016</td>
+<td>153763</td>
+<td>155169</td>
+<td>155720</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2017</td>
+<td>170877</td>
+<td>168821</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2018</td>
+<td>141442</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>第二步，根据流量三角形计算进展因子</p>
+<table>
+<thead>
+<tr class="header">
+<th>进展因子</th>
+<th>1-2</th>
+<th>2-3</th>
+<th>3-4</th>
+<th>4-5</th>
+<th>5-终极</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>最近4年</td>
+<td>1.039</td>
+<td>1.046</td>
+<td>1.047</td>
+<td>1.009</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>最近3年</td>
+<td>1.033</td>
+<td>1.021</td>
+<td>1.013</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>最近2年</td>
+<td>1.009</td>
+<td>1.004</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>最近1年</td>
+<td>0.988</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>第三步，选择进展因子，并计算累计进展因子。其中进展因子有多种计算方法可供选择，如加权平均法、最高值法、简单算术平均法、最近三事故年加权法等。</p>
+<table>
+<thead>
+<tr class="header">
+<th>进展因子</th>
+<th>1-2</th>
+<th>2-3</th>
+<th>3-4</th>
+<th>4-5</th>
+<th>5-终极</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>简单平均</td>
+<td>1.017</td>
+<td>1.023</td>
+<td>1.030</td>
+<td>1.009</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>加权平均</td>
+<td>1.015</td>
+<td>1.022</td>
+<td>1.029</td>
+<td>1.009</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>近3期加权平均</td>
+<td>10.15</td>
+<td>1.022</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>近2期加权平均</td>
+<td>0.998</td>
+<td>1.012</td>
+<td>1.029</td>
+<td>1.009</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>若选择（1）近2期加权平均、（2）加权平均两种方法，分别计算累计进展因子如下。</p>
+<table>
+<thead>
+<tr class="header">
+<th>进展因子</th>
+<th>1-2</th>
+<th>2-3</th>
+<th>3-4</th>
+<th>4-5</th>
+<th>5-终极</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>累计进展（1）</td>
+<td>1.050</td>
+<td>1.052</td>
+<td>1.039</td>
+<td>1.010</td>
+<td>1.001</td>
+</tr>
+<tr class="even">
+<td>累计进展（2）</td>
+<td>1.015</td>
+<td>1.022</td>
+<td>1.029</td>
+<td>1.009</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+<p>第三步，根据累积进展因子计算终极赔款。</p>
+<table>
+<thead>
+<tr class="header">
+<th>事故年度</th>
+<th>2018</th>
+<th>2017</th>
+<th>2016</th>
+<th>2015</th>
+<th>2014</th>
+<th>合计</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>累计已发生赔款</td>
+<td>141442</td>
+<td>168821</td>
+<td>155720</td>
+<td>146713</td>
+<td>143692</td>
+<td>756388</td>
+</tr>
+<tr class="even">
+<td>终极赔款（1）</td>
+<td>148467</td>
+<td>177561</td>
+<td>161840</td>
+<td>148181</td>
+<td>143836</td>
+<td>779885</td>
+</tr>
+<tr class="odd">
+<td>终极赔款（2）</td>
+<td>152465</td>
+<td>179298</td>
+<td>161785</td>
+<td>148071</td>
+<td>143692</td>
+<td>785311</td>
+</tr>
+</tbody>
+</table>
+<p>IBNR=终极赔款-累计已发生赔款</p>
+<p>IBNR（1）=23497，IBNR（2）=28923</p>
 <ul>
 <li><p>说明：</p>
 <ul>
 <li><p>进展因子：age-to-age ratio、report-to-report ratio、link ratio、loss development factor (LDF)</p></li>
 <li><p>已付赔款：赔案实际支付额，客观性较强；没有利用已报案未决赔款准备金的信息；受理赔速度的影响，理赔部门处理赔案的速度每年都可能发生变化，导致赔付延迟模式和进展因子波动较大；基于已付赔款数据的准备金评估会因为理赔速度的变化而被歪曲</p></li>
+</ul></li>
+<li><p>链梯法的步骤总结</p>
+<ul>
+<li>构建累积赔款的流量三角形数据，计算逐年进展因子</li>
+<li>计算逐年进展因子的平均值（重点）和累积进展因子</li>
+<li>预测流量三角形中下三角部分的数值，得到最终赔款</li>
+<li>估计未决赔款准备金：最终赔款-累积已付赔款</li>
 </ul></li>
 <li><p>对链梯法的批评</p>
 <ul>
@@ -327,22 +880,96 @@
 <li><p>对观察值波动的反应异常敏感</p></li>
 <li><p>忽略了外生变量对流量三角形可能产生的影响，如理赔速度</p></li>
 </ul></li>
-<li><p>链梯法的步骤</p>
-<ul>
-<li>累积赔款的流量三角形数据（ 已付赔款或已报案赔款等…） - - 计算逐年进展因子</li>
-<li>计算逐年进展因子的平均值（重点）和累积进展因子</li>
-<li>预测流量三角形中下三角部分的数值，得到最终赔款</li>
-<li>估计未决赔款准备金：最终赔款-累积已付赔款</li>
-</ul></li>
-<li><p>链梯法在R软件中的应用？？？</p></li>
+<li><p>链梯法在R软件中的应用</p></li>
 </ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="reserv.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-2"><a href="reserv.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="reserv.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="reserv.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取数据</span></span>
+<span id="cb1-5"><a href="reserv.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 矩阵形式</span></span>
+<span id="cb1-6"><a href="reserv.html#cb1-6" aria-hidden="true" tabindex="-1"></a>cum.triangle <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span><span class="fu">c</span>(<span class="dv">125168</span>,   <span class="dv">130042</span>, <span class="dv">135964</span>, <span class="dv">142374</span>, <span class="dv">143692</span>,</span>
+<span id="cb1-7"><a href="reserv.html#cb1-7" aria-hidden="true" tabindex="-1"></a>                              <span class="dv">137285</span>,   <span class="dv">141834</span>, <span class="dv">144862</span>, <span class="dv">146713</span>,<span class="dv">0</span>,   </span>
+<span id="cb1-8"><a href="reserv.html#cb1-8" aria-hidden="true" tabindex="-1"></a>                              <span class="dv">153763</span>,   <span class="dv">155169</span>, <span class="dv">155720</span>,<span class="dv">0</span>,<span class="dv">0</span>,     </span>
+<span id="cb1-9"><a href="reserv.html#cb1-9" aria-hidden="true" tabindex="-1"></a>                              <span class="dv">170877</span>,   <span class="dv">168821</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,           </span>
+<span id="cb1-10"><a href="reserv.html#cb1-10" aria-hidden="true" tabindex="-1"></a>                              <span class="dv">141442</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb1-11"><a href="reserv.html#cb1-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">nrow =</span> <span class="dv">5</span>,<span class="at">ncol =</span> <span class="dv">5</span>,<span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-12"><a href="reserv.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(cum.triangle) <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">5</span>)   <span class="co"># 重命名（列名称）</span></span>
+<span id="cb1-13"><a href="reserv.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(cum.triangle) <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2014</span>,<span class="dv">2018</span>) <span class="co"># 重命名（行名称）</span></span>
+<span id="cb1-14"><a href="reserv.html#cb1-14" aria-hidden="true" tabindex="-1"></a>cum.triangle</span></code></pre></div>
+<pre><code>##           1      2      3      4      5
+## 2014 125168 130042 135964 142374 143692
+## 2015 137285 141834 144862 146713      0
+## 2016 153763 155169 155720      0      0
+## 2017 170877 168821      0      0      0
+## 2018 141442      0      0      0      0</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="reserv.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 将数据（矩阵形式）转化为（数据框形式）</span></span>
+<span id="cb3-2"><a href="reserv.html#cb3-2" aria-hidden="true" tabindex="-1"></a>claims <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb3-3"><a href="reserv.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb3-4"><a href="reserv.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb3-5"><a href="reserv.html#cb3-5" aria-hidden="true" tabindex="-1"></a>    obs <span class="ot">&lt;-</span> (i<span class="dv">-1</span>)<span class="sc">*</span><span class="dv">5</span> <span class="sc">+</span> j</span>
+<span id="cb3-6"><a href="reserv.html#cb3-6" aria-hidden="true" tabindex="-1"></a>    claims[obs] <span class="ot">&lt;-</span> cum.triangle[i,j]</span>
+<span id="cb3-7"><a href="reserv.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-8"><a href="reserv.html#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-9"><a href="reserv.html#cb3-9" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">i =</span> <span class="fu">rep</span>(<span class="dv">2014</span><span class="sc">:</span><span class="dv">2018</span>, <span class="at">each =</span> <span class="dv">5</span>), </span>
+<span id="cb3-10"><a href="reserv.html#cb3-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">j =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">5</span>), </span>
+<span id="cb3-11"><a href="reserv.html#cb3-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">claims =</span> claims)</span>
+<span id="cb3-12"><a href="reserv.html#cb3-12" aria-hidden="true" tabindex="-1"></a>dt<span class="sc">$</span>i.f <span class="ot">&lt;-</span> <span class="fu">factor</span>(dt<span class="sc">$</span>i)</span>
+<span id="cb3-13"><a href="reserv.html#cb3-13" aria-hidden="true" tabindex="-1"></a>dt<span class="sc">$</span>j.f <span class="ot">&lt;-</span> <span class="fu">factor</span>(dt<span class="sc">$</span>j)</span>
+<span id="cb3-14"><a href="reserv.html#cb3-14" aria-hidden="true" tabindex="-1"></a>dt.upper <span class="ot">&lt;-</span> dt[i <span class="sc">+</span> j <span class="sc">&lt;=</span> <span class="dv">2019</span>]  <span class="co"># 上三角的数据集（建模的数据集）</span></span>
+<span id="cb3-15"><a href="reserv.html#cb3-15" aria-hidden="true" tabindex="-1"></a>dt.lower <span class="ot">&lt;-</span> dt[i <span class="sc">+</span> j <span class="sc">&gt;</span> <span class="dv">2019</span>]   <span class="co"># 下三角的数据集（需要预测的数据集）</span></span>
+<span id="cb3-16"><a href="reserv.html#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="reserv.html#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="reserv.html#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 画图进行初步分析</span></span>
+<span id="cb3-19"><a href="reserv.html#cb3-19" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> dt.upper, <span class="fu">aes</span>(<span class="at">x =</span> j.f, <span class="at">y =</span> claims, <span class="at">group =</span> i.f, <span class="at">col =</span> i.f)) <span class="sc">+</span> </span>
+<span id="cb3-20"><a href="reserv.html#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb3-21"><a href="reserv.html#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb3-22"><a href="reserv.html#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb3-23"><a href="reserv.html#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;事故年&#39;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;累积赔款&#39;</span>)</span>
+<span id="cb3-24"><a href="reserv.html#cb3-24" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="reserv.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#计算公式</span></span>
+<span id="cb4-2"><a href="reserv.html#cb4-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">ncol</span>(cum.triangle)</span>
+<span id="cb4-3"><a href="reserv.html#cb4-3" aria-hidden="true" tabindex="-1"></a>ratio.f <span class="ot">&lt;-</span> <span class="cf">function</span>(i){ </span>
+<span id="cb4-4"><a href="reserv.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 进展因子：加权平均数</span></span>
+<span id="cb4-5"><a href="reserv.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(cum.triangle[<span class="dv">1</span><span class="sc">:</span>i, n<span class="sc">-</span>i<span class="sc">+</span><span class="dv">1</span>] ) <span class="sc">/</span> <span class="fu">sum</span>(cum.triangle[<span class="dv">1</span><span class="sc">:</span>i, n<span class="sc">-</span>i])</span>
+<span id="cb4-6"><a href="reserv.html#cb4-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-7"><a href="reserv.html#cb4-7" aria-hidden="true" tabindex="-1"></a>ratio <span class="ot">&lt;-</span> <span class="fu">sapply</span>((n<span class="dv">-1</span>)<span class="sc">:</span><span class="dv">1</span>, ratio.f)</span>
+<span id="cb4-8"><a href="reserv.html#cb4-8" aria-hidden="true" tabindex="-1"></a>tail <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># 尾部进展因子</span></span>
+<span id="cb4-9"><a href="reserv.html#cb4-9" aria-hidden="true" tabindex="-1"></a>ratio <span class="ot">&lt;-</span> <span class="fu">c</span>(ratio, tail)</span>
+<span id="cb4-10"><a href="reserv.html#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="reserv.html#cb4-11" aria-hidden="true" tabindex="-1"></a>full.triangle <span class="ot">&lt;-</span> cum.triangle</span>
+<span id="cb4-12"><a href="reserv.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-1</span>)){</span>
+<span id="cb4-13"><a href="reserv.html#cb4-13" aria-hidden="true" tabindex="-1"></a>  full.triangle[(n<span class="sc">-</span>k<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n, k<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> full.triangle[(n<span class="sc">-</span>k<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n,k]<span class="sc">*</span>ratio[k]</span>
+<span id="cb4-14"><a href="reserv.html#cb4-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-15"><a href="reserv.html#cb4-15" aria-hidden="true" tabindex="-1"></a>full.triangle</span></code></pre></div>
+<pre><code>##           1        2        3        4        5
+## 2014 125168 130042.0 135964.0 142374.0 143692.0
+## 2015 137285 141834.0 144862.0 146713.0 148071.2
+## 2016 153763 155169.0 155720.0 160300.8 161784.7
+## 2017 170877 168821.0 172577.0 177653.6 179298.2
+## 2018 141442 143555.6 146749.4 151066.3 152464.8</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="reserv.html#cb6-1" aria-hidden="true" tabindex="-1"></a>ultimate.paid <span class="ot">&lt;-</span> full.triangle[,n]  <span class="co"># 最终赔款</span></span>
+<span id="cb6-2"><a href="reserv.html#cb6-2" aria-hidden="true" tabindex="-1"></a>ultimate.paid</span></code></pre></div>
+<pre><code>##     2014     2015     2016     2017     2018 
+## 143692.0 148071.2 161784.7 179298.2 152464.8</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="reserv.html#cb8-1" aria-hidden="true" tabindex="-1"></a>claim.paid <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb8-2"><a href="reserv.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb8-3"><a href="reserv.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  claim.paid[i] <span class="ot">&lt;-</span> cum.triangle[i, <span class="dv">6</span> <span class="sc">-</span> i]</span>
+<span id="cb8-4"><a href="reserv.html#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-5"><a href="reserv.html#cb8-5" aria-hidden="true" tabindex="-1"></a>claim.paid</span></code></pre></div>
+<pre><code>## [1] 143692 146713 155720 168821 141442</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="reserv.html#cb10-1" aria-hidden="true" tabindex="-1"></a>ultimate.paid <span class="sc">-</span> claim.paid</span></code></pre></div>
+<pre><code>##      2014      2015      2016      2017      2018 
+##     0.000  1358.167  6064.737 10477.226 11022.809</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="reserv.html#cb12-1" aria-hidden="true" tabindex="-1"></a>Total.res <span class="ot">&lt;-</span> <span class="fu">sum</span>(ultimate.paid <span class="sc">-</span> claim.paid)</span>
+<span id="cb12-2"><a href="reserv.html#cb12-2" aria-hidden="true" tabindex="-1"></a>Total.res</span></code></pre></div>
+<pre><code>## [1] 28922.94</code></pre>
 </div>
-<div id="案均赔款法" class="section level3 hasAnchor" number="9.3.2">
-<h3><span class="header-section-number">9.3.2</span> 案均赔款法<a href="reserv.html#案均赔款法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>链梯法只考虑了赔款的货币信息，没有考虑案件数的影响： 已报案案均赔款（payments per claim incurred, PPCI） 已结案案均赔款（payments per claim finalized, PPCF ）</p>
-<p>案均赔款法包括已付案均赔款法和已报案案均赔款法。</p>
+<div id="案均赔款法" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> 案均赔款法<a href="reserv.html#案均赔款法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>链梯法只考虑了赔款的货币信息，没有考虑案件数的影响： 已报案案均赔款（payments per claim incurred, PPCI） 已结案案均赔款（payments per claim finalized, PPCF ）。案均赔款法在链梯法的基础上引入了赔案数目，基于已决赔款数据和已报案赔款数据，对应已决赔案数目和已报案赔案数目。假设案均赔款及相应的赔案数目的流量模型前后具有一致性，可估计未来案均赔款和赔案数目，相乘得到未来最终赔款。</p>
 <ul>
-<li><p>定义：用链梯法分别估计出各事故年的最终案件数与案均赔款，再计算各事故年的最终赔款和未决赔款准备金。</p></li>
+<li><p>思路：用链梯法分别估计出各事故年的最终案件数与案均赔款，再计算各事故年的最终赔款和未决赔款准备金。</p></li>
 <li><p>基本假设：不同事故年的案均赔款是相对稳定的。</p></li>
 <li><p>案均赔款：赔款÷案件数</p>
 <ul>
@@ -350,23 +977,9 @@
 <li><p>对案均赔款的估计：用已付案均赔款流量三角形，或已报案案均赔款流量三角形。</p></li>
 </ul></li>
 </ul>
-<p><strong>1、已付案均赔款法 （数据结构）</strong></p>
-<p><strong><em>（1）流量三角形 – 累计已付赔款</em></strong></p>
-<p><img src="picture/lec8-10.png" width="450" /></p>
-<p><strong><em>（2）流量三角形 -累积已付案件数</em></strong></p>
-<p><img src="picture/lec8-11.png" width="450" /></p>
-<p><strong><em>（3）流量三角形 - 已付案均赔款</em></strong></p>
-<p><img src="picture/lec8-12.png" width="450" /></p>
-<p>已付案均赔款 = 累积已付赔款÷累积已付案件数</p>
-<p><strong>2、进展因子</strong></p>
-<p><img src="picture/lec8-13.png" width="450" /></p>
-<p><img src="picture/lec8-14.png" width="450" /></p>
-<p><img src="picture/lec8-15.png" width="450" /></p>
-<p><strong><em>（3）已付案均赔款</em></strong></p>
-<p><img src="picture/lec8-16.png" width="450" /> （4）未决赔款准备金</p>
-<p><img src="picture/lec8-17.png" width="450" /></p>
+<!-- -->
 <ul>
-<li><p>案均赔款法总结：</p>
+<li><p>案均赔款法步骤：</p>
 <ul>
 <li>（1）构造已付案件数（或已报案案件数）的流量三角形；</li>
 <li>（2）应用链梯法预测最终已付案件数（或已报案案件数）；</li>
@@ -377,8 +990,8 @@
 </ul></li>
 </ul>
 </div>
-<div id="准备金进展法" class="section level3 hasAnchor" number="9.3.3">
-<h3><span class="header-section-number">9.3.3</span> 准备金进展法<a href="reserv.html#准备金进展法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="准备金进展法" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> 准备金进展法<a href="reserv.html#准备金进展法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>定义：基于已付赔款和已发生已报案未决赔款准备金之间的关系。也被称作逐案估计预测法。</p></li>
 <li><p>分类：</p>
@@ -419,43 +1032,18 @@
 </ul></li>
 </ul>
 <p>2、事故年准备金进展法</p>
-<p><strong><em>（1）流量三角形</em></strong></p>
-<p><img src="picture/lec8-18.png" width="450" /></p>
-<p><strong><em>（1）流量三角形 – 当年的赔款（非累积赔款）</em></strong></p>
-<p><img src="picture/lec8-19.png" width="450" /></p>
-<p><strong><em>（2）计算进展因子</em></strong></p>
-<p><img src="picture/lec8-20.png" width="450" /></p>
-<p>支付率=某个事故年和进展年的已付赔款÷相同事故年在前一个进展年的已发生已报案未决赔款准备金</p>
-<p><img src="picture/lec8-21.png" width="450" /></p>
-<p>注：结转率=已发生已报案未决赔款准备金的逐年进展因子</p>
-<p><img src="picture/lec8-22.png" width="450" /></p>
-<p><img src="picture/lec8-23.png" width="450" /></p>
-<p><strong><em>（3）估计最终赔款</em></strong></p>
-<p><img src="picture/lec8-24.png" width="450" /></p>
-<p>注：以2010事故年为例，在第4个进展年的已发生已报案未决赔款准备金为1110，而它在第5个进展年的结转率为0.659，因此在第5个进展年的已发生已报案未决赔款准备金为 1110 × 0.659 ＝ 731</p>
-<p><img src="picture/lec8-25.png" width="450" /></p>
-<p>注：以2010事故年为例，它在第4个进展年的已发生已报案未决赔款准备金为1110，而在第5个进展年的支付率为0.366，因此在第5个进展年的已付赔款为 1110×0.366 ＝ 406.26</p>
-<p><img src="picture/lec8-26.png" width="450" /></p>
-<p><strong><em>（4）估计未决赔款准备金</em></strong></p>
-<p><img src="picture/lec8-27.png" width="450" /></p>
-<p>准备金进展法总结</p>
 <ul>
-<li>（1）构造已付赔款和已发生已报案未决赔款准备金的流量三角形；</li>
-<li>（2）用各个事故年和进展年的已付赔款观察值除以同一个事故年在前一个进展年的已发生已报案未决赔款准备金，求得已发生已报案未决赔款准备金的支付率，并计算和选定各个进展年的平均支付率；</li>
-<li>（3）用各个事故年和进展年的已发生已报案未决赔款准备金除以同一个事故年在前一个进展年的已发生已报案未决赔款准备金，求得已发生已报案未决赔款准备金的结转率，并计算和选定各个进展年的平均结转率；</li>
-<li>（4）用选定的结转率乘以相应的已发生已报案未决赔款准备金，即可求得已发生已报案未决赔款准备金的预测值；</li>
-<li>（5）用选定的支付率乘以相应的已发生已报案未决赔款准备金，即可求得已付赔款的预测值；</li>
-<li>（6）从最终累积已付赔款的预测值中减去当前的累积已付赔款，即得未决赔款准备金的预测值。</li>
+<li><p>（1）构造已付赔款和已发生已报案未决赔款准备金的流量三角形；</p></li>
+<li><p>（2）用各个事故年和进展年的已付赔款观察值除以同一个事故年在前一个进展年的已发生已报案未决赔款准备金，求得已发生已报案未决赔款准备金的<strong>支付率</strong>，并计算和选定各个进展年的平均支付率；</p></li>
+<li><p>（3）用各个事故年和进展年的已发生已报案未决赔款准备金除以同一个事故年在前一个进展年的已发生已报案未决赔款准备金，求得已发生已报案未决赔款准备金的<strong>结转率</strong>，并计算和选定各个进展年的平均结转率；</p></li>
+<li><p>（4）用选定的结转率乘以相应的已发生已报案未决赔款准备金，即可求得已发生已报案未决赔款准备金的预测值；</p></li>
+<li><p>（5）用选定的支付率乘以相应的已发生已报案未决赔款准备金，即可求得已付赔款的预测值；</p></li>
+<li><p>（6）从最终累积已付赔款的预测值中减去当前的累积已付赔款，即得未决赔款准备金的预测值。</p></li>
 </ul>
 </div>
-<div id="b-f法" class="section level3 hasAnchor" number="9.3.4">
-<h3><span class="header-section-number">9.3.4</span> B-F法<a href="reserv.html#b-f法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>未决赔款准备金评估方法</p>
-<ul>
-<li>定量，以数据、方法、模型为主，以索赔数据充足且具有统计稳定性为条件。如：链梯法、损失进展法、案均赔付法。</li>
-<li>定性，依赖于精算师的经验和判断（数据较少）。如赔付率法，根据历史赔付率，结合精算师的经验确定最终赔付率，运用最终赔付率与已赚保费得到最终赔款的准备金。</li>
-</ul>
-<p><strong>B-F（Bornhuetter-Ferguson）方法</strong>：链梯法和赔付率法的结合（加权的思想），通过已付赔款（或已报案赔款）及其在未来的期望进展估计最终赔款。</p>
+<div id="b-f法" class="section level3 hasAnchor" number="8.3.4">
+<h3><span class="header-section-number">8.3.4</span> B-F法<a href="reserv.html#b-f法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>未决赔款准备金评估方法主要有定量、定性两种思路。定量，以数据、方法、模型为主，以索赔数据充足且具有统计稳定性为条件，如以上介绍的链梯法、损失进展法、案均赔付法。定性，依赖于精算师的经验和判断（数据较少）。如赔付率法，根据历史赔付率，结合精算师的经验确定最终赔付率，运用最终赔付率与已赚保费得到最终赔款的准备金。而<strong>B-F（Bornhuetter-Ferguson）方法是</strong>定性与定量方法的结合，基本思想是将事故年的总赔款分为过去和未来两部分，并将预期赔付率法和链梯法结合起来考虑，然后将两者的估计结果进行加权平均，即，通过已付赔款（或已报案赔款）及其在未来的期望进展估计最终赔款。</p>
 <p>基本步骤：</p>
 <ul>
 <li><p>（1）估计期望最终赔款。等于期望最终赔付率乘以事故年的已赚保费。</p>
@@ -472,28 +1060,623 @@
 &amp;=链梯法估计的最终赔款*\frac{1}{f}+期望最终赔款*(1-\frac{1}{f})
 \end{aligned}
 \]</span></p>
-<p>（3） 未决赔款准备金＝修正后的最终赔款－已付赔款 =期望最终赔款×（1－1 / f ）
-<span class="math display">\[
+<p>（3） 未决赔款准备金＝修正后的最终赔款－已付赔款 =期望最终赔款×（1－1 / f ） <span class="math display">\[
 \begin{aligned}
 未决赔款准备金&amp;= 修正后的最终赔款－已付赔款\\
 &amp;=期望最终赔款*(1-\frac{1}{f})
 \end{aligned}
 \]</span></p>
-<p><img src="picture/lec8-28.png" width="450" /></p>
-<p><img src="picture/lec8-29.png" width="450" /></p>
-<p><img src="picture/lec8-30.png" width="450" /></p>
-<p><img src="picture/lec8-31.png" width="450" /></p>
+<table>
+<caption>累计已报案赔款</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th>进展年</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>事故年</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>2014</td>
+<td>3937</td>
+<td>4745</td>
+<td>4876</td>
+<td>4901</td>
+<td>5045</td>
+<td>5119</td>
+<td>5124</td>
+</tr>
+<tr class="odd">
+<td>2015</td>
+<td>4192</td>
+<td>4981</td>
+<td>5189</td>
+<td>4275</td>
+<td>5413</td>
+<td>5375</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2016</td>
+<td>3594</td>
+<td>4418</td>
+<td>4496</td>
+<td>4491</td>
+<td>4517</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2017</td>
+<td>3012</td>
+<td>4405</td>
+<td>4762</td>
+<td>4903</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2018</td>
+<td>3795</td>
+<td>5021</td>
+<td>5403</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2019</td>
+<td>3178</td>
+<td>3885</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2020</td>
+<td>2445</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>B-F法对未决赔款准备金的估计值</caption>
+<colgroup>
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>事故年</th>
+<th>已赚保费（1）</th>
+<th>期望赔付率（2）</th>
+<th>期望最终赔款（3）=（1）*（2）</th>
+<th>已报案赔款的累计进展因子（4）</th>
+<th>未报案赔款在最终赔款中比例（5）=1-1/（4）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2014</td>
+<td>6106</td>
+<td>80%</td>
+<td>4885</td>
+<td>1.001</td>
+<td>0.10%</td>
+</tr>
+<tr class="even">
+<td>2015</td>
+<td>6589</td>
+<td>80%</td>
+<td>5271</td>
+<td>1.031</td>
+<td>3.01%</td>
+</tr>
+<tr class="odd">
+<td>2016</td>
+<td>5983</td>
+<td>80%</td>
+<td>4786</td>
+<td>1.035</td>
+<td>3.34%</td>
+</tr>
+<tr class="even">
+<td>2017</td>
+<td>6134</td>
+<td>78%</td>
+<td>4785</td>
+<td>1.134</td>
+<td>11.78%</td>
+</tr>
+<tr class="odd">
+<td>2018</td>
+<td>6336</td>
+<td>78%</td>
+<td>4942</td>
+<td>1.089</td>
+<td>8.21%</td>
+</tr>
+<tr class="even">
+<td>2019</td>
+<td>5235</td>
+<td>78%</td>
+<td>4083</td>
+<td>1.193</td>
+<td>16.21%</td>
+</tr>
+<tr class="odd">
+<td>2020</td>
+<td>3876</td>
+<td>78%</td>
+<td>3023</td>
+<td>1.454</td>
+<td>31.24%</td>
+</tr>
+</tbody>
+</table>
+<p>已报案赔款*（4）=最终赔款</p>
+<p>（5）=1-1/（4）=1-已报案赔款/最终赔款=未报案赔款/最终赔款</p>
+<table style="width:100%;">
+<caption>B-F法对未决赔款准备金的估计值（续）</caption>
+<colgroup>
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>事故年</th>
+<th>期望未报案赔款（6）=（5）*（3）</th>
+<th>累积已报案赔款（7）</th>
+<th>修正最终赔款（8）=（6）+（7）</th>
+<th>已付赔款（已知）（9）</th>
+<th>未决赔款准备金（10）=（8）-（9）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2014</td>
+<td>4.8</td>
+<td>5124</td>
+<td>5129</td>
+<td>4967</td>
+<td>162</td>
+</tr>
+<tr class="even">
+<td>2015</td>
+<td>159</td>
+<td>5375</td>
+<td>5534</td>
+<td>5065</td>
+<td>469</td>
+</tr>
+<tr class="odd">
+<td>2016</td>
+<td>160</td>
+<td>4517</td>
+<td>4677</td>
+<td>4321</td>
+<td>356</td>
+</tr>
+<tr class="even">
+<td>2017</td>
+<td>564</td>
+<td>4903</td>
+<td>5467</td>
+<td>4323</td>
+<td>1144</td>
+</tr>
+<tr class="odd">
+<td>2018</td>
+<td>406</td>
+<td>5403</td>
+<td>5809</td>
+<td>4123</td>
+<td>1686</td>
+</tr>
+<tr class="even">
+<td>2019</td>
+<td>662</td>
+<td>3885</td>
+<td>4547</td>
+<td>2989</td>
+<td>1558</td>
+</tr>
+<tr class="odd">
+<td>2020</td>
+<td>945</td>
+<td>2445</td>
+<td>3390</td>
+<td>1998</td>
+<td>1392</td>
+</tr>
+<tr class="even">
+<td>合计</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6765</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>B-F方法的优点：不会受到异常损失结果的影响（例子）</li>
 <li>B-F的最终赔款＝链梯法的最终赔款×（1/f）＋期望最终赔款×（1－1/f）</li>
 </ul>
 <p><strong>练习：</strong></p>
 <p>下表是某业务 2010-2013 年已付赔款的部分信息，各年的预期赔付率均为 80%，请用链梯法和 B-F 法分别估计 2013 年末的未决赔款准备金。</p>
-<p><img src="picture/lec8-ex-1.png" width="450" /></p>
+<table>
+<thead>
+<tr class="header">
+<th>发生年</th>
+<th>已赚保费</th>
+<th>2010</th>
+<th>2011</th>
+<th>2012</th>
+<th>2013</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2010</td>
+<td>25000</td>
+<td>10000</td>
+<td>5000</td>
+<td>2000</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2011</td>
+<td>30000</td>
+<td></td>
+<td>12000</td>
+<td>6000</td>
+<td>2400</td>
+</tr>
+<tr class="odd">
+<td>2012</td>
+<td>33000</td>
+<td></td>
+<td></td>
+<td>14000</td>
+<td>7000</td>
+</tr>
+<tr class="even">
+<td>2013</td>
+<td>38000</td>
+<td></td>
+<td></td>
+<td></td>
+<td>17000</td>
+</tr>
+</tbody>
+</table>
 <p>答案：</p>
-<p><img src="picture/lec8-ex-2.png" width="450" /></p>
-<p><img src="picture/lec8-ex-3.png" width="450" /></p>
-<p><img src="picture/lec8-ex-4.png" width="450" /></p>
+<table>
+<caption>已付赔款（重新排列）</caption>
+<thead>
+<tr class="header">
+<th>事故年</th>
+<th>已赚保费</th>
+<th>进展年</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>2010</td>
+<td>25000</td>
+<td>10000</td>
+<td>5000</td>
+<td>2000</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2011</td>
+<td>30000</td>
+<td>12000</td>
+<td>6000</td>
+<td>2400</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2012</td>
+<td>33000</td>
+<td>14000</td>
+<td>7000</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2013</td>
+<td>38000</td>
+<td>17000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>累计已付赔款</caption>
+<thead>
+<tr class="header">
+<th>事故年</th>
+<th>已赚保费</th>
+<th>进展年</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>2010</td>
+<td>25000</td>
+<td>10000</td>
+<td>15000</td>
+<td>17000</td>
+<td>17000</td>
+</tr>
+<tr class="odd">
+<td>2011</td>
+<td>30000</td>
+<td>12000</td>
+<td>18000</td>
+<td>20400</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2012</td>
+<td>33000</td>
+<td>14000</td>
+<td>21000</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2013</td>
+<td>38000</td>
+<td>17000</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>进展因子计算</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th>0-1</th>
+<th>1-2</th>
+<th>2-3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>进展因子</td>
+<td>1.5</td>
+<td>1.133</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><strong>0-3</strong></td>
+<td><strong>1-3</strong></td>
+<td><strong>2-3</strong></td>
+</tr>
+<tr class="odd">
+<td>累积进展因子(f)</td>
+<td>1.7</td>
+<td>1.133</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>已付赔款比例(1/f)</td>
+<td>59%</td>
+<td>88%</td>
+<td>100%</td>
+</tr>
+<tr class="odd">
+<td>未付赔款比例(1-1/f)</td>
+<td>41%</td>
+<td>12%</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>最终赔款和准备金预测（链梯法）</caption>
+<thead>
+<tr class="header">
+<th>事故年</th>
+<th>已赚保费</th>
+<th>进展年</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>未决赔款准备金</td>
+</tr>
+<tr class="even">
+<td>2010</td>
+<td>25000</td>
+<td>10000</td>
+<td>15000</td>
+<td>17000</td>
+<td>17000</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2011</td>
+<td>30000</td>
+<td>12000</td>
+<td>18000</td>
+<td>20400</td>
+<td>20400</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2012</td>
+<td>33000</td>
+<td>14000</td>
+<td>21000</td>
+<td>23800</td>
+<td>23800</td>
+<td>2800</td>
+</tr>
+<tr class="odd">
+<td>2013</td>
+<td>38000</td>
+<td>17000</td>
+<td>25500</td>
+<td>28900</td>
+<td>28900</td>
+<td>11900</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>合计</td>
+<td>14700</td>
+</tr>
+</tbody>
+</table>
+<table style="width:100%;">
+<caption>最终赔款和准备金预测（B-F法）</caption>
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>事故年</th>
+<th>已赚保费</th>
+<th>预期赔付率</th>
+<th>预期最终赔款</th>
+<th>累积已付赔款</th>
+<th>修正最终赔款</th>
+<th>未决赔款准备金</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2010</td>
+<td>25000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2011</td>
+<td>30000</td>
+<td>80%</td>
+<td>24000</td>
+<td>20400</td>
+<td>20400</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2012</td>
+<td>33000</td>
+<td>80%</td>
+<td>26400</td>
+<td>21000</td>
+<td>24106</td>
+<td>3106</td>
+</tr>
+<tr class="even">
+<td>2013</td>
+<td>38000</td>
+<td>80%</td>
+<td>30400</td>
+<td>17000</td>
+<td>29518</td>
+<td>12518</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>合计</td>
+<td>15624</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
@@ -504,7 +1687,7 @@
         </div>
       </div>
 <a href="experiencerate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chp1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -564,7 +1747,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
