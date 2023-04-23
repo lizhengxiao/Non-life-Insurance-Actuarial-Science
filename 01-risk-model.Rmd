@@ -326,6 +326,189 @@ $$
 **【推论】**：运用矩母函数可以得到多个独立随机变量之和的分布函数。例如，假设$S=X_1+X_2+...+X_n=\sum_{i=1}^{n}X_i$，则随机变量 $S$ 的矩母函数表示为： $$M_s(t)=M_{X_1}(t)M_{X_2}(t)...M_{X_n}(t)$$
 其中，$M_{X_j}(t)$ 表示 $X_j$ 的矩母函数在 $t$ 的取值。
 
+-------------
+
+## 截断和删失
+
+- 保险中的损失通常指被保险人发生的损失
+
+- 保险中的索赔通常指保险人给被保险人的赔款
+
+- 由于不同的保险产品通常存在免赔额和赔偿限额的情况，使得保险的损失和索赔的随机性通常是不一致的
+
+- 这种不一致性通常运用**截断**和**删失**的方法进行处理。
+
+假设随机变量 $X$ 表示原始的损失，其数学期望可以表示为： $$\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}$$
+
+
+![](picture/Expected.png){width="450"}
+
+
+### 左截断（left truncated）和平移（shifted）
+
+【**定义**】：给定常数 $d$，且满足 $\Pr(X > d) > 0$ ，对随机变量 $X$ 进行左截断和平移变换之后得到新的随机变量 $Y^p$，具体表示为：
+$$
+Y^p = X - d|X>d = \begin{cases}
+\text{NA}, \quad X\le d \\
+X - d, \quad X> d
+\end{cases}
+$$
+其中，$Y^p$ 也称之为 **超额损失变量** （excess loss variable）。
+
+**超额损失变量**也称之为**左截断平移变量**：
+
+  -   $Y^p$ 是 $X$ 在 $d$ 处左截断得到的，原因在于任意 $X$ 小于 $d$ 的值都是无法观测到
+  
+  -   $Y^p$ 左截断之后向左平移得到的，因此在截断基础上减少了 $d$
+
+
+【**定义**】：随机变量 $Y^p$ 的数学期望称之为 **平均超额损失函数**：
+$$
+e_X(d):=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X>d)
+$$
+
+- 当 $X$ 表示保险事故造成的损失金额，$d$表示保险免赔额时，则平均超额损失表示已发生的超过免赔额 $d$ 的期望索赔金额
+
+- 当 $X$ 是死亡年龄，平均超额损失表示为已知某人在年龄 $d$ 存活的情况下的期望预期寿命
+
+【**定义**】：超额损失变量的 $k$ 阶矩表示为：
+$$
+e_{X}^k(d)
+=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)},
+$$
+其中，当 $k=1$ 时，平均超额损失函数表示为
+$$
+{{e}_{X}}(d)=\mathbb{E}\left( X-d|X>d \right)=\frac{\int_{d}^{\infty }{{S}(x)dx}}{S(d)}.
+$$ 
+
+【**证明**】： 
+$$
+\begin{align*}
+{{e}_{X}}(d)&=\frac{\int_{d}^{\infty }{(x-d)f(x)dx}}{1-F(d)}\\
+&=\frac{-(x-d)S(x)|_{d}^{\infty }+\int_{d}^{\infty }{S(x)dx}}{S(d)}\\
+&=\frac{\int_{d}^{\infty }{S(x)dx}}{S(d)}.
+\end{align*}
+$$
+下面证明 $(x-d)S(x)|_{d}^{\infty }=0$
+$$
+\begin{align*}
+  & \underset{x\to \infty }{\mathop{\lim }}\,xS(x)=\underset{x\to \infty }{\mathop{\lim }}\,x\int\limits_{x}^{\infty }{f(t)dt} \\ 
+ & =\underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{xf(t)dt} \\ 
+ & \le \underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{tf(t)dt} \\ 
+ & =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0
+\end{align*}
+$$
+
+
+### 左删失（left censored）和平移（shifted）
+
+【**定义**】：**左删失平移** 变量定义为：
+$$
+{{Y}^{L}}={{\left( X-d \right)}_{+}}= 
+\begin{cases}
+  & 0,\quad \quad \quad X\le d \\ 
+ & X-d,\quad X>d \\ 
+\end{cases} 
+$$
+
+-   左删失表示随机变量 $X<d$ 的取值都替换为 $d$ 
+
+-   平移表示将左删失的变量向左进行平移变化，使得左删失变量减去 $d$
+
+
+${Y}^{L}$ 的 $k$阶矩表示为：
+$$
+\mathbb{E}[(X-d)_{+}^k]={\int_{d}^{\infty}(x-d)^kf(x)dx}
+$$
+
+$Y^L$ 和 $Y^P$ 的比较：
+
+  - 假设 $X$ 表示损失，则 $Y^L$ 和 $Y^P$ 都表示赔款
+  
+  - $Y^L$ 是含零赔款（per loss），即当保险事故造成的损失没有产生赔款的时候， $Y^L=0$
+  
+  - $Y^P$ 是非零赔款（per payment），即当保险事故造成的损失没有产生赔款的时候， $\Pr(Y^p=0)=0$
+
+  - 数学期望存在下述关系：
+  
+    $$\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F_X(d)]=\int_{d}^{\infty}S(x)dx$$
+    ![](picture/YL.png){width="450"}
+
+### 右删失（right censored）
+
+【**定义**】：**右删失**变量表示为：
+$$
+Y=X\wedge u=\min (X,u)=\begin{cases}
+  & X,\ \ \ X<u \\ 
+ & u,\ \ \ \ X\ge u \\ 
+\end{cases}
+$$
+其中，$Y$ 也被称之为**有限损失** (limited loss variable)。
+
+-   注意：右删失表示随机变量 $X>u$ 的所有取值都用 $u$ 代替
+
+【**定义**】：$Y$ 的数学期望 $E(X\wedge u)$ 称之为**有限期望** (limited expected value)，具体表示为：
+$$
+\begin{align*}
+  E(X\wedge u)& =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\ 
+ & =-xS(x)\left| _{0}^{u} \right.+\int_{0}^{u}{S(x)dx}+uS(u) \\ 
+ & =\int_{0}^{u}{S(x)dx}  
+\end{align*}
+$$
+
+![](picture/limit.png){width="450"}
+
+<!-- ### R 代码 -->
+
+【**例**】：假设随机变量 $X\sim \text{Gamma}(\alpha = 2, \theta = 100)$，其中期望为 200。
+
+- 请用 R 软件进行绘图：
+
+  -   请画出 $\mathbb{E}(Y^L)$ 和 $\mathbb{E}(Y^p)$ 随着 $d$ 增加而变化的曲线图
+  
+  -   请画出有限期望$\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
+
+2. 若假设 $X\sim \text{Pareto}(\alpha=2, \theta=200)$ 和 $X\sim \text{exp}(\theta = 1/200)$。
+
+  -   请画出 $\mathbb{E}(Y^L)$ 和 $\mathbb{E}(Y^p)$ 随着 $d$ 增加而变化的曲线图
+  
+  -   请画出 limited expected value $\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
+
+``注意``： 上述三个分布的均值相等，均为 200。 
+
+  - 指数分布: $e_X(d)=\frac{1}{\theta}$
+  
+  - 帕累托分布: $e_X(d)=\frac{\theta}{\alpha-1}$
+
+```{r, plot-excess, eval = TRUE, echo = TRUE}
+# 指数分布的生存函数
+S <- function(x) exp(-200*x)
+# 指数分布的平均超额函数 ex1
+ex1 <- NULL
+d1 <- seq(0.1, 2, 0.1) # 免赔额
+for(i in 1:length(d1)){
+  ex1[i] <- integrate(S, d1[i], Inf)$value/S(d1[i])
+}
+# 帕累托分布的生存函数
+alpha <- 5
+theta <- 100
+S <- function(x) {
+  (theta/(x + theta))^alpha
+}
+# 帕累托分布的平均超额函数 ex2
+ex2 <- NULL
+d2 <- seq(0.1, 500, 1) # 免赔额
+for(i in 1:length(d2)){
+  ex2[i] <- integrate(S, d2[i], Inf)$value/S(d2[i])
+}
+# 绘图
+par(mfrow = c(1, 2))
+plot(d1, ex1, type = 'l', ylab = 'mean excess function (1)', ylim = c(0,0.01))
+plot(d2, ex2, type = 'l', ylab = 'mean excess function (2)')
+```
+
+
+
 
 ## 损失金额分布
 
@@ -584,186 +767,6 @@ legend('topright',       legend = c('mu = 1, sigma = 1',
 ```
 
 
--------------
-
-## 截断和删失
-
-- 保险中的损失通常指被保险人发生的损失
-
-- 保险中的索赔通常指保险人给被保险人的赔款
-
-- 由于不同的保险产品通常存在免赔额和赔偿限额的情况，使得保险的损失和索赔的随机性通常是不一致的
-
-- 这种不一致性通常运用**截断**和**删失**的方法进行处理。
-
-假设随机变量 $X$ 表示原始的损失，其数学期望可以表示为： $$\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}$$
-
-
-![](picture/Expected.png){width="450"}
-
-
-### 左截断（left truncated）和平移（shifted）
-
-> 定义：给定常数 $d$，且满足 $\Pr(X > d) > 0$ ，对随机变量 $X$ 进行左截断和平移变换之后得到新的随机变量 $Y^p$，具体表示为：
-$$
-Y^p = X - d|X>d = \begin{cases}
-\text{NA}, \quad X\le d \\
-X - d, \quad X> d
-\end{cases}
-$$
-其中，$Y^p$ 也称之为 **超额损失变量** （excess loss variable）。
-
-- **超额损失变量**也称之为**左截断平移变量**：
-
-  -   $Y^p$ 是 $X$ 在 $d$ 处左截断得到的，原因在于任意 $X$ 小于 $d$ 的值都是无法观测到
-  
-  -   $Y^p$ 左截断之后向左平移得到的，因此在截断基础上减少了 $d$
-
-
-> 定义：随机变量 $Y^p$ 的数学期望称之为 **平均超额损失函数**：
-$$
-e_X(d):=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X>d)
-$$
-
-- 当 $X$ 表示保险事故造成的损失金额，$d$表示保险免赔额时，则平均超额损失表示已发生的超过免赔额 $d$ 的期望索赔金额
-
-- 当 $X$ 是死亡年龄，平均超额损失表示为已知某人在年龄 $d$ 存活的情况下的期望预期寿命
-
-> 定义：超额损失变量的 $k$ 阶矩表示为：
-$$
-e_{X}^k(d)
-=\frac{\int_{d}^{\infty}(x-d)^kf(x)dx}{1-F(d)},
-$$
-其中，当 $k=1$ 时，平均超额损失函数表示为
-$$
-{{e}_{X}}(d)=\mathbb{E}\left( X-d|X>d \right)=\frac{\int_{d}^{\infty }{{S}(x)dx}}{S(d)}.
-$$ 
-
-> 证明： 
-$$
-\begin{align*}
-{{e}_{X}}(d)&=\frac{\int_{d}^{\infty }{(x-d)f(x)dx}}{1-F(d)}\\
-&=\frac{-(x-d)S(x)|_{d}^{\infty }+\int_{d}^{\infty }{S(x)dx}}{S(d)}\\
-&=\frac{\int_{d}^{\infty }{S(x)dx}}{S(d)}.
-\end{align*}
-$$
-> 下面证明 $(x-d)S(x)|_{d}^{\infty }=0$
-$$
-\begin{align*}
-  & \underset{x\to \infty }{\mathop{\lim }}\,xS(x)=\underset{x\to \infty }{\mathop{\lim }}\,x\int\limits_{x}^{\infty }{f(t)dt} \\ 
- & =\underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{xf(t)dt} \\ 
- & \le \underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{tf(t)dt} \\ 
- & =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0
-\end{align*}
-$$
-
-
-### 左删失（left censored）和平移（shifted）
-
-> **左删失平移** 变量定义为：
-$$
-{{Y}^{L}}={{\left( X-d \right)}_{+}}= 
-\begin{cases}
-  & 0,\quad \quad \quad X\le d \\ 
- & X-d,\quad X>d \\ 
-\end{cases} 
-$$
-
--   左删失表示随机变量 $X<d$ 的取值都替换为 $d$ 
-
--   平移表示将左删失的变量向左进行平移变化，使得左删失变量减去 $d$
-
-
-> ${Y}^{L}$ 的 $k$阶矩表示为：
-$$
-\mathbb{E}[(X-d)_{+}^k]={\int_{d}^{\infty}(x-d)^kf(x)dx}
-$$
-
-$Y^L$ 和 $Y^P$ 的比较：
-
-  - 假设 $X$ 表示损失，则 $Y^L$ 和 $Y^P$ 都表示赔款
-  
-  - $Y^L$ 是含零赔款（per loss），即当保险事故造成的损失没有产生赔款的时候， $Y^L=0$
-  
-  - $Y^P$ 是非零赔款（per payment），即当保险事故造成的损失没有产生赔款的时候， $\Pr(Y^p=0)=0$
-
-  - 数学期望存在下述关系：
-  
-    $$\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F_X(d)]=\int_{d}^{\infty}S(x)dx$$
-    ![](picture/YL.png){width="450"}
-
-### 右删失（right censored）
-
-> 定义：**右删失**变量表示为：
-$$
-Y=X\wedge u=\min (X,u)=\begin{cases}
-  & X,\ \ \ X<u \\ 
- & u,\ \ \ \ X\ge u \\ 
-\end{cases}
-$$
-其中，$Y$ 也被称之为**有限损失** (limited loss variable)。
-
--   注意：右删失表示随机变量 $X>u$ 的所有取值都用 $u$ 代替
-
-> 定义：$Y$ 的数学期望 $E(X\wedge u)$ 称之为**有限期望** (limited expected value)，具体表示为：
-$$
-\begin{align*}
-  E(X\wedge u)& =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\ 
- & =-xS(x)\left| _{0}^{u} \right.+\int_{0}^{u}{S(x)dx}+uS(u) \\ 
- & =\int_{0}^{u}{S(x)dx}  
-\end{align*}
-$$
-
-![](picture/limit.png){width="450"}
-
-<!-- ### R 代码 -->
-
-【例】假设随机变量 $X\sim \text{Gamma}(\alpha = 2, \theta = 100)$，其中期望为 200。
-
-- 请用 R 软件进行绘图：
-
-  -   请画出 $\mathbb{E}(Y^L)$ 和 $\mathbb{E}(Y^p)$ 随着 $d$ 增加而变化的曲线图
-  
-  -   请画出有限期望$\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
-
-2. 若假设 $X\sim \text{Pareto}(\alpha=2, \theta=200)$ 和 $X\sim \text{exp}(\theta = 1/200)$。
-
-  -   请画出 $\mathbb{E}(Y^L)$ 和 $\mathbb{E}(Y^p)$ 随着 $d$ 增加而变化的曲线图
-  
-  -   请画出 limited expected value $\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
-
-``注意``： 上述三个分布的均值相等，均为 200。 
-
-  - 指数分布: $e_X(d)=\frac{1}{\theta}$
-  
-  - 帕累托分布: $e_X(d)=\frac{\theta}{\alpha-1}$
-
-```{r, plot-excess, eval = TRUE, echo = TRUE}
-# 指数分布的生存函数
-S <- function(x) exp(-200*x)
-# 指数分布的平均超额函数 ex1
-ex1 <- NULL
-d1 <- seq(0.1, 2, 0.1) # 免赔额
-for(i in 1:length(d1)){
-  ex1[i] <- integrate(S, d1[i], Inf)$value/S(d1[i])
-}
-# 帕累托分布的生存函数
-alpha <- 5
-theta <- 100
-S <- function(x) {
-  (theta/(x + theta))^alpha
-}
-# 帕累托分布的平均超额函数 ex2
-ex2 <- NULL
-d2 <- seq(0.1, 500, 1) # 免赔额
-for(i in 1:length(d2)){
-  ex2[i] <- integrate(S, d2[i], Inf)$value/S(d2[i])
-}
-# 绘图
-par(mfrow = c(1, 2))
-plot(d1, ex1, type = 'l', ylab = 'mean excess function (1)', ylim = c(0,0.01))
-plot(d2, ex2, type = 'l', ylab = 'mean excess function (2)')
-```
 
 ## 损失次数分布
 
