@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 基本的风险模型 | 非寿险精算与风险模型</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 基本的风险模型 | 非寿险精算与风险模型" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-04-21" />
+<meta name="date" content="2023-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,29 +147,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="riskmod.html"><a href="riskmod.html#风险与随机变量"><i class="fa fa-check"></i><b>2.1</b> 风险与随机变量</a></li>
 <li class="chapter" data-level="2.2" data-path="riskmod.html"><a href="riskmod.html#分布函数和生存函数"><i class="fa fa-check"></i><b>2.2</b> 分布函数和生存函数</a></li>
-<li class="chapter" data-level="2.3" data-path="riskmod.html"><a href="riskmod.html#概率母函数和矩母函数"><i class="fa fa-check"></i><b>2.3</b> 概率母函数和矩母函数</a></li>
-<li class="chapter" data-level="2.4" data-path="riskmod.html"><a href="riskmod.html#损失金额分布"><i class="fa fa-check"></i><b>2.4</b> 损失金额分布</a>
+<li class="chapter" data-level="2.3" data-path="riskmod.html"><a href="riskmod.html#中心距和原点矩"><i class="fa fa-check"></i><b>2.3</b> 中心距和原点矩</a></li>
+<li class="chapter" data-level="2.4" data-path="riskmod.html"><a href="riskmod.html#概率母函数和矩母函数"><i class="fa fa-check"></i><b>2.4</b> 概率母函数和矩母函数</a></li>
+<li class="chapter" data-level="2.5" data-path="riskmod.html"><a href="riskmod.html#损失金额分布"><i class="fa fa-check"></i><b>2.5</b> 损失金额分布</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="riskmod.html"><a href="riskmod.html#指数分布-exponential"><i class="fa fa-check"></i><b>2.4.1</b> 指数分布 （Exponential）</a></li>
-<li class="chapter" data-level="2.4.2" data-path="riskmod.html"><a href="riskmod.html#伽马分布gamma"><i class="fa fa-check"></i><b>2.4.2</b> 伽马分布（Gamma）</a></li>
-<li class="chapter" data-level="2.4.3" data-path="riskmod.html"><a href="riskmod.html#帕累托分布pareto"><i class="fa fa-check"></i><b>2.4.3</b> 帕累托分布（Pareto）</a></li>
-<li class="chapter" data-level="2.4.4" data-path="riskmod.html"><a href="riskmod.html#对数正态分布log-normal"><i class="fa fa-check"></i><b>2.4.4</b> 对数正态分布（Log-normal）</a></li>
+<li class="chapter" data-level="2.5.1" data-path="riskmod.html"><a href="riskmod.html#指数分布-exponential"><i class="fa fa-check"></i><b>2.5.1</b> 指数分布 （Exponential）</a></li>
+<li class="chapter" data-level="2.5.2" data-path="riskmod.html"><a href="riskmod.html#伽马分布gamma"><i class="fa fa-check"></i><b>2.5.2</b> 伽马分布（Gamma）</a></li>
+<li class="chapter" data-level="2.5.3" data-path="riskmod.html"><a href="riskmod.html#帕累托分布pareto"><i class="fa fa-check"></i><b>2.5.3</b> 帕累托分布（Pareto）</a></li>
+<li class="chapter" data-level="2.5.4" data-path="riskmod.html"><a href="riskmod.html#对数正态分布log-normal"><i class="fa fa-check"></i><b>2.5.4</b> 对数正态分布（Log-normal）</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="riskmod.html"><a href="riskmod.html#截断和删失"><i class="fa fa-check"></i><b>2.5</b> 截断和删失</a>
+<li class="chapter" data-level="2.6" data-path="riskmod.html"><a href="riskmod.html#截断和删失"><i class="fa fa-check"></i><b>2.6</b> 截断和删失</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="riskmod.html"><a href="riskmod.html#左截断left-truncated和平移shifted"><i class="fa fa-check"></i><b>2.5.1</b> 左截断（left truncated）和平移（shifted）</a></li>
-<li class="chapter" data-level="2.5.2" data-path="riskmod.html"><a href="riskmod.html#左删失left-censored和平移shifted"><i class="fa fa-check"></i><b>2.5.2</b> 左删失（left censored）和平移（shifted）</a></li>
-<li class="chapter" data-level="2.5.3" data-path="riskmod.html"><a href="riskmod.html#右删失right-censored"><i class="fa fa-check"></i><b>2.5.3</b> 右删失（right censored）</a></li>
+<li class="chapter" data-level="2.6.1" data-path="riskmod.html"><a href="riskmod.html#左截断left-truncated和平移shifted"><i class="fa fa-check"></i><b>2.6.1</b> 左截断（left truncated）和平移（shifted）</a></li>
+<li class="chapter" data-level="2.6.2" data-path="riskmod.html"><a href="riskmod.html#左删失left-censored和平移shifted"><i class="fa fa-check"></i><b>2.6.2</b> 左删失（left censored）和平移（shifted）</a></li>
+<li class="chapter" data-level="2.6.3" data-path="riskmod.html"><a href="riskmod.html#右删失right-censored"><i class="fa fa-check"></i><b>2.6.3</b> 右删失（right censored）</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="riskmod.html"><a href="riskmod.html#损失次数分布"><i class="fa fa-check"></i><b>2.6</b> 损失次数分布</a>
+<li class="chapter" data-level="2.7" data-path="riskmod.html"><a href="riskmod.html#损失次数分布"><i class="fa fa-check"></i><b>2.7</b> 损失次数分布</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="riskmod.html"><a href="riskmod.html#ab0-分布类"><i class="fa fa-check"></i><b>2.6.1</b> <span class="math inline">\((a,b,0)\)</span> 分布类</a></li>
-<li class="chapter" data-level="2.6.2" data-path="riskmod.html"><a href="riskmod.html#泊松分布poisson"><i class="fa fa-check"></i><b>2.6.2</b> 泊松分布（Poisson）</a></li>
-<li class="chapter" data-level="2.6.3" data-path="riskmod.html"><a href="riskmod.html#负二项分布negative-binomial-distribution"><i class="fa fa-check"></i><b>2.6.3</b> 负二项分布（Negative Binomial distribution）</a></li>
-<li class="chapter" data-level="2.6.4" data-path="riskmod.html"><a href="riskmod.html#二项分布binomial-distribution"><i class="fa fa-check"></i><b>2.6.4</b> 二项分布（Binomial Distribution）</a></li>
-<li class="chapter" data-level="2.6.5" data-path="riskmod.html"><a href="riskmod.html#ab1-分布类"><i class="fa fa-check"></i><b>2.6.5</b> <span class="math inline">\((a,b,1)\)</span> 分布类</a></li>
+<li class="chapter" data-level="2.7.1" data-path="riskmod.html"><a href="riskmod.html#ab0-分布类"><i class="fa fa-check"></i><b>2.7.1</b> <span class="math inline">\((a,b,0)\)</span> 分布类</a></li>
+<li class="chapter" data-level="2.7.2" data-path="riskmod.html"><a href="riskmod.html#泊松分布poisson"><i class="fa fa-check"></i><b>2.7.2</b> 泊松分布（Poisson）</a></li>
+<li class="chapter" data-level="2.7.3" data-path="riskmod.html"><a href="riskmod.html#负二项分布negative-binomial-distribution"><i class="fa fa-check"></i><b>2.7.3</b> 负二项分布（Negative Binomial distribution）</a></li>
+<li class="chapter" data-level="2.7.4" data-path="riskmod.html"><a href="riskmod.html#二项分布binomial-distribution"><i class="fa fa-check"></i><b>2.7.4</b> 二项分布（Binomial Distribution）</a></li>
+<li class="chapter" data-level="2.7.5" data-path="riskmod.html"><a href="riskmod.html#ab1-分布类"><i class="fa fa-check"></i><b>2.7.5</b> <span class="math inline">\((a,b,1)\)</span> 分布类</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="riskmod.html"><a href="riskmod.html#课后习题"><i class="fa fa-check"></i><b>2.7</b> 课后习题</a></li>
+<li class="chapter" data-level="2.8" data-path="riskmod.html"><a href="riskmod.html#课后习题"><i class="fa fa-check"></i><b>2.8</b> 课后习题</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="riskmea.html"><a href="riskmea.html"><i class="fa fa-check"></i><b>3</b> 风险度量</a>
 <ul>
@@ -370,11 +371,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- - 保险事故发生的时间的不确定性 -->
 <!-- - 保险事故发生的地点的不确定性 -->
 <!-- - 保险事故造成的损失金额的不确定性。 -->
+<hr />
 </div>
 <div id="分布函数和生存函数" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> 分布函数和生存函数<a href="riskmod.html#分布函数和生存函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>连续型随机变量 <span class="math inline">\(X\)</span> 的累积分布函数 (Cumulative Distribution Function, cdf) 表示为 <span class="math display">\[F_{X}(x)=\Pr(X\le X)\]</span></p>
-<p><strong>【例 <span class="math inline">\(\ref{F1}\)</span>】</strong>：运用 R 软件画出下面两种分布函数图 。</p>
+<p><strong>【例】</strong>：运用 R 软件画出下面两种分布函数图。</p>
 <span class="math display">\[\begin{equation*}
 F_1(x) = \begin{cases}
 0 &amp;\quad x &lt;0,\\
@@ -436,11 +438,12 @@ Figure 2.2: <span class="math inline">\(F_2(x)\)</span> 的分布函数图
 <span class="math display">\[
 S_{X}(x)=\Pr(X&gt;x)=1-F_{X}(x)
 \]</span>
-其中，生存函数表示随机变量 <span class="math inline">\(X\)</span> 大于 <span class="math inline">\(x\)</span> 的概率。</p>
-<ul>
-<li>若随机变量是连续的，其密度函数和生存函数存在下述关系： <span class="math display">\[S_{X}(x)=\int_{0}^\infty f_{X}(x)dx\]</span></li>
-</ul>
-<p><span class="math display">\[f(x)=-\frac{dS(x)}{dx}\]</span></p>
+其中，生存函数表示随机变量 <span class="math inline">\(X\)</span> 大于 <span class="math inline">\(x\)</span> 的概率。若随机变量是连续的，其密度函数和生存函数存在下述关系： <span class="math display">\[
+\begin{aligned}
+S_{X}(x)&amp;=\int_{0}^\infty f_{X}(x)dx,\\
+f(x)&amp;=-\frac{dS(x)}{dx}.
+\end{aligned}
+\]</span></p>
 <p><strong>【例】</strong>：运用 R 软件画出 <strong>F2.f</strong> 对应的密度函数图。</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="riskmod.html#cb3-1" aria-hidden="true" tabindex="-1"></a>f2.f <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
 <span id="cb3-2"><a href="riskmod.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
@@ -459,10 +462,66 @@ S_{X}(x)=\Pr(X&gt;x)=1-F_{X}(x)
 Figure 2.3: <span class="math inline">\(S_2(x)\)</span> 生存函数图
 </p>
 </div>
+</div>
+<div id="中心距和原点矩" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> 中心距和原点矩<a href="riskmod.html#中心距和原点矩" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>如果密度函数、分布函数或生存函数是已知的，分布就会给我们提供随机变量的全部信息。如果我们不能得到分布函数的精确表达式，应该怎么办？下面我们将介绍两种刻画随机变量部分信息的指标：中心距和原点矩。</p>
+<ul>
+<li><p>原点矩和中心距是为了提炼出一个特征数来作为代表，用于描述随机变量全部取值存在的具体情况，使得用少量的特征数来充分概括某个随机变量的全部取值。</p></li>
+<li><p>和均值是一样的用意，均值就是用于描述随机变量全部取值的一个特征数。</p></li>
+</ul>
+<p>【定义】假设 <span class="math inline">\(X\)</span> 为随机变量，<span class="math inline">\(k\)</span> 为正整数，则 <span class="math inline">\(\mathbb{E}(X^k)\)</span> 为随机变量的 <span class="math inline">\(k\)</span> 阶原点矩，记为 <span class="math inline">\(\mu_k&#39;\)</span>。
+显而易见：一阶原点矩就是随机变量全部取值的期望，记为 <span class="math inline">\(\mu=\mathbb{E}(X)\)</span>。</p>
+<ul>
+<li><p>连续型原点距：
+<span class="math display">\[
+\mu_{k}&#39;=\mathbb{E}(X^k)=\int_{-\infty}^{\infty}x^kf(x)dx.
+\]</span></p></li>
+<li><p>离散型原点矩：</p></li>
+</ul>
+<p><span class="math display">\[
+    \mu_{k}&#39;=\mathbb{E}(X^k)=\sum_{j}x_j^k p(x_j).
+  \]</span>
+其中，<span class="math inline">\(p(x_j)\)</span> 表示随机变量在 <span class="math inline">\(x_j\)</span> 点取值的概率。</p>
+<p>【定义】假设 <span class="math inline">\(X\)</span> 为随机变量，<span class="math inline">\(k\)</span> 为正整数，则 <span class="math inline">\(\mathbb{E}[(X-\mu)^k]\)</span> 为随机变量的 <span class="math inline">\(k\)</span> 阶中矩，记为 <span class="math inline">\(\mu_k\)</span>。
+显而易见：一阶中心矩等于 0，二阶中心矩就是随机变量的方差。</p>
+<p><code>注意</code>：在统计与精算中常用的低阶矩，高于 4 阶的极少使用。</p>
+<ul>
+<li><p>连续型中心距：
+<span class="math display">\[
+\mu_{k}=\mathbb{E}[(X-\mu)^k]=\int_{-\infty}^{\infty}(x-\mu)^kf(x)dx.
+\]</span></p></li>
+<li><p>离散型中心矩：</p></li>
+</ul>
+<p><span class="math display">\[
+\mu_{k}=\mathbb{E}[(X-\mu)^k]=\sum_{j}(x_j-\mu)^k p(x_j).
+\]</span></p>
+<p><strong>常用的中心距和原点矩</strong>：</p>
+<ul>
+<li><p>二阶中心距通常表示为随机变量的方差，记为 <span class="math inline">\(\sigma^2\)</span> 或者 <span class="math inline">\(\text{Var}(X)\)</span>。<span class="math inline">\(\sigma\)</span> 可以表示随机变量的标准差。</p></li>
+<li><p>标准差和均值（期望）的比值为变异系数。</p></li>
+<li><p>三阶中心矩和标准差的三次方的比值为偏度，记为 <span class="math inline">\(\gamma_1 = \mu_3/\sigma^3\)</span>。偏度主要衡量随机变量分布的的不对称性。</p>
+<ul>
+<li><p><span class="math inline">\(\gamma_1=0\)</span> 表示数据相对均匀的分布在平均值两侧，不一定是绝对的对称分布。</p></li>
+<li><p><span class="math inline">\(\gamma_1&gt;0\)</span> 表示概率分布具有右偏性质</p></li>
+<li><p><span class="math inline">\(\gamma_1&lt;0\)</span> 表示概率分布具有左偏性质</p></li>
+</ul></li>
+<li><p>四阶中心矩和标准差的四次方的比值为峰度，记为 <span class="math inline">\(\gamma_2 = \mu_4/\sigma^4\)</span>。峰度可以用来度量随机变量概率分布的陡峭程度。</p>
+<ul>
+<li>峰度的取值范围为 <span class="math inline">\([1,+\infty)\)</span>，完全服从正态分布的数据的峰度值为 3，峰度值越大，概率分布图越高尖，峰度值越小，越矮胖。</li>
+</ul></li>
+</ul>
+<p><strong>原点矩和中心距之间的关系</strong>：</p>
+<p><span class="math display">\[\begin{align*}
+\mu_2 &amp;= \int_{-\infty}^{\infty}(x-\mu)^2f(x)dx\\
+&amp;=\int_{-\infty}^{\infty}(x^2-2x\mu+\mu^2) f(x)dx\\
+&amp;=\mathbb{E}(X^2)-2\mu\mathbb{E}(X) + \mu^2\\
+&amp;=\mu_2&#39;-\mu^2.
+\end{align*}\]</span></p>
 <hr />
 </div>
-<div id="概率母函数和矩母函数" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> 概率母函数和矩母函数<a href="riskmod.html#概率母函数和矩母函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="概率母函数和矩母函数" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> 概率母函数和矩母函数<a href="riskmod.html#概率母函数和矩母函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>随机变量的概率母函数或矩母函数与其分布函数存在一一对应的关系，同样可以描述随机变量的随机特征。</p>
 <ul>
 <li><p>离散型随机变量： 概率母函数 (Probability Generating Function, pgf)</p></li>
@@ -482,10 +541,9 @@ P(N=1)=\frac{P_N^{(1)}(0)}{1!}\]</span> <span class="math display">\[P(N=k)=\fra
 <p><strong>【推论】</strong>：运用矩母函数可以得到多个独立随机变量之和的分布函数。例如，假设<span class="math inline">\(S=X_1+X_2+...+X_n=\sum_{i=1}^{n}X_i\)</span>，则随机变量 <span class="math inline">\(S\)</span> 的矩母函数表示为： <span class="math display">\[M_s(t)=M_{X_1}(t)M_{X_2}(t)...M_{X_n}(t)\]</span>
 其中，<span class="math inline">\(M_{X_j}(t)\)</span> 表示 <span class="math inline">\(X_j\)</span> 的矩母函数在 <span class="math inline">\(t\)</span> 的取值。</p>
 </div>
-<div id="损失金额分布" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> 损失金额分布<a href="riskmod.html#损失金额分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>对保险损失金额进行分析和预测，是精算师和风险管理者的重要工作。通常情况下，保险损失金额具有不对称、定义域非负、尾部较厚的特点，像正态分布等高斯类的分布不适于拟合损失金额。</p>
-<p>这一节将主要介绍几种常见的损失分布（偏态），以及分布函数、概率密度函数、矩母函数等分布性质。主要包括：</p>
+<div id="损失金额分布" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> 损失金额分布<a href="riskmod.html#损失金额分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>对保险损失金额进行分析和预测，是精算师和风险管理者的重要工作。通常情况下，保险损失金额具有不对称、定义域非负、尾部较厚的特点，像正态分布等高斯类的分布不适于拟合损失金额。这一节将主要介绍几种常见的损失分布（偏态），以及分布函数、概率密度函数、矩母函数等分布性质。主要包括：</p>
 <ul>
 <li><p>指数分布 （Exponential）</p></li>
 <li><p>伽马分布（Gamma）</p></li>
@@ -493,8 +551,8 @@ P(N=1)=\frac{P_N^{(1)}(0)}{1!}\]</span> <span class="math display">\[P(N=k)=\fra
 <li><p>帕累托分布（Pareto）</p></li>
 <li><p>对数正态分布（Log-normal）</p></li>
 </ul>
-<div id="指数分布-exponential" class="section level3 hasAnchor" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> 指数分布 （Exponential）<a href="riskmod.html#指数分布-exponential" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="指数分布-exponential" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> 指数分布 （Exponential）<a href="riskmod.html#指数分布-exponential" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>指数分布通常有两种参数化的形式。</p>
 <p><strong>第一种</strong>参数化的概率密度函数和累积分布函数为:
 <span class="math display">\[
@@ -538,8 +596,8 @@ Figure 2.4: 指数分布的密度函数图
 </p>
 </div>
 </div>
-<div id="伽马分布gamma" class="section level3 hasAnchor" number="2.4.2">
-<h3><span class="header-section-number">2.4.2</span> 伽马分布（Gamma）<a href="riskmod.html#伽马分布gamma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="伽马分布gamma" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> 伽马分布（Gamma）<a href="riskmod.html#伽马分布gamma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>第一种</strong>伽马分布的概率密度函数为
 <span class="math display">\[
 f(x; \alpha, \theta)=\frac{{{\theta }^{-\alpha }}}{\Gamma \text{(}\alpha )}{{x}^{\alpha -1}}{{e}^{-\frac{1}{\theta} x}}.\]</span></p>
@@ -597,8 +655,8 @@ Figure 2.5: 伽马分布密度函数图
 </p>
 </div>
 </div>
-<div id="帕累托分布pareto" class="section level3 hasAnchor" number="2.4.3">
-<h3><span class="header-section-number">2.4.3</span> 帕累托分布（Pareto）<a href="riskmod.html#帕累托分布pareto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="帕累托分布pareto" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> 帕累托分布（Pareto）<a href="riskmod.html#帕累托分布pareto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>帕累托分布一般分为双参数和单参数两种。若没有特殊说米，一般指<strong>双参数</strong>帕累托。帕累托分布的分布函数、密度函数、期望和方差分别表示为：
 <span class="math display">\[
 \begin{align*}
@@ -664,8 +722,8 @@ Figure 2.7: 单参数帕累托密度函数图
 </p>
 </div>
 </div>
-<div id="对数正态分布log-normal" class="section level3 hasAnchor" number="2.4.4">
-<h3><span class="header-section-number">2.4.4</span> 对数正态分布（Log-normal）<a href="riskmod.html#对数正态分布log-normal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="对数正态分布log-normal" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> 对数正态分布（Log-normal）<a href="riskmod.html#对数正态分布log-normal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>对数正态分布的概率密度函数和分布函数为
 <span class="math display">\[
 f(x)=\frac{1}{x\sigma}\phi\left(\frac{\ln x - \mu}{\sigma}  \right)
@@ -720,8 +778,8 @@ Var(X)=(e^{\sigma^2}-1)e^{2\mu+\sigma^2}
 <hr />
 </div>
 </div>
-<div id="截断和删失" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> 截断和删失<a href="riskmod.html#截断和删失" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="截断和删失" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> 截断和删失<a href="riskmod.html#截断和删失" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>保险中的损失通常指被保险人发生的损失</p></li>
 <li><p>保险中的索赔通常指保险人给被保险人的赔款</p></li>
@@ -730,8 +788,8 @@ Var(X)=(e^{\sigma^2}-1)e^{2\mu+\sigma^2}
 </ul>
 <p>假设随机变量 <span class="math inline">\(X\)</span> 表示原始的损失，其数学期望可以表示为： <span class="math display">\[\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}\]</span></p>
 <p><img src="picture/expected.png" width="450" /></p>
-<div id="左截断left-truncated和平移shifted" class="section level3 hasAnchor" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> 左截断（left truncated）和平移（shifted）<a href="riskmod.html#左截断left-truncated和平移shifted" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="左截断left-truncated和平移shifted" class="section level3 hasAnchor" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> 左截断（left truncated）和平移（shifted）<a href="riskmod.html#左截断left-truncated和平移shifted" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <blockquote>
 <p>定义：给定常数 <span class="math inline">\(d\)</span>，且满足 <span class="math inline">\(\Pr(X &gt; d) &gt; 0\)</span> ，对随机变量 <span class="math inline">\(X\)</span> 进行左截断和平移变换之后得到新的随机变量 <span class="math inline">\(Y^p\)</span>，具体表示为：
 <span class="math display">\[
@@ -790,8 +848,8 @@ e_{X}^k(d)
 \]</span></p>
 </blockquote>
 </div>
-<div id="左删失left-censored和平移shifted" class="section level3 hasAnchor" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> 左删失（left censored）和平移（shifted）<a href="riskmod.html#左删失left-censored和平移shifted" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="左删失left-censored和平移shifted" class="section level3 hasAnchor" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> 左删失（left censored）和平移（shifted）<a href="riskmod.html#左删失left-censored和平移shifted" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <blockquote>
 <p><strong>左删失平移</strong> 变量定义为：
 <span class="math display">\[
@@ -822,8 +880,8 @@ e_{X}^k(d)
 <img src="picture/YL.png" width="450" /></p></li>
 </ul>
 </div>
-<div id="右删失right-censored" class="section level3 hasAnchor" number="2.5.3">
-<h3><span class="header-section-number">2.5.3</span> 右删失（right censored）<a href="riskmod.html#右删失right-censored" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="右删失right-censored" class="section level3 hasAnchor" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> 右删失（right censored）<a href="riskmod.html#右删失right-censored" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <blockquote>
 <p>定义：<strong>右删失</strong>变量表示为：
 <span class="math display">\[
@@ -896,14 +954,14 @@ E(X\wedge u)&amp; =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\
 <p><img src="bookdown-demo_files/figure-html/plot-excess-1.png" width="672" /></p>
 </div>
 </div>
-<div id="损失次数分布" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> 损失次数分布<a href="riskmod.html#损失次数分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="损失次数分布" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> 损失次数分布<a href="riskmod.html#损失次数分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>在非寿险精算中，通常用用计数随机变量来描述一段时间内发生的损失次数或索赔次数。</p></li>
 <li><p>计数随机变量是离散型随机变量的一种，随机变量的取值是在 <span class="math inline">\(0,1,2, 3,4...\)</span> 正整数值域。</p></li>
 </ul>
-<div id="ab0-分布类" class="section level3 hasAnchor" number="2.6.1">
-<h3><span class="header-section-number">2.6.1</span> <span class="math inline">\((a,b,0)\)</span> 分布类<a href="riskmod.html#ab0-分布类" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ab0-分布类" class="section level3 hasAnchor" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> <span class="math inline">\((a,b,0)\)</span> 分布类<a href="riskmod.html#ab0-分布类" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="math inline">\((a,b,0)\)</span> 分布类仅包括：</p>
 <ul>
 <li><p>泊松分布（Poisson）</p></li>
@@ -916,8 +974,8 @@ E(X\wedge u)&amp; =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\
 其中，<span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 为常数，<span class="math inline">\(p_k = \Pr(N=k)\)</span>。已知 <span class="math inline">\(a,b\)</span> 和 <span class="math inline">\(p_0\)</span>，就能唯一确定整个概率分布函数。</p>
 </blockquote>
 </div>
-<div id="泊松分布poisson" class="section level3 hasAnchor" number="2.6.2">
-<h3><span class="header-section-number">2.6.2</span> 泊松分布（Poisson）<a href="riskmod.html#泊松分布poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="泊松分布poisson" class="section level3 hasAnchor" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> 泊松分布（Poisson）<a href="riskmod.html#泊松分布poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>泊松分布的概率密度函数： <span class="math display">\[
 {{p}_{k}}=\frac{{{e}^{-\lambda }}{{\lambda }^{k}}}{k!},\quad k=0,1,2....
 \]</span> 概率母函数：
@@ -968,8 +1026,8 @@ P(z)=e^{(\lambda(z-1))},\quad \lambda&gt;0.
 <span id="cb15-2"><a href="riskmod.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">5</span>, <span class="dv">2</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 0.30676</code></pre>
 </div>
-<div id="负二项分布negative-binomial-distribution" class="section level3 hasAnchor" number="2.6.3">
-<h3><span class="header-section-number">2.6.3</span> 负二项分布（Negative Binomial distribution）<a href="riskmod.html#负二项分布negative-binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="负二项分布negative-binomial-distribution" class="section level3 hasAnchor" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> 负二项分布（Negative Binomial distribution）<a href="riskmod.html#负二项分布negative-binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>负二项分布的概率密度函数：
 <span class="math display">\[
 {{p}_{k}}=\frac{\Gamma (k+r)}{\Gamma (r)\Gamma (k+1)}{{\left( \frac{1}{1+\beta } \right)}^{r}}{{\left( \frac{\beta }{1+\beta } \right)}^{k}}, \quad k=0,1,2,....
@@ -1029,8 +1087,8 @@ P(z)={{\left[ 1-\beta (z-1) \right]}^{-r}}
 负二项分布的<strong>极限分布</strong>是泊松分布。</li>
 </ul>
 </div>
-<div id="二项分布binomial-distribution" class="section level3 hasAnchor" number="2.6.4">
-<h3><span class="header-section-number">2.6.4</span> 二项分布（Binomial Distribution）<a href="riskmod.html#二项分布binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="二项分布binomial-distribution" class="section level3 hasAnchor" number="2.7.4">
+<h3><span class="header-section-number">2.7.4</span> 二项分布（Binomial Distribution）<a href="riskmod.html#二项分布binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>个体风险发生索赔的概率为 <span class="math inline">\(q\)</span>, 不发生索赔的概率为 <span class="math inline">\(1-q\)</span>, 则索赔次数分布的母函数为 <span class="math display">\[
 P\left( z \right)=\mathbb{E}\left( {{z}^{N}} \right)=\left( 1-q \right){{z}^{0}}+q{{z}^{1}}=1-q+qz=1+q\left( z-1 \right)
 \]</span>
@@ -1069,8 +1127,8 @@ _k
 <span id="cb18-15"><a href="riskmod.html#cb18-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/plot-bi-1.png" width="672" /></p>
 </div>
-<div id="ab1-分布类" class="section level3 hasAnchor" number="2.6.5">
-<h3><span class="header-section-number">2.6.5</span> <span class="math inline">\((a,b,1)\)</span> 分布类<a href="riskmod.html#ab1-分布类" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ab1-分布类" class="section level3 hasAnchor" number="2.7.5">
+<h3><span class="header-section-number">2.7.5</span> <span class="math inline">\((a,b,1)\)</span> 分布类<a href="riskmod.html#ab1-分布类" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="math inline">\((a,b,1)\)</span> 分布类包含两个子类：</p>
 <ul>
 <li><p>零截断分布 (zero-truncated distribution)</p></li>
@@ -1119,8 +1177,8 @@ _k
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 </div>
-<div id="课后习题" class="section level2 hasAnchor" number="2.7">
-<h2><span class="header-section-number">2.7</span> 课后习题<a href="riskmod.html#课后习题" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="课后习题" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> 课后习题<a href="riskmod.html#课后习题" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>假设损失金额服从下述概率分布：
 <span class="math display">\[
