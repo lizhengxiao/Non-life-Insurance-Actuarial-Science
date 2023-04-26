@@ -137,3 +137,6 @@ fig:plot-Single-Pareto
 central-moments-中心矩
 central-moments-cont.
 link-between-raw-and-central-moments
+fig:unnamed-chunk-2
+fig:unnamed-chunk-3
+fig:unnamed-chunk-4
