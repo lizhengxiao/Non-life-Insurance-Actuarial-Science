@@ -60,11 +60,6 @@ description: "This is a minimal example of using the bookdown package to write a
 
 ## R 软件与 Rmarkdown 简介
 
-<<<<<<< HEAD
-## R 软件与 Rmarkdown 可视化
-=======
-<!-- ### R 软件 -->
->>>>>>> a9c1af5f1208bfcaf624a9e1290d70db00030d56
 
 - R 软件是用于统计计算和绘图的免费软件环境。
 安装 R 软件的步骤主要分下述几步步：
@@ -76,17 +71,20 @@ description: "This is a minimal example of using the bookdown package to write a
   
   - [安装 rtools](https://mirrors.tuna.tsinghua.edu.cn/CRAN/)。rtools 是 R 软件在构建和编译包所需要的编译工具。
 
-<!-- ### rmarkdown 简介 -->
 
 - ``Rmarkdown`` 是 R 语言环境中提供的 markdown 编辑工具。可以用来创建富有格式和互动性的文档。它可以让用户将代码、文本、图表等内容组合到一个文档中，以生成多种格式的输出，如 HTML、PDF、Word 文档等。``Rmarkdown`` 的作用包括：
 
+  -	``创建文档``：用户可以使用 Rmarkdown 编写报告、论文、幻灯片、教程、笔记本等各种类型的文档，从而将所有相关信息组织到一个单一的文档中，以方便交流和分享。
+  
+  -	``自动生成报告``：用户可以使用 Rmarkdown 自动化报告的生成，通过将代码嵌入文档中，生成数据分析、机器学习等各种类型的报告，以便更好地分享分析结果。
+  
+  -	``交互性可视化``：用户可以使用 Rmarkdown 和其它 R 包结合使用，创建交互式可视化的报告，使读者可以通过控制台与图表进行交互，探索数据的不同方面。
+  
+  -	``维护数据分析文档``：用户可以使用 Rmarkdown 生成可重复的分析文档，以便在数据分析项目中跟踪分析的演变，并使其更加容易维护。
 
 
-<!-- rmarkdown 的简易教程如下： -->
 
-<!-- - 在 RStudio 新建一个 rmarkdown 文件后，会出现如下一个最简单的 rmarkdown 的模板。 -->
 
-<!-- 增加rmarkdown的介绍、安装和使用说明，包括如何导出html和pdf格式，介绍一些简答的公式输入 -->
 
 
 
