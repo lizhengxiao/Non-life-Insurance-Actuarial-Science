@@ -19,7 +19,7 @@ output:
 
 ## 风险与随机变量
 
-**风险**是指在某一特定环境下，在某一特定时间段内，某种损失发生的可能性。风险通常具有以下 7 个主要特征。
+**风险**是指在某一特定环境下，在某一特定时间段内，某种损失发生的可能性。风险通常具有以下七个主要特征。
 
 - 风险存在的客观性。风险是客观存在的，是不以人的意志为转移的。风险的客观性是保险产生和发展的自然基础。人们只能在一定的范围内改变风险形成和发展的条件，降低风险事故发生的概率，减少损失程度，而不能彻底消除风险。
 
@@ -71,13 +71,16 @@ output:
 - **半连续型随机变量**。其取值通常为连续型和离散型的结合，如保险事故造成的累积损失 $S$，其取值范围为 $[0, +\infty$，其中 $S=0$ 表示保险事故没有造成损失，$S>0$ 表示保险事故造成了多大的损失。
 
 
-Table: (\#tab:mylabel) 寿险和非寿险业务的区别
+: 寿险和非寿险业务的区别
 
 | 寿险业务                     | 非寿险业务                           |
 |--------------------------|----------------------------------|
 | 业务比较稳定             | 业务极其不稳定                   |
 | 保险金的给付具有可预期性 | 理赔频率和赔付额具有很强的随机性 |
 | 保险业务具有长期性       | 业务多位短期险种     
+
+
+
 
 <!-- 在保险风险度量中，风险可以是： -->
 
@@ -93,17 +96,26 @@ Table: (\#tab:mylabel) 寿险和非寿险业务的区别
 
 
 
--------------
 
 
 
-## 分布函数和生存函数
+## 分布函数
 
-连续型随机变量 $X$ 的累积分布函数 (Cumulative Distribution Function, cdf) 表示为 $$F_{X}(x)=\Pr(X\le X)$$
+连续型随机变量 $X$ 的累积分布函数 (Cumulative Distribution Function, cdf) 表示为 
+$$
+F_{X}(x)=\Pr(X\le x)
+$$
+上式表明，分布函数描述了随机变量 $X$ 小于或者等于 $x$ 的概率。随机变量的分布函数具有下述性质：
+
+- 对于任意的取值 $x$， 都有 $0\le F_X(x) \le 1$
+
+-   $F_X(x)$ 是右连续型函数
+
+-   $\lim_{x\to +\infty}F_X(x)=1$
+
+- $\lim_{x\to -\infty}F_X(x)=0$
 
 **【例】**：运用 R 软件画出下面两种分布函数图。
-
-```{=tex}
 \begin{equation*}
 F_1(x) = \begin{cases}
 0 &\quad x <0,\\
@@ -111,9 +123,18 @@ F_1(x) = \begin{cases}
 1, & \quad x\ge 100.
 \end{cases}
 \end{equation*}
-```
 
 
+在 R 语言中可以通过 ``function`` 函数指令来命名和创建函数。首先要给函数赋值，也就是命名，然后在小括号中写入参数，最后再大括号中写入函数要执行的语句。下面这段 R 代码定义了一个分布函数 ``F1.f``，并使用 ``Vectorize()`` 函数将其向量化，以允许输入和输出为向量。
+该分布函数 ``F1.f`` 的定义如下：
+
+- 如果输入 $x$ 小于0，则输出为0。
+
+- 如果输入 $x$ 介于0和100之间（包括0但不包括100），则输出为0.01乘以 $x$ 的值。
+
+- 如果输入 $x$ 大于等于100，则输出为1。
+
+在代码中，使用``seq()``函数生成一个从0到100的等间距序列，作为画图的横轴数据。然后，通过调用分布函数``F1.f``并将横轴数据作为参数，计算得到纵轴数据。最后，使用``plot()``函数绘制了一条连接这些数据点的蓝色曲线，并设置线宽度为2。详细代码如下：
 ```{r, plot-cdf, eval = TRUE, echo = TRUE, fig.cap='$F_1(x)$ 的分布函数图', fig.align = 'center'}
 # 定义分布函数
 F1.f <- function(x) {
@@ -133,14 +154,14 @@ y <- F1.f(x)  # 画图纵轴数据
 plot(x, y, type = 'l', col = "blue", lwd = 2)
 ```
 
-$$
+
+
 \begin{equation}
 F_2(x) = \begin{cases}
 0 &\quad x <0,\\
 1 - \left(\frac{2000}{x + 2000}\right)^3, & \quad x\ge 0,
 \end{cases}
 \end{equation}
-$$
 
 ```{r, plot-pdf, eval = TRUE, echo = TRUE, fig.cap='$F_2(x)$ 的分布函数图', fig.align = 'center'}
 F2.f <- function(x) {
@@ -153,22 +174,32 @@ F2.f <- function(x) {
 }
 F2.f <-  Vectorize(F2.f)
 
-
 x <- seq(from = 0, to = 3000, length.out = 100)
 y <- F2.f(x)
 plot(x, y, type = 'l', col = "blue", lwd = 2)
 ```
 
+## 密度函数
+保险损失通常是非负的。对于非负的连续型随机变量 $X$, 假设其分布函数为 $F_{X}(x)$，如果存在非负的可积函数 $f_X(x)$，是的对于任意实数 $x$ 有
+$$
+F_{X}(x)=\int_{0}^{x}f(t)dt
+$$
+则称 $f_X(x)$ 为随机变量 $X$ 的密度函数。非负随机变量的密度函数具有下述性质：
+
+
+
+## 生存函数
 随机变量的生存函数 (Survival Function) 定义为： 
 $$
 S_{X}(x)=\Pr(X>x)=1-F_{X}(x)
 $$
-其中，生存函数表示随机变量 $X$ 大于 $x$ 的概率。若随机变量是连续的，其密度函数和生存函数存在下述关系： $$
-\begin{aligned}
+其中，生存函数表示随机变量 $X$ 大于 $x$ 的概率。若随机变量是连续的，其密度函数和生存函数存在下述关系： 
+
+\begin{align*}
 S_{X}(x)&=\int_{0}^\infty f_{X}(x)dx,\\
 f(x)&=-\frac{dS(x)}{dx}.
-\end{aligned}
-$$
+\end{align*}
+
 
 
 **【例】**：运用 R 软件画出 **F2.f** 对应的密度函数图。
@@ -285,7 +316,9 @@ $$
 
 运用概率母函数可以表示出随机变量 $N=k$ 的概率，即 $\Pr(N=k)$ 为概率母函数的 $k$ 阶偏导在 $0$ 点出的取值。例如:
 $$
-P(N=1)=\frac{P_N^{(1)}(0)}{1!}$$ $$P(N=k)=\frac{P_N^{(k)}(0)}{k!}
+P(N=1)=\frac{P_N^{(1)}(0)}{1!}$$
+
+$$P(N=k)=\frac{P_N^{(k)}(0)}{k!}
 $$ 
 其中，$P_N^{(k)}(\cdot)$ 表示概率母函数的 $k$ 阶偏导，$k!=\Gamma(k)$ 表示 $k$ 阶乘。
 
@@ -303,6 +336,7 @@ $$
 - 这种不一致性通常运用**截断**和**删失**的方法进行处理。
 
 - 假设随机变量 $X$ 表示原始的损失，其数学期望可以表示为： $$\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}$$
+
 
 ```{r, echo=FALSE, out.width="50%", fig.cap="随机变量 $X$ 的数学期望", fig.align = 'center'}
 knitr::include_graphics("picture/Expected.png")
@@ -329,11 +363,7 @@ $$
 -   $Y^p$ 左截断之后向左平移得到的，因此在截断基础上减少了 $d$
 
 
-<!-- <!-- **超额损失变量**也称之为**左截断平移变量**： --> 
 
-<!--   -   $Y^p$ 是 $X$ 在 $d$ 处左截断得到的，原因在于任意 $X$ 小于 $d$ 的值都是无法观测到 -->
-
-<!--   -   $Y^p$ 左截断之后向左平移得到的，因此在截断基础上减少了 $d$ -->
 
 
 随机变量 $Y^p$ 的数学期望称之为 **平均超额损失函数**：
@@ -352,22 +382,22 @@ $$
 $$ 
 
 【**证明**】： 
-$$
+
 \begin{align*}
 {{e}_{X}}(d)&=\frac{\int_{d}^{\infty }{(x-d)f(x)dx}}{1-F(d)}\\
 &=\frac{-(x-d)S(x)|_{d}^{\infty }+\int_{d}^{\infty }{S(x)dx}}{S(d)}\\
 &=\frac{\int_{d}^{\infty }{S(x)dx}}{S(d)}.
 \end{align*}
-$$
+
 下面证明 $(x-d)S(x)|_{d}^{\infty }=0$
-$$
+
 \begin{align*}
   & \underset{x\to \infty }{\mathop{\lim }}\,xS(x)=\underset{x\to \infty }{\mathop{\lim }}\,x\int\limits_{x}^{\infty }{f(t)dt} \\ 
  & =\underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{xf(t)dt} \\ 
  & \le \underset{x\to \infty }{\mathop{\lim }}\,\int\limits_{x}^{\infty }{tf(t)dt} \\ 
  & =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0
 \end{align*}
-$$
+
 
 
 ### 左删失（left censored）和平移（shifted）
@@ -401,6 +431,8 @@ $$
   - 数学期望存在下述关系：
   
     $$\mathbb{E}[Y^L]=\mathbb{E}[Y^p][1-F_X(d)]$$
+    
+    
 ```{r, echo=FALSE, out.width="50%", fig.cap="随机变量 $Y^L$ 的数学期望", fig.align = 'center'}
 knitr::include_graphics("picture/YL.png")
 ```
@@ -420,13 +452,13 @@ $$
 - 右删失表示随机变量 $X>u$ 的所有取值都用 $u$ 代替
 
 - $Y$ 的数学期望 $E(X\wedge u)$ 称之为**有限期望** (limited expected value)，表示为：
-$$
+
 \begin{align*}
   E(X\wedge u)& =\int_{0}^{u}{xf(x)dx}+u\cdot S(u) \\ 
  & =-xS(x)\left| _{0}^{u} \right.+\int_{0}^{u}{S(x)dx}+uS(u) \\ 
  & =\int_{0}^{u}{S(x)dx}  
 \end{align*}
-$$
+
 
 
 ```{r, echo=FALSE, out.width="50%", fig.cap="右删失变量的数学期望", fig.align = 'center'}
@@ -454,7 +486,7 @@ $$
   
   -   请画出有限期望 $\mathbb{E}(X\wedge u)$ 随着 $u$ 变化而变化的曲线图
 
-```{r, plot-excess, eval = TRUE, echo = TRUE}
+```{r, plot-excess22, eval = TRUE, echo = TRUE}
 # 随机变量 X 分布的生存函数可以表示为
 S <- function(x) exp(-200*x)
 # 平均超额函数 ex1
@@ -511,5 +543,8 @@ $$
 
 
 <!-- 3. 假设某险种的索赔次数服从参数$\lambda=2$的泊松分布，如果将保险责任减少一项（假设此项责任的索赔次数占总索赔次数的10％），那么剩余责任的索赔次数仍将服从泊松分布，泊松参数成为$\lambda=0.9*2=1.8$。 -->
+
+
+
 
 

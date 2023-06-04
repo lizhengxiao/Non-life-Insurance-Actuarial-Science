@@ -86,3 +86,12 @@ example-1
 claim-severity-索赔强度
 保费premium
 赔付率loss-ratio
+fig:plot-cdf
+fig:plot-pdf
+fig:unnamed-chunk-1
+fig:unnamed-chunk-2
+fig:unnamed-chunk-3
+fig:unnamed-chunk-4
+分布函数
+生存函数
+密度函数
