@@ -1,0 +1,196 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={非寿险精算与风险模型},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{非寿险精算与风险模型}
+\author{}
+\date{\vspace{-2.5em}2023-05-09}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{prep}{%
+\chapter{课程简介}\label{prep}}
+
+这是对外经济贸易大学和西南财经大学开设《非寿险精算学》等课程的讲义， 其中使用了其它教材的例子和讲法， 仅供学生内部使用， 不作为公开出版。 鉴于本人水平有限， 错漏之处难免，欢迎指出错误或提出改进意见。
+
+\textbf{\emph{编写人员}}：
+
+\begin{itemize}
+\item
+  李政宵（对外经济贸易大学保险学院副教授）
+\item
+  杨亮（西南财经大学金融学院副教授）
+\item
+  刘坤（对外经济贸易大学 2020 级硕士生）
+\item
+  刘雅薇（对外经济贸易大学 2020 级硕士生）
+\end{itemize}
+
+\hypertarget{ux8bfeux7a0bux5185ux5bb9}{%
+\section{课程内容}\label{ux8bfeux7a0bux5185ux5bb9}}
+
+本课程是一门三学分课程（精算与风险管理专业必修、其他专业选修），适合风险管理、保险与精算等相关专业的\textbf{本科高年级学生}参考。
+
+非寿险精算主要内容是\textbf{风险模型}、\textbf{费率厘定}和\textbf{准备金评估}。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{风险模型}：风险度量、索赔次数模型、索赔金额模型、累积损失模型
+\item
+  \textbf{费率厘定}：分类费率厘定、经验费率厘定
+\item
+  \textbf{准备金评估}：未到期责任准备金、未决赔款准备金、理赔费用准备金评估
+\end{itemize}
+
+在教学过程中中，以 \textbf{R 语言} 为编程工具，同时提供了详细的程序代码，方便读者再现完整的编程和计算过程。
+
+\hypertarget{ux5148ux4feeux5185ux5bb9}{%
+\section{先修内容}\label{ux5148ux4feeux5185ux5bb9}}
+
+需要概率论与数理统计、高等数学、线性代数、保险学的基础知识
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{概率论与数理统计}：随机变量、概率分布、中心极限定理
+\item
+  \textbf{高等数学}：微积分、泰勒公式
+\item
+  \textbf{线性代数}：矩阵运算
+\item
+  \textbf{保险学}：基本概念和专业术语
+\end{itemize}
+
+\hypertarget{ux6559ux6750ux548cux53c2ux8003ux8d44ux6599}{%
+\section{教材和参考资料}\label{ux6559ux6750ux548cux53c2ux8003ux8d44ux6599}}
+
+\begin{itemize}
+\item
+  Klugman S. A., Panjer H. H., Willmot G. E. Loss models: from data to decisions (5th edition). London: John Wiley \& Sons, 2016.
+\item
+  孟生旺、刘乐平、肖争艳、高光远, 非寿险精算学（第4版），人民大学出版社，2019年.
+\item
+  孟生旺, 《风险模型》, 中国人民大学出版社，2022.
+\item
+  肖争艳，《精算模型》（第三版），中国人民大学出版社，2019.
+\end{itemize}
+
+\hypertarget{r-ux8f6fux4ef6ux4e0e-rmarkdown-ux7b80ux4ecb}{%
+\section{R 软件与 Rmarkdown 简介}\label{r-ux8f6fux4ef6ux4e0e-rmarkdown-ux7b80ux4ecb}}
+
+\begin{itemize}
+\item
+  R 软件是用于统计计算和绘图的免费软件环境。
+  安装 R 软件的步骤主要分下述几步步：
+
+  \begin{itemize}
+  \item
+    \href{https://cran.r-project.org/}{安装 R 软件}
+  \item
+    \href{https://posit.co/download/rstudio-desktop/}{安装 RStudio}。RStudio 是一款 R 语言的 IDE（集成开发环境），操作界面简洁美观。
+  \item
+    \href{https://mirrors.tuna.tsinghua.edu.cn/CRAN/}{安装 rtools}。rtools 是 R 软件在构建和编译包所需要的编译工具。
+  \end{itemize}
+\item
+  \texttt{Rmarkdown} 是 R 语言环境中提供的 markdown 编辑工具。可以用来创建富有格式和互动性的文档。它可以让用户将代码、文本、图表等内容组合到一个文档中，以生成多种格式的输出，如 HTML、PDF、Word 文档等。\texttt{Rmarkdown} 的作用包括：
+
+  \begin{itemize}
+  \item
+    \texttt{创建文档}：用户可以使用 Rmarkdown 编写报告、论文、幻灯片、教程、笔记本等各种类型的文档，从而将所有相关信息组织到一个单一的文档中，以方便交流和分享。
+  \item
+    \texttt{自动生成报告}：用户可以使用 Rmarkdown 自动化报告的生成，通过将代码嵌入文档中，生成数据分析、机器学习等各种类型的报告，以便更好地分享分析结果。
+  \item
+    \texttt{交互性可视化}：用户可以使用 Rmarkdown 和其它 R 包结合使用，创建交互式可视化的报告，使读者可以通过控制台与图表进行交互，探索数据的不同方面。
+  \item
+    \texttt{维护数据分析文档}：用户可以使用 Rmarkdown 生成可重复的分析文档，以便在数据分析项目中跟踪分析的演变，并使其更加容易维护。
+  \end{itemize}
+\end{itemize}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}
