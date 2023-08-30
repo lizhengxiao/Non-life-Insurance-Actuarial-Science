@@ -95,3 +95,10 @@ fig:unnamed-chunk-4
 分布函数
 生存函数
 密度函数
+fig:plot-exp
+fig:gamma-pdf
+fig:plot-Pareto
+fig:plot-Single-Pareto
+fig:plot-lognormal
+fig:plot-nb
+fig:plot-bi
