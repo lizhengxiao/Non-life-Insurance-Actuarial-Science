@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>非寿险精算与风险模型</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="非寿险精算与风险模型" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-05-09" />
+<meta name="date" content="2023-09-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,10 @@
 
 
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -81,16 +85,18 @@
 <li class="chapter" data-level="2" data-path="random-var.html"><a href="random-var.html"><i class="fa fa-check"></i><b>2</b> 风险与随机变量</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="random-var.html"><a href="random-var.html#风险与随机变量"><i class="fa fa-check"></i><b>2.1</b> 风险与随机变量</a></li>
-<li class="chapter" data-level="2.2" data-path="random-var.html"><a href="random-var.html#分布函数和生存函数"><i class="fa fa-check"></i><b>2.2</b> 分布函数和生存函数</a></li>
-<li class="chapter" data-level="2.3" data-path="random-var.html"><a href="random-var.html#中心距和原点矩"><i class="fa fa-check"></i><b>2.3</b> 中心距和原点矩</a></li>
-<li class="chapter" data-level="2.4" data-path="random-var.html"><a href="random-var.html#概率母函数和矩母函数"><i class="fa fa-check"></i><b>2.4</b> 概率母函数和矩母函数</a></li>
-<li class="chapter" data-level="2.5" data-path="random-var.html"><a href="random-var.html#截断和删失"><i class="fa fa-check"></i><b>2.5</b> 截断和删失</a>
+<li class="chapter" data-level="2.2" data-path="random-var.html"><a href="random-var.html#分布函数"><i class="fa fa-check"></i><b>2.2</b> 分布函数</a></li>
+<li class="chapter" data-level="2.3" data-path="random-var.html"><a href="random-var.html#密度函数"><i class="fa fa-check"></i><b>2.3</b> 密度函数</a></li>
+<li class="chapter" data-level="2.4" data-path="random-var.html"><a href="random-var.html#生存函数"><i class="fa fa-check"></i><b>2.4</b> 生存函数</a></li>
+<li class="chapter" data-level="2.5" data-path="random-var.html"><a href="random-var.html#中心距和原点矩"><i class="fa fa-check"></i><b>2.5</b> 中心距和原点矩</a></li>
+<li class="chapter" data-level="2.6" data-path="random-var.html"><a href="random-var.html#概率母函数和矩母函数"><i class="fa fa-check"></i><b>2.6</b> 概率母函数和矩母函数</a></li>
+<li class="chapter" data-level="2.7" data-path="random-var.html"><a href="random-var.html#截断和删失"><i class="fa fa-check"></i><b>2.7</b> 截断和删失</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="random-var.html"><a href="random-var.html#左截断left-truncated和平移shifted"><i class="fa fa-check"></i><b>2.5.1</b> 左截断（left truncated）和平移（shifted）</a></li>
-<li class="chapter" data-level="2.5.2" data-path="random-var.html"><a href="random-var.html#左删失left-censored和平移shifted"><i class="fa fa-check"></i><b>2.5.2</b> 左删失（left censored）和平移（shifted）</a></li>
-<li class="chapter" data-level="2.5.3" data-path="random-var.html"><a href="random-var.html#右删失right-censored"><i class="fa fa-check"></i><b>2.5.3</b> 右删失（right censored）</a></li>
+<li class="chapter" data-level="2.7.1" data-path="random-var.html"><a href="random-var.html#左截断left-truncated和平移shifted"><i class="fa fa-check"></i><b>2.7.1</b> 左截断（left truncated）和平移（shifted）</a></li>
+<li class="chapter" data-level="2.7.2" data-path="random-var.html"><a href="random-var.html#左删失left-censored和平移shifted"><i class="fa fa-check"></i><b>2.7.2</b> 左删失（left censored）和平移（shifted）</a></li>
+<li class="chapter" data-level="2.7.3" data-path="random-var.html"><a href="random-var.html#右删失right-censored"><i class="fa fa-check"></i><b>2.7.3</b> 右删失（right censored）</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="random-var.html"><a href="random-var.html#课后习题"><i class="fa fa-check"></i><b>2.6</b> 课后习题</a></li>
+<li class="chapter" data-level="2.8" data-path="random-var.html"><a href="random-var.html#课后习题"><i class="fa fa-check"></i><b>2.8</b> 课后习题</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="riskmod.html"><a href="riskmod.html"><i class="fa fa-check"></i><b>3</b> 基本的损失分布</a>
 <ul>
@@ -217,15 +223,18 @@
             <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">非寿险精算与风险模型</h1>
-<p class="date"><em>2023-05-09</em></p>
+<p class="date"><em>2023-09-28</em></p>
 </div>
 <div id="prep" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> 课程简介<a href="index.html#prep" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>这是对外经济贸易大学和西南财经大学开设《非寿险精算学》等课程的讲义， 其中使用了其它教材的例子和讲法， 仅供学生内部使用， 不作为公开出版。 鉴于本人水平有限， 错漏之处难免，欢迎指出错误或提出改进意见。</p>
+<p>这是对外经济贸易大学和西南财经大学开设《非寿险精算学》等课程的讲义， 其中使用了其它教材的例子和讲法。
+<!-- 仅供学生内部使用， 不作为公开出版。  -->
+鉴于本人水平有限， 错漏之处难免，欢迎指出错误或提出改进意见。</p>
 <p><strong><em>编写人员</em></strong>：</p>
 <ul>
 <li><p>李政宵（对外经济贸易大学保险学院副教授）</p></li>
 <li><p>杨亮（西南财经大学金融学院副教授）</p></li>
+<li><p>刘津宇（对外经济贸易大学金融学院教授）</p></li>
 <li><p>刘坤（对外经济贸易大学 2020 级硕士生）</p></li>
 <li><p>刘雅薇（对外经济贸易大学 2020 级硕士生）</p></li>
 </ul>
