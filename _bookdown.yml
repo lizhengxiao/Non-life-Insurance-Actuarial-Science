@@ -1,6 +1,6 @@
-book_filename: "bookdown-demo"
+book_filename: "Non-life-Insurance-Actuarial-Science"
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "第 "
 delete_merged_file: true
 output_dir: "docs"
