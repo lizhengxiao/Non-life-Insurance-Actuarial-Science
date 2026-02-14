@@ -102,3 +102,4 @@ fig:plot-Single-Pareto
 fig:plot-lognormal
 fig:plot-nb
 fig:plot-bi
+同时存在免赔额与限额的赔款变量
