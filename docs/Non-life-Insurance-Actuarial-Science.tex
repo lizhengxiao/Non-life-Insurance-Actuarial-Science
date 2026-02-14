@@ -1,0 +1,475 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={A Minimal Book Example (Bootstrap Style)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{A Minimal Book Example (Bootstrap Style)}
+\author{}
+\date{\vspace{-2.5em}2026-02-14}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{prep}{%
+\chapter{课程简介}\label{prep}}
+
+这是对外经济贸易大学和西南财经大学开设《非寿险精算学》等课程的讲义， 其中使用了其它教材的例子和讲法。
+鉴于本人水平有限， 错漏之处难免，欢迎指出错误或提出改进意见。
+
+\textbf{\emph{编写人员}}：
+
+\begin{itemize}
+\item
+  李政宵（对外经济贸易大学保险学院副教授）
+\item
+  杨亮（西南财经大学金融学院副教授）
+\item
+  刘津宇（对外经济贸易大学金融学院教授）
+\item
+  刘坤（对外经济贸易大学 2020 级硕士生）
+\item
+  刘雅薇（对外经济贸易大学 2020 级硕士生）
+\end{itemize}
+
+\hypertarget{ux8bfeux7a0bux5185ux5bb9}{%
+\section{课程内容}\label{ux8bfeux7a0bux5185ux5bb9}}
+
+本课程是一门三学分课程（精算与风险管理专业必修、其他专业选修），适合风险管理、保险与精算等相关专业的\textbf{本科高年级学生}参考。
+
+非寿险精算主要内容是\textbf{风险模型}、\textbf{费率厘定}和\textbf{准备金评估}。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{风险模型}：风险度量、索赔次数模型、索赔金额模型、累积损失模型
+\item
+  \textbf{费率厘定}：分类费率厘定、经验费率厘定
+\item
+  \textbf{准备金评估}：未到期责任准备金、未决赔款准备金、理赔费用准备金评估
+\end{itemize}
+
+在教学过程中中，以 \textbf{R 语言} 为编程工具，同时提供了详细的程序代码，方便读者再现完整的编程和计算过程。
+
+\hypertarget{ux5148ux4feeux5185ux5bb9}{%
+\section{先修内容}\label{ux5148ux4feeux5185ux5bb9}}
+
+需要概率论与数理统计、高等数学、线性代数、保险学的基础知识
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{概率论与数理统计}：随机变量、概率分布、中心极限定理
+\item
+  \textbf{高等数学}：微积分、泰勒公式
+\item
+  \textbf{线性代数}：矩阵运算
+\item
+  \textbf{保险学}：基本概念和专业术语
+\end{itemize}
+
+\hypertarget{ux6559ux6750ux548cux53c2ux8003ux8d44ux6599}{%
+\section{教材和参考资料}\label{ux6559ux6750ux548cux53c2ux8003ux8d44ux6599}}
+
+\begin{itemize}
+\item
+  Klugman S. A., Panjer H. H., Willmot G. E. Loss models: from data to decisions (5th edition). London: John Wiley \& Sons, 2016.
+\item
+  孟生旺、刘乐平、肖争艳、高光远, 非寿险精算学（第4版），人民大学出版社，2019年.
+\item
+  孟生旺, 《风险模型》, 中国人民大学出版社，2022.
+\item
+  肖争艳，《精算模型》（第三版），中国人民大学出版社，2019.
+\end{itemize}
+
+\hypertarget{r-ux8f6fux4ef6ux4e0e-rmarkdown-ux7b80ux4ecb}{%
+\section{R 软件与 Rmarkdown 简介}\label{r-ux8f6fux4ef6ux4e0e-rmarkdown-ux7b80ux4ecb}}
+
+\begin{itemize}
+\item
+  R 软件是用于统计计算和绘图的免费软件环境。
+  安装 R 软件的步骤主要分下述几步步：
+
+  \begin{itemize}
+  \item
+    \href{https://cran.r-project.org/}{安装 R 软件}
+  \item
+    \href{https://posit.co/download/rstudio-desktop/}{安装 RStudio}。RStudio 是一款 R 语言的 IDE（集成开发环境），操作界面简洁美观。
+  \item
+    \href{https://mirrors.tuna.tsinghua.edu.cn/CRAN/}{安装 rtools}。rtools 是 R 软件在构建和编译包所需要的编译工具。
+  \end{itemize}
+\item
+  \texttt{Rmarkdown} 是 R 语言环境中提供的 markdown 编辑工具。可以用来创建富有格式和互动性的文档。它可以让用户将代码、文本、图表等内容组合到一个文档中，以生成多种格式的输出，如 HTML、PDF、Word 文档等。\texttt{Rmarkdown} 的作用包括：
+
+  \begin{itemize}
+  \item
+    \texttt{创建文档}：用户可以使用 Rmarkdown 编写报告、论文、幻灯片、教程、笔记本等各种类型的文档，从而将所有相关信息组织到一个单一的文档中，以方便交流和分享。
+  \item
+    \texttt{自动生成报告}：用户可以使用 Rmarkdown 自动化报告的生成，通过将代码嵌入文档中，生成数据分析、机器学习等各种类型的报告，以便更好地分享分析结果。
+  \item
+    \texttt{交互性可视化}：用户可以使用 Rmarkdown 和其它 R 包结合使用，创建交互式可视化的报告，使读者可以通过控制台与图表进行交互，探索数据的不同方面。
+  \item
+    \texttt{维护数据分析文档}：用户可以使用 Rmarkdown 生成可重复的分析文档，以便在数据分析项目中跟踪分析的演变，并使其更加容易维护。
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{random-var}{%
+\chapter{风险与随机变量}\label{random-var}}
+
+Placeholder
+
+\hypertarget{ux98ceux9669ux4e0eux968fux673aux53d8ux91cf}{%
+\section{风险与随机变量}\label{ux98ceux9669ux4e0eux968fux673aux53d8ux91cf}}
+
+\hypertarget{ux5206ux5e03ux51fdux6570}{%
+\section{分布函数}\label{ux5206ux5e03ux51fdux6570}}
+
+\hypertarget{ux5bc6ux5ea6ux51fdux6570}{%
+\section{密度函数}\label{ux5bc6ux5ea6ux51fdux6570}}
+
+\hypertarget{ux751fux5b58ux51fdux6570}{%
+\section{生存函数}\label{ux751fux5b58ux51fdux6570}}
+
+\hypertarget{ux4e2dux5fc3ux8dddux548cux539fux70b9ux77e9}{%
+\section{中心距和原点矩}\label{ux4e2dux5fc3ux8dddux548cux539fux70b9ux77e9}}
+
+\hypertarget{ux6982ux7387ux6bcdux51fdux6570ux548cux77e9ux6bcdux51fdux6570}{%
+\section{概率母函数和矩母函数}\label{ux6982ux7387ux6bcdux51fdux6570ux548cux77e9ux6bcdux51fdux6570}}
+
+\hypertarget{ux622aux65adux548cux5220ux5931}{%
+\section{截断和删失}\label{ux622aux65adux548cux5220ux5931}}
+
+\hypertarget{ux5de6ux622aux65adleft-truncatedux548cux5e73ux79fbshifted}{%
+\subsection{左截断（left truncated）和平移（shifted）}\label{ux5de6ux622aux65adleft-truncatedux548cux5e73ux79fbshifted}}
+
+\hypertarget{ux5de6ux5220ux5931left-censoredux548cux5e73ux79fbshifted}{%
+\subsection{左删失（left censored）和平移（shifted）}\label{ux5de6ux5220ux5931left-censoredux548cux5e73ux79fbshifted}}
+
+\hypertarget{ux53f3ux5220ux5931right-censored}{%
+\subsection{右删失（right censored）}\label{ux53f3ux5220ux5931right-censored}}
+
+\hypertarget{ux540cux65f6ux5b58ux5728ux514dux8d54ux989dux4e0eux9650ux989dux7684ux8d54ux6b3eux53d8ux91cf}{%
+\subsection{同时存在免赔额与限额的赔款变量}\label{ux540cux65f6ux5b58ux5728ux514dux8d54ux989dux4e0eux9650ux989dux7684ux8d54ux6b3eux53d8ux91cf}}
+
+\hypertarget{ux8bfeux540eux4e60ux9898}{%
+\section{课后习题}\label{ux8bfeux540eux4e60ux9898}}
+
+\hypertarget{riskmod}{%
+\chapter{基本的损失分布}\label{riskmod}}
+
+Placeholder
+
+\hypertarget{ux635fux5931ux91d1ux989dux5206ux5e03}{%
+\section{损失金额分布}\label{ux635fux5931ux91d1ux989dux5206ux5e03}}
+
+\hypertarget{ux6307ux6570ux5206ux5e03-exponential}{%
+\subsection{指数分布 （Exponential）}\label{ux6307ux6570ux5206ux5e03-exponential}}
+
+\hypertarget{ux4f3dux9a6cux5206ux5e03gamma}{%
+\subsection{伽马分布（Gamma）}\label{ux4f3dux9a6cux5206ux5e03gamma}}
+
+\hypertarget{ux5e15ux7d2fux6258ux5206ux5e03pareto}{%
+\subsection{帕累托分布（Pareto）}\label{ux5e15ux7d2fux6258ux5206ux5e03pareto}}
+
+\hypertarget{ux5bf9ux6570ux6b63ux6001ux5206ux5e03log-normal}{%
+\subsection{对数正态分布（Log-normal）}\label{ux5bf9ux6570ux6b63ux6001ux5206ux5e03log-normal}}
+
+\hypertarget{ux635fux5931ux6b21ux6570ux5206ux5e03}{%
+\section{损失次数分布}\label{ux635fux5931ux6b21ux6570ux5206ux5e03}}
+
+\hypertarget{ux6ccaux677eux5206ux5e03poisson}{%
+\subsection{泊松分布（Poisson）}\label{ux6ccaux677eux5206ux5e03poisson}}
+
+\hypertarget{ux8d1fux4e8cux9879ux5206ux5e03negative-binomial-distribution}{%
+\subsection{负二项分布（Negative Binomial distribution）}\label{ux8d1fux4e8cux9879ux5206ux5e03negative-binomial-distribution}}
+
+\hypertarget{ux4e8cux9879ux5206ux5e03binomial-distribution}{%
+\subsection{二项分布（Binomial Distribution）}\label{ux4e8cux9879ux5206ux5e03binomial-distribution}}
+
+\hypertarget{ab0-ux548c-ab1-ux5206ux5e03ux7c7b}{%
+\subsection{\texorpdfstring{\((a,b,0)\) 和 \((a,b,1)\) 分布类}{(a,b,0) 和 (a,b,1) 分布类}}\label{ab0-ux548c-ab1-ux5206ux5e03ux7c7b}}
+
+\hypertarget{ux51fdux6570ux53d8ux6362ux751fux6210ux65b0ux5206ux5e03}{%
+\section{函数变换生成新分布}\label{ux51fdux6570ux53d8ux6362ux751fux6210ux65b0ux5206ux5e03}}
+
+\hypertarget{ux7d2fux79efux635fux5931ux5206ux5e03}{%
+\section{累积损失分布}\label{ux7d2fux79efux635fux5931ux5206ux5e03}}
+
+\hypertarget{riskmea}{%
+\chapter{风险度量}\label{riskmea}}
+
+Placeholder
+
+\hypertarget{ux98ceux9669ux5ea6ux91cfux7684ux539fux5219}{%
+\section{风险度量的原则}\label{ux98ceux9669ux5ea6ux91cfux7684ux539fux5219}}
+
+\hypertarget{ux98ceux9669ux5ea6ux91cfux7684ux4e00ux81f4ux6027ux8981ux6c42}{%
+\section{风险度量的一致性要求}\label{ux98ceux9669ux5ea6ux91cfux7684ux4e00ux81f4ux6027ux8981ux6c42}}
+
+\hypertarget{varvalue-at-riskux5728ux9669ux4ef7ux503c}{%
+\section{VaR（Value-at-Risk，在险价值）}\label{varvalue-at-riskux5728ux9669ux4ef7ux503c}}
+
+\hypertarget{tvar-tail-value-at-riskux5c3eux90e8ux5728ux9669ux4ef7ux503c}{%
+\section{TVaR （Tail-Value-at-Risk，尾部在险价值）}\label{tvar-tail-value-at-riskux5c3eux90e8ux5728ux9669ux4ef7ux503c}}
+
+\hypertarget{ux8bfeux540eux4e60ux9898-1}{%
+\section{课后习题}\label{ux8bfeux540eux4e60ux9898-1}}
+
+\hypertarget{lossmodif}{%
+\chapter{损失调整}\label{lossmodif}}
+
+Placeholder
+
+\hypertarget{ux514dux8d54ux989dux5bf9ux8d54ux4ed8ux91d1ux989dux7684ux5f71ux54cd}{%
+\section{免赔额对赔付金额的影响}\label{ux514dux8d54ux989dux5bf9ux8d54ux4ed8ux91d1ux989dux7684ux5f71ux54cd}}
+
+\hypertarget{ux542bux96f6ux8d54ux6b3e}{%
+\subsection{含零赔款}\label{ux542bux96f6ux8d54ux6b3e}}
+
+\hypertarget{ux975eux96f6ux8d54ux6b3e}{%
+\subsection{非零赔款}\label{ux975eux96f6ux8d54ux6b3e}}
+
+\hypertarget{ux901aux8d27ux81a8ux80c0ux5bf9ux8d54ux4ed8ux91d1ux989dux7684ux5f71ux54cd}{%
+\section{通货膨胀对赔付金额的影响}\label{ux901aux8d27ux81a8ux80c0ux5bf9ux8d54ux4ed8ux91d1ux989dux7684ux5f71ux54cd}}
+
+\hypertarget{ux8d54ux507fux9650ux989dux5bf9ux8d54ux4ed8ux91d1ux989dux7684ux5f71ux54cd}{%
+\section{赔偿限额对赔付金额的影响}\label{ux8d54ux507fux9650ux989dux5bf9ux8d54ux4ed8ux91d1ux989dux7684ux5f71ux54cd}}
+
+\hypertarget{ux514dux8d54ux989dux548cux8d54ux507fux9650ux989dux7684ux4f8bux5b50}{%
+\section{免赔额和赔偿限额的例子}\label{ux514dux8d54ux989dux548cux8d54ux507fux9650ux989dux7684ux4f8bux5b50}}
+
+\hypertarget{ux5171ux540cux4fddux9669ux5bf9ux8d54ux4ed8ux91d1ux989dux7684ux5f71ux54cd}{%
+\section{共同保险对赔付金额的影响}\label{ux5171ux540cux4fddux9669ux5bf9ux8d54ux4ed8ux91d1ux989dux7684ux5f71ux54cd}}
+
+\hypertarget{ux514dux8d54ux989dux5bf9ux7d22ux8d54ux6b21ux6570ux7684ux5f71ux54cd}{%
+\section{免赔额对索赔次数的影响}\label{ux514dux8d54ux989dux5bf9ux7d22ux8d54ux6b21ux6570ux7684ux5f71ux54cd}}
+
+\hypertarget{ux8bfeux540eux4e60ux9898-2}{%
+\section{课后习题}\label{ux8bfeux540eux4e60ux9898-2}}
+
+\hypertarget{ux53c2ux6570ux4f30ux8ba1}{%
+\chapter{参数估计}\label{ux53c2ux6570ux4f30ux8ba1}}
+
+Placeholder
+
+\hypertarget{ux6781ux5927ux4f3cux7136ux4f30ux8ba1ux6cd5}{%
+\section{极大似然估计法}\label{ux6781ux5927ux4f3cux7136ux4f30ux8ba1ux6cd5}}
+
+\hypertarget{ux65b9ux5deeux548cux7f6eux4fe1ux533aux95f4}{%
+\section{方差和置信区间}\label{ux65b9ux5deeux548cux7f6eux4fe1ux533aux95f4}}
+
+\hypertarget{ux6781ux5927ux4f3cux7136ux4f30ux8ba1ux503cux7684ux65b9ux5dee}{%
+\subsection{极大似然估计值的方差}\label{ux6781ux5927ux4f3cux7136ux4f30ux8ba1ux503cux7684ux65b9ux5dee}}
+
+\hypertarget{delta-method}{%
+\subsection{Delta Method}\label{delta-method}}
+
+\hypertarget{ux6a21ux578bux8bc4ux4ef7ux4e0eux6bd4ux8f83}{%
+\section{模型评价与比较}\label{ux6a21ux578bux8bc4ux4ef7ux4e0eux6bd4ux8f83}}
+
+\hypertarget{ux6a21ux578bux7684ux8bc4ux4ef7}{%
+\subsection{模型的评价}\label{ux6a21ux578bux7684ux8bc4ux4ef7}}
+
+\hypertarget{ux6a21ux578bux7684ux6bd4ux8f83}{%
+\subsection{模型的比较}\label{ux6a21ux578bux7684ux6bd4ux8f83}}
+
+\hypertarget{rux8bedux8a00ux7ec3ux4e60}{%
+\section{R语言练习}\label{rux8bedux8a00ux7ec3ux4e60}}
+
+\hypertarget{classrating}{%
+\chapter{分类费率定价方法}\label{classrating}}
+
+Placeholder
+
+\hypertarget{ux76f8ux5173ux6982ux5ff5}{%
+\section{相关概念}\label{ux76f8ux5173ux6982ux5ff5}}
+
+\hypertarget{ux98ceux9669ux57faux7840ux548cux98ceux9669ux5355ux4f4d}{%
+\subsection{风险基础和风险单位}\label{ux98ceux9669ux57faux7840ux548cux98ceux9669ux5355ux4f4d}}
+
+\hypertarget{ux7d22ux8d54ux6b21ux6570ux548cux7d22ux8d54ux9891ux7387}{%
+\section{索赔次数和索赔频率}\label{ux7d22ux8d54ux6b21ux6570ux548cux7d22ux8d54ux9891ux7387}}
+
+\hypertarget{example}{%
+\section{Example}\label{example}}
+
+\hypertarget{ux5e7fux4e49ux7ebfux6027ux56deux5f52ux6a21ux578b}{%
+\section{广义线性回归模型}\label{ux5e7fux4e49ux7ebfux6027ux56deux5f52ux6a21ux578b}}
+
+\hypertarget{experiencerate}{%
+\chapter{经验费率厘定方法}\label{experiencerate}}
+
+We have finished a nice book.
+
+\hypertarget{ux7ebfux6027ux6df7ux5408ux6a21ux578b}{%
+\section{线性混合模型}\label{ux7ebfux6027ux6df7ux5408ux6a21ux578b}}
+
+\hypertarget{ux6700ux7cbeux786eux4fe1ux5ea6ux6a21ux578b}{%
+\section{最精确信度模型}\label{ux6700ux7cbeux786eux4fe1ux5ea6ux6a21ux578b}}
+
+\hypertarget{ux7ecfux9a8cux8d1dux53f6ux65af}{%
+\section{经验贝叶斯}\label{ux7ecfux9a8cux8d1dux53f6ux65af}}
+
+\hypertarget{reserv}{%
+\chapter{准备金评估方法}\label{reserv}}
+
+Placeholder
+
+\hypertarget{ux76f8ux5173ux6982ux5ff5-1}{%
+\section{相关概念}\label{ux76f8ux5173ux6982ux5ff5-1}}
+
+\hypertarget{ux672aux5230ux671fux8d23ux4efbux51c6ux5907ux91d1ux7684ux8bc4ux4f30}{%
+\section{未到期责任准备金的评估}\label{ux672aux5230ux671fux8d23ux4efbux51c6ux5907ux91d1ux7684ux8bc4ux4f30}}
+
+\hypertarget{ux6bd4ux4f8bux6cd5}{%
+\subsection{比例法}\label{ux6bd4ux4f8bux6cd5}}
+
+\hypertarget{ux4e8cux5341ux56dbux5206ux4e4bux4e00ux6cd5}{%
+\subsubsection{二十四分之一法}\label{ux4e8cux5341ux56dbux5206ux4e4bux4e00ux6cd5}}
+
+\hypertarget{ux4e09ux767eux516dux5341ux4e94ux5206ux4e4bux4e00ux6cd5}{%
+\subsubsection{三百六十五分之一法}\label{ux4e09ux767eux516dux5341ux4e94ux5206ux4e4bux4e00ux6cd5}}
+
+\hypertarget{ux98ceux9669ux5206ux5e03ux6cd5}{%
+\subsection{风险分布法}\label{ux98ceux9669ux5206ux5e03ux6cd5}}
+
+\hypertarget{ux4e03ux5341ux516bux6cd5ux5219ux4e0eux9006ux4e03ux5341ux516bux6cd5ux5219}{%
+\subsubsection{七十八法则与逆七十八法则}\label{ux4e03ux5341ux516bux6cd5ux5219ux4e0eux9006ux4e03ux5341ux516bux6cd5ux5219}}
+
+\hypertarget{ux6d41ux91cfux9884ux671fux6cd5}{%
+\subsubsection{流量预期法}\label{ux6d41ux91cfux9884ux671fux6cd5}}
+
+\hypertarget{ux672aux51b3ux8d54ux6b3eux51c6ux5907ux91d1ux8bc4ux4f30}{%
+\section{未决赔款准备金评估}\label{ux672aux51b3ux8d54ux6b3eux51c6ux5907ux91d1ux8bc4ux4f30}}
+
+\hypertarget{ux94feux68afux6cd5}{%
+\subsection{链梯法}\label{ux94feux68afux6cd5}}
+
+\hypertarget{ux6848ux5747ux8d54ux6b3eux6cd5}{%
+\subsection{案均赔款法}\label{ux6848ux5747ux8d54ux6b3eux6cd5}}
+
+\hypertarget{ux51c6ux5907ux91d1ux8fdbux5c55ux6cd5}{%
+\subsection{准备金进展法}\label{ux51c6ux5907ux91d1ux8fdbux5c55ux6cd5}}
+
+\hypertarget{b-fux6cd5}{%
+\subsection{B-F法}\label{b-fux6cd5}}
+
+\hypertarget{chp1}{%
+\chapter{非寿险精算的基本概念}\label{chp1}}
+
+Placeholder
+
+\hypertarget{ux98ceux9669ux5355ux4f4d}{%
+\section{风险单位}\label{ux98ceux9669ux5355ux4f4d}}
+
+\hypertarget{ux7d22ux8d54}{%
+\section{索赔}\label{ux7d22ux8d54}}
+
+\hypertarget{example-1}{%
+\section{Example}\label{example-1}}
+
+\hypertarget{ux8d54ux6b3eloss-claim}{%
+\section{赔款(loss, claim)}\label{ux8d54ux6b3eloss-claim}}
+
+\hypertarget{ux8d54ux6b3eloss-claim-1}{%
+\section{赔款(loss, claim)}\label{ux8d54ux6b3eloss-claim-1}}
+
+\hypertarget{ux5df2ux62a5ux6848ux8d54ux6b3eux5360ux6700ux7ec8ux8d54ux6b3eux7684ux6bd4ux7387}{%
+\section{已报案赔款占最终赔款的比率}\label{ux5df2ux62a5ux6848ux8d54ux6b3eux5360ux6700ux7ec8ux8d54ux6b3eux7684ux6bd4ux7387}}
+
+\hypertarget{ux7406ux8d54ux8d39ux7528loss-adjustment-expenses}{%
+\section{理赔费用（loss adjustment expenses）}\label{ux7406ux8d54ux8d39ux7528loss-adjustment-expenses}}
+
+\hypertarget{claim-severity-ux7d22ux8d54ux5f3aux5ea6}{%
+\section{Claim Severity (索赔强度)}\label{claim-severity-ux7d22ux8d54ux5f3aux5ea6}}
+
+\hypertarget{ux4fddux8d39premium}{%
+\section{保费（premium）}\label{ux4fddux8d39premium}}
+
+\hypertarget{ux8d54ux4ed8ux7387loss-ratio}{%
+\section{赔付率（loss ratio）}\label{ux8d54ux4ed8ux7387loss-ratio}}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

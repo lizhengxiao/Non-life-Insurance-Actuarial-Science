@@ -2,63 +2,55 @@
 <html lang="" xml:lang="">
 <head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 风险与随机变量 | 非寿险精算与风险模型</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="第 2 风险与随机变量 | A Minimal Book Example (Bootstrap Style)" />
+<meta property="og:type" content="book" />
 
-  <meta property="og:title" content="Chapter 2 风险与随机变量 | 非寿险精算与风险模型" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 风险与随机变量 | 非寿险精算与风险模型" />
-  
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  
+<meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::html_book." />
+<meta name="github-repo" content="rstudio/bookdown-demo" />
 
 
+<meta name="date" content="2026-02-14" />
 
-<meta name="date" content="2023-06-04" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="index.html"/>
-<link rel="next" href="riskmod.html"/>
+<meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::html_book.">
+
+<title>第 2 风险与随机变量 | A Minimal Book Example (Bootstrap Style)</title>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
 
 
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
+<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -117,172 +109,184 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
 </head>
 
 <body>
 
+<div class="container-fluid main-container">
 
 
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 课程简介</a>
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#课程内容"><i class="fa fa-check"></i><b>1.1</b> 课程内容</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#先修内容"><i class="fa fa-check"></i><b>1.2</b> 先修内容</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#教材和参考资料"><i class="fa fa-check"></i><b>1.3</b> 教材和参考资料</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-软件与-rmarkdown-简介"><i class="fa fa-check"></i><b>1.4</b> R 软件与 Rmarkdown 简介</a></li>
+<li class="has-sub"><a href="index.html#prep" id="toc-prep"><span class="toc-section-number">1</span> 课程简介</a>
+<ul>
+<li><a href="index.html#课程内容" id="toc-课程内容"><span class="toc-section-number">1.1</span> 课程内容</a></li>
+<li><a href="index.html#先修内容" id="toc-先修内容"><span class="toc-section-number">1.2</span> 先修内容</a></li>
+<li><a href="index.html#教材和参考资料" id="toc-教材和参考资料"><span class="toc-section-number">1.3</span> 教材和参考资料</a></li>
+<li><a href="index.html#r-软件与-rmarkdown-简介" id="toc-r-软件与-rmarkdown-简介"><span class="toc-section-number">1.4</span> R 软件与 Rmarkdown 简介</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="random-var.html"><a href="random-var.html"><i class="fa fa-check"></i><b>2</b> 风险与随机变量</a>
+<li class="has-sub"><a href="random-var.html#random-var" id="toc-random-var"><span class="toc-section-number">2</span> 风险与随机变量</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="random-var.html"><a href="random-var.html#风险与随机变量"><i class="fa fa-check"></i><b>2.1</b> 风险与随机变量</a></li>
-<li class="chapter" data-level="2.2" data-path="random-var.html"><a href="random-var.html#分布函数"><i class="fa fa-check"></i><b>2.2</b> 分布函数</a></li>
-<li class="chapter" data-level="2.3" data-path="random-var.html"><a href="random-var.html#密度函数"><i class="fa fa-check"></i><b>2.3</b> 密度函数</a></li>
-<li class="chapter" data-level="2.4" data-path="random-var.html"><a href="random-var.html#生存函数"><i class="fa fa-check"></i><b>2.4</b> 生存函数</a></li>
-<li class="chapter" data-level="2.5" data-path="random-var.html"><a href="random-var.html#中心距和原点矩"><i class="fa fa-check"></i><b>2.5</b> 中心距和原点矩</a></li>
-<li class="chapter" data-level="2.6" data-path="random-var.html"><a href="random-var.html#概率母函数和矩母函数"><i class="fa fa-check"></i><b>2.6</b> 概率母函数和矩母函数</a></li>
-<li class="chapter" data-level="2.7" data-path="random-var.html"><a href="random-var.html#截断和删失"><i class="fa fa-check"></i><b>2.7</b> 截断和删失</a>
+<li><a href="random-var.html#风险与随机变量" id="toc-风险与随机变量"><span class="toc-section-number">2.1</span> 风险与随机变量</a></li>
+<li><a href="random-var.html#分布函数" id="toc-分布函数"><span class="toc-section-number">2.2</span> 分布函数</a></li>
+<li><a href="random-var.html#密度函数" id="toc-密度函数"><span class="toc-section-number">2.3</span> 密度函数</a></li>
+<li><a href="random-var.html#生存函数" id="toc-生存函数"><span class="toc-section-number">2.4</span> 生存函数</a></li>
+<li><a href="random-var.html#中心距和原点矩" id="toc-中心距和原点矩"><span class="toc-section-number">2.5</span> 中心距和原点矩</a></li>
+<li><a href="random-var.html#概率母函数和矩母函数" id="toc-概率母函数和矩母函数"><span class="toc-section-number">2.6</span> 概率母函数和矩母函数</a></li>
+<li class="has-sub"><a href="random-var.html#截断和删失" id="toc-截断和删失"><span class="toc-section-number">2.7</span> 截断和删失</a>
 <ul>
-<li class="chapter" data-level="2.7.1" data-path="random-var.html"><a href="random-var.html#左截断left-truncated和平移shifted"><i class="fa fa-check"></i><b>2.7.1</b> 左截断（left truncated）和平移（shifted）</a></li>
-<li class="chapter" data-level="2.7.2" data-path="random-var.html"><a href="random-var.html#左删失left-censored和平移shifted"><i class="fa fa-check"></i><b>2.7.2</b> 左删失（left censored）和平移（shifted）</a></li>
-<li class="chapter" data-level="2.7.3" data-path="random-var.html"><a href="random-var.html#右删失right-censored"><i class="fa fa-check"></i><b>2.7.3</b> 右删失（right censored）</a></li>
+<li><a href="random-var.html#左截断left-truncated和平移shifted" id="toc-左截断left-truncated和平移shifted"><span class="toc-section-number">2.7.1</span> 左截断（left truncated）和平移（shifted）</a></li>
+<li><a href="random-var.html#左删失left-censored和平移shifted" id="toc-左删失left-censored和平移shifted"><span class="toc-section-number">2.7.2</span> 左删失（left censored）和平移（shifted）</a></li>
+<li><a href="random-var.html#右删失right-censored" id="toc-右删失right-censored"><span class="toc-section-number">2.7.3</span> 右删失（right censored）</a></li>
+<li><a href="random-var.html#同时存在免赔额与限额的赔款变量" id="toc-同时存在免赔额与限额的赔款变量"><span class="toc-section-number">2.7.4</span> 同时存在免赔额与限额的赔款变量</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="random-var.html"><a href="random-var.html#课后习题"><i class="fa fa-check"></i><b>2.8</b> 课后习题</a></li>
+<li><a href="random-var.html#课后习题" id="toc-课后习题"><span class="toc-section-number">2.8</span> 课后习题</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="riskmod.html"><a href="riskmod.html"><i class="fa fa-check"></i><b>3</b> 基本的损失分布</a>
+<li class="has-sub"><a href="riskmod.html#riskmod" id="toc-riskmod"><span class="toc-section-number">3</span> 基本的损失分布</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="riskmod.html"><a href="riskmod.html#损失金额分布"><i class="fa fa-check"></i><b>3.1</b> 损失金额分布</a>
+<li class="has-sub"><a href="riskmod.html#损失金额分布" id="toc-损失金额分布"><span class="toc-section-number">3.1</span> 损失金额分布</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="riskmod.html"><a href="riskmod.html#指数分布-exponential"><i class="fa fa-check"></i><b>3.1.1</b> 指数分布 （Exponential）</a></li>
-<li class="chapter" data-level="3.1.2" data-path="riskmod.html"><a href="riskmod.html#伽马分布gamma"><i class="fa fa-check"></i><b>3.1.2</b> 伽马分布（Gamma）</a></li>
-<li class="chapter" data-level="3.1.3" data-path="riskmod.html"><a href="riskmod.html#帕累托分布pareto"><i class="fa fa-check"></i><b>3.1.3</b> 帕累托分布（Pareto）</a></li>
-<li class="chapter" data-level="3.1.4" data-path="riskmod.html"><a href="riskmod.html#对数正态分布log-normal"><i class="fa fa-check"></i><b>3.1.4</b> 对数正态分布（Log-normal）</a></li>
+<li><a href="riskmod.html#指数分布-exponential" id="toc-指数分布-exponential"><span class="toc-section-number">3.1.1</span> 指数分布 （Exponential）</a></li>
+<li><a href="riskmod.html#伽马分布gamma" id="toc-伽马分布gamma"><span class="toc-section-number">3.1.2</span> 伽马分布（Gamma）</a></li>
+<li><a href="riskmod.html#帕累托分布pareto" id="toc-帕累托分布pareto"><span class="toc-section-number">3.1.3</span> 帕累托分布（Pareto）</a></li>
+<li><a href="riskmod.html#对数正态分布log-normal" id="toc-对数正态分布log-normal"><span class="toc-section-number">3.1.4</span> 对数正态分布（Log-normal）</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="riskmod.html"><a href="riskmod.html#损失次数分布"><i class="fa fa-check"></i><b>3.2</b> 损失次数分布</a>
+<li class="has-sub"><a href="riskmod.html#损失次数分布" id="toc-损失次数分布"><span class="toc-section-number">3.2</span> 损失次数分布</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="riskmod.html"><a href="riskmod.html#泊松分布poisson"><i class="fa fa-check"></i><b>3.2.1</b> 泊松分布（Poisson）</a></li>
-<li class="chapter" data-level="3.2.2" data-path="riskmod.html"><a href="riskmod.html#负二项分布negative-binomial-distribution"><i class="fa fa-check"></i><b>3.2.2</b> 负二项分布（Negative Binomial distribution）</a></li>
-<li class="chapter" data-level="3.2.3" data-path="riskmod.html"><a href="riskmod.html#二项分布binomial-distribution"><i class="fa fa-check"></i><b>3.2.3</b> 二项分布（Binomial Distribution）</a></li>
-<li class="chapter" data-level="3.2.4" data-path="riskmod.html"><a href="riskmod.html#ab0-和-ab1-分布类"><i class="fa fa-check"></i><b>3.2.4</b> <span class="math inline">\((a,b,0)\)</span> 和 <span class="math inline">\((a,b,1)\)</span> 分布类</a></li>
+<li><a href="riskmod.html#泊松分布poisson" id="toc-泊松分布poisson"><span class="toc-section-number">3.2.1</span> 泊松分布（Poisson）</a></li>
+<li><a href="riskmod.html#负二项分布negative-binomial-distribution" id="toc-负二项分布negative-binomial-distribution"><span class="toc-section-number">3.2.2</span> 负二项分布（Negative Binomial distribution）</a></li>
+<li><a href="riskmod.html#二项分布binomial-distribution" id="toc-二项分布binomial-distribution"><span class="toc-section-number">3.2.3</span> 二项分布（Binomial Distribution）</a></li>
+<li><a href="riskmod.html#ab0-和-ab1-分布类" id="toc-ab0-和-ab1-分布类"><span class="toc-section-number">3.2.4</span> <span class="math inline">\((a,b,0)\)</span> 和 <span class="math inline">\((a,b,1)\)</span> 分布类</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="riskmod.html"><a href="riskmod.html#函数变换生成新分布"><i class="fa fa-check"></i><b>3.3</b> 函数变换生成新分布</a></li>
-<li class="chapter" data-level="3.4" data-path="riskmod.html"><a href="riskmod.html#累积损失分布"><i class="fa fa-check"></i><b>3.4</b> 累积损失分布</a></li>
+<li><a href="riskmod.html#函数变换生成新分布" id="toc-函数变换生成新分布"><span class="toc-section-number">3.3</span> 函数变换生成新分布</a></li>
+<li><a href="riskmod.html#累积损失分布" id="toc-累积损失分布"><span class="toc-section-number">3.4</span> 累积损失分布</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="riskmea.html"><a href="riskmea.html"><i class="fa fa-check"></i><b>4</b> 风险度量</a>
+<li class="has-sub"><a href="riskmea.html#riskmea" id="toc-riskmea"><span class="toc-section-number">4</span> 风险度量</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="riskmea.html"><a href="riskmea.html#风险度量的原则"><i class="fa fa-check"></i><b>4.1</b> 风险度量的原则</a></li>
-<li class="chapter" data-level="4.2" data-path="riskmea.html"><a href="riskmea.html#风险度量的一致性要求"><i class="fa fa-check"></i><b>4.2</b> 风险度量的一致性要求</a></li>
-<li class="chapter" data-level="4.3" data-path="riskmea.html"><a href="riskmea.html#varvalue-at-risk在险价值"><i class="fa fa-check"></i><b>4.3</b> VaR（Value-at-Risk，在险价值）</a></li>
-<li class="chapter" data-level="4.4" data-path="riskmea.html"><a href="riskmea.html#tvar-tail-value-at-risk尾部在险价值"><i class="fa fa-check"></i><b>4.4</b> TVaR （Tail-Value-at-Risk，尾部在险价值）</a></li>
-<li class="chapter" data-level="4.5" data-path="riskmea.html"><a href="riskmea.html#课后习题-1"><i class="fa fa-check"></i><b>4.5</b> 课后习题</a></li>
+<li><a href="riskmea.html#风险度量的原则" id="toc-风险度量的原则"><span class="toc-section-number">4.1</span> 风险度量的原则</a></li>
+<li><a href="riskmea.html#风险度量的一致性要求" id="toc-风险度量的一致性要求"><span class="toc-section-number">4.2</span> 风险度量的一致性要求</a></li>
+<li><a href="riskmea.html#varvalue-at-risk在险价值" id="toc-varvalue-at-risk在险价值"><span class="toc-section-number">4.3</span> VaR（Value-at-Risk，在险价值）</a></li>
+<li><a href="riskmea.html#tvar-tail-value-at-risk尾部在险价值" id="toc-tvar-tail-value-at-risk尾部在险价值"><span class="toc-section-number">4.4</span> TVaR （Tail-Value-at-Risk，尾部在险价值）</a></li>
+<li><a href="riskmea.html#课后习题-1" id="toc-课后习题-1"><span class="toc-section-number">4.5</span> 课后习题</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lossmodif.html"><a href="lossmodif.html"><i class="fa fa-check"></i><b>5</b> 损失调整</a>
+<li class="has-sub"><a href="lossmodif.html#lossmodif" id="toc-lossmodif"><span class="toc-section-number">5</span> 损失调整</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对赔付金额的影响"><i class="fa fa-check"></i><b>5.1</b> 免赔额对赔付金额的影响</a>
+<li class="has-sub"><a href="lossmodif.html#免赔额对赔付金额的影响" id="toc-免赔额对赔付金额的影响"><span class="toc-section-number">5.1</span> 免赔额对赔付金额的影响</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="lossmodif.html"><a href="lossmodif.html#含零赔款"><i class="fa fa-check"></i><b>5.1.1</b> 含零赔款</a></li>
-<li class="chapter" data-level="5.1.2" data-path="lossmodif.html"><a href="lossmodif.html#非零赔款"><i class="fa fa-check"></i><b>5.1.2</b> 非零赔款</a></li>
+<li><a href="lossmodif.html#含零赔款" id="toc-含零赔款"><span class="toc-section-number">5.1.1</span> 含零赔款</a></li>
+<li><a href="lossmodif.html#非零赔款" id="toc-非零赔款"><span class="toc-section-number">5.1.2</span> 非零赔款</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="lossmodif.html"><a href="lossmodif.html#通货膨胀对赔付金额的影响"><i class="fa fa-check"></i><b>5.2</b> 通货膨胀对赔付金额的影响</a></li>
-<li class="chapter" data-level="5.3" data-path="lossmodif.html"><a href="lossmodif.html#赔偿限额对赔付金额的影响"><i class="fa fa-check"></i><b>5.3</b> 赔偿限额对赔付金额的影响</a></li>
-<li class="chapter" data-level="5.4" data-path="lossmodif.html"><a href="lossmodif.html#免赔额和赔偿限额的例子"><i class="fa fa-check"></i><b>5.4</b> 免赔额和赔偿限额的例子</a></li>
-<li class="chapter" data-level="5.5" data-path="lossmodif.html"><a href="lossmodif.html#共同保险对赔付金额的影响"><i class="fa fa-check"></i><b>5.5</b> 共同保险对赔付金额的影响</a></li>
-<li class="chapter" data-level="5.6" data-path="lossmodif.html"><a href="lossmodif.html#免赔额对索赔次数的影响"><i class="fa fa-check"></i><b>5.6</b> 免赔额对索赔次数的影响</a></li>
-<li class="chapter" data-level="5.7" data-path="lossmodif.html"><a href="lossmodif.html#课后习题-2"><i class="fa fa-check"></i><b>5.7</b> 课后习题</a></li>
+<li><a href="lossmodif.html#通货膨胀对赔付金额的影响" id="toc-通货膨胀对赔付金额的影响"><span class="toc-section-number">5.2</span> 通货膨胀对赔付金额的影响</a></li>
+<li><a href="lossmodif.html#赔偿限额对赔付金额的影响" id="toc-赔偿限额对赔付金额的影响"><span class="toc-section-number">5.3</span> 赔偿限额对赔付金额的影响</a></li>
+<li><a href="lossmodif.html#免赔额和赔偿限额的例子" id="toc-免赔额和赔偿限额的例子"><span class="toc-section-number">5.4</span> 免赔额和赔偿限额的例子</a></li>
+<li><a href="lossmodif.html#共同保险对赔付金额的影响" id="toc-共同保险对赔付金额的影响"><span class="toc-section-number">5.5</span> 共同保险对赔付金额的影响</a></li>
+<li><a href="lossmodif.html#免赔额对索赔次数的影响" id="toc-免赔额对索赔次数的影响"><span class="toc-section-number">5.6</span> 免赔额对索赔次数的影响</a></li>
+<li><a href="lossmodif.html#课后习题-2" id="toc-课后习题-2"><span class="toc-section-number">5.7</span> 课后习题</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="参数估计.html"><a href="参数估计.html"><i class="fa fa-check"></i><b>6</b> 参数估计</a>
+<li class="has-sub"><a href="参数估计.html#参数估计" id="toc-参数估计"><span class="toc-section-number">6</span> 参数估计</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="参数估计.html"><a href="参数估计.html#极大似然估计法"><i class="fa fa-check"></i><b>6.1</b> 极大似然估计法</a></li>
-<li class="chapter" data-level="6.2" data-path="参数估计.html"><a href="参数估计.html#方差和置信区间"><i class="fa fa-check"></i><b>6.2</b> 方差和置信区间</a>
+<li><a href="参数估计.html#极大似然估计法" id="toc-极大似然估计法"><span class="toc-section-number">6.1</span> 极大似然估计法</a></li>
+<li class="has-sub"><a href="参数估计.html#方差和置信区间" id="toc-方差和置信区间"><span class="toc-section-number">6.2</span> 方差和置信区间</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="参数估计.html"><a href="参数估计.html#极大似然估计值的方差"><i class="fa fa-check"></i><b>6.2.1</b> 极大似然估计值的方差</a></li>
-<li class="chapter" data-level="6.2.2" data-path="参数估计.html"><a href="参数估计.html#delta-method"><i class="fa fa-check"></i><b>6.2.2</b> Delta Method</a></li>
+<li><a href="参数估计.html#极大似然估计值的方差" id="toc-极大似然估计值的方差"><span class="toc-section-number">6.2.1</span> 极大似然估计值的方差</a></li>
+<li><a href="参数估计.html#delta-method" id="toc-delta-method"><span class="toc-section-number">6.2.2</span> Delta Method</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="参数估计.html"><a href="参数估计.html#模型评价与比较"><i class="fa fa-check"></i><b>6.3</b> 模型评价与比较</a>
+<li class="has-sub"><a href="参数估计.html#模型评价与比较" id="toc-模型评价与比较"><span class="toc-section-number">6.3</span> 模型评价与比较</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="参数估计.html"><a href="参数估计.html#模型的评价"><i class="fa fa-check"></i><b>6.3.1</b> 模型的评价</a></li>
-<li class="chapter" data-level="6.3.2" data-path="参数估计.html"><a href="参数估计.html#模型的比较"><i class="fa fa-check"></i><b>6.3.2</b> 模型的比较</a></li>
+<li><a href="参数估计.html#模型的评价" id="toc-模型的评价"><span class="toc-section-number">6.3.1</span> 模型的评价</a></li>
+<li><a href="参数估计.html#模型的比较" id="toc-模型的比较"><span class="toc-section-number">6.3.2</span> 模型的比较</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="参数估计.html"><a href="参数估计.html#r语言练习"><i class="fa fa-check"></i><b>6.4</b> R语言练习</a></li>
+<li><a href="参数估计.html#r语言练习" id="toc-r语言练习"><span class="toc-section-number">6.4</span> R语言练习</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="classrating.html"><a href="classrating.html"><i class="fa fa-check"></i><b>7</b> 分类费率定价方法</a>
+<li class="has-sub"><a href="classrating.html#classrating" id="toc-classrating"><span class="toc-section-number">7</span> 分类费率定价方法</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="classrating.html"><a href="classrating.html#相关概念"><i class="fa fa-check"></i><b>7.1</b> 相关概念</a>
+<li class="has-sub"><a href="classrating.html#相关概念" id="toc-相关概念"><span class="toc-section-number">7.1</span> 相关概念</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="classrating.html"><a href="classrating.html#风险基础和风险单位"><i class="fa fa-check"></i><b>7.1.1</b> 风险基础和风险单位</a></li>
+<li><a href="classrating.html#风险基础和风险单位" id="toc-风险基础和风险单位"><span class="toc-section-number">7.1.1</span> 风险基础和风险单位</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="classrating.html"><a href="classrating.html#索赔次数和索赔频率"><i class="fa fa-check"></i><b>7.2</b> 索赔次数和索赔频率</a></li>
-<li class="chapter" data-level="7.3" data-path="classrating.html"><a href="classrating.html#example"><i class="fa fa-check"></i><b>7.3</b> Example</a></li>
-<li class="chapter" data-level="7.4" data-path="classrating.html"><a href="classrating.html#广义线性回归模型"><i class="fa fa-check"></i><b>7.4</b> 广义线性回归模型</a></li>
+<li><a href="classrating.html#索赔次数和索赔频率" id="toc-索赔次数和索赔频率"><span class="toc-section-number">7.2</span> 索赔次数和索赔频率</a></li>
+<li><a href="classrating.html#example" id="toc-example"><span class="toc-section-number">7.3</span> Example</a></li>
+<li><a href="classrating.html#广义线性回归模型" id="toc-广义线性回归模型"><span class="toc-section-number">7.4</span> 广义线性回归模型</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="8" data-path="experiencerate.html"><a href="experiencerate.html"><i class="fa fa-check"></i><b>8</b> 经验费率厘定方法</a>
+<li><a href="references.html#references" id="toc-references">References</a></li>
+<li class="has-sub"><a href="experiencerate.html#experiencerate" id="toc-experiencerate"><span class="toc-section-number">8</span> 经验费率厘定方法</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="experiencerate.html"><a href="experiencerate.html#线性混合模型"><i class="fa fa-check"></i><b>8.1</b> 线性混合模型</a></li>
-<li class="chapter" data-level="8.2" data-path="experiencerate.html"><a href="experiencerate.html#最精确信度模型"><i class="fa fa-check"></i><b>8.2</b> 最精确信度模型</a></li>
-<li class="chapter" data-level="8.3" data-path="experiencerate.html"><a href="experiencerate.html#经验贝叶斯"><i class="fa fa-check"></i><b>8.3</b> 经验贝叶斯</a></li>
+<li><a href="experiencerate.html#线性混合模型" id="toc-线性混合模型"><span class="toc-section-number">8.1</span> 线性混合模型</a></li>
+<li><a href="experiencerate.html#最精确信度模型" id="toc-最精确信度模型"><span class="toc-section-number">8.2</span> 最精确信度模型</a></li>
+<li><a href="experiencerate.html#经验贝叶斯" id="toc-经验贝叶斯"><span class="toc-section-number">8.3</span> 经验贝叶斯</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="reserv.html"><a href="reserv.html"><i class="fa fa-check"></i><b>9</b> 准备金评估方法</a>
+<li class="has-sub"><a href="reserv.html#reserv" id="toc-reserv"><span class="toc-section-number">9</span> 准备金评估方法</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="reserv.html"><a href="reserv.html#相关概念-1"><i class="fa fa-check"></i><b>9.1</b> 相关概念</a></li>
-<li class="chapter" data-level="9.2" data-path="reserv.html"><a href="reserv.html#未到期责任准备金的评估"><i class="fa fa-check"></i><b>9.2</b> 未到期责任准备金的评估</a>
+<li><a href="reserv.html#相关概念-1" id="toc-相关概念-1"><span class="toc-section-number">9.1</span> 相关概念</a></li>
+<li class="has-sub"><a href="reserv.html#未到期责任准备金的评估" id="toc-未到期责任准备金的评估"><span class="toc-section-number">9.2</span> 未到期责任准备金的评估</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="reserv.html"><a href="reserv.html#比例法"><i class="fa fa-check"></i><b>9.2.1</b> 比例法</a></li>
-<li class="chapter" data-level="9.2.2" data-path="reserv.html"><a href="reserv.html#风险分布法"><i class="fa fa-check"></i><b>9.2.2</b> 风险分布法</a></li>
+<li><a href="reserv.html#比例法" id="toc-比例法"><span class="toc-section-number">9.2.1</span> 比例法</a></li>
+<li><a href="reserv.html#风险分布法" id="toc-风险分布法"><span class="toc-section-number">9.2.2</span> 风险分布法</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="reserv.html"><a href="reserv.html#未决赔款准备金评估"><i class="fa fa-check"></i><b>9.3</b> 未决赔款准备金评估</a>
+<li class="has-sub"><a href="reserv.html#未决赔款准备金评估" id="toc-未决赔款准备金评估"><span class="toc-section-number">9.3</span> 未决赔款准备金评估</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="reserv.html"><a href="reserv.html#链梯法"><i class="fa fa-check"></i><b>9.3.1</b> 链梯法</a></li>
-<li class="chapter" data-level="9.3.2" data-path="reserv.html"><a href="reserv.html#案均赔款法"><i class="fa fa-check"></i><b>9.3.2</b> 案均赔款法</a></li>
-<li class="chapter" data-level="9.3.3" data-path="reserv.html"><a href="reserv.html#准备金进展法"><i class="fa fa-check"></i><b>9.3.3</b> 准备金进展法</a></li>
-<li class="chapter" data-level="9.3.4" data-path="reserv.html"><a href="reserv.html#b-f法"><i class="fa fa-check"></i><b>9.3.4</b> B-F法</a></li>
+<li><a href="reserv.html#链梯法" id="toc-链梯法"><span class="toc-section-number">9.3.1</span> 链梯法</a></li>
+<li><a href="reserv.html#案均赔款法" id="toc-案均赔款法"><span class="toc-section-number">9.3.2</span> 案均赔款法</a></li>
+<li><a href="reserv.html#准备金进展法" id="toc-准备金进展法"><span class="toc-section-number">9.3.3</span> 准备金进展法</a></li>
+<li><a href="reserv.html#b-f法" id="toc-b-f法"><span class="toc-section-number">9.3.4</span> B-F法</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="chp1.html"><a href="chp1.html"><i class="fa fa-check"></i><b>10</b> 非寿险精算的基本概念</a>
+<li class="has-sub"><a href="chp1.html#chp1" id="toc-chp1"><span class="toc-section-number">10</span> 非寿险精算的基本概念</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="chp1.html"><a href="chp1.html#风险单位"><i class="fa fa-check"></i><b>10.1</b> 风险单位</a></li>
-<li class="chapter" data-level="10.2" data-path="chp1.html"><a href="chp1.html#索赔"><i class="fa fa-check"></i><b>10.2</b> 索赔</a></li>
-<li class="chapter" data-level="10.3" data-path="chp1.html"><a href="chp1.html#example-1"><i class="fa fa-check"></i><b>10.3</b> Example</a></li>
-<li class="chapter" data-level="10.4" data-path="chp1.html"><a href="chp1.html#赔款loss-claim"><i class="fa fa-check"></i><b>10.4</b> 赔款(loss, claim)</a></li>
-<li class="chapter" data-level="10.5" data-path="chp1.html"><a href="chp1.html#赔款loss-claim-1"><i class="fa fa-check"></i><b>10.5</b> 赔款(loss, claim)</a></li>
-<li class="chapter" data-level="10.6" data-path="chp1.html"><a href="chp1.html#已报案赔款占最终赔款的比率"><i class="fa fa-check"></i><b>10.6</b> 已报案赔款占最终赔款的比率</a></li>
-<li class="chapter" data-level="10.7" data-path="chp1.html"><a href="chp1.html#理赔费用loss-adjustment-expenses"><i class="fa fa-check"></i><b>10.7</b> 理赔费用（loss adjustment expenses）</a></li>
-<li class="chapter" data-level="10.8" data-path="chp1.html"><a href="chp1.html#claim-severity-索赔强度"><i class="fa fa-check"></i><b>10.8</b> Claim Severity (索赔强度)</a></li>
-<li class="chapter" data-level="10.9" data-path="chp1.html"><a href="chp1.html#保费premium"><i class="fa fa-check"></i><b>10.9</b> 保费（premium）</a></li>
-<li class="chapter" data-level="10.10" data-path="chp1.html"><a href="chp1.html#赔付率loss-ratio"><i class="fa fa-check"></i><b>10.10</b> 赔付率（loss ratio）</a></li>
+<li><a href="chp1.html#风险单位" id="toc-风险单位"><span class="toc-section-number">10.1</span> 风险单位</a></li>
+<li><a href="chp1.html#索赔" id="toc-索赔"><span class="toc-section-number">10.2</span> 索赔</a></li>
+<li><a href="chp1.html#example-1" id="toc-example-1"><span class="toc-section-number">10.3</span> Example</a></li>
+<li><a href="chp1.html#赔款loss-claim" id="toc-赔款loss-claim"><span class="toc-section-number">10.4</span> 赔款(loss, claim)</a></li>
+<li><a href="chp1.html#赔款loss-claim-1" id="toc-赔款loss-claim-1"><span class="toc-section-number">10.5</span> 赔款(loss, claim)</a></li>
+<li><a href="chp1.html#已报案赔款占最终赔款的比率" id="toc-已报案赔款占最终赔款的比率"><span class="toc-section-number">10.6</span> 已报案赔款占最终赔款的比率</a></li>
+<li><a href="chp1.html#理赔费用loss-adjustment-expenses" id="toc-理赔费用loss-adjustment-expenses"><span class="toc-section-number">10.7</span> 理赔费用（loss adjustment expenses）</a></li>
+<li><a href="chp1.html#claim-severity-索赔强度" id="toc-claim-severity-索赔强度"><span class="toc-section-number">10.8</span> Claim Severity (索赔强度)</a></li>
+<li><a href="chp1.html#保费premium" id="toc-保费premium"><span class="toc-section-number">10.9</span> 保费（premium）</a></li>
+<li><a href="chp1.html#赔付率loss-ratio" id="toc-赔付率loss-ratio"><span class="toc-section-number">10.10</span> 赔付率（loss ratio）</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
+<li><a href="references-1.html#references-1" id="toc-references-1">References</a></li>
 </ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">非寿险精算与风险模型</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="random-var" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> 风险与随机变量<a href="random-var.html#random-var" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="random-var" class="section level1" number="2">
+<h1><span class="header-section-number">第 2</span> 风险与随机变量</h1>
 <p><strong>学习目标</strong>：</p>
 <ul>
 <li><p>掌握随机变量的概率/密度函数、分布函数等</p></li>
@@ -290,8 +294,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>理解随机变量中截断和删失的原理，掌握变换后随机变量的期望计算方法</p></li>
 <li><p>能够运用 R 语言定义分布函数等并画图</p></li>
 </ul>
-<div id="风险与随机变量" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> 风险与随机变量<a href="random-var.html#风险与随机变量" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="风险与随机变量" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> 风险与随机变量</h2>
 <p><strong>风险</strong>是指在某一特定环境下，在某一特定时间段内，某种损失发生的可能性。风险通常具有以下七个主要特征。</p>
 <ul>
 <li><p>风险存在的客观性。风险是客观存在的，是不以人的意志为转移的。风险的客观性是保险产生和发展的自然基础。人们只能在一定的范围内改变风险形成和发展的条件，降低风险事故发生的概率，减少损失程度，而不能彻底消除风险。</p></li>
@@ -322,8 +326,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p><strong>连续型随机变量</strong>。其取值通常布满一个区间，如保险事故造成的损失金额 <span class="math inline">\(X\)</span> 的取值范围为 <span class="math inline">\((0,+\infty)\)</span>。</p></li>
 <li><p><strong>离散型随机变量</strong>。其取值为有限个或可列个值，如保险事故发生的次数 <span class="math inline">\(N\)</span> 的取值范围为 <span class="math inline">\(0, 1, 2, 3, ...\)</span>。保险事故是否发生损失可以表示为取值为 0 和 1 的离散型变量 <span class="math inline">\(I=0,1\)</span>。</p></li>
-<li><p><strong>半连续型随机变量</strong>。其取值通常为连续型和离散型的结合，如保险事故造成的累积损失 <span class="math inline">\(S\)</span>，其取值范围为 <span class="math inline">\([0, +\infty\)</span>，其中 <span class="math inline">\(S=0\)</span> 表示保险事故没有造成损失，<span class="math inline">\(S&gt;0\)</span> 表示保险事故造成了多大的损失。</p></li>
+<li><p><strong>半连续型随机变量</strong>。其取值通常为连续型和离散型的结合，如保险事故造成的累积损失 <span class="math inline">\(S\)</span>，其取值范围为 <span class="math inline">\([0, +\infty)\)</span>，其中 <span class="math inline">\(S=0\)</span> 表示保险事故没有造成损失，<span class="math inline">\(S&gt;0\)</span> 表示保险事故造成了多大的损失。</p></li>
 </ul>
+<p>在非寿险精算建模中，经常把随机变量按“频率-强度-总赔款”三个层面理解：</p>
+<ul>
+<li><strong>频率变量</strong>（frequency）：单位保险期间内出险次数 <span class="math inline">\(N\)</span>，通常为离散型随机变量；</li>
+<li><strong>强度变量</strong>（severity）：单次损失金额 <span class="math inline">\(X\)</span>，通常为非负连续型随机变量；</li>
+<li><strong>总赔款变量</strong>（aggregate loss）：总赔款 <span class="math inline">\(S=\sum_{i=1}^N X_i\)</span>，常见为半连续型随机变量（在零点可能有点质量）。</li>
+</ul>
+<p>该分解有助于将“是否出险”和“出险后赔多少”分开建模，便于后续费率厘定与准备金评估。</p>
 <table>
 <caption>寿险和非寿险业务的区别</caption>
 <thead>
@@ -353,13 +364,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- - 保险事故发生的地点的不确定性 -->
 <!-- - 保险事故造成的损失金额的不确定性。 -->
 </div>
-<div id="分布函数" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> 分布函数<a href="random-var.html#分布函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="分布函数" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> 分布函数</h2>
 <p>连续型随机变量 <span class="math inline">\(X\)</span> 的累积分布函数 (Cumulative Distribution Function, cdf) 表示为
 <span class="math display">\[
 F_{X}(x)=\Pr(X\le x)
 \]</span>
 上式表明，分布函数描述了随机变量 <span class="math inline">\(X\)</span> 小于或者等于 <span class="math inline">\(x\)</span> 的概率。随机变量的分布函数具有下述性质：</p>
+<p>在实际计算中，分布函数常用于把区间概率转换为端点函数值：
+<span class="math display">\[
+\Pr(a&lt;X\le b)=F_X(b)-F_X(a).
+\]</span>
+当 <span class="math inline">\(X\)</span> 连续时，<span class="math inline">\(\Pr(X=a)=0\)</span>，因此端点取开区间或闭区间通常不会影响数值结果。</p>
 <ul>
 <li><p>对于任意的取值 <span class="math inline">\(x\)</span>， 都有 <span class="math inline">\(0\le F_X(x) \le 1\)</span></p></li>
 <li><p><span class="math inline">\(F_X(x)\)</span> 是右连续型函数</p></li>
@@ -399,7 +415,7 @@ F_1(x) = \begin{cases}
 <span id="cb1-15"><a href="random-var.html#cb1-15" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">F1.f</span>(x)  <span class="co"># 画图纵轴数据</span></span>
 <span id="cb1-16"><a href="random-var.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot-cdf"></span>
-<img src="bookdown-demo_files/figure-html/plot-cdf-1.png" alt="$F_1(x)$ 的分布函数图" width="672" />
+<img src="Non-life-Insurance-Actuarial-Science_files/figure-html/plot-cdf-1.png" alt="$F_1(x)$ 的分布函数图" width="672" />
 <p class="caption">
 Figure 2.1: <span class="math inline">\(F_1(x)\)</span> 的分布函数图
 </p>
@@ -424,31 +440,46 @@ F_2(x) = \begin{cases}
 <span id="cb2-12"><a href="random-var.html#cb2-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">F2.f</span>(x)</span>
 <span id="cb2-13"><a href="random-var.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot-pdf"></span>
-<img src="bookdown-demo_files/figure-html/plot-pdf-1.png" alt="$F_2(x)$ 的分布函数图" width="672" />
+<img src="Non-life-Insurance-Actuarial-Science_files/figure-html/plot-pdf-1.png" alt="$F_2(x)$ 的分布函数图" width="672" />
 <p class="caption">
 Figure 2.2: <span class="math inline">\(F_2(x)\)</span> 的分布函数图
 </p>
 </div>
 </div>
-<div id="密度函数" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> 密度函数<a href="random-var.html#密度函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="密度函数" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> 密度函数</h2>
 <p>保险损失通常是非负的。对于非负的连续型随机变量 <span class="math inline">\(X\)</span>, 假设其分布函数为 <span class="math inline">\(F_{X}(x)\)</span>，如果存在非负的可积函数 <span class="math inline">\(f_X(x)\)</span>，是的对于任意实数 <span class="math inline">\(x\)</span> 有
 <span class="math display">\[
 F_{X}(x)=\int_{0}^{x}f(t)dt
 \]</span>
 则称 <span class="math inline">\(f_X(x)\)</span> 为随机变量 <span class="math inline">\(X\)</span> 的密度函数。非负随机变量的密度函数具有下述性质：</p>
+<ul>
+<li><p><span class="math inline">\(f_X(x)\ge 0\)</span>；</p></li>
+<li><p><span class="math inline">\(\int_0^{\infty} f_X(x)\,dx = 1\)</span>；</p></li>
+<li><p>若 <span class="math inline">\(F_X\)</span> 可导，则 <span class="math inline">\(f_X(x)=F_X&#39;(x)\)</span>；</p></li>
+<li><p>任意区间概率可写为
+<span class="math display">\[
+\Pr(a&lt;X\le b)=\int_a^b f_X(x)\,dx.
+\]</span></p></li>
+</ul>
+<p>在保险语境中，<span class="math inline">\(f_X(x)\)</span> 反映“损失额落在 <span class="math inline">\(x\)</span> 附近的相对可能性”，而区间上的面积对应实际概率。</p>
 </div>
-<div id="生存函数" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> 生存函数<a href="random-var.html#生存函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="生存函数" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> 生存函数</h2>
 <p>随机变量的生存函数 (Survival Function) 定义为：
 <span class="math display">\[
 S_{X}(x)=\Pr(X&gt;x)=1-F_{X}(x)
 \]</span>
 其中，生存函数表示随机变量 <span class="math inline">\(X\)</span> 大于 <span class="math inline">\(x\)</span> 的概率。若随机变量是连续的，其密度函数和生存函数存在下述关系：</p>
 <p><span class="math display">\[\begin{align*}
-S_{X}(x)&amp;=\int_{0}^\infty f_{X}(x)dx,\\
-f(x)&amp;=-\frac{dS(x)}{dx}.
+S_{X}(x)&amp;=\int_{x}^\infty f_{X}(t)dt,\\
+f_X(x)&amp;=-\frac{dS_X(x)}{dx}.
 \end{align*}\]</span></p>
+<p>进一步地，定义风险率（hazard rate）为
+<span class="math display">\[
+h_X(x)=\frac{f_X(x)}{S_X(x)},\quad S_X(x)&gt;0.
+\]</span></p>
+<p>风险率刻画“已存活到 <span class="math inline">\(x\)</span> 条件下，单位区间内发生损失终止（或事件发生）的强度”，在生存分析和长期健康险中非常常见。</p>
 <p><strong>【例】</strong>：运用 R 软件画出 <strong>F2.f</strong> 对应的密度函数图。</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="random-var.html#cb3-1" aria-hidden="true" tabindex="-1"></a>f2.f <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
 <span id="cb3-2"><a href="random-var.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
@@ -462,14 +493,14 @@ f(x)&amp;=-\frac{dS(x)}{dx}.
 <span id="cb3-10"><a href="random-var.html#cb3-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">f2.f</span>(x)</span>
 <span id="cb3-11"><a href="random-var.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-1-1.png" alt="$S_2(x)$ 生存函数图" width="672" />
+<img src="Non-life-Insurance-Actuarial-Science_files/figure-html/unnamed-chunk-1-1.png" alt="$S_2(x)$ 生存函数图" width="672" />
 <p class="caption">
 Figure 2.3: <span class="math inline">\(S_2(x)\)</span> 生存函数图
 </p>
 </div>
 </div>
-<div id="中心距和原点矩" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> 中心距和原点矩<a href="random-var.html#中心距和原点矩" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="中心距和原点矩" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> 中心距和原点矩</h2>
 <p>如果密度函数、分布函数或生存函数是已知的，分布就会给我们提供随机变量的全部信息。如果我们不能得到分布函数的精确表达式，应该怎么办？下面我们将介绍两种刻画随机变量部分信息的指标：中心距和原点矩。</p>
 <ul>
 <li><p>原点矩和中心距是为了提炼出一个特征数来作为代表，用于描述随机变量全部取值存在的具体情况，使得用少量的特征数来充分概括某个随机变量的全部取值。</p></li>
@@ -523,10 +554,17 @@ Figure 2.3: <span class="math inline">\(S_2(x)\)</span> 生存函数图
 &amp;=\mathbb{E}(X^2)-2\mu\mathbb{E}(X) + \mu^2\\
 &amp;=\mu_2&#39;-\mu^2.
 \end{align*}\]</span></p>
+<p>常见关系还包括：
+<span class="math display">\[
+\mu_3=\mu_3&#39;-3\mu\mu_2&#39;+2\mu^3,
+\quad
+\mu_4=\mu_4&#39;-4\mu\mu_3&#39;+6\mu^2\mu_2&#39;-3\mu^4.
+\]</span>
+这些关系在已知原点矩但需要计算偏度、峰度时非常有用。</p>
 <hr />
 </div>
-<div id="概率母函数和矩母函数" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> 概率母函数和矩母函数<a href="random-var.html#概率母函数和矩母函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="概率母函数和矩母函数" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> 概率母函数和矩母函数</h2>
 <p>随机变量的概率母函数或矩母函数与其分布函数存在一一对应的关系，同样可以描述随机变量的随机特征。</p>
 <ul>
 <li><p>离散型随机变量： 概率母函数 (Probability Generating Function, pgf)</p></li>
@@ -543,26 +581,49 @@ P(N=1)=\frac{P_N^{(1)}(0)}{1!}\]</span></p>
 <p><span class="math display">\[P(N=k)=\frac{P_N^{(k)}(0)}{k!}
 \]</span>
 其中，<span class="math inline">\(P_N^{(k)}(\cdot)\)</span> 表示概率母函数的 <span class="math inline">\(k\)</span> 阶偏导，<span class="math inline">\(k!=\Gamma(k)\)</span> 表示 <span class="math inline">\(k\)</span> 阶乘。</p>
+<p>概率母函数还有两条重要性质：
+<span class="math display">\[
+P_N(1)=1,\qquad P_N&#39;(1)=\mathbb{E}(N),\qquad P_N&#39;&#39;(1)=\mathbb{E}[N(N-1)].
+\]</span>
+因此可得
+<span class="math display">\[
+\mathrm{Var}(N)=P_N&#39;&#39;(1)+P_N&#39;(1)-\{P_N&#39;(1)\}^2.
+\]</span></p>
 <p><strong>【定义】</strong>：连续型随机变量 <span class="math inline">\(X\)</span> 的矩母函数表示为 <span class="math display">\[M_X(t)=E(e^{tX})=\int_{-\infty}^{\infty}e^{tX}f(x)dx\]</span></p>
+<p>矩母函数的核心性质是
+<span class="math display">\[
+M_X^{(k)}(0)=\mathbb{E}(X^k),\quad k=1,2,\ldots
+\]</span></p>
 <p>运用矩母函数可以得到多个独立随机变量之和的分布函数。例如，假设<span class="math inline">\(S=X_1+X_2+...+X_n=\sum_{i=1}^{n}X_i\)</span>，则随机变量 <span class="math inline">\(S\)</span> 的矩母函数表示为： <span class="math display">\[M_s(t)=M_{X_1}(t)M_{X_2}(t)...M_{X_n}(t)\]</span>
 其中，<span class="math inline">\(M_{X_j}(t)\)</span> 表示 <span class="math inline">\(X_j\)</span> 的矩母函数在 <span class="math inline">\(t\)</span> 的取值。</p>
+<p><strong>常见分布母函数示例</strong>：</p>
+<ul>
+<li>若 <span class="math inline">\(N\sim\text{Poisson}(\lambda)\)</span>，则 <span class="math inline">\(P_N(t)=\exp\{\lambda(t-1)\}\)</span>；</li>
+<li>若 <span class="math inline">\(X\sim\text{Exp}(\theta)\)</span>（均值参数为 <span class="math inline">\(\theta\)</span>），则 <span class="math inline">\(M_X(t)=\frac{1}{1-\theta t},\ t&lt;1/\theta\)</span>；</li>
+<li>若 <span class="math inline">\(X\sim\text{Gamma}(\alpha,\theta)\)</span>，则 <span class="math inline">\(M_X(t)=(1-\theta t)^{-\alpha},\ t&lt;1/\theta\)</span>。</li>
+</ul>
 <hr />
 </div>
-<div id="截断和删失" class="section level2 hasAnchor" number="2.7">
-<h2><span class="header-section-number">2.7</span> 截断和删失<a href="random-var.html#截断和删失" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="截断和删失" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> 截断和删失</h2>
 <p>保险中的损失通常指被保险人发生的损失，索赔索赔通常指保险人给被保险人的赔款。由于不同的保险产品通常存在免赔额和赔偿限额的情况，使得保险的损失和索赔的随机性通常是不一致的。</p>
 <ul>
 <li><p>这种不一致性通常运用<strong>截断</strong>和<strong>删失</strong>的方法进行处理。</p></li>
 <li><p>假设随机变量 <span class="math inline">\(X\)</span> 表示原始的损失，其数学期望可以表示为： <span class="math display">\[\mathbb{E}(X)=\int_{0}^{\infty }{S(x)dx}\]</span></p></li>
 </ul>
+<p>在保险合同中，常见赔款函数可写为
+<span class="math display">\[
+Y=(X-d)_+\wedge u,
+\]</span>
+其中 <span class="math inline">\(d\)</span> 为免赔额、<span class="math inline">\(u\)</span> 为赔款限额。该表达式等价于先做左删失平移，再做右删失，是后续费率和纯保费计算的基础。</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="picture/expected.png" alt="随机变量 $X$ 的数学期望" width="50%" />
+<img src="picture/Expected.png" alt="随机变量 $X$ 的数学期望" width="50%" />
 <p class="caption">
 Figure 2.4: 随机变量 <span class="math inline">\(X\)</span> 的数学期望
 </p>
 </div>
-<div id="左截断left-truncated和平移shifted" class="section level3 hasAnchor" number="2.7.1">
-<h3><span class="header-section-number">2.7.1</span> 左截断（left truncated）和平移（shifted）<a href="random-var.html#左截断left-truncated和平移shifted" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="左截断left-truncated和平移shifted" class="section level3" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> 左截断（left truncated）和平移（shifted）</h3>
 <p>【<strong>定义</strong>】：<strong>左截断平移</strong>变量定义为：
 <span class="math display">\[
 Y^p = X - d|X&gt;d = \begin{cases}
@@ -602,8 +663,8 @@ e_X(d):=\mathbb{E}(Y^p)=\mathbb{E}(X-d|X&gt;d)
 &amp; =\underset{x\to \infty }{\mathop{\lim }}\,\left[ \int\limits_{0}^{\infty }{tf(t)dt}-\int\limits_{0}^{x}{tf(t)dt} \right]=0
 \end{align*}\]</span></p>
 </div>
-<div id="左删失left-censored和平移shifted" class="section level3 hasAnchor" number="2.7.2">
-<h3><span class="header-section-number">2.7.2</span> 左删失（left censored）和平移（shifted）<a href="random-var.html#左删失left-censored和平移shifted" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="左删失left-censored和平移shifted" class="section level3" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> 左删失（left censored）和平移（shifted）</h3>
 <p>【<strong>定义</strong>】：<strong>左删失平移</strong> 变量定义为：
 <span class="math display">\[
 {{Y}^{L}}={{\left( X-d \right)}_{+}}=
@@ -634,8 +695,8 @@ Figure 2.5: 随机变量 <span class="math inline">\(Y^L\)</span> 的数学期�
 </p>
 </div>
 </div>
-<div id="右删失right-censored" class="section level3 hasAnchor" number="2.7.3">
-<h3><span class="header-section-number">2.7.3</span> 右删失（right censored）<a href="random-var.html#右删失right-censored" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="右删失right-censored" class="section level3" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> 右删失（right censored）</h3>
 <p>【<strong>定义</strong>】：<strong>右删失</strong>变量表示为：
 <span class="math display">\[
 Y=X\wedge u=\min (X,u)=\begin{cases}
@@ -659,12 +720,24 @@ Y=X\wedge u=\min (X,u)=\begin{cases}
 Figure 2.6: 右删失变量的数学期望
 </p>
 </div>
+</div>
+<div id="同时存在免赔额与限额的赔款变量" class="section level3" number="2.7.4">
+<h3><span class="header-section-number">2.7.4</span> 同时存在免赔额与限额的赔款变量</h3>
+<p>若保单设置免赔额 <span class="math inline">\(d\)</span> 和赔款限额 <span class="math inline">\(u\)</span>（其中 <span class="math inline">\(u&gt;d\)</span>），则赔款
+<span class="math display">\[
+Y=(X-d)_+\wedge (u-d).
+\]</span>
+其期望可写为
+<span class="math display">\[
+\mathbb{E}(Y)=\int_d^u S_X(x)dx.
+\]</span>
+这一定理在实务中非常常见：通过生存函数积分即可快速计算不同免赔额、限额下的赔款期望。</p>
 <!-- ![](picture/limit.png){width="450"} -->
 <!-- ### R 代码 -->
 </div>
 </div>
-<div id="课后习题" class="section level2 hasAnchor" number="2.8">
-<h2><span class="header-section-number">2.8</span> 课后习题<a href="random-var.html#课后习题" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="课后习题" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> 课后习题</h2>
 <p>1、假设随机变量 <span class="math inline">\(X\)</span> 的密度函数如下：</p>
 <p><span class="math display">\[
 f_{X}(x)=\frac{1}{\theta}\exp\left(-\frac{1}{\theta}x\right), x&gt;0,
@@ -678,7 +751,7 @@ f_{X}(x)=\frac{1}{\theta}\exp\left(-\frac{1}{\theta}x\right), x&gt;0,
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="random-var.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 随机变量 X 分布的生存函数可以表示为</span></span>
-<span id="cb4-2"><a href="random-var.html#cb4-2" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">200</span><span class="sc">*</span>x)</span>
+<span id="cb4-2"><a href="random-var.html#cb4-2" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">/</span><span class="dv">200</span>)</span>
 <span id="cb4-3"><a href="random-var.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 平均超额函数 ex1</span></span>
 <span id="cb4-4"><a href="random-var.html#cb4-4" aria-hidden="true" tabindex="-1"></a>ex1 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
 <span id="cb4-5"><a href="random-var.html#cb4-5" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>)</span>
@@ -688,8 +761,17 @@ f_{X}(x)=\frac{1}{\theta}\exp\left(-\frac{1}{\theta}x\right), x&gt;0,
 <span id="cb4-9"><a href="random-var.html#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb4-10"><a href="random-var.html#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-11"><a href="random-var.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘图</span></span>
-<span id="cb4-12"><a href="random-var.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d1, ex1, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;mean excess function&#39;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.01</span>))</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/plot-excess22-1.png" width="672" /></p>
+<span id="cb4-12"><a href="random-var.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d1, ex1, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;mean excess function&#39;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">350</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb4-13"><a href="random-var.html#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="random-var.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 含零赔款期望 E[(X-d)+]</span></span>
+<span id="cb4-15"><a href="random-var.html#cb4-15" aria-hidden="true" tabindex="-1"></a>yl <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-16"><a href="random-var.html#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(d1)){</span>
+<span id="cb4-17"><a href="random-var.html#cb4-17" aria-hidden="true" tabindex="-1"></a>  yl[i] <span class="ot">&lt;-</span> <span class="fu">integrate</span>(S, d1[i], <span class="cn">Inf</span>)<span class="sc">$</span>value</span>
+<span id="cb4-18"><a href="random-var.html#cb4-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-19"><a href="random-var.html#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(d1, yl, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb4-20"><a href="random-var.html#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;E[Y^p]&#39;</span>, <span class="st">&#39;E[Y^L]&#39;</span>),</span>
+<span id="cb4-21"><a href="random-var.html#cb4-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;black&#39;</span>, <span class="st">&#39;red&#39;</span>), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">bty =</span> <span class="st">&#39;n&#39;</span>)</span></code></pre></div>
+<p><img src="Non-life-Insurance-Actuarial-Science_files/figure-html/plot-excess22-1.png" width="672" /></p>
 <p>2、假设损失金额服从下述概率分布：</p>
 <p><span class="math display">\[
 f(x)=\frac{4(100-x)^3}{100^4},\quad\quad  0&lt;x\le 100.
@@ -748,80 +830,24 @@ f(x)=\frac{4(100-x)^3}{100^4},\quad\quad  0&lt;x\le 100.
 
 </div>
 </div>
-            </section>
+<p style="text-align: center;">
+<a href="index.html"><button class="btn btn-default">Previous</button></a>
+<a href="riskmod.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
 
-          </div>
-        </div>
-      </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="riskmod.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+
+</div>
+
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-random-variable.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
-});
+
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
-
 </html>

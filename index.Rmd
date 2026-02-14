@@ -1,14 +1,19 @@
 --- 
-title: "非寿险精算与风险模型"
+title: "A Minimal Book Example (Bootstrap Style)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output:
+  bookdown::gitbook: default
+  bookdown::html_book: default
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography:
+- book.bib
+- packages.bib
 biblio-style: apalike
 link-citations: yes
-github-repo: rstudio/bookdown-demo
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+github-repo: "rstudio/bookdown-demo"
+description: This is a minimal example of using the bookdown package to write a book.
+  The output format for this example is bookdown::html_book.
 ---
 
 
