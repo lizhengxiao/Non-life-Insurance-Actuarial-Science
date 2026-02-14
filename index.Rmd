@@ -3,8 +3,8 @@ title: "A Minimal Book Example (Bootstrap Style)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output:
-  bookdown::gitbook: default
   bookdown::html_book: default
+  bookdown::gitbook: default
 documentclass: book
 bibliography:
 - book.bib
